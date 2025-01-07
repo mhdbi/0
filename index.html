@@ -14,6 +14,20 @@
   <meta charset="UTF-8" />
 </head>
 <body>
+
+<script>
+ 
+ function notif(){
+  Notification.requestPermission().then(perm=>{
+    if(perm=="granted"){
+     const notific = new Notification("example",{body:"hello",data:"datatest",icon:""})
+    }
+  })
+
+ }
+Document.onload=notif();
+  
+</script>
   
  <!--
     <iframe src="https://drive.google.com/uc?export=download&confirm=9iBg&id=1KfQA9Nx3-1VJ942J-9pX282A168-9e3D"
