@@ -1184,7 +1184,7 @@ if('Geolocation' in navigator){
  </nav>
  
 
-<div class="panels" style="filter: drop-shadow(2px 4px 6px black);">
+<div class="panels">
 <TransitionGroup name="list" >
  <template v-for="item in data4" :key="item" > 
    
@@ -1222,13 +1222,13 @@ if('Geolocation' in navigator){
 
          <div style="width:100%;height:40px;">
            
-           <div @click="item.count!=0?item.count=item.count*1-1:true" class="plusMinus" style=" color: pink; right: 73.5%;filter: hue-rotate(59deg);">
+           <div @click="item.count!=0?item.count=item.count*1-1:true" class="plusMinus" style="right: 73.5%;filter: hue-rotate(260deg);">
              <img src="icons/minus.png" title="subtraction icons" style="filter: drop-shadow(0.2px 1.5px 1px black); width: 40%;"/>
            </div>  
 
            <div  class="plusMinus centerPM">{{item.count}}: العدد</div> 
 
-           <div @click="item.count=item.count*1+1" class="plusMinus" style=" right: 0%;color: pink;filter: hue-rotate(215deg);">
+           <div @click="item.count=item.count*1+1" class="plusMinus" style=" right: 0%;">
             <img src="icons/add.png" title="ui icons" style="filter: drop-shadow(0.2px 1.5px 1px black);width: 40%;"/>
            </div>
 
@@ -1268,7 +1268,7 @@ if('Geolocation' in navigator){
           <p >
              <span @click=""   style="display:flex;"> 
                 <div style="color: white;padding-left: 9px;font-size: 14px;display:flex;place-items:center;"
-                   @click="cartItem.push({title:item.title,count:item.count,price:item.price}),item.count=0">
+                   @click="cartItem.push({title:item.title,count:item.count,price:item.price})">
                   <img src="icons/purchase.png" style=" width: 25%;margin-right:11px;" />إضافة 
                 </div>
              </span>

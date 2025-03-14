@@ -115,7 +115,7 @@ a {
     align-items: center;
     display: flex;
     background: linear-gradient(360deg, #595959, #000000);
-    box-shadow: inset 0px -5px 10px #000000, inset 0px 5px 11px #7c7c7c, 0px 10px 15px #1b000ef7;
+    box-shadow: inset 0px -5px 10px #000000, inset 0px 5px 11px #707070, 0px 10px 15px #1b000ef7;
     border-radius: 5rem;
     list-style: none;
     margin-top: 30px;
@@ -774,16 +774,17 @@ box-shadow: 0px 0px 10px black;
 
 .imgDiv {
   border-radius: 35%;
-  top: -10px;
+  top: -13px;
   left: 0px;
   position: absolute;
-  height: 33vh;
-  width: 33vh;
+  height: 112%;
+  width: 58%;
   z-index: 888;
   align-items: center;
   overflow: hidden;
   justify-content: space-evenly;
-  display: flex;
+  display: flex
+;
   filter: drop-shadow(0px 0px 2px white);
 }
 
@@ -875,14 +876,14 @@ box-shadow: 0px 0px 10px black;
 
 .titlee{
   color: #000000;
-  text-shadow: 0px 0px 10px #ffffff;
+  text-shadow: 1px 1px 3px #000000;
   font-size: 20px;
-  background: linear-gradient(278deg, #989898, #eae5e5d4);
+  background: #ffffff;
   width: 100%;
   padding: 3px 0px;
   border-start-start-radius: 0rem;
   border-end-start-radius: 1rem;
-  box-shadow: inset 1.5px 1.5px 3px #2c2c2c00, inset -1px -1px 3px #736969c2;
+  box-shadow: inset 2.5px -1px 3px #272727cc;
 }
 
 
@@ -1474,12 +1475,12 @@ padding: 0px 11px 15px 0px;
   border-top: 1px dashed white;
   display: flex
 ;
-  background: repeating-linear-gradient(0deg, #757575, #888888, #d1d0d0, #dfdfdf 50px);
-  color: #ffffff;
-  text-shadow: 0px 0px 2px #000000, 0px 2px 4px #000000;
+  background: linear-gradient(360deg, #a0a0a0, white);
+  color: #212121;
+  text-shadow: 0px 0px 2px #989898, 0px 2px 4px #000000;
   padding: 12px 20px;
-  border-start-end-radius: 2.5rem;
-  border-start-start-radius: 2.5rem;
+  border-start-end-radius: 2rem;
+  border-start-start-radius: 2rem;
   border-end-end-radius: 0.5rem;
   border-end-start-radius: 0.5rem;
   box-shadow: inset 2px 1px 3px #000000, inset -2px -1px 3px #000000, 0px 3px 4px #ffffff;
