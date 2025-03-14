@@ -1,0 +1,30 @@
+
+
+{
+  "name":"WHITE-SHOP",
+  "id" :"/",
+  "short_name":"WHITE-SHOP",
+  "description":"E-commerce-app",
+  "start_url":"https://mhdbi.github.io/00/",
+  "theme_color":"#000000",
+  "display":"standalone",
+  "icons": [
+          {
+            "src": "icons/white-shop-icon.png",
+            "sizes": "any",
+            "type": "image/png",
+            "purpose":"any"
+          },
+          {
+            "src": "icons/white-shop-icon.png",
+            "sizes": "any",
+            "type": "image/png",
+            "purpose":"maskable"
+          }
+           ]
+  
+
+}
+
+
+
