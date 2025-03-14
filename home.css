@@ -78,19 +78,16 @@ a {
   align-items: center;
 }
 .vertical-nav {
-  gap: 5vh;
-    height: 54vh;
-    width: 15vh;
-    top: 25vh;
     z-index: 10;
     border: none;
-    position: relative;
+    position: fixed;
     background: none;
-    display: flex
-;
+    display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
+    width: 30vw;
+    bottom: 13vh;
  
 }
 
@@ -116,17 +113,18 @@ a {
     border-bottom: 0.1px solid #000000;
     justify-content: center;
     align-items: center;
-    display: flex
-;
+    display: flex;
     background: linear-gradient(360deg, #595959, #000000);
     box-shadow: inset 0px -5px 10px #000000, inset 0px 5px 11px #7c7c7c, 0px 10px 15px #1b000ef7;
     border-radius: 5rem;
     list-style: none;
-    width: 100%;
+    margin-top: 30px;
+    width: 14.5vh;
     text-align: center;
     position: relative;
     flex-grow: 1;
-  
+    max-width: 145px;
+    height: 14.5vh;
 
 
 }
@@ -158,8 +156,8 @@ a {
   background: none;
   height: 5vh;
   width: 5vh;
-  position: fixed;
-  bottom: 2vh;
+  position: relative;
+  bottom: -9vh;
   filter: drop-shadow(0px 0px 2px gray);
   border-radius: 5rem;
   outline: 2px dotted #6e6e6e;

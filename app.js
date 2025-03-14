@@ -1049,10 +1049,10 @@ if('Geolocation' in navigator){
  
  
  
- <div class="menu-container" style="display: flex; width: 100vw; height: 100vh; justify-content: space-between;">
+ <div class="menu-container" >
  
  
-   <ul class="vertical-nav" style="left:10px;" >
+   <ul class="vertical-nav" style="left:0px;" >
  
      <li  @click="route('خضار وفواكه')">
        <a > 
@@ -1087,7 +1087,7 @@ if('Geolocation' in navigator){
  
  
  
-   <ul style="right:10px;" class="vertical-nav">
+   <ul style="right:0px;" class="vertical-nav">
     
    <li @click="route('نقرشات')">
        <a >
