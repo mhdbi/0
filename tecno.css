@@ -49,7 +49,7 @@ text.innerHTML = "welcom-to i-us social media new-webApp---2025".split("").map(
   width: 8vh;
   height: 8vh;
   transform: none;
-  background: #cecece;
+  background: #000000;
   box-shadow: 0px 0px 8px #654449;
   border-radius: 50%;
   outline: 2px solid white;
@@ -81,7 +81,7 @@ text.innerHTML = "welcom-to i-us social media new-webApp---2025".split("").map(
 }
 
 .heead{ 
-  box-shadow: 0px 0px 4px #b4b4b4;
+  box-shadow: 0px 0px 4px #d4d4d4;
   position: relative;
   margin: auto;
   width: 50px;
@@ -184,10 +184,11 @@ row
 #test3 ,.test3{
   direction: rtl;
   justify-content: space-around;
-  color: #ffffff;
+  color: #898989;
   font-size: 35px;
-  text-shadow: 0px 0px 5px gray;
   font-weight: 900;
+  background: linear-gradient(90deg, hsl(0deg 100% 50%) 0%, hsl(0deg 100% 50%) 15%, hsl(0deg 100% 50%) 31%, hsl(233.1deg 100% 50%) 51%, hsl(225.42deg 100% 50%) 71%, hsl(261.87deg 100% 50%) 86%, hsl(238.71deg 100% 50%) 100%);
+  content: "متجر ::: زهرتي";
   background-clip: text;
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: #ff010100;
@@ -202,16 +203,16 @@ row
 
 
 #test3::before {
-  content: 'WHITE SHOP';
+  content: 'TELE SHOP';
   direction: rtl;
   display: flex;
   width: 100%;
   justify-content: space-evenly;
   align-items: center;
-  color: #ffffff;
+  color: #6e6e6e;
   position: absolute;
-  /* background: linear-gradient(90deg, hsl(0deg 0% 0%) 0%, hsla(240, 43%, 65%, 1) 15%, hsl(329.37deg 100% 50%) 31%, hsla(337, 76%, 61%, 1) 51%, hsla(50, 100%, 50%, 1) 71%, hsla(314, 78%, 70%, 1) 86%, hsla(300, 82%, 80%, 1) 100%); content: "متجر ::: زهرتي";
-  */
+  background: linear-gradient(90deg, hsl(0deg 100% 50%) 0%, hsl(0deg 100% 50%) 15%, hsl(0deg 100% 50%) 31%, hsl(233.1deg 100% 50%) 51%, hsl(225.42deg 100% 50%) 71%, hsl(261.87deg 100% 50%) 86%, hsl(238.71deg 100% 50%) 100%);
+ 
   background-clip: text; 
   -webkit-text-stroke-width: 5px;
   -webkit-text-stroke-color: transparent;
@@ -223,12 +224,12 @@ row
 
 @keyframes popout {
   0% {
-    font-size: 40px;
+    font-size: 45px;
     opacity: 100%;
   }
 
   100% {
-    font-size: 50px;
+    font-size: 55px;
     opacity: 5%;
   }
 }
@@ -804,11 +805,11 @@ main footer a{
 .contaiiner::before{
   content: '';
   position: absolute;
-  background: conic-gradient(from -145deg, #00000000 111deg, #f3f3f3 111deg, #b0b0b0 235deg, #e2dfdf 370deg);
+  background: conic-gradient(from -145deg, #00000000 111deg, #f26f6f 111deg, #ff0000 235deg, #f35454 370deg);
   z-index: -1;
   width: 100%;
   height: 120%;
-  filter: drop-shadow(0px 0px 4px #747474);
+  filter: drop-shadow(0px 0px 3px red);
   border-radius: 3rem;
 }
 
@@ -816,8 +817,7 @@ main footer a{
 .header {
   border-end-end-radius: 3rem;
   border-start-end-radius: 3rem;
-  filter: drop-shadow(0px 1px 5px #3f3f3f);
-  background: repeating-linear-gradient(90deg, black, #ffffff, black 4px);
+  background: repeating-linear-gradient(90deg, black, #0026ff, black 4px);
   position: absolute;
   z-index: 99;
   width: 100%;

@@ -107,13 +107,13 @@ a {
 .vertical-nav > li {
     /* background: linear-gradient(1deg, #000000 3%, #1b0000 25%, #570000 39%, #a25c5c, #ffffff);
     box-shadow: 0px 8px 9px black, 0px -4px 11px #ffffffd6, 0px 18px 25px #000000, 0px -2px 6px #b3b3b3b8, 0px 7px 15px #363636; */
-   
     outline-offset: 10px;
-    outline: 1px dashed #b7b7b7;
+    outline: 1px dashed #bcbcbc;
     border-bottom: 0.1px solid #000000;
     justify-content: center;
     align-items: center;
-    display: flex;
+    display: flex
+;
     background: linear-gradient(360deg, #595959, #000000);
     box-shadow: inset 0px -5px 10px #000000, inset 0px 5px 11px #707070, 0px 10px 15px #1b000ef7;
     border-radius: 5rem;
@@ -135,11 +135,9 @@ a {
   border-radius: 50%;
   width: 110%;
   height: 110%;
-  background: conic-gradient(from 321deg, #00000000 83deg, #ffffff 46deg, #1f1f1f 278deg, #999999f7 259deg);}
+  background: conic-gradient(from 321deg, #00000000 83deg, #ff0000 46deg, #1f1f1f 278deg, #0029ff 259deg);
 
-
-
-
+}
 
  
 .vertical-nav li a {
@@ -413,7 +411,7 @@ box-shadow: 0px 0px 10px black;
   padding: 10px 0px;
   font-weight: bold;
   font-size: 15px;
-  background: linear-gradient(0deg, #3e3e3e, #ffffff);
+  background: linear-gradient(0deg, #440000, #6b86f8);
   width: 60%;
   border: none;
   border-end-end-radius: 1rem;
@@ -423,7 +421,7 @@ box-shadow: 0px 0px 10px black;
   padding: 10px 0px;
   font-weight: bold;
   font-size: 15px;
-  background: linear-gradient(0deg, #3e3e3e, #bf8c5a);
+  background: linear-gradient(0deg, #440000, #ffffff);
   width: 40%;
   border: none;
   border-end-start-radius: 1rem;
@@ -744,13 +742,13 @@ box-shadow: 0px 0px 10px black;
   justify-content: end;
   align-items: center;
   flex-direction: row;
-  display: flex;
+  display: flex
+;
   position: absolute;
   bottom: -44px;
   width: 80vw;
-  background: repeating-linear-gradient(0deg, #000000, #ffffff 8px);
-  right: 0;
-
+  background: repeating-linear-gradient(0deg, #000000, #0026ff 8px);
+  right: 0px;
 
  }
 
@@ -774,31 +772,26 @@ box-shadow: 0px 0px 10px black;
 
 .imgDiv {
   border-radius: 35%;
-  top: -13px;
+  top: -10px;
   left: 0px;
   position: absolute;
-  height: 112%;
-  width: 58%;
+  height: 110%;
+  width: 65%;
   z-index: 888;
   align-items: center;
   overflow: hidden;
   justify-content: space-evenly;
-  display: flex
-;
-  filter: drop-shadow(0px 0px 2px white);
+  display: flex;
+  filter: drop-shadow(0px 0px 4px black);
 }
 
 .imgDiv::after{
   content: '';
   inset: 0px -1px;
   position: absolute;
-  background: conic-gradient(from 49deg, #00000000 83deg, #ffffff 46deg, #1f1f1f 278deg, #fffffff7 259deg);
+  background: conic-gradient(from 49deg, #00000000 83deg, #00108d 46deg, #cccccc 278deg, #d60000 259deg);
   z-index: 99;
   border-radius: 50%;
-  border: 5px;
-  border-right: none;
-  outline-offset: 10px;
-  outline: 1px dashed #ffffff;
 }
 
 .holdPlusMinus{
@@ -823,8 +816,8 @@ box-shadow: 0px 0px 10px black;
   align-items: center;
   display: flex
 ;
-  background: linear-gradient(180deg, #3b3b3b, #ffffff);
-  box-shadow: inset 0px -3px 7px #000000, inset 0px 3px 7px #ffffff, 0px 1px 3px black, 0px -1px 3px #a52a6a;
+  background: linear-gradient(0deg, #d1cdcd, #c6c6c6);
+  box-shadow: 0px 0px 2px #000000, inset 0px 0px 4px #030303, inset 0px 0px 15px #820404;
   border-radius: 6rem;
   list-style: none;
   width: 11vw;
@@ -838,18 +831,13 @@ box-shadow: 0px 0px 10px black;
 }
 
 .centerPM{
-  background: linear-gradient(22deg, rgb(55 55 55), #ffffff);
-  box-shadow: rgb(39, 39, 39) 0px -1px 4px;
+  background: #3444ff;
+  box-shadow: inset black 2px 1px 3px, inset #323232 -2px 0px 3px, 0px 0px 2px black;
   font-size: 11px;
-  border-right: 3px dotted rgb(37, 0, 29);
-  border-bottom: none;
-  border-left: 3px dotted rgb(27, 0, 18);
-  border-image: initial;
   width: 21vw;
   max-width: 100px;
-  filter: hue-rotate(327deg);
   right: 25%;
-  color: rgb(0, 0, 0);
+  color: rgb(255 255 255);
 }
 
 .price{
@@ -878,13 +866,14 @@ box-shadow: 0px 0px 10px black;
   color: #000000;
   text-shadow: 1px 1px 3px #000000;
   font-size: 20px;
-  background: #ffffff;
+  background: #d4d4d4;
   width: 100%;
   padding: 3px 0px;
   border-start-start-radius: 0rem;
   border-end-start-radius: 1rem;
   box-shadow: inset 2.5px -1px 3px #272727cc;
 }
+
 
 
 
@@ -1283,8 +1272,8 @@ p:hover{
  } 
 
   .search {
-     box-shadow: 0px 0px 4px rgb(255, 255, 255);
-     background: linear-gradient(180deg, #434343, #1c1c1c, #000000e0);
+    box-shadow: 0px 0px 4px #d4d4d4;
+    background: linear-gradient(180deg, #373737, #1c1c1c, #000000e0);
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -1294,7 +1283,7 @@ p:hover{
     } 
     
     .search2 {
-      box-shadow: 0px 0px 4px pink;
+      box-shadow: 0px 0px 4px rgb(255, 255, 255);
       background: linear-gradient(180deg, #434343, #1c1c1c, #000000e0);
       width: 50px;
       height: 50px;
@@ -1321,7 +1310,7 @@ p:hover{
       left: 22px;
       width: 8px;
       height: 2px;
-      background: #ffffff;
+      background: white;
       transform: rotate(45deg);
       transition: all .5s;
     }
@@ -1336,7 +1325,7 @@ p:hover{
       width: 22px;
       height: 22px;
       border-radius: 50%;
-      border: 2px solid #ffffff;
+      border: 2px solid white;
       transition: all .5s;
     }
 
@@ -1353,7 +1342,7 @@ p:hover{
   color: black;
   padding: 0 10px 0 20px;
   border-radius: 30px;
-  box-shadow: 0px 0px 7px #ffffff;
+  box-shadow: 0px 0px 7px blue;
   transition: all 1s;
   opacity: 0;
 
@@ -1470,23 +1459,22 @@ padding: 0px 11px 15px 0px;
 
 
 .routeS{
- 
   font-weight: bold;
-  border-top: 1px dashed white;
+  border-top: 1px dashed #ffc7c7;
   display: flex
 ;
-  background: linear-gradient(360deg, #a0a0a0, white);
-  color: #212121;
-  text-shadow: 0px 0px 2px #989898, 0px 2px 4px #000000;
+  background: linear-gradient(360deg, #101c36, #f2f2f2);
+  color: #ff0909;
+  text-shadow: 0px 0px 2px #ff6565, 0px 2px 4px #000000;
   padding: 12px 20px;
   border-start-end-radius: 2rem;
   border-start-start-radius: 2rem;
   border-end-end-radius: 0.5rem;
   border-end-start-radius: 0.5rem;
-  box-shadow: inset 2px 1px 3px #000000, inset -2px -1px 3px #000000, 0px 3px 4px #ffffff;
+  box-shadow: inset 2px 1px 3px #000000, inset -2px -1px 3px #000000, 0px 3px 4px #566ffd;
   border-left: 5px dashed #000000;
   border-right: 5px dashed #000000;
-  border-bottom: 5px double #ffffff;
+  border-bottom: 5px double #002cff;
 }
 
 

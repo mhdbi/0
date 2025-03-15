@@ -1035,7 +1035,7 @@ if('Geolocation' in navigator){
 
 <div id="test3" dir="rtl">
  <div style="margin-right: 25px;">  SHOP  </div>
- <div>  WHITE </div>
+ <div>  TELE </div>
 </div>
  
    </div>
@@ -1171,7 +1171,7 @@ if('Geolocation' in navigator){
     <li class="header__item"  style="right:5px;">
      <div class="heead "  style="display:block;" >
       <h1 class="header__logo__name" @click="route('')" >
-         <i class="fa fa-home" style="text-shadow: #ffffff 0px 0px 1px;color: #ffffff;text-align: center;font-size: 13px;
+         <i class="fa fa-home" style="text-shadow: white 0px 0px 1px;color: white;text-align: center;font-size: 13px;
         margin: 2px;"><br/>الرئيسية</i>
        </h1>
      </div>
@@ -1222,13 +1222,13 @@ if('Geolocation' in navigator){
 
          <div style="width:100%;height:40px;">
            
-           <div @click="item.count!=0?item.count=item.count*1-1:true" class="plusMinus" style="right: 73.5%;filter: hue-rotate(260deg);">
+           <div @click="item.count!=0?item.count=item.count*1-1:true" class="plusMinus" style="right: 73.5%;filter: hue-rotate(27deg);">
              <img src="icons/minus.png" title="subtraction icons" style="filter: drop-shadow(0.2px 1.5px 1px black); width: 40%;"/>
            </div>  
 
            <div  class="plusMinus centerPM">{{item.count}}: العدد</div> 
 
-           <div @click="item.count=item.count*1+1" class="plusMinus" style=" right: 0%;">
+           <div @click="item.count=item.count*1+1" class="plusMinus" style=" right: 0%;filter: hue-rotate(220deg);">
             <img src="icons/add.png" title="ui icons" style="filter: drop-shadow(0.2px 1.5px 1px black);width: 40%;"/>
            </div>
 
@@ -1362,7 +1362,7 @@ if('Geolocation' in navigator){
    <li class="header__item"  style="right:5px;">
      <div class="heead "  style="display:block;" >
       <h1 class="header__logo__name"   @click="route('')">
-         <i class="fa fa-home" style="text-shadow:rgb(255, 255, 255) 0px 0px 1px;color:#ffffff; text-align: center;font-size: 13px;margin: 2px;">
+         <i class="fa fa-home" style="text-shadow:white 0px 0px 1px;color:white; text-align: center;font-size: 13px;margin: 2px;">
          <br/>الرئيسية</i>
        </h1>
      </div>
@@ -1478,7 +1478,7 @@ if('Geolocation' in navigator){
    <li class="header__item"  style="right:5px;">
      <div class="heead "  style="display:block;" >
       <h1 class="header__logo__name"   @click="route('')">
-         <i class="fa fa-home" style="text-shadow:rgb(255, 255, 255) 0px 0px 1px;color:#ffffff; text-align: center;font-size: 13px;margin: 2px;">
+         <i class="fa fa-home" style="text-shadow:white 0px 0px 1px;color:white; text-align: center;font-size: 13px;margin: 2px;">
          <br/>الرئيسية</i>
        </h1>
      </div>
