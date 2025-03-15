@@ -135,8 +135,7 @@ a {
   border-radius: 50%;
   width: 110%;
   height: 110%;
-  background: conic-gradient(from 321deg, #00000000 83deg, #ff0000 46deg, #1f1f1f 278deg, #0029ff 259deg);
-
+  background: conic-gradient(from 321deg, #00000000 83deg, #ff0000 46deg, #1f1f1f 278deg, #afafaf 259deg);
 }
 
  
@@ -411,17 +410,16 @@ box-shadow: 0px 0px 10px black;
   padding: 10px 0px;
   font-weight: bold;
   font-size: 15px;
-  background: linear-gradient(0deg, #440000, #6b86f8);
+  background: linear-gradient(0deg, #001125, #f8f8f8);
   width: 60%;
   border: none;
   border-end-end-radius: 1rem;
 }
 .backword{
-  box-shadow: 0px 0px 3px rgb(146, 146, 146);
   padding: 10px 0px;
   font-weight: bold;
   font-size: 15px;
-  background: linear-gradient(0deg, #440000, #ffffff);
+  background: linear-gradient(0deg, #3c0000, #ffffff);
   width: 40%;
   border: none;
   border-end-start-radius: 1rem;
@@ -559,10 +557,10 @@ box-shadow: 0px 0px 10px black;
 .myButton{
   width: 9vh;
   height: 2.8vh;
-  border: 2px solid #ff00a0;
-  filter: drop-shadow(0px 0px 3px blue);
+  border: 2px solid #b5b5b5;
+  filter: drop-shadow(0px 0px 2px red);
   border-radius: 1rem;
-  background: #e90aff;
+  background: #ff0a0a;
 }
 .myButton::before{
   content: '';
@@ -747,7 +745,7 @@ box-shadow: 0px 0px 10px black;
   position: absolute;
   bottom: -44px;
   width: 80vw;
-  background: repeating-linear-gradient(0deg, #000000, #0026ff 8px);
+  background: repeating-linear-gradient(0deg, #000000, #ff4f4f 8px);
   right: 0px;
 
  }
@@ -789,7 +787,7 @@ box-shadow: 0px 0px 10px black;
   content: '';
   inset: 0px -1px;
   position: absolute;
-  background: conic-gradient(from 49deg, #00000000 83deg, #00108d 46deg, #cccccc 278deg, #d60000 259deg);
+  background: conic-gradient(from 49deg, #00000000 83deg, #a90000 46deg, #8e8e8e 278deg, #cd0000 259deg);
   z-index: 99;
   border-radius: 50%;
 }
@@ -816,8 +814,9 @@ box-shadow: 0px 0px 10px black;
   align-items: center;
   display: flex
 ;
-  background: linear-gradient(0deg, #d1cdcd, #c6c6c6);
-  box-shadow: 0px 0px 2px #000000, inset 0px 0px 4px #030303, inset 0px 0px 15px #820404;
+  border: 1.6px dashed #8a0000;
+  background: #c2c2c2;
+  box-shadow: 0px 0px 2px #000000, inset 0px 0px 5px #080000;
   border-radius: 6rem;
   list-style: none;
   width: 11vw;
@@ -831,7 +830,7 @@ box-shadow: 0px 0px 10px black;
 }
 
 .centerPM{
-  background: #3444ff;
+  background: #fb5757;
   box-shadow: inset black 2px 1px 3px, inset #323232 -2px 0px 3px, 0px 0px 2px black;
   font-size: 11px;
   width: 21vw;
@@ -1272,7 +1271,7 @@ p:hover{
  } 
 
   .search {
-    box-shadow: 0px 0px 4px #d4d4d4;
+    box-shadow: 0px 0px 4px #cc0000;
     background: linear-gradient(180deg, #373737, #1c1c1c, #000000e0);
     width: 50px;
     height: 50px;
@@ -1290,7 +1289,7 @@ p:hover{
       border-radius: 50%;
       transition: all 1s;
       position: relative;
-      color: #ffffff;
+      color: #d0d0d0;
       text-shadow: 0px 0px 3px rgb(0, 0, 0);
       font-size: 16px;
       display: flex;
@@ -1310,7 +1309,7 @@ p:hover{
       left: 22px;
       width: 8px;
       height: 2px;
-      background: white;
+      background: rgb(255, 0, 0);
       transform: rotate(45deg);
       transition: all .5s;
     }
@@ -1325,7 +1324,7 @@ p:hover{
       width: 22px;
       height: 22px;
       border-radius: 50%;
-      border: 2px solid white;
+      border: 2px solid rgb(255, 0, 0);
       transition: all .5s;
     }
 
@@ -1342,7 +1341,7 @@ p:hover{
   color: black;
   padding: 0 10px 0 20px;
   border-radius: 30px;
-  box-shadow: 0px 0px 7px blue;
+  box-shadow: 0px 0px 7px rgb(255, 0, 0);
   transition: all 1s;
   opacity: 0;
 
@@ -1459,11 +1458,12 @@ padding: 0px 11px 15px 0px;
 
 
 .routeS{
+ 
   font-weight: bold;
   border-top: 1px dashed #ffc7c7;
   display: flex
 ;
-  background: linear-gradient(360deg, #101c36, #f2f2f2);
+  background: linear-gradient(360deg, #361010, #f2f2f2);
   color: #ff0909;
   text-shadow: 0px 0px 2px #ff6565, 0px 2px 4px #000000;
   padding: 12px 20px;
@@ -1471,10 +1471,10 @@ padding: 0px 11px 15px 0px;
   border-start-start-radius: 2rem;
   border-end-end-radius: 0.5rem;
   border-end-start-radius: 0.5rem;
-  box-shadow: inset 2px 1px 3px #000000, inset -2px -1px 3px #000000, 0px 3px 4px #566ffd;
+  box-shadow: inset 2px 1px 3px #000000, inset -2px -1px 3px #000000, 0px 3px 4px #fd5656;
   border-left: 5px dashed #000000;
   border-right: 5px dashed #000000;
-  border-bottom: 5px double #002cff;
+  border-bottom: 5px double #ff0000;
 }
 
 

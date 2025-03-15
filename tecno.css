@@ -49,7 +49,7 @@ text.innerHTML = "welcom-to i-us social media new-webApp---2025".split("").map(
   width: 8vh;
   height: 8vh;
   transform: none;
-  background: #000000;
+  background: #cdcdcd;
   box-shadow: 0px 0px 8px #654449;
   border-radius: 50%;
   outline: 2px solid white;
@@ -81,7 +81,7 @@ text.innerHTML = "welcom-to i-us social media new-webApp---2025".split("").map(
 }
 
 .heead{ 
-  box-shadow: 0px 0px 4px #d4d4d4;
+  box-shadow: 0px 0px 4px #bc0000;
   position: relative;
   margin: auto;
   width: 50px;
@@ -184,11 +184,10 @@ row
 #test3 ,.test3{
   direction: rtl;
   justify-content: space-around;
-  color: #898989;
+  color: #929292;
   font-size: 35px;
   font-weight: 900;
-  background: linear-gradient(90deg, hsl(0deg 100% 50%) 0%, hsl(0deg 100% 50%) 15%, hsl(0deg 100% 50%) 31%, hsl(233.1deg 100% 50%) 51%, hsl(225.42deg 100% 50%) 71%, hsl(261.87deg 100% 50%) 86%, hsl(238.71deg 100% 50%) 100%);
-  content: "متجر ::: زهرتي";
+  background: linear-gradient(90deg, hsl(0deg 100% 50%) 0%, hsl(0deg 100% 50%) 15%, hsl(0deg 100% 50%) 31%, hsl(0deg 0% 55.43%) 51%, hsl(0deg 0% 62.68%) 71%, hsl(0deg 0% 51.97%) 86%, hsl(0deg 0% 69.29%) 100%);
   background-clip: text;
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: #ff010100;
@@ -211,8 +210,8 @@ row
   align-items: center;
   color: #6e6e6e;
   position: absolute;
-  background: linear-gradient(90deg, hsl(0deg 100% 50%) 0%, hsl(0deg 100% 50%) 15%, hsl(0deg 100% 50%) 31%, hsl(233.1deg 100% 50%) 51%, hsl(225.42deg 100% 50%) 71%, hsl(261.87deg 100% 50%) 86%, hsl(238.71deg 100% 50%) 100%);
- 
+  background: linear-gradient(90deg, hsl(0deg 100% 50%) 0%, hsl(0deg 100% 50%) 15%, hsl(0deg 100% 50%) 31%, hsl(0deg 0% 55.43%) 51%, hsl(0deg 0% 62.68%) 71%, hsl(0deg 0% 51.97%) 86%, hsl(0deg 0% 69.29%) 100%);
+  
   background-clip: text; 
   -webkit-text-stroke-width: 5px;
   -webkit-text-stroke-color: transparent;
@@ -805,11 +804,11 @@ main footer a{
 .contaiiner::before{
   content: '';
   position: absolute;
-  background: conic-gradient(from -145deg, #00000000 111deg, #f26f6f 111deg, #ff0000 235deg, #f35454 370deg);
+  background: conic-gradient(from -145deg, #00000000 111deg, #d83535 111deg, #cc0000 235deg, #c42d2d 370deg);
   z-index: -1;
   width: 100%;
   height: 120%;
-  filter: drop-shadow(0px 0px 3px red);
+  filter: drop-shadow(0px 0px 3px rgb(193, 0, 0));
   border-radius: 3rem;
 }
 
@@ -817,7 +816,7 @@ main footer a{
 .header {
   border-end-end-radius: 3rem;
   border-start-end-radius: 3rem;
-  background: repeating-linear-gradient(90deg, black, #0026ff, black 4px);
+  background: repeating-linear-gradient(90deg, black, #c2c2c2, black 4px);
   position: absolute;
   z-index: 99;
   width: 100%;
@@ -826,7 +825,6 @@ main footer a{
 ;
   justify-content: center;
   align-items: center;
-
 }
 
 .header__logo__name{
@@ -856,7 +854,7 @@ main footer a{
 }
 
 .header__menu {
-  border: 1px solid #aeaeae;
+  border: 1px solid #a50000;
     box-shadow: inset 0px 3px 5px #000000, 0px 0px 4px #000000;
     justify-content: space-between;
     align-items: center;

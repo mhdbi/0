@@ -676,7 +676,7 @@ siteOrders:function(){
       //// for api send data ///
       var id = Math.floor(1+Math.random()*1234567890);
       var obj= {cartItem:this.cartItem,orderPhone:this.orderPhone,inputP:this.inputP,geoL:this.geoL,id:id,indexed:"order"};
-
+      //- ------------------- -//
       var x  = JSON.stringify(obj);
       var y  ="newOrder";
       var url =this.url+`?x=${x}&y=${y}`;
@@ -693,7 +693,8 @@ siteOrders:function(){
         this.FUNrun=true;
         this.FUNname=this.ocCart;
       })
-        
+
+
     }
    
   }
@@ -702,11 +703,11 @@ siteOrders:function(){
 
  telegram:function(){
       ////  telegram bot  ////
-        var chatId =`-4647034325`;
-        var token  =`7883274835:AAHMSeD4WhgOSOl-DsPUXihoo-PDuBS3hWY`;
-        var text   ='https//mhdbi.github.io/' +"the full date is"+this.date();
-        var url    = `https//api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${text}`;
-        fetch(url).then(e=>{
+      var chatId =`-4647034325`;
+      var token  =`7883274835:AAHMSeD4WhgOSOl-DsPUXihoo-PDuBS3hWY`;
+      var textLoc= typeof this.geoL=="string"?"open site" :`https://maps.google.com/?q=${this.geoL.latitude},${this.geoL.longitude}`
+      var text   =" Orders: "+'https://mhdbi.github.io/0' +"  Location: "+textLoc;
+      var url    = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${text}`; fetch(url).then(e=>{
           if(!e.ok){
             return Promise.reject(0);
           }else{}
@@ -714,6 +715,7 @@ siteOrders:function(){
           this.FUNrun=true;
           this.FUNname= this.telegram;
         })
+        console.log(text);
  },
 
 
@@ -879,7 +881,7 @@ myButton:function(){
 if(this.siteText){ 
   this.geoL=null;
     $('body').append(`<style> .myButton::before{transform: translate(0vh, -1vh);}</style>`);
-    $('.myButton').css({"background":"#e90aff"});
+    $('.myButton').css({"background":"red"});
     $('.myPlace').css({"display":"none"});
     $('.btnPlace').fadeIn('slow');
 
@@ -897,20 +899,16 @@ btnPlace:function(){
 this.myPlace=null;
 $('.btnPlace').fadeOut('slow');
   
-if('Geolocation' in navigator){
-  // this.run=true;
-  // navigator.geolocation.getCurrentPosition(success).then(x=>{
-  //   const latitude  = x.coords.latitude;
-  //   const longitude = x.coorde.longitude;
+if(navigator.geolocation){ 
 
-  //   this.geoL={latitude:latitude,longitude:longitude};
-  // this.run=false;
-  // this.runSolve=true;
+  navigator.geolocation.getCurrentPosition((x)=>{
+    const latitude  = x.coords.latitude;
+    const longitude = x.coords.longitude;
 
-  //   // `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`
-  // }).catch(e=>{
-    // this.runErr=true;
-  //   });
+    this.geoL={latitude:latitude,longitude:longitude};
+
+})
+
    $('.myButton').fadeOut();
    this.runSolve=true;
 }else{
@@ -1171,7 +1169,7 @@ if('Geolocation' in navigator){
     <li class="header__item"  style="right:5px;">
      <div class="heead "  style="display:block;" >
       <h1 class="header__logo__name" @click="route('')" >
-         <i class="fa fa-home" style="text-shadow: white 0px 0px 1px;color: white;text-align: center;font-size: 13px;
+         <i class="fa fa-home" style="text-shadow: red 0px 0px 1px;color: red;text-align: center;font-size: 13px;
         margin: 2px;"><br/>الرئيسية</i>
        </h1>
      </div>
@@ -1222,13 +1220,13 @@ if('Geolocation' in navigator){
 
          <div style="width:100%;height:40px;">
            
-           <div @click="item.count!=0?item.count=item.count*1-1:true" class="plusMinus" style="right: 73.5%;filter: hue-rotate(27deg);">
+           <div @click="item.count!=0?item.count=item.count*1-1:true" class="plusMinus" style="right: 73.5%;filter: hue-rotate(25deg);">
              <img src="icons/minus.png" title="subtraction icons" style="filter: drop-shadow(0.2px 1.5px 1px black); width: 40%;"/>
            </div>  
 
-           <div  class="plusMinus centerPM">{{item.count}}: العدد</div> 
+           <div  class="plusMinus centerPM" style="border:none;">{{item.count}}: العدد</div> 
 
-           <div @click="item.count=item.count*1+1" class="plusMinus" style=" right: 0%;filter: hue-rotate(220deg);">
+           <div @click="item.count=item.count*1+1" class="plusMinus" style=" right: 0%;filter: hue-rotate(25deg);">
             <img src="icons/add.png" title="ui icons" style="filter: drop-shadow(0.2px 1.5px 1px black);width: 40%;"/>
            </div>
 
@@ -1362,7 +1360,7 @@ if('Geolocation' in navigator){
    <li class="header__item"  style="right:5px;">
      <div class="heead "  style="display:block;" >
       <h1 class="header__logo__name"   @click="route('')">
-         <i class="fa fa-home" style="text-shadow:white 0px 0px 1px;color:white; text-align: center;font-size: 13px;margin: 2px;">
+         <i class="fa fa-home" style="text-shadow:red 0px 0px 1px;color:red; text-align: center;font-size: 13px;margin: 2px;">
          <br/>الرئيسية</i>
        </h1>
      </div>
@@ -1478,7 +1476,7 @@ if('Geolocation' in navigator){
    <li class="header__item"  style="right:5px;">
      <div class="heead "  style="display:block;" >
       <h1 class="header__logo__name"   @click="route('')">
-         <i class="fa fa-home" style="text-shadow:white 0px 0px 1px;color:white; text-align: center;font-size: 13px;margin: 2px;">
+         <i class="fa fa-home" style="text-shadow:red 0px 0px 1px;color:red; text-align: center;font-size: 13px;margin: 2px;">
          <br/>الرئيسية</i>
        </h1>
      </div>

