@@ -22,7 +22,7 @@ const data={
 
 
   wts    : "https://wa.me/+963981715375",
-  userImg:"https://drive.google.com/thumbnail?id=1_ZixOFUJe_f4hIKNm_it3AaBD88YHl-w",
+  userImg:"icons/LOGO.png",
   indexItem:null,                       //for edit with index of item 
 
   orderInfoSite:0,                      //for open close windo of site , index , order
@@ -263,7 +263,7 @@ const methodss={
 
        date : function(){ 
         var date = new Date();
-        var date ='('+(date.getDay()*1+9)+'/'+(date.getMonth()*1+1)+'/'+date.getFullYear()+')|*'+date.getHours()+':'+date.getMinutes()+'*|';
+        var date ='('+(date.getDay()*1+16)+'/'+(date.getMonth()*1+1)+'/'+date.getFullYear()+')|*'+date.getHours()-1+':'+date.getMinutes()+'*|';
         return date;
        },
        
@@ -659,16 +659,20 @@ siteOrders:function(){
     $('#cartItem1').fadeOut('slow');
     $('#cartItem2').fadeIn('slow');
     $('.priceAll').fadeOut('slow');
+
   }else if(this.cart==3){
     $('#cartItem2').fadeOut('slow');
     $('#cartItem3').fadeIn('slow');
+    $('.myButton').fadeIn();
+    $('.btnPlace').fadeIn();
   }else if(this.cart==4){
     
     if(this.cartItem.length==0||this.orderPhone==''||this.inputP==''||this.geoL==null||this.geoL==''){
        this.errSend=true;
+       
     }else{
     
-      
+     
       //// for api send data ///
       var id = Math.floor(1+Math.random()*1234567890);
       var obj= {cartItem:this.cartItem,orderPhone:this.orderPhone,inputP:this.inputP,geoL:this.geoL,id:id,indexed:"order"};
@@ -690,6 +694,7 @@ siteOrders:function(){
       }).then(e=>{ 
          this.makeTX(data);
          this.telegram();
+         this.cartItem=[];this.orderPhone=null;this.inputP=null;this.geoL=null;
       }).catch(e=>{
         this.FUNrun=true;
         this.FUNname=this.ocCart;
@@ -1269,7 +1274,7 @@ if(navigator.geolocation){
              <span @click=""   style="display:flex;"> 
                 <div style="color: white;padding-left: 9px;font-size: 14px;display:flex;place-items:center;"
                    @click="cartItem.push({title:item.title,count:item.count,price:item.price})">
-                  <img src="icons/purchase.png" style=" width: 25%;margin-right:11px;" />إضافة 
+                  <img src="icons/purchase.png" style=" width: 25%;margin-right:11px;max-width: 55px;" />إضافة 
                 </div>
              </span>
            </p>

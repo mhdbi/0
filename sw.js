@@ -5,7 +5,7 @@ var dynamicName="dynamicCache"
 
 let assets=['index.html','home.css','tecno.css','app.js',"404.html","icons/3d-lock.png","icons/add.png","icons/chocolate-bar.png",
   "icons/cigarette.png","icons/dairy-products.png","icons/drink.png","icons/file.png","icons/fruits.png","icons/minus.png",
-  "icons/nuts.png","icons/purchase.png","icons/white-shop-icon.png"
+  "icons/nuts.png","icons/purchase.png","icons/LOGO.png","icons/screensh1.jpg","icons/screensh2.jpg","icons/logo2.png"
   ];
 
 self.addEventListener("install" , (ev)=>{ 
@@ -108,6 +108,7 @@ self.addEventListener('fetch'  , (ev)=>{
  var font = url.hostname.includes('gstatic')||url.pathname.includes('woff2');
  var html = ev.request.mode=='navigate';
  var thumb= url.pathname.includes('thumbnail');
+ var icons= url.pathname.includes('icons');
  var Gscript=url.hostname.includes('script')||url.pathname.includes('exec');
 
  var myURL= self.location.hostname;
@@ -115,7 +116,10 @@ self.addEventListener('fetch'  , (ev)=>{
  var referrer =ev.request.referrer.includes(myURL);
 
  if(onLine ){
-         if(thumb){
+
+        if(referrer && icons){
+          return ev.respondWith(cacheF(ev.request));
+        }else if(thumb){
           return ev.respondWith(fetch(ev.request,{method: "GET",mode: "no-cors",redirect:"follow",credentials:"include"}))
             
           }else { 
@@ -134,13 +138,14 @@ self.addEventListener('fetch'  , (ev)=>{
 
 
 
-// function casheOnly(){
-//   return caches.match(ev.request);
+// function cacheOnly(){
+//   console.log('yeh icons');
+//   return caches.match(ev.request)||null;
 // }
 
 // function cacheFirst(){
 //   return caches.match(ev.request).then(res=>{
-//      return res || fetch(ev.request);
+//      return res || fetch(ev.request,{mode: "cors",credentials:"omit"});
 //   })
 // }
 
@@ -156,20 +161,21 @@ self.addEventListener('fetch'  , (ev)=>{
 //   })
 // }
 
-function cacheF(ev){
-   return caches.match(ev.request).then(resC=>{
-     var resF = fetch(ev.request,{mode:'cors', credentials:"omit"}).then(resF=>{
-         caches.open(cacheName).then(cache=>{
-          cache.put(ev.request , resF.clone());
+ function cacheF(ev){
+   return caches.match(ev).then(resC=>{
+     var resF =  fetch(ev).then(resF=>{
+        var resf= caches.open(cacheName,{mode: "cors",credentials:"omit"}).then(cache=>{
+          cache.put(ev , resF.clone());
           return resF;
-        })     
-      })
+        })    
+        return resf;
+      }) ; 
      return resC|| resF;
-   })
+   }).catch(e=>{ cacheF(ev) }) 
 }
 
 function html404(){
-return caches.matchAll('404.html');
+return caches.match('404.html');
 }
 
 // function fetchF(ev){

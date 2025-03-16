@@ -2,24 +2,7 @@
 
 /////////////////////////////////////////////////////////////////////////////
 
-// "screenshots":[
-//               {
-//                   "src":"screenShot.jpg",
-//                   "sizes":"720x1202",
-//                   "type": "image/jpg",
-//                   "form_factor":"wide",
-//                   "purpose":"any",
-//                   "label":"Hi-there"
-//               },
-//              {
-//                   "src":"screenShot.jpg",
-//                   "sizes":"720x1202",
-//                   "type": "image/jpg",
-//                   "platform":"ios",
-//                   "purpose":"any",
-//                   "label":"Hi-there"
-//               }
-//               ]
+
 
 
 

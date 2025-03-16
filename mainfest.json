@@ -1,27 +1,51 @@
 
 
 {
-  "name":"WHITE-SHOP",
+  "name":"TELE-SHOP",
   "id" :"/",
-  "short_name":"WHITE-SHOP",
+  "short_name":"TELE-SHOP",
   "description":"E-commerce-app",
-  "start_url":"https://mhdbi.github.io/00/",
+  "start_url":"https://mhdbi.github.io/0/",
   "theme_color":"#000000",
   "display":"standalone",
   "icons": [
           {
-            "src": "icons/white-shop-icon.png",
+            "src": "icons/logo2.png",
             "sizes": "any",
             "type": "image/png",
             "purpose":"any"
           },
           {
-            "src": "icons/white-shop-icon.png",
+            "src": "icons/logo2.png",
+            "sizes": "any",
+            "type": "image/png",
+            "purpose":"any"
+          },
+          {
+            "src": "icons/LOGO.png",
             "sizes": "any",
             "type": "image/png",
             "purpose":"maskable"
           }
-           ]
+           ],
+ "screenshots":[
+              {
+                  "src":"icons/screensh1.jpg",
+                  "sizes":"720x1440",
+                  "type": "image/jpg",
+                  "form_factor":"wide",
+                  "purpose":"any",
+                  "label":"Hi-there"
+              },
+             {
+                  "src":"icons/screensh2.jpg",
+                  "sizes":"720x1440",
+                  "type": "image/jpg",
+                  "platform":"ios",
+                  "purpose":"any",
+                  "label":"Hi-there"
+              }
+              ]
   
 
 }
