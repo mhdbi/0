@@ -721,16 +721,17 @@ siteOrders:function(){
 
 indexedDB:function(){
  // indexedDB.deleteDatabase('app')
-  var openDB = indexedDB.open('app',1);
+  const openDB = indexedDB.open('app',1);
   openDB.addEventListener('success' , (ev)=>{ this.db = ev.target.result;})
 
   openDB.addEventListener('error' , (ev)=>{ console.log(ev); }) ;
 
   openDB.addEventListener('upgradeneeded', (ev)=>{
     this.db = ev.target.result;
-    if(!db.objectStoreNames.contains('app')){
-      db.createObjectStore('app',{ keyPath:'id', });
+    if(!this.db.objectStoreNames.contains('app')){
+      this.db.createObjectStore('app',{ keyPath:'id', });
       }
+    
   })
 
   
@@ -897,20 +898,19 @@ if(this.siteText){
 
 btnPlace:function(){
 this.myPlace=null;
-$('.btnPlace').fadeOut('slow');
   
 if(navigator.geolocation){ 
 
   navigator.geolocation.getCurrentPosition((x)=>{
     const latitude  = x.coords.latitude;
     const longitude = x.coords.longitude;
-
     this.geoL={latitude:latitude,longitude:longitude};
 
+    $('.myButton').fadeOut('slow');
+    $('.btnPlace').fadeOut('slow');
+    this.runSolve=true;
 })
-
-   $('.myButton').fadeOut();
-   this.runSolve=true;
+ 
 }else{
       this.runErr=true;
 }
@@ -1209,12 +1209,12 @@ if(navigator.geolocation){
          
     <div class="holdPlusMinus">    
       <div class="titlee">{{item.title}}</div>
-       <div style="color: white;font-size: 10px;width: 100%;height: 100%;padding: 10px 5px 20px 5px;text-align: center;">
-                             {{item.post}}
-                        <div style="width:100%;height:200px;">
-                             {{item.price}} : السعر 
-                        </div>
-                   </div>
+          <div class="postText">
+                      {{item.post}}
+               <div style="width: 100%;color: #ffbebe;font-size: 12px;text-shadow: 0px 0px 3px #ff0000;">
+                      {{item.price}} : السعر 
+               </div>
+          </div>
       
 
 
@@ -1238,7 +1238,7 @@ if(navigator.geolocation){
 
 
      <div  class="imgDiv" >
-
+       <div class="wrapImg"></div>
        <i v-if=" item.img1!='' && item.img2!='' " class="fas fa-angle-left down"  @click="imgSlider(document, $event)" style="left:10px;top: 30%;opacity: 0.5;font-size: 31px;position: absolute;color: white;"></i>
        <img v-if=" item.img1!='' "  :src="item.img1"  class="imgg up"  />	
        <img v-if=" item.img2!='' "  :src="item.img2"  class="imgg down" style="display:none;"/>
@@ -1473,6 +1473,10 @@ if(navigator.geolocation){
  
      <ul class="header__menu"  style="justify-content: flex-end;" >
  
+     <li class="header__item fatora"  >
+       سجل الفواتير 
+    </li>
+
    <li class="header__item"  style="right:5px;">
      <div class="heead "  style="display:block;" >
       <h1 class="header__logo__name"   @click="route('')">
@@ -1490,7 +1494,7 @@ if(navigator.geolocation){
  
  <div  style="margin: 120px 0px;" v-if="orderInfoSite==0">
   <template v-for="item in dbData" :key="item" > 
-     <div style="background: linear-gradient(45deg,rgb(30, 30, 30),rgb(148, 148, 148));border-radius: 1rem;margin-top: 10px;">
+     <div style="background: linear-gradient(45deg,rgb(30, 30, 30),#8d5a5a);border-radius: 1rem;margin-top: 10px;">
        <div >
        <div class="itemFlex" >
                 <div class="span2" style="color:white;"><div >{{item.id}}</div> المعرف </div>
@@ -1655,12 +1659,15 @@ if(navigator.geolocation){
     <div class="main" v-if="route1=='verify'">
      <div class="commenter" style="background: #00000066;top:200px;" >
          <div  class="form-container">
-         
+            <div style="display: flex;justify-content: center;color: #f37373;text-shadow: 0px 0px 3px black, 0px 0px 5px red;">
+                 مخصص للمتاجر العملاء
+             </div>
+
             <div class="button">
                  <button class="login"   @click="route1='تسجيل'"
                 > تسجيل دخول </button>
              </div>
- 
+            
  
          </div>
      </div>

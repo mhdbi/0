@@ -169,6 +169,9 @@ box-shadow: 0px 0px 5px red;"  ref="install">
                <textarea type="text" cols="3" rows="3" dir="rtl" v-model="geoL"   placeholder=" قم بتحديد موقعك بالتفصيل"></textarea> <span> : موقعي بالتفصيل</span>
               </div>
              
+              <div v-if="runErr"   class="errSolve" :class="{ shake2 : runErr }">حدث خطأ ما, يرجى تعيين الموقع كتابةً </div>
+              <div v-if="runSolve" class="errSolve" :class="{ shake2 : runSolve }">تم تحديد الموقع بنجاح</div>
+              
             </div> 
            <!-- ----------------- -->
              <div class="itemFlex" style="background: linear-gradient(270deg, #000000cf, transparent 50%);border-radius: 5rem;margin: 10px 0px;height: 17%;">
@@ -193,9 +196,7 @@ box-shadow: 0px 0px 5px red;"  ref="install">
         <br> <div @click="errSend=false,cart=3" 
             style="width: 100%;background: linear-gradient(0deg, black, transparent);">حسناً</div>
        </div>
-       <div v-if="runErr"   class="errSolve" :class="{ shake2 : runErr }">حدث خطأ ما, يرجى تعيين الموقع كتابةً </div>
-       <div v-if="runSolve" class="errSolve" :class="{ shake2 : runSolve }">تم تحديد الموقع ,اضغط إرسال الطلب</div>
-       <!-- ------------- -->
+        <!-- ------------- -->
 
          </div>
      </div>

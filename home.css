@@ -119,12 +119,12 @@ a {
     border-radius: 5rem;
     list-style: none;
     margin-top: 30px;
-    width: 14.5vh;
+    width: 13.5vh;
     text-align: center;
     position: relative;
     flex-grow: 1;
     max-width: 145px;
-    height: 14.5vh;
+    height: 13.5vh;
 
 
 }
@@ -490,6 +490,7 @@ box-shadow: 0px 0px 10px black;
 }
 
 .span2{
+  color: rgb(225, 225, 225);
   justify-content: space-evenly;
   align-items: center;
   display: flex;
@@ -500,6 +501,19 @@ box-shadow: 0px 0px 10px black;
   border-radius: 2rem;
   padding: 3px;
   box-shadow: 0px 0px 3px gray;
+}
+
+.fatora{
+  background: #828282;
+  left: 5px;
+  position: absolute;
+  border-radius: 3rem;
+  height: 85%;
+  width: 40%;
+  box-shadow: inset 2px 2px 4px #1d0000, inset -2px -2px 4px #ce7979;
+  color: #ff9696;
+  font-size: 16px;
+  text-shadow: 1px 01px 1px #250000;
 }
 
 .itemFlex span {
@@ -609,13 +623,13 @@ box-shadow: 0px 0px 10px black;
 }
 
 .editDEL{
-  background: black;
+  background: linear-gradient(0deg, black, #696969);
   color: rgb(255 0 0);
   height: 13%;
   position: absolute;
   top: -25px;
   display: flex;
-  width: 55%;
+  width: 60%;
   border-radius: 1rem;
   justify-content: space-evenly;
 }
@@ -624,11 +638,13 @@ box-shadow: 0px 0px 10px black;
 .delItemHolder{
   position: absolute;
   width: 100%;
-  background: black;
+  background: linear-gradient(0deg, black, #545252);
   display: flex;
   justify-content: space-around;
-  color: white;
-  z-index: 23;
+  color: #ff8080;
+  height: 35px;
+  border-radius: 3rem;
+  z-index: 990;
   text-shadow: 0px 0px 3px red;
 }
 
@@ -766,15 +782,23 @@ box-shadow: 0px 0px 10px black;
 }
 
 
-
+.wrapImg{
+  border-radius: 50%;
+  position: absolute;
+  width: 32.5vh;
+  height: 32.5vh;
+  background: linear-gradient(0deg, black, #f2f2f2);
+  z-index: 900;
+  opacity: 0.4;
+}
 
 .imgDiv {
-  border-radius: 35%;
-  top: -10px;
-  left: 0px;
+  border-radius: 50%;
+  top: -20px;
+  left: -1px;
   position: absolute;
-  height: 110%;
-  width: 65%;
+  height: 36vh;
+  width: 36vh;
   z-index: 888;
   align-items: center;
   overflow: hidden;
@@ -787,7 +811,7 @@ box-shadow: 0px 0px 10px black;
   content: '';
   inset: 0px -1px;
   position: absolute;
-  background: conic-gradient(from 49deg, #00000000 83deg, #a90000 46deg, #8e8e8e 278deg, #cd0000 259deg);
+  background: conic-gradient(from 49deg, #00000000 83deg, #da0000 46deg, #202020 278deg, #c60000 259deg);
   z-index: 99;
   border-radius: 50%;
 }
@@ -843,14 +867,24 @@ box-shadow: 0px 0px 10px black;
   
   background: linear-gradient(31deg, #959092, #e0dfdf);
   color: #000000;
-  font-size: 15px;
+  font-size: 14px;
   padding: 4px 20px;
   border-radius: 2rem;
   box-shadow: inset 2px 2px 3px black, inset -1px -1px 2px #afafaf;
 }
 
 
-
+.postText{
+  color: white;
+    font-size: 12px;
+    width: 80%;
+    height: 85%;
+    padding: 10px 5px 20px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
 
 
 
@@ -864,7 +898,7 @@ box-shadow: 0px 0px 10px black;
 .titlee{
   color: #000000;
   text-shadow: 1px 1px 3px #000000;
-  font-size: 20px;
+  font-size: 18px;
   background: #d4d4d4;
   width: 100%;
   padding: 3px 0px;
@@ -1464,7 +1498,7 @@ padding: 0px 11px 15px 0px;
   display: flex
 ;
   background: linear-gradient(360deg, #361010, #f2f2f2);
-  color: #ff0909;
+  color: #ff9696;
   text-shadow: 0px 0px 2px #ff6565, 0px 2px 4px #000000;
   padding: 12px 20px;
   border-start-end-radius: 2rem;
