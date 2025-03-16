@@ -668,15 +668,16 @@ siteOrders:function(){
        this.errSend=true;
     }else{
     
-      ///// for idexedDb  /////
-        var cartItem=JSON.stringify(this.cartItem);
-        var data={id:id,cartItem:cartItem,date:this.date()};
-      ///// for idexedDb  /////
       
       //// for api send data ///
       var id = Math.floor(1+Math.random()*1234567890);
       var obj= {cartItem:this.cartItem,orderPhone:this.orderPhone,inputP:this.inputP,geoL:this.geoL,id:id,indexed:"order"};
       //- ------------------- -//
+     ///// for idexedDb  /////
+       var cartItem=JSON.stringify(this.cartItem);
+       var data={id:id,cartItem:cartItem,date:this.date()};
+     ///// for idexedDb  /////
+
       var x  = JSON.stringify(obj);
       var y  ="newOrder";
       var url =this.url+`?x=${x}&y=${y}`;
@@ -714,14 +715,15 @@ siteOrders:function(){
         }).catch(e=>{ 
           this.FUNrun=true;
           this.FUNname= this.telegram;
+          
         })
-        console.log(text);
+        
  },
 
 
 indexedDB:function(){
  // indexedDB.deleteDatabase('app')
-  const openDB = indexedDB.open('app',1);
+  const openDB = window.indexedDB.open('app',1);
   openDB.addEventListener('success' , (ev)=>{ this.db = ev.target.result;})
 
   openDB.addEventListener('error' , (ev)=>{ console.log(ev); }) ;
