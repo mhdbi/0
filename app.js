@@ -13,7 +13,7 @@ const data={
   orderPhone:null,                        //for cart order phone
   cartItem:[],          //for cart order items
   geoL:'',                               //for cart order gps 
-  inputP:'',                               //for cart chose market user place
+  inputP:'',                               //for cart chose market user place/
 
   orderPh:'' ,                         //for users orders show phone &place                           
   order:[] ,                           //for customer order 
