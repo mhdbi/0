@@ -319,7 +319,7 @@ box-shadow: 0px 0px 10px black;
   box-shadow: 0px 0px 15px #686666, 0px 0px 10px #605f5f, 0px 0px 19px #323030;
   min-height: 100vh;
   position: absolute;
-  background: linear-gradient(45deg, black, gray);
+  
 }
 
 
@@ -410,7 +410,7 @@ box-shadow: 0px 0px 10px black;
   padding: 10px 0px;
   font-weight: bold;
   font-size: 15px;
-  background: linear-gradient(0deg, #001125, #f8f8f8);
+  background: linear-gradient(0deg, #547653, #64f764);
   width: 60%;
   border: none;
   border-end-end-radius: 1rem;
@@ -419,7 +419,7 @@ box-shadow: 0px 0px 10px black;
   padding: 10px 0px;
   font-weight: bold;
   font-size: 15px;
-  background: linear-gradient(0deg, #3c0000, #ffffff);
+  background: linear-gradient(0deg, gray, #bbbbbb);
   width: 40%;
   border: none;
   border-end-start-radius: 1rem;
@@ -783,13 +783,13 @@ box-shadow: 0px 0px 10px black;
 /* 88888888888 */
 
 .wrapImg{
+  box-shadow: inset 0px 0px 9px #000000, inset 0px 0px 15px #000000, inset 0px 0px 30px #000000;
   border-radius: 50%;
   position: absolute;
-  width: 30.5vh;
-  height: 30.5vh;
-  background: linear-gradient(0deg, black, #f2f2f2);
+  width: 30.8vh;
+  height: 30.8vh;
   z-index: 900;
-  opacity: 0.4;
+  opacity: 1;
 }
 
 .imgDiv {
@@ -811,7 +811,7 @@ box-shadow: 0px 0px 10px black;
   content: '';
   inset: 0px -1px;
   position: absolute;
-  background: conic-gradient(from 49deg, #00000000 83deg, #da0000 46deg, #202020 278deg, #c60000 259deg);
+  background: conic-gradient(from -25deg, #790000 0deg, #ff0000 75deg, transparent 75deg, transparent 150deg, #ff0000 150deg, #720202 225deg, #000000 225deg, #bdbdbd 230deg, #000000 230deg, #bdbcbc 235deg, #000000 235deg, #adadad 240deg, #ff0000 240deg, #640000 280deg, #000000 280deg, #9b9b9b 285deg, #8e8e8e 285deg, #cdcdcd 285deg, #000000 286deg, #ff0000 293deg, #000000 299deg, #858585 300deg, #aeadad 300deg, #000000 304deg, #5b0000 305deg, red 345deg, #ababab 345deg, #000000 350deg, #a7a7a7 350deg, #000000 355deg, #b7b7b7 355deg, #000000 360deg);
   z-index: 99;
   border-radius: 50%;
 }
@@ -843,13 +843,13 @@ box-shadow: 0px 0px 10px black;
   box-shadow: 0px 0px 2px #000000, inset 0px 0px 5px #080000;
   border-radius: 6rem;
   list-style: none;
-  width: 11vw;
+  width: 12vw;
   overflow: hidden;
   text-align: center;
   flex-grow: 1;
   max-width: 55px;
   max-height: 55px;
-  height: 11vw;
+  height: 12vw;
 
 }
 

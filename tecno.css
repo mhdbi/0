@@ -855,7 +855,7 @@ main footer a{
 
 .header__menu {
   border: 1px solid #660000;
-    box-shadow: inset 0px 3px 5px #000000, 0px 0px 4px #000000;
+    box-shadow: inset 0px 3px 5px #000000, 0px 0px 4px #000000, -20px -25px 0px #cc0000, 20px -25px 0px #cc0000;
     justify-content: space-between;
     align-items: center;
     border-radius: 2rem;

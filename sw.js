@@ -1,11 +1,11 @@
 ///////
-const version =5;
+const version =1;
 var cacheName =`staticCahe-${version}`;
 var dynamicName="dynamicCache"
 
 let assets=['index.html','home.css','tecno.css','app.js',"404.html","icons/3d-lock.png","icons/add.png","icons/chocolate-bar.png",
   "icons/cigarette.png","icons/dairy-products.png","icons/drink.png","icons/file.png","icons/fruits.png","icons/minus.png",
-  "icons/nuts.png","icons/purchase.png","icons/LOGO.png","icons/screensh1.jpg","icons/screensh2.jpg","icons/logo2.png"
+  "icons/nuts.png","icons/purchase.png","icons/logo.png","icons/screensh1.jpg","icons/screensh2.jpg",
   ];
 
 self.addEventListener("install" , (ev)=>{ 
@@ -131,7 +131,7 @@ self.addEventListener('fetch'  , (ev)=>{
       // }
 
  }else{
-   ev.respondWith(html404());
+   ev.respondWith(html404(ev.request));
  }
 
 });
@@ -174,8 +174,10 @@ self.addEventListener('fetch'  , (ev)=>{
    }).catch(e=>{ cacheF(ev) }) 
 }
 
-function html404(){
-return caches.match('404.html');
+function html404(ev){
+  return caches.match(ev).then(resC=>{
+      return resC||caches.match('404.html');
+  })
 }
 
 // function fetchF(ev){

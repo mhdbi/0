@@ -10,10 +10,9 @@
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="user-scalable=no, initial-scale=1.0001, maximum-scale=1.0001, width=device-width, minimal-ui shrink-to-fit=no">
   <meta http-equiv="cleartype" content="on">
-  <meta name="theme-color" content="#000000" />
+  <meta name="theme-color" content="#cc0000" />
 
-<link rel="stylesheet" href="tecno.css" >
-<link rel="stylesheet" href="home.css" >
+
 <link rel="manifest"   href="mainfest.json" crossorigin="use-credentials"/>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
@@ -25,10 +24,11 @@
   <script src="https://unpkg.com/vue-router@4"></script>
   
 </head>
-<body>
+<body style="margin: 0px;padding: 0px;">
 
 	<div id="app"  >
-    <dialog open style="   
+    <dialog open style="  padding: 0px;
+    margin: 0px; 
     border: none;
     width: 100vw;
     height: 100vh;
@@ -81,7 +81,40 @@ outline: 2px dotted;outline-offset: -50px;border-radius: 10rem;">  تحديث </
 
 
 <style>
-  
+
+.header {
+    border-end-end-radius: 3rem;
+    border-start-end-radius: 3rem;
+    background: repeating-linear-gradient(90deg, black, #c2c2c2, black 4px);
+    position: absolute;
+    z-index: 99;
+    width: 100%;
+    top: 10px;
+    display: flex
+;
+    justify-content: center;
+    align-items: center;
+}
+
+.contaiiner {
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100px;
+    width: 100%;
+    display: flex
+;
+}
+  .contaiiner::before {
+    content: '';
+    position: absolute;
+    background: conic-gradient(from -145deg, #00000000 111deg, #d83535 111deg, #cc0000 235deg, #c42d2d 370deg);
+    z-index: -1;
+    width: 100%;
+    height: 120%;
+    filter: drop-shadow(0px 0px 3px rgb(193, 0, 0));
+    border-radius: 3rem;
+}
   
 #test3 ,.test3{
   direction: rtl;

@@ -1,28 +1,22 @@
 
 
 {
-  "name":"TELE-SHOP",
+  "name":"Teleshop",
   "id" :"/",
-  "short_name":"TELE-SHOP",
+  "short_name":"Teleshop",
   "description":"E-commerce-app",
   "start_url":"https://mhdbi.github.io/0/",
-  "theme_color":"red",
+  "theme_color":"#cc0000",
   "display":"standalone",
   "icons": [
           {
-            "src": "icons/logo2.png",
+            "src": "icons/logo.png",
             "sizes": "any",
             "type": "image/png",
             "purpose":"any"
           },
           {
-            "src": "icons/logo2.png",
-            "sizes": "any",
-            "type": "image/png",
-            "purpose":"any"
-          },
-          {
-            "src": "icons/logo2.png",
+            "src": "icons/logo.png",
             "sizes": "any",
             "type": "image/png",
             "purpose":"maskable"
