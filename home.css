@@ -155,12 +155,10 @@ a {
   width: 5vh;
   position: relative;
   bottom: -9vh;
-  filter: drop-shadow(0px 0px 2px gray);
   border-radius: 5rem;
-  outline: 2px dotted #6e6e6e;
+  outline: 2px dotted #000000;
   outline-offset: 5px;
-  display: flex
-;
+  display: flex;
   justify-content: center;
 }
 
@@ -836,8 +834,7 @@ box-shadow: 0px 0px 10px black;
   bottom: 0px;
   justify-content: space-around;
   align-items: center;
-  display: flex
-;
+  display: flex;
   border: 1.6px dashed #8a0000;
   background: #c2c2c2;
   box-shadow: 0px 0px 2px #000000, inset 0px 0px 5px #080000;
@@ -850,10 +847,22 @@ box-shadow: 0px 0px 10px black;
   max-width: 55px;
   max-height: 55px;
   height: 12vw;
+ 
+}
+
+img{
+  transition: all 0.175s;
+}
+
+@keyframes btn{
+  0%{width: 65%;}
+  50%{width: 75%;}
+  100%{width: 50%;}
 
 }
 
 .centerPM{
+  transition: all 0.175s;
   background: #fb5757;
   box-shadow: inset black 2px 1px 3px, inset #323232 -2px 0px 3px, 0px 0px 2px black;
   font-size: 11px;

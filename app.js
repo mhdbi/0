@@ -6,6 +6,7 @@ const data={
   url : "https://script.google.com/macros/s/AKfycbwa94WwRGOzIqyM-hGZ05Fq0mhaNpNNlJfVkUM8widBU1DG3oTk5lIgByZ_h4lABjFG/exec",
   db :null ,
   dbData: null ,
+  xn:0,
 
   cart:0,
   siteText:true,                          // btn chang cart  place, text
@@ -827,13 +828,16 @@ makeTX:function(obj){
  },
  
  
- cardF:function(document,event){
+ btnF:function(document,event){
    var $element = $(event.target);
-     if(this.card==1){ 
-    $element.parent().siblings(".u4").slideDown("slow");
-     }else if(this.card==0){
-       $element.parent().slideUp("slow");
-     }
+    $element.css({"transform":`matrix(2, 0, 0, 2, 0, 0)` });
+    $element.parent().css({"border": '2px dashed red'});
+    $element.parent().siblings('.centerPM').css({"font-size": '17px','color':'black'});
+    setTimeout(()=>{
+      $element.css({'transform':`matrix(1, 0, 0, 1, 0, 0)`});
+      $element.parent().css({"border": '1.6px dashed #8a0000'});
+      $element.parent().siblings('.centerPM').css({"font-size": '12px','color':'white'});
+      },175);
  },
  
 
@@ -1228,13 +1232,13 @@ if(navigator.geolocation){
          <div style="width:100%;height:40px;">
            
            <div @click="item.count!=0?item.count=item.count*1-1:true" class="plusMinus" style="right: 73.5%;filter: hue-rotate(25deg);">
-             <img src="icons/minus.png" title="subtraction icons" style="filter: drop-shadow(0.2px 1.5px 1px black); width: 40%;"/>
+             <img @click="btnF(document, $event)" src="icons/minus.png" title="subtraction icons" style="filter: drop-shadow(0.2px 1.5px 1px black); width: 40%;"/>
            </div>  
 
-           <div  class="plusMinus centerPM" style="border:none;">{{item.count}}: العدد</div> 
+           <div  class="plusMinus centerPM" style="border:none;" >{{item.count}}: العدد</div> 
 
-           <div @click="item.count=item.count*1+1" class="plusMinus" style=" right: 0%;filter: hue-rotate(25deg);">
-            <img src="icons/add.png" title="ui icons" style="filter: drop-shadow(0.2px 1.5px 1px black);width: 40%;"/>
+           <div @click="item.count=item.count*1+1" class="plusMinus " style=" right: 0%;filter: hue-rotate(25deg);">
+            <img  @click="btnF(document, $event)" src="icons/add.png" title="ui icons" style="filter: drop-shadow(0.2px 1.5px 1px black);width: 40%;"/>
            </div>
 
          </div>
