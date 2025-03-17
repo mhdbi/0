@@ -1,5 +1,5 @@
 ///////
-const version =3;
+const version =6;
 var cacheName =`staticCahe-${version}`;
 var dynamicName="dynamicCache"
 
@@ -131,7 +131,7 @@ self.addEventListener('fetch'  , (ev)=>{
       // }
 
  }else{
-   ev.respondWith(html404(ev.request));
+   ev.respondWith(html404());
  }
 
 });
@@ -174,10 +174,9 @@ self.addEventListener('fetch'  , (ev)=>{
    }).catch(e=>{ cacheF(ev) }) 
 }
 
-function html404(ev){
-  return caches.match(ev).then(resC=>{
-      return resC||caches.match('404.html');
-  })
+function html404(){
+  return caches.match('404.html');
+
 }
 
 // function fetchF(ev){

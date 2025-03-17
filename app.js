@@ -831,11 +831,9 @@ makeTX:function(obj){
  btnF:function(document,event){
    var $element = $(event.target);
     $element.css({"transform":`matrix(2, 0, 0, 2, 0, 0)` });
-    $element.parent().css({"border": '2px dashed red'});
     $element.parent().siblings('.centerPM').css({"font-size": '17px','color':'black'});
     setTimeout(()=>{
       $element.css({'transform':`matrix(1, 0, 0, 1, 0, 0)`});
-      $element.parent().css({"border": '1.6px dashed #8a0000'});
       $element.parent().siblings('.centerPM').css({"font-size": '12px','color':'white'});
       },175);
  },
