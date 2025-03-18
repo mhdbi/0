@@ -108,7 +108,7 @@ a {
     /* background: linear-gradient(1deg, #000000 3%, #1b0000 25%, #570000 39%, #a25c5c, #ffffff);
     box-shadow: 0px 8px 9px black, 0px -4px 11px #ffffffd6, 0px 18px 25px #000000, 0px -2px 6px #b3b3b3b8, 0px 7px 15px #363636; */
     outline-offset: 10px;
-    outline: 1px dashed #bcbcbc;
+    outline: 1px dashed #b07a7a;
     border-bottom: 0.1px solid #000000;
     justify-content: center;
     align-items: center;
@@ -135,7 +135,7 @@ a {
   border-radius: 50%;
   width: 110%;
   height: 110%;
-  background: conic-gradient(from 321deg, #00000000 83deg, #ff0000 46deg, #1f1f1f 278deg, #afafaf 259deg);
+  background: conic-gradient(from 321deg, #00000000 83deg, #ff0000 46deg, #838383 278deg, #bbbbbb 259deg);
 }
 
  
@@ -342,7 +342,7 @@ box-shadow: 0px 0px 10px black;
     
 .panel {
   max-width: 530px;
-    margin-bottom:70px;
+    margin-bottom:50px;
     display: flex;
 	justify-content:center;   
 	text-align:center ;
@@ -488,30 +488,29 @@ box-shadow: 0px 0px 10px black;
 }
 
 .span2{
-  color: rgb(225, 225, 225);
-  justify-content: space-evenly;
+  color: rgb(255 255 255);
+  justify-content: space-around;
   align-items: center;
   display: flex;
-  width: 50%;
-  font-size: 15px;
+  width: 75%;
+  font-size: 13px;
   text-align: center;
-  background: linear-gradient(0deg, black, #171717);
+  background: linear-gradient(0deg, black, #272626);
   border-radius: 2rem;
-  padding: 3px;
-  box-shadow: 0px 0px 3px gray;
+  padding: 1px 1px;
 }
 
 .fatora{
-  background: #828282;
+  background: #aeaeae;
   left: 5px;
   position: absolute;
-  border-radius: 3rem;
+  border-radius: 0.5rem;
   height: 85%;
   width: 40%;
   box-shadow: inset 2px 2px 4px #1d0000, inset -2px -2px 4px #ce7979;
-  color: #ff9696;
+  color: #cd2f2f;
   font-size: 16px;
-  text-shadow: 1px 01px 1px #250000;
+  text-shadow: 1px 01px 1px #a00b0b;
 }
 
 .itemFlex span {
@@ -743,35 +742,35 @@ box-shadow: 0px 0px 10px black;
 .before{
 
   transition: all 2s;
-  max-width: 505px;
-  height: 44px;
-  z-index: 11;
-  box-shadow: -2px 1px 8px black;
-  border-end-start-radius: 3rem;
-  border-start-start-radius: 3rem;
-  border-end-end-radius: 0rem;
-  text-align: center;
-  justify-content: end;
-  align-items: center;
-  flex-direction: row;
-  display: flex
+    max-width: 505px;
+    height: 40px;
+    z-index: 11;
+    box-shadow: -2px 1px 8px black;
+    border-end-start-radius: 3rem;
+    border-start-start-radius: 3rem;
+    border-end-end-radius: 1rem;
+    text-align: center;
+    justify-content: end;
+    align-items: center;
+    flex-direction: row;
+    display: flex
 ;
-  position: absolute;
-  bottom: -44px;
-  width: 80vw;
-  background: repeating-linear-gradient(0deg, #000000, #ff4f4f 8px);
-  right: 0px;
-
+    position: absolute;
+    bottom: -40px;
+    width: 80vw;
+    background: repeating-linear-gradient(0deg, #030303, #681818 8px);
+    right: 0px;
  }
 
 
 .page2 {
-  background: linear-gradient(90deg, #000000, #111111, #292929);
+  background: linear-gradient(266deg, #403f3f, #420000, #000000);
   z-index: 888;
   align-items: center;
   overflow: hidden;
   justify-content: end;
-  display: flex;
+  display: flex
+;
   height: 30vh;
   border-start-start-radius: 6rem;
   border-end-start-radius: 6rem;
@@ -781,35 +780,35 @@ box-shadow: 0px 0px 10px black;
 /* 88888888888 */
 
 .wrapImg{
-  box-shadow: inset 0px 0px 9px #000000, inset 0px 0px 15px #000000, inset 0px 0px 30px #000000;
+  box-shadow: inset 0px 0px 9px #000000, inset 0px 0px 15px #000000, inset 5px 0px 13px #000000;
   border-radius: 50%;
   position: absolute;
-  width: 30.8vh;
-  height: 30.8vh;
+  width: 28.8vh;
+  height: 28.8vh;
   z-index: 900;
   opacity: 1;
 }
 
 .imgDiv {
   border-radius: 50%;
-  top: -15px;
+  top: -6px;
   left: -1px;
   position: absolute;
-  height: 34vh;
-  width: 34vh;
+  height: 32vh;
+  width: 32vh;
   z-index: 888;
   align-items: center;
   overflow: hidden;
   justify-content: space-evenly;
-  display: flex;
-  filter: drop-shadow(0px 0px 4px black);
+  display: flex
+;
 }
 
 .imgDiv::after{
   content: '';
   inset: 0px -1px;
   position: absolute;
-  background: conic-gradient(from -25deg, #790000 0deg, #ff0000 75deg, transparent 75deg, transparent 150deg, #ff0000 150deg, #720202 225deg, #000000 225deg, #bdbdbd 230deg, #000000 230deg, #bdbcbc 235deg, #000000 235deg, #adadad 240deg, #ff0000 240deg, #640000 280deg, #000000 280deg, #9b9b9b 285deg, #8e8e8e 285deg, #cdcdcd 285deg, #000000 286deg, #ff0000 293deg, #000000 299deg, #858585 300deg, #aeadad 300deg, #000000 304deg, #5b0000 305deg, red 345deg, #ababab 345deg, #000000 350deg, #a7a7a7 350deg, #000000 355deg, #b7b7b7 355deg, #000000 360deg);
+  background: conic-gradient(from -25deg, #790000 0deg, #ff0000 60deg, black 60deg, #c3c3c3 65deg, #000000 65deg, #000000 165deg, #bbbbbb 165deg, black 170deg, #FF0000 170deg, #720202 225deg, #000000 225deg, #d2d2d2 230deg, #000000 230deg, #000000 235deg, #000000 235deg, #adadad 240deg, #ff0000 240deg, #640000 280deg, #000000 280deg, #9b9b9b 285deg, #8e8e8e 285deg, #cdcdcd 285deg, #000000 286deg, #000000 293deg, #000000 299deg, #858585 300deg, #aeadad 300deg, #000000 304deg, #5b0000 305deg, #ff0000 345deg, #ababab 345deg, #000000 350deg, #000000 350deg, #000000 355deg, #b7b7b7 355deg, #000000 360deg);
   z-index: 99;
   border-radius: 50%;
 }
@@ -939,7 +938,7 @@ p {
 
   box-shadow: -1px 1px 3px black;
   max-width: 500px;
-  background: linear-gradient(4deg, rgb(0 0 0), #5e5e5e);
+  background: linear-gradient(4deg, rgb(109 109 109), #dcdcdc);
   font-weight: bold;
   text-align: center;
   z-index: -3;
@@ -1314,8 +1313,6 @@ p:hover{
  } 
 
   .search {
-    box-shadow: 0px 0px 4px #cc0000;
-    background: linear-gradient(180deg, #373737, #1c1c1c, #000000e0);
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -1325,17 +1322,16 @@ p:hover{
     } 
     
     .search2 {
-      box-shadow: 0px 0px 4px rgb(255, 255, 255);
-      background: linear-gradient(180deg, #434343, #1c1c1c, #000000e0);
       width: 50px;
       height: 50px;
       border-radius: 50%;
       transition: all 1s;
       position: relative;
-      color: #d0d0d0;
-      text-shadow: 0px 0px 3px rgb(0, 0, 0);
+      color: #ff0000;
+      text-shadow: 0px 0px 3px rgb(123 121 121);
       font-size: 16px;
-      display: flex;
+      display: flex
+  ;
       justify-content: center;
       align-items: center;
      } 
@@ -1352,7 +1348,7 @@ p:hover{
       left: 22px;
       width: 8px;
       height: 2px;
-      background: rgb(255, 0, 0);
+      background: #d8d8d8;
       transform: rotate(45deg);
       transition: all .5s;
     }
@@ -1367,27 +1363,26 @@ p:hover{
       width: 22px;
       height: 22px;
       border-radius: 50%;
-      border: 2px solid rgb(255, 0, 0);
+      border: 2px solid #d8d8d8;
       transition: all .5s;
     }
 
 .inputtext {
+  top: 5px;
   font-size: 11px;
   font-family: 'Inconsolata', monospace;
   position: absolute;
   left: 5px;
   outline: none;
-  height: 45px;
+  height: 40px;
   outline: none;
   border: none;
-  background: #f7f7f7;
-  color: black;
+  background:linear-gradient(45deg, #aa3737, #62626200);
+  color: #ffffff;
   padding: 0 10px 0 20px;
-  border-radius: 30px;
-  box-shadow: 0px 0px 7px rgb(255, 0, 0);
+  border-radius: 10px;
   transition: all 1s;
   opacity: 0;
-
   bottom: 3px;
   font-weight: bolder;
   letter-spacing: 0.1em;
@@ -1501,23 +1496,15 @@ padding: 0px 11px 15px 0px;
 
 
 .routeS{
- 
   font-weight: bold;
-  border-top: 1px dashed #ffc7c7;
+  border-top: 1px dashed #b5b3b3;
   display: flex
 ;
-  background: linear-gradient(360deg, #361010, #f2f2f2);
-  color: #ff9696;
-  text-shadow: 0px 0px 2px #5f0000, 0px 2px 4px #000000;
+  color: #d8d8d8;
+  text-shadow: 0px 0px 2px #b0b0b0, 0px 2px 4px #787878;
   padding: 12px 20px;
-  border-start-end-radius: 2rem;
-  border-start-start-radius: 2rem;
-  border-end-end-radius: 0.5rem;
-  border-end-start-radius: 0.5rem;
-  box-shadow: inset 2px 1px 3px #000000, inset -2px -1px 3px #000000, 0px 3px 4px #fd5656;
-  border-left: 5px dashed #000000;
-  border-right: 5px dashed #000000;
-  border-bottom: 5px double #ff0000;
+  border-start-end-radius: 0.4rem;
+  border-start-start-radius: 0.4rem;
 }
 
 

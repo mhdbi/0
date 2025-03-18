@@ -6,7 +6,7 @@
   "short_name":"Teleshop",
   "description":"E-commerce-app",
   "start_url":"https://mhdbi.github.io/0/",
-  "theme_color":"#cc0000",
+  "theme_color":"#372020",
   "display":"standalone",
   "icons": [
           {

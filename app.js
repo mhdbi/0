@@ -1157,9 +1157,9 @@ if(navigator.geolocation){
  <div   class="inset"  @scroll.once="onScroll(e)" >
    
  <!---------------------------------------header-------------------------------------------------->
- <nav class="header__nav"  id="fade3"  >
+ <nav class="nav-mune"  id="fade3"  >
   
- <ul class="header__menu"  style="top:1px;" >
+ <ul class="header__menu"  style="top:0px;" >
  
  
        <li class="header__item"    >
@@ -1178,8 +1178,8 @@ if(navigator.geolocation){
     <li class="header__item"  style="right:5px;">
      <div class="heead "  style="display:block;" >
       <h1 class="header__logo__name" @click="route('')" >
-         <i class="fa fa-home" style="text-shadow: red 0px 0px 1px;color: red;text-align: center;font-size: 13px;
-        margin: 2px;"><br/>الرئيسية</i>
+         <i class="fa fa-home" style="text-shadow: #d8d8d8 0px 0px 1px;color:#d8d8d8;text-align: center;font-size: 22px;
+        margin: 2px;"></i>
        </h1>
      </div>
     </li>
@@ -1222,6 +1222,8 @@ if(navigator.geolocation){
                       {{item.post}}
                <div style="width: 100%;color: #ffbebe;font-size: 12px;text-shadow: 0px 0px 3px #ff0000;">
                       {{item.price}} : السعر 
+
+              
                </div>
           </div>
       
@@ -1274,7 +1276,7 @@ if(navigator.geolocation){
        
           <p >
              <span @click=""   style="display:flex;"> 
-                <div style="color: white;padding-left: 9px;font-size: 14px;display:flex;place-items:center;"
+                <div style="color: #000000;padding-left: 9px;font-size: 14px;display:flex;place-items:center;"
                    @click="cartItem.push({title:item.title,count:item.count,price:item.price})">
                   <img src="icons/purchase.png" style=" width: 25%;margin-right:11px;max-width: 55px;" />إضافة 
                 </div>
@@ -1348,7 +1350,7 @@ if(navigator.geolocation){
  <div   class="inset" @scroll.once="onScroll(e)">
    
  <!---------------------------------------header-------------------------------------------------->
-  <nav class="header__nav"  id="fade3"  style="postion:relative;">
+  <nav class="nav-mune"  id="fade3"  style="postion:relative;">
  
      <ul class="header__menu"   >
 
@@ -1369,8 +1371,8 @@ if(navigator.geolocation){
    <li class="header__item"  style="right:5px;">
      <div class="heead "  style="display:block;" >
       <h1 class="header__logo__name"   @click="route('')">
-         <i class="fa fa-home" style="text-shadow:red 0px 0px 1px;color:red; text-align: center;font-size: 13px;margin: 2px;">
-         <br/>الرئيسية</i>
+         <i class="fa fa-home" style="text-shadow:#d8d8d8 0px 0px 1px;color:#d8d8d8; text-align: center;font-size: 22px;margin: 2px;">
+         </i>
        </h1>
      </div>
     </li>
@@ -1478,7 +1480,7 @@ if(navigator.geolocation){
  <div   class="inset" @scroll.once="onScroll(e)">
    
  <!---------------------------------------header-------------------------------------------------->
-  <nav class="header__nav"  id="fade3"  style="postion:relative;">
+  <nav class="nav-mune"  id="fade3"  style="postion:relative;">
  
      <ul class="header__menu"  style="justify-content: flex-end;" >
  
@@ -1489,8 +1491,8 @@ if(navigator.geolocation){
    <li class="header__item"  style="right:5px;">
      <div class="heead "  style="display:block;" >
       <h1 class="header__logo__name"   @click="route('')">
-         <i class="fa fa-home" style="text-shadow:red 0px 0px 1px;color:red; text-align: center;font-size: 13px;margin: 2px;">
-         <br/>الرئيسية</i>
+         <i class="fa fa-home" style="text-shadow:#d8d8d8 0px 0px 1px;color:#d8d8d8; text-align: center;font-size: 22px;margin: 2px;">
+         </i>
        </h1>
      </div>
     </li>
@@ -1611,7 +1613,7 @@ if(navigator.geolocation){
 
 
  
-  <nav class="header__nav"  id="fade3"  style="position:relative;" v-if="route2=='Admin'">
+  <nav class="nav-mune"  id="fade3"   v-if="route2=='Admin'">
 
     <ul class="header__menu"   >
 
@@ -1802,7 +1804,7 @@ if(navigator.geolocation){
 
 
 
- <div class="container"   v-if='route1=="addItem"'>
+ <div class="container"   v-if='route1=="addItem"' style="height:auto;margin-top: 24%;">
    
      <div action="#" class="form-container">
          
