@@ -73,6 +73,7 @@ const data={
     delItem:false,       //for holder delete items
     delItemDone:false,   //for done deleted item
     sendCartDone:false,  //for done sended cart
+    editBtn :false,
 
     FUNname: []  ,
     FUNrun:false   ,
@@ -1200,7 +1201,7 @@ if(navigator.geolocation){
 
    <div class="page2">
 
-        <div class="itemFlex editDEL"  v-if='route2=="Admin"'>
+        <div class="itemFlex editDEL"  v-if='editBtn'>
              
               <router-link to="/account" >
                 <span @click="indexItem=allmydata.indexOf(item),imgId=[item.img1id,item.img2id],route1='addItem'">تعديل</span> 
@@ -1216,34 +1217,44 @@ if(navigator.geolocation){
 
 
          
-    <div class="holdPlusMinus">    
-      <div class="titlee">{{item.title}}</div>
-          <div class="postText">
-                      {{item.post}}
-               <div style="width: 100%;color: #ffbebe;font-size: 12px;text-shadow: 0px 0px 3px #ff0000;">
-                      {{item.price}} : السعر 
+      
+          <div class="titlee">{{item.title}}</div>
 
-              
-               </div>
+          <div class="postText">
+                      {{item.post}}     
           </div>
       
 
 
-         <div style="width:100%;height:40px;">
-           
-           <div @click="item.count!=0?item.count=item.count*1-1:true" class="plusMinus" style="right: 73.5%;filter: hue-rotate(25deg);">
-             <img @click="btnF(document, $event)" src="icons/minus.png" title="subtraction icons" style="filter: drop-shadow(0.2px 1.5px 1px black); width: 40%;"/>
-           </div>  
+        <div class="holderCount">
 
-           <div  class="plusMinus centerPM" style="border:none;" >{{item.count}}: العدد</div> 
+             
+           <div class="centerPM"> المجموع: {{item.count*item.price}}</div>
 
-           <div @click="item.count=item.count*1+1" class="plusMinus " style=" right: 0%;filter: hue-rotate(25deg);">
-            <img  @click="btnF(document, $event)" src="icons/add.png" title="ui icons" style="filter: drop-shadow(0.2px 1.5px 1px black);width: 40%;"/>
-           </div>
+
+             <div  class="centerPM" style="border:none;" >{{item.count}}: العدد</div> 
+             
+             <div class="centerPM">
+                      {{item.price}} : السعر 
+             </div>
 
          </div>
+
+
          
-    </div>
+
+
+
+
+      <div @click="item.count!=0?item.count=item.count*1-1:true,btnF(document, $event)" class="plusMinus" style="left: 30px;">
+         -
+      </div>  
+
+      <div @click="item.count=item.count*1+1,btnF(document, $event)" class="plusMinus " style=" right:30px;">
+         +
+      </div>
+
+
 
 
 
@@ -1273,23 +1284,16 @@ if(navigator.geolocation){
  <!----------------------------->
  <Transition name="slide-fade">
     <div class="fade before" v-if="item.count!=0" name="fade">
-       
-          <p >
-             <span @click=""   style="display:flex;"> 
-                <div style="color: #000000;padding-left: 9px;font-size: 14px;display:flex;place-items:center;"
-                   @click="cartItem.push({title:item.title,count:item.count,price:item.price})">
-                  <img src="icons/purchase.png" style=" width: 25%;margin-right:11px;max-width: 55px;" />إضافة 
+
+                <div class="before2"
+                   @click="cartItem.push({title:item.title,count:item.count,price:item.price}),item.count=0">
+                  <img src="icons/purchase.png" style=" filter: brightness(1.2);width: 21%;margin-right: 11px;max-width: 55px;" />إضافة 
                 </div>
-             </span>
-           </p>
- 
-
-          <div class="price"> المجموع: {{item.count*item.price}}</div>
-
- <!-------------------------------------------------------------------->
-
     </div>  <!------for before----------------->
  </Transition>
+
+
+ 
 
    </div>  <!--------for panal---------->
  
@@ -1486,6 +1490,10 @@ if(navigator.geolocation){
  
      <li class="header__item fatora"  >
        سجل الفواتير 
+    </li>
+     
+    <li class="header__item"  v-if="route2=='Admin'" @click="editBtn=!editbtn" style='color: #fbfbfb;right: 20%;'>
+         تعديل
     </li>
 
    <li class="header__item"  style="right:5px;">

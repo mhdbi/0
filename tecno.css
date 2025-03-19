@@ -853,8 +853,8 @@ main footer a{
 }
 
 .header__menu {
-  box-shadow: 0px 2px 0px #372020;
-  background: #372020;
+  box-shadow: 0px 2px 0px #cc0000;
+  background: #cc0000;
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
@@ -869,9 +869,9 @@ main footer a{
 
 .nav-mune{
   z-index: 99;
-  background: conic-gradient(from 79deg, #372020 0deg, #372020 40deg, transparent 39deg, transparent 160deg, #372020 160deg);
+  background: conic-gradient(from 79deg, #cc0000 0deg, #cc0000 40deg, transparent 39deg, transparent 160deg, #cc0000 160deg);
   height: 55px;
-  filter: drop-shadow(0px 3px 0px #cc0000) drop-shadow(0px 3px 0px #171717) drop-shadow(0px 0px 4px darkred);
+  filter: drop-shadow(0px 3px 0px #191919) drop-shadow(0px 3px 0px #cc0000) drop-shadow(0px 1px 4px black);
   position: fixed;
   width: 100%;
 }

@@ -1,5 +1,5 @@
 ///////
-const version =1;
+const version =9;
 var cacheName =`staticCahe-${version}`;
 var dynamicName="dynamicCache"
 
@@ -41,7 +41,7 @@ self.addEventListener('activate' ,(ev)=>{
   clients.claim().then(c=>{      });
 
   caches.keys().then((key) => {
-    key.filter(key=>{ if(key!=cacheName && key!='xxx'){ return true }}).map(key=>caches.delete(key));
+    key.filter(key=>{ if(key!=cacheName ){ return true }}).map(key=>caches.delete(key));
       });
 
 });
