@@ -1614,7 +1614,9 @@ if(navigator.geolocation){
      </div>
    </div>
  
-       <div class="navbar" >
+    
+   
+   <div class="navbar hexagon" >
     
 
 
