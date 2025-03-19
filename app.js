@@ -1492,7 +1492,7 @@ if(navigator.geolocation){
        سجل الفواتير 
     </li>
      
-    <li class="header__item"  v-if="route2=='Admin'" @click="editBtn=!editbtn" style='color: #fbfbfb;right: 20%;'>
+    <li class="header__item"  v-if="route2=='Admin'" @click="editBtn=!editBtn" style='color: #fbfbfb;right: 20%;'>
          تعديل
     </li>
 
