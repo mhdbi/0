@@ -611,7 +611,7 @@ siteOrders:function(){
              const context = canvas.getContext("2d");
           
                    context.drawImage(img,0,0,canvas.width,canvas.height);
-             let newImgUrl = context.canvas.toDataURL("img/jpeg",98);
+             let newImgUrl = context.canvas.toDataURL("img/jpeg",99);
                        
                 
              let newImg = document.createElement("img");
