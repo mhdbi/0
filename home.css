@@ -374,7 +374,7 @@ box-shadow: 0px 0px 10px black;
 }
 
 .pageTop{
-  width: 90vw;
+  width: 95vw;
   height: 40vh;
   transform-origin: top;
   position: relative;
@@ -389,7 +389,7 @@ box-shadow: 0px 0px 10px black;
 .pageBottom{
   border-radius: 1rem;
   height: 40vh;
-  width: 90vw;
+  width: 95vw;
   background: linear-gradient(180deg, black, #272727);
   border: 2px dotted black;
   border-top: none;
