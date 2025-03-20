@@ -1,5 +1,5 @@
 ///////
-const version =9;
+const version =4;
 var cacheName =`staticCahe-${version}`;
 var dynamicName="dynamicCache"
 
