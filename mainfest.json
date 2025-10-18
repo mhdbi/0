@@ -6,22 +6,17 @@
   "short_name":"Teleshop",
   "description":"E-commerce-app",
   "start_url":"https://mhdbi.github.io/0/",
-  "theme_color":"#cc0000",
+  "background_color": "#232323",
+  "theme_color":"#ffcc00",
   "display":"standalone",
   "icons": [
-          {
-            "src": "icons/logo.png",
-            "sizes": "any",
-            "type": "image/png",
-            "purpose":"any"
-          },
-          {
-            "src": "icons/logo.png",
-            "sizes": "any",
-            "type": "image/png",
-            "purpose":"maskable"
-          }
-           ],
+    {
+      "src": "tele_icon.svg",
+      "sizes": "550x550",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
  "screenshots":[
               {
                   "src":"icons/screensh1.jpg",

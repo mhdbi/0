@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="output" contentEditable="true">Hello</div>
+    <button id="startButton">Start Voice Input</button>
+    
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+ <script>
+      //   text to speech    
+const utterance = new SpeechSynthesisUtterance("Welcome to this tutorial!");
+
+ function speak() {
+    
+  const voices = speechSynthesis.getVoices();
+  utterance.voice = voices[0]; 
+
+  speechSynthesis.speak(utterance);
+}
+/////////////////////\\\\\\\\\\\\\\\\\\\\\\\\
+
+function pauseORcancel(){
+    speechSynthesis.pause();
+    speechSynthesis.cancel();
+}
+/////////////////////\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+utterance.onpause = (event) => {
+  const char = event.utterance.text.charAt(event.charIndex);
+  console.log(
+    `Speech paused at character ${event.charIndex} of "${event.utterance.text}", which is "${char}".`,
+  );
+};
+
+</script>
+ 
+
+
+
+
+
+
+<style>
+    * {
+      font-size: 16px;
+    }
+    body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 8px 16px;
+    font-family: sans-serif;
+    min-width: 90vw;
+    min-height: 90vh;
+    }
+
+    button, select, option {
+    padding: 1.5vw;
+    width: 15vw;
+    height: 15vw;
+    border-radius: 5rem;
+    border: none;
+    background: lawngreen;
+    }
+    
+  </style>

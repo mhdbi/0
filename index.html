@@ -10,28 +10,26 @@
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="user-scalable=no, initial-scale=1.0001, maximum-scale=1.0001, width=device-width, minimal-ui shrink-to-fit=no">
   <meta http-equiv="cleartype" content="on">
-  <meta name="theme-color" content="#cc0000" />
+  <meta name="theme-color" content="#ffcc00" />
 
-  <link rel="apple-touch-icon" href="icons/logo.png">
-  <link rel="icon" href="icons/logo.png">
+  <link rel="apple-touch-icon" href="icons/tele_icon.svg">
+  <link rel="icon" href="icons/tele_icon.svg">
 
 <link rel="stylesheet" href="tecno.css" >
 <link rel="stylesheet" href="home.css" >
 <link rel="manifest"   href="mainfest.json" crossorigin="use-credentials"/>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" /> -->
+ <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
 
-        
-	
 	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  <script src="https://unpkg.com/vue-router@4"></script>
-  
+  <script  src="https://unpkg.com/vue-router@4"></script>
+
 </head>
 <body>
 
 	<div id="app"  >
-    <dialog open style="  padding: 0px;top:0px;bottom: 0px;
+    <dialog open  class="dialog" style="  padding: 0px;top:0px;bottom: 0px;background-color: #ffcc00;
     margin: 0px;  
     border: none;
     width: 100%;
@@ -47,328 +45,10 @@
 
 
 
-<div class="hexagon" style="overflow: visible;top: 0px;bottom: 0px;width: 100%;height: 100%;"></div>
-
-
-<!-----------------------------------install---------------------------------------------->
-
-<!-- <div  style="left: 47.7vw;align-items: center;justify-content: center;display: none;height: 33px;
-width: 30px;font-size: 28px;color: red;position: absolute;top: 100px;border-radius: 50%;
-box-shadow: 0px 0px 5px red;"  ref="install">
-    <i class='fas fa-angle-double-down' style='font-size:28px;color:red'></i>
-</div> -->
-
-<!--------------------------------------------------------------------------------------->
-<!--------------------------------notif  to put in app home--------------------------------------->
-
-           
-<!-- <div class= 'msghead' style="display:flex;"  @click="notificC(),showM=true" >
-  <i class="fa fa-comments" style="text-shadow: rgb(255 209 12) 0px 0px 11px, 0px 0px 4px #ffdf00;
-  width: 100%;align-items: center;display: flex;justify-content: center;color: rgb(255 255 255);font-size: 24px;" >
-    <br> <div style="font-size: 17px;position: absolute;color:rgb(255, 0, 0);text-shadow: 0px 0px 3pxrgb(185, 250, 246);left: 10px;
-         top: 20px;" v-if="alertM" > +1</div>
-    </i>
-</div>
-  
-  
-
-<div class= 'notific' style="display:flex;"   @click="notificM(),showC=true">
-  <i class="fa fa-bell" style="text-shadow: rgb(255 209 12) 0px 0px 11px, 0px 0px 4px #ffdf00;
-  width: 100%;align-items: center;
-  display: flex;justify-content: center;color: rgb(255 255 255);font-size: 24px;"  >
-   <br> <div style="font-size: 14px;position: absolute;color:rgb(255, 0, 0);text-shadow: 0px 0px 3pxrgb(234, 0, 0);left: 10px;
-         top: 23px;" v-if="alertC" > +1</div>
-   </i>
-</div> -->
-  
-<!---------------------------notificC------------------------------------------------------------>
-
-
-
-
-
-
-
-
-     <!------------------------------------love---------------------------------------------------->
-
-     <!-- <div @click.once="item.love +=1 ,hisId=item.key,sendComment('love')" class="u13" v-if="item.mylove==false">
-      <i class='fa fa-heart' style='font-size: 15px;color: rgb(255, 255, 255);
-           text-shadow: 0px 0px 10px #898989;'>{{item.love}}</i></div>
-      
-    <div v-if="item.mylove==true" class="u13" >
-        <i class='fa fa-heart' style='font-size: 15px;color: rgb(255, 0, 0);
-           text-shadow: 0px 0px 10px red;'>{{item.love}}</i>
-    </div> -->
-     <!------------------------------------love---------------------------------------------------->
-   
-
-
-
-
-
-
-
-
-
-     
-<!-------------cart---------------->
-  <div class="cartButton" @click="cart=1,ocCart(),cartPrice()" >
-    <img src="icons/purchase.png" style=" width: 40%;"/>
-       
-  </div>
-
-
-<div class='cart' >
-  <div class="pageTop" >
-       <div class="cartFront" >
-          <div class="test3" style="font-size: 50px;color:transparent;">tele shop</div>
-       </div>
-       <div class="cartBack" >
-        <!-- ------------------------------------1--------------------------------------------- -->
-          <div class="cartItem" id="cartItem1" style="display: none;">
-             <div class="itemFlex" style="color:#ffffff;border-bottom: 1px solid wheat;height: 8%;">
-                <span style="background: #fefefe;border-radius: 2rem;color: black;">تعديل</span><span >المجموع</span><span >سعر الواحدة</span><span >العدد</span> <span >الطلب</span>
-             </div>
-             <div v-for="i in cartItem"  class="itemFlex " style="height: auto;">
-                <span style="background: red;color: rgb(255, 255, 255);justify-content: space-around;border-radius: 1rem;"><span @click="i.count+=1" style="color: ivory;font-size: 15px;">+</span><span @click="i.count-=1" style="font-size: 15px;" v-if="i.count!=0">-</span><span @click="cartItem.splice(cartItem.indexOf(i),1)" style="font-size: 12px;" v-if="i.count==0">حذف</span></span> <span style="color: gold;">{{i.price*i.count}}</span><span style="color: greenyellow;">{{i.price}}</span> <span >{{i.count}}</span> <span style="color: rgb(255, 201, 209);">{{i.title}}</span>
-             </div>
-          </div>
-        <!---------------------------------------2----------------------------------------------->
-        <div class="cartItem" id="cartItem2" style="display: none;"> 
-          <div class="itemFlex " style="    background: repeating-linear-gradient(145deg, #3e3e3e, transparent 65%);border-radius: 2rem;height: 10%;"  >
-            : موقعك الآن 
-           </div>
-              <div class="itemFlex" style="flex-wrap: wrap;">
-               <label for="mroj">المروج</label>  <input type="radio" value="المروج"         v-model="inputP"    id="mroj">
-               <label for="msakn">المساكن</label> <input type="radio" value="المساكن"        v-model="inputP"    id="msakn">
-               <label for="ksor1">القصور الشمالي</label> <input type="radio" value="القصور الشمالي" v-model="inputP"   id="ksor1">
-               <label for="ksor2">القصور الجنوبي</label> <input type="radio" value="القصور الجنوبي" v-model="inputP"   id="ksor2">
-               <label for="sok">السوق</label>   <input type="radio" value="السوق"           v-model="inputP"   id="sok">
-              </div>
-
-           <div class="itemFlex inputP" v-if="inputP!=''" :class="{ shake2 : inputP }">
-            {{inputP}}
-           </div>
-        </div>
-
-
-
-        <!-- ----------------------------------3-------------------------------------------------- -->
-          <div class="cartItem" id="cartItem3" style="display: none;"> 
-            <div class="itemFlex test1" style="background: repeating-linear-gradient(145deg, #3e3e3e, transparent 65%);border-radius: 2rem;height: 10%;" >معلومات المستلم</div>
-
-            <!-- ---------------- -->
-            <div class="itemFlex" style="flex-direction: column;gap: 25px;justify-content: start;height: 55%;">
-
-              <div class="itemFlex" style="color:rgb(255, 255, 255);font-size: 13px;" @click="run=false,runErr=false,siteText=!siteText,myButton()">
-               <span class="span2" style=" font-size: 15px;background: none;box-shadow: none;">كتابة نصية</span>   <span><div class="myButton"></div></span>  <span class='span2' style=" font-size: 15px;background: none;box-shadow: none;">GPS</span> 
-              </div>
-
-              <div class="btnPlace" @click="btnPlace()">تعيين موقعي</div>      
-
-              <div class="itemFlex myPlace" style='display: none;'>
-               <textarea type="text" cols="3" rows="3" dir="rtl" v-model="geoL"   placeholder=" قم بتحديد موقعك بالتفصيل"></textarea> <span> : موقعي بالتفصيل</span>
-              </div>
-             
-              <div v-if="runErr"   class="errSolve" :class="{ shake2 : runErr }">حدث خطأ ما, يرجى تعيين الموقع كتابةً </div>
-              <div v-if="runSolve" class="errSolve" :class="{ shake2 : runSolve }">تم تحديد الموقع بنجاح</div>
-              
-            </div> 
-           <!-- ----------------- -->
-             <div class="itemFlex" style="background: linear-gradient(270deg, #000000cf, transparent 50%);border-radius: 5rem;margin: 10px 0px;height: 17%;">
-               <textarea type="text" rows="1" dir="rtl" placeholder="رقم الجوال" v-model="orderPhone"></textarea> <span> : الهاتف</span>
-             </div>
-           <!-- ------------------ -->
- 
-
-          
-       <!--------------  -->
-       <div v-if="run" style="position:relative;z-index:9998;">
-        <div class="containerW" >
-          <div style="color: wheat;"> ..انتظر</div>
-           <div class="it item1"></div>
-           <div class="it item2"></div>
-           <div class="it item3"></div>
-         </div>
-       </div>
-       
-       <div v-if="errSend" class="errSolve errSolve2" :class="{ shake: errSend }"> 
-        لم تقم بتعبئة أو اختيار كامل المعلومات 
-        <br> <div @click="errSend=false,cart=3" 
-            style="width: 100%;background: linear-gradient(0deg, black, transparent);">حسناً</div>
-       </div>
-        <!-- ------------- -->
-
-         </div>
-     </div>
-  </div>
-   
-    <div class="pageBottom">
-
-      <div class="priceAll" > 
-        <span>{{cartPrice()}}</span> <span>مجموع الفاتورة</span> 
-      </div>
-        <!-- --------------------------------------------------------------------------- -->
-
-       <!-- -------------------------------------------------------------------------------- -->
-       
-      <div class="buttonBottom" >
-        
-        <button  class="backword"  @click="run=false,runErr=false,runSolve=false,cart-=1,ocCart()">رجوع</button>
-        <button  class="next"   v-if="cart!=3&&cart!=4"  @click="cart+=1,ocCart()">متابعة</button>
-        <button  class="next"   v-else-if="cart==3&&cart!=4"   @click="cart=4,ocCart()">إرسال الطلب</button>
-        <button  class="next"   v-else-if="cart==4"   >قيد الإرسال</button>
-        
-      </div>
-       
-
-
-      
-
-    </div>
-</div>
-<!--------------------------------->
-
-
-
-<!-----------------------------nav--------------------------->
-<!-- 
-<nav class="header__nav"  id="fade3"  >
-  
-  <ul style="bottom: 1px;" class="header__menu"   >
-  
-  
-        <li class="header__item"   v-if="searchType=='name'" @click="searchBar()">
-          <div  class="searcher" >
-              <input type="text" dir="ltr" name="search" @input="searcher()" class="inputtext"  placeholder="اسم الشخص..." v-model="inpSearch" />
-             <div   class="search"  > </div>
-          </div>
-        </li>   
-  
-        <li class="header__item"    v-if="searchType=='place'" @click="searchBar()">
-          <div  class="searcher" >
-              <input type="text" dir="ltr" name="search" @input="searcher()" class="inputtext"  placeholder="الموقع..." v-model="inpSearch" />
-             <div   class="search"  > </div>
-          </div>
-        </li>   
-  
-        <li class="header__item"  class="routeS"   >
-          {{myroute}}
-        </li>   
-  
-  
-     <li class="header__item"  style="right:5px;">
-      <div class="heead "  style="display:block;" >
-       <h1 class="header__logo__name"  >
-        <router-link to="/" >
-          <i class="fa fa-home" style="    text-shadow: #ff4e78 0px 0px 1px;
-     color: #ff4e78;
-     text-align: center;
-     font-size: 13px;
-     margin: 2px;"><br/>الرئيسية</i>
-        </router-link>
-        </h1>
-      </div>
-     </li>
-  
-  
-        <li class="header__item"  class="refre"   @click="">
-          <i class="fas fa-sync refresh"  style="
-     color: rgb(255 255 255);
-     font-size: 13px;
-     transition: 2s;
-     text-shadow: rgb(255 36 101) 0px 0px 10px, black 0px 0px 5px;" ></i>
-        </li>   
-  
-      </ul> 
-  
-  
-  </nav> -->
- <!------------------------------------------------------------>
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--------------------------------------------------------------------------------------------------->
-    
-<!-- <div class="box" dir="rtl" v-if="warning">
-  <span class="span" @click="warning=false"></span>
-  <img class="iimg" src="https://img.icons8.com/color/48/000000/error.png" alt="">
-  <h2 class="hhhh">التفاعل مقيد لحين إنشاء حساب</h2>
-  <p class="ppp" >يمكنك تصفح المتجر لكن يجب إنشاء حساب ,حال الرغبة في التفاعل ...</p>
-  <router-link to="/account">
-   <button class="buttonn" @click="route('حسابي')">إنشاء حساب</button>
-  </router-link>
-</div> -->
-<!--------------------------------------------------------------------------------------------------->
-
-
-
-<div class="commenter survey" v-if="FUNrun" style="bottom: 155px;height: auto;" :class="{ shake: FUNrun }">
-  <div class="callx2"  @click="FUNrun=false" >x</div>
-  <div style="text-align:center;font-size: 14px;color: #ffffff;margin:20px;">
-    حدث خطأ أثناء جلب البيانات <br>
-    ..التغطية ضعيفة..
-      
-  </div> 
-          
-            <div class="button"  style="margin-top:10px;" @click="FUNname(),FUNrun=false">
-              <button class="login"  style="background: linear-gradient(0deg, black,white);">إعادة المحاولة</button>
-            </div>
-
-  </div>
-
-<!-- ----------------for delete item done------------------------- -->
-
-<div class="commenter survey" v-if="delItemDone" style="bottom: 155px;height: auto;">
-  <div class="callx2"  @click="delItemDone=false" >x</div>
-  <div style="text-align:center;font-size: 14px;color: #ffffff;margin:20px;">
-   تم حذف العنصر
-      
-  </div> 
-          
-      <div class="button"  style="margin-top:10px;" @click="delItemDone=false">
-         <button class="login"  style="background: linear-gradient(0deg, black,white);">حسناً </button>
-      </div>
-
-  </div>
-
-<!-- ----------------for send cart done------------------------- -->
-
-<div class="commenter survey" v-if="sendCartDone" style="bottom: 155px;height: 220px;" :class="{ shake: sendCartDone }">
-  <div class="callx2"  @click="sendCartDone=false" >x</div>
-  <div style="text-align:center;font-size: 17px;color: #ffffff;margin:20px;">
-  انتظر مكالمة من الساعي<br>
-  سنصل موقعك في أقرب وقت
-    
-      
-  </div> 
-          
-      <div class="button"  style="margin-top:10px;" @click="sendCartDone=false,cart=0,ocCart(),cartItem=[]">
-         <button class="login"  style="background: linear-gradient(0deg, black,#ffffff);">حسناً </button>
-      </div>
-
-  </div>
-
-
-  
-
-
-
+<Static-Html> </Static-Html>
 <!-------------------------------------------------------------------------------------------------->
       <router-view></router-view>
-
+<!-- -------------------------------------------------------------------------------------------- -->
 
 
 
@@ -384,27 +64,27 @@ box-shadow: 0px 0px 5px red;"  ref="install">
 
 </script>
 
-<script src="app.js" ></script>
+<script  src="app.js" ></script>
 <script  > 
 
-let serviceWorkerRegisteration = null;
-//let isPushSubscribed = false;
+// let serviceWorkerRegisteration = null;
+// //let isPushSubscribed = false;
 
-window.addEventListener("load", init());
+// window.addEventListener("load", init());
 
-  function init(){
-   if('serviceWorker' in navigator){ 
-     navigator.serviceWorker.register('sw.js').then(registration=>{
-     return serviceWorkerRegisteration = registration;
-      //registration.installing || registration.waiting || registration.active ;
-     }).catch(e=>{console.log(e)})
+//   function init(){
+//    if('serviceWorker' in navigator){ 
+//      navigator.serviceWorker.register('sw.js').then(registration=>{
+//      return serviceWorkerRegisteration = registration;
+//       //registration.installing || registration.waiting || registration.active ;
+//      }).catch(e=>{console.log(e)})
  
-      navigator.serviceWorker.addEventListener('controllerchange',async()=>{ 
-      serviceWorkerRegisteration = navigator.serviceWorker.controller;
-       })
-   }
+//       navigator.serviceWorker.addEventListener('controllerchange',async()=>{ 
+//       serviceWorkerRegisteration = navigator.serviceWorker.controller;
+//        })
+//    }
   
-}
+// }
 </script>
 
 

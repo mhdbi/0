@@ -3,18 +3,18 @@
 
 const data={
 
-  url : "https://script.google.com/macros/s/AKfycbwa94WwRGOzIqyM-hGZ05Fq0mhaNpNNlJfVkUM8widBU1DG3oTk5lIgByZ_h4lABjFG/exec",
+  url : "https://script.google.com/macros/s/AKfycbyVKJnEGb2KYOOi6pHG0m0_hLmVwoZo9ecmxwULAwWE0a3NeXYgKdC22dOjJZKMK-nrxw/exec",
   db :null ,
   dbData: null ,
-  xn:0,
+  recog:null,
+  searchItems :[],                  // for search result
 
-  cart:0,
-  siteText:true,                          // btn chang cart  place, text
+  askMe:false,                      //for name & phone
+  iname:  localStorage.getItem('iname')  ||null,
+  iphone: localStorage.getItem('iphone') ||null,
 
-  orderPhone:null,                        //for cart order phone
-  cartItem:[],          //for cart order items
-  geoL:'',                               //for cart order gps 
-  inputP:'',                               //for cart chose market user place/
+  accDB:false,                            // for switch acc db info
+ 
 
   orderPh:'' ,                         //for users orders show phone &place                           
   order:[] ,                           //for customer order 
@@ -29,7 +29,7 @@ const data={
   orderInfoSite:0,                      //for open close windo of site , index , order
 
 
-  user:[],                             //for merchent user info only
+  user:null,                             //for merchent user info only
 
 
   item:['','','','','','','','',''],   //for add item only
@@ -40,6 +40,7 @@ const data={
   post      : '', 
   title     :'',
   price:'',                             //for input of add edit items
+  hash :"",                              // for hashed items names
 
     
     va       :  []    ,
@@ -50,6 +51,8 @@ const data={
     allmydata:  []   ,
     mydata   :  []      ,
     vadata   :  []    ,
+
+
     myroute  :  ""    ,
     route1   :  "verify" ,
     route2   : ""     ,
@@ -67,9 +70,6 @@ const data={
     scroll :    6   ,
 
     run  : false  , 
-    runErr:false,
-    runSolve:false,
-    errSend:false,
     delItem:false,       //for holder delete items
     delItemDone:false,   //for done deleted item
     sendCartDone:false,  //for done sended cart
@@ -81,12 +81,22 @@ const data={
   newPhone:'',
   newPass:'',
   
-  //   showC :  false ,
- //  alertC:  false ,
- //  newC  :  []    ,
- //   showM :  false ,
- //   alertM: false  ,
- //  newM  :  []
+   ///for color
+  colors: ['rgb(255, 230, 109)','rgb(63, 52, 13)','rgb(21, 21, 0)','rgb(249, 224, 146)'],
+  color:[  [255, 230, 109],  [63, 52, 13]  , [21, 21 ,  0] ,[249 , 224, 146] ],
+  revColor:true ,
+
+  //for cart
+  cartItem:[],
+  cart: 0,
+  errSend:false,
+  runSolve:false,
+  runErr:false,
+  siteText:null,
+  
+
+  geoL:'',
+
   
 }
 
@@ -95,65 +105,71 @@ const data={
 
 const methodss={
 
-        
+        ///// for home ////
 
-        route: async function(event){
-        
-              this.mydata="";  this.myroute=event; this.vadata='';  //مهم بقائها هنا
-              this.inpSearch="";   this.msg='';   this.scroll = 6; 
-            if(event=="خضار وفواكه"||event=="مواد غذائية"||event=="حلويات"||event=="نقرشات"||event== "مشروبات"||event=="تبغيات"){
-                
-                this.ecity();   
-                router.push('/inset');
-              
-               $('body').append(`<style> .cartButton::before{animation: cart 2s ease-in 0s;}</style>`);
-               $('.cartButton').css({"display":"flex","transform":" translate(-39vw, 1vw)"});
+        route: async function(){
+         if (Array.isArray(this.user) ){ 
             
-          }else if (event=='verify' && this.user.length>0 ){ 
-            
-              this.user[3]=='syria'?(this.route2='Admin',router.push('/account') )
-              :(  router.push('/socitey'),this.siteOrders(this.indexOrderType) )   
+           this.user[3]=='syria'?(this.route2='Admin',this.$router.push({name:'account'}) )
+            :( this.$router.push({name:'socitey'}),this.siteOrders(this.indexOrderType) )   
               
-                   $('.cartButton').css({"display":"none","transform":" translate(0vw, 1vw)"});
-          }else if(event=='verify' && this.user.length<=0 ) {
+          }else if( !(Array.isArray(this.user))  ) {
                      this.route2="verify"; 
-                     router.push('/account');
-                     $('.cartButton').css({"display":"none","transform":" translate(0vw, 1vw)"});
-           }else if(event==''){
-                     router.push('/');
-                     $('.cartButton').css({"display":"flex","transform":" translate(0vw, 1vw)"});
-              }else if(event=='index'){
-                     $('.cartButton').css({"display":"none","transform":" translate(0vw, 1vw)"});
-                     router.push('/index');
-                     this.storageOrderFun();
-              }
+                     this.$router.push({name:'account'})
+
+           }
 
            
         },
 
-        funUser:function(){
-           this.myroute==""?router.push("/"):true;
-             
+
+
+        funAdmin:function(){
+ 
           if(localStorage.getItem("user")){ 
           this.user =localStorage.getItem("user").split(",");
           this.user[0]=='Admin'?this.route2='Admin':true;
-              
-         // this.      = this.i1[6];
-          
+
+
           }
         },
-         
-        storageOrderFun:function(){
-         var index= localStorage.getItem('storageOrder')||[];
-         index.lenght>=2?this.storageOrder=index.split(','):this.storageOrder=index;
-         console.log(this.storageOrder)
-        },
+
+        // funUser:function(){
+        //     if(!this.iname || !this.iphone){
+        //        return Promise.resolve(this.askMe=false).then(()=>(this.askMe=true) );
+        //      }else{
+        //       localStorage.setItem('iname' , this.iname);
+        //       localStorage.setItem('iphone', this.iphone);
+        //       this.askMe=false;
+              
+        //      }
+        // },
+
+         firstLog:function(){
+          if(!this.iname){ 
+             return Promise.resolve(this.askMe=false).then(()=>(this.askMe=true) )
+          }else{
+                     localStorage.setItem('iname' , this.iname)
+                     this.askMe=false
+
+               };
+         },
+     
+        editLog:function(){
+              localStorage.setItem('iname' ,  this.iname);
+              localStorage.setItem('iphone',  this.iphone);
+              this.accDB=false;
+        
+         },
 
 
 
+
+
+            // ///////////////////////
          created: function (){
           
-            var x = JSON.stringify({name:1});
+            var x = 1;
             var y ="created";
             var url =this.url+`?x=${x}&y=${y}`;
             fetch(url).then(r=> { 
@@ -165,7 +181,7 @@ const methodss={
                }
           }).then(e=>{ 
               this.allmydata = e;
-            //  this.allmydata = e;
+            
             //  this.allmydata.splice(0,1);
             //  this.allmydata  = e.sort((a,b)=>0.5-Math.random());
           }).catch(e=>{
@@ -173,35 +189,50 @@ const methodss={
              this.FUNrun =true;
           })    
                
-          },
-
-
-
-         
+        },
 
 
 
 
+
+
+
+
+   /// for inset //////
           
 
-            ecity : function(){
-              
-                      var all = this.allmydata;
-                      var y = [];
-                         all.forEach(x=>{
+           data: function(){
+              // for check the router param to filter the allmyData
+                     var y = [];
+                     this.allmydata.forEach(x=>{    
+                            if(x.world==this.$route.params.inset){
+                               y.push(x); 
+                            }
+                           })
+                           this.mydata=y;     this.vadata=y;
+      
+              if(this.mydata.length<=0)return setTimeout( this.data , 1000);       
+              // for add the semeler items to the hash arry
+                this.mydata.forEach(e=>{
+                    var ee= e.title.split(' '),arr=[];
                       
-                      if(x.world==this.myroute){
-                         y.push(x);
-                         
+                        this.mydata.forEach((i,y)=>{   
+                          var ii= i.title.split(' '),iii;
+                              ii.length<=2?iii=0:iii=1;
+                          if(e!=i && ee[iii]==ii[iii]){ 
+                            arr.push({name:ii.slice(1).join(' '),item:i});
+                            e.hash=arr;
+                          }
+                        })
+
+                      })
+              // for remove the same items title from the myadta arry
+                this.mydata.forEach(e=>{
+                    if(e.hash){
+                      e.hash.forEach(x=> this.mydata.indexOf(x.item)>=0?this.mydata.splice(x.it,1):null );
                       }
                       })
-                       this.mydata=y;
-                       this.vadata=y;
-
-            if(this.mydata.length<=0)return setTimeout( this.ecity , 2000);
-             
-                       
-                },
+    },
 
 
 
@@ -212,84 +243,148 @@ const methodss={
         },
     
 
-
-        searcher: async function(){
-         // this.mydata=this.vadata;
-         
-       //var sear=document.querySelectorAll(".inputtext");sear[0].value ;
-         var s =  this.inpSearch;
-         var result1 = this.mydata.map((x)=>x.title);
-         var i1 =[];
-         var result2 =result1.filter((x)=>x.toLowerCase().indexOf(s.toString()) > -1   );
-             result2.forEach((x)=> {
-               result1.forEach((i ,y)=>{
-               if ( i === x){
-               return i1.push(y);
-               
-             }
-               })
-               });
-              var i1= i1.filter((x2,y2)=> i1.indexOf(x2)===y2 );//لحذف التكرار
-             var va = [];
-            
-              for(var e=0 ; e < i1.length ; e++ ){
-                 var v =this.mydata[i1[e]];
-                    va.push(v);
-                   }    
-                 this.mydata= va;
-              
-           if(s==''){
-             this.mydata=this.vadata;
-           }
-        
-       },
+   searcher:  function(){
+       var s =  this.inpSearch;  
+          s!=''?this.mydata=this.mydata.filter((x)=> x.title.match(s)):this.mydata=this.vadata;
+ 
+             },
       
+ 
+       searchBar:function(e){
+              var inptext = document.getElementsByClassName('inputtext')[0];
+              var routeS  = document.getElementById('test4');
+             if(this.searchBar0==false){ 
+                e.target.style.left= 145+'px';
+                inptext.style.width= 190+"px";
+                inptext.style.opacity=1;
+                this.searchBar0=true;
+                
+                routeS.style.display='none';
+                e.target.classList.remove('search');
+                e.target.classList.add("search2");
+                e.target.innerText='إنهاء';
+             }else{
+              e.target.classList.remove('search2');
+              e.target.classList.add("search");
+              e.target.innerText='';
+              e.target.style.left= 5+'px';
+                inptext.style.opacity=0;
+                inptext.style.width= 0+"px";
+                this.searchBar0=false;
+                
+                routeS.style.display='flex';
+                this.mydata=this.vadata;
+                this.inpSearch='';
+             }
+            },
+             
+             
+            btnF:function(e){
+              var {target} = e;
+              target.classList.remove('animate');
+               void target.offsetWidth;
+              target.classList.add('animate');
+
+            }, 
+             
 
 
 
 
-
-
-
-
-      ///////////////////////tecnoForm/////////////////////////////////////////
+      ///////////////////////account/////////////////////////////////////////
       ////////////////////////////////////////////////////////////////////////
 
         x: function(){
-        this.$refs.xx.style.display="none";
-        this.$refs.oo.style.display="none";
-        this.$refs.xxx.style.display="none";
-        this.$refs.xxxx.style.display="none";
+        document.getElementById('xx').style.display="none";
+        document.getElementsByClassName('oo')[0].style.display="none";
+        document.getElementById('xxx').style.display="none";
+        document.getElementById('xxxx').style.display="none";
         this.sms=false;
         },
-
-       date : function(){ 
-        var date = new Date();
-        var date ='('+(date.getDay()*1+16)+'/'+(date.getMonth()*1+1)+'/'+date.getFullYear()+')|*'+date.getHours()-1+':'+date.getMinutes()+'*|';
-        return date;
-       },
-       
-       cartPrice:function(){
-        var x=0;
-        this.cartItem.forEach(a=>{
-         x+= a.price*a.count;
-        })
-        return x;
-       },
-
-        // onoff:function(){  
-        //  this.select=this.world;
-        // },
        
 
 
 
 
+recognition:function(){
+      this.startButton= document.getElementsByClassName('reco')[0];
+      this.endButton  = document.getElementsByClassName('pauseR')[0];
+  if(this.startButton){ 
+          this.recog = new (window.SpeechRecognition ||
+          window.webkitSpeechRecognition ||
+          window.mozSpeechRecognition ||
+          window.msSpeechRecognition)();
 
+        this.recog.lang = "ar-AR";
+        this.recog.continuous = true;
+        //this.recog.interimResults = true;
+        this.recog.maxAlternatives = 1;
 
-   deleteUser:function(){
-     
+        this.recog.onresult = (event) => {
+          var len=event.results.length;          //this event lunch on every result 
+          const transcript = event.results[len-1][0].transcript; 
+          this.wordR(transcript);
+        };
+        this.recog.onstart = () => {
+            this.startButton.style.display='none';
+            this.endButton.style.display='flex';
+            this.startButton.removeEventListener('click', this.recoStart);
+            this.endButton.addEventListener("click"     ,  this.recoEnd );
+        };
+        this.recog.onend = () =>{ 
+          this.startButton.style.display='flex';
+          this.endButton.style.display='none';
+          this.endButton.removeEventListener('click', this.recoEnd   );
+          this.startButton.addEventListener("click",  this.recoStart );
+          };
+
+          this.recoStart=()=>{this.recog.start(); }
+          this.recoEnd  =()=>{this.recog.stop();  }
+        this.startButton.addEventListener("click",  this.recoStart );
+        this.endButton.addEventListener("click"  ,  this.recoEnd   );
+
+  }else{ 
+    setTimeout(()=>this.recognition(),500)
+  }
+ 
    },
+
+wordR:function(msg){
+
+ msg=msg.split(' ');
+ this.allmydata.forEach(t=>{ 
+     msg.forEach(w=>{ 
+      var len  = w.length;
+      var endL1= w[len-1]=='ه'|| w[len-1]=='ة' || w[len-1]=='ا'|| w[len-1]=='و'|| w[len-1]=='ي';
+          endL1?w=w.slice(0, -1):true; 
+
+        if(t.title.length >= w.length && w!='' && w!=' '){ 
+           return  t.title.match(w)?(this.searchItems.indexOf(t)==-1?this.searchItems.push(t):true):true
+        }else{
+           return  w.match(t.title)?(this.searchItems.indexOf(t)==-1?this.searchItems.push(t):true):true 
+        }
+  })
+ });
+
+ this.searchItems.length>=1&&this.$route.name!='search'?this.$router.push({name:'search'}):null;
+
+ },
+
+///////////////////////////////////////////////////
+
+
+deleteUser:function(id){
+  var x=JSON.stringify({id:id});
+  var y="deleteUser";
+  var url =this.url+`?x=${x}&y=${y}`;
+  fetch(url).then(r=>{
+    if(!r.ok){ 
+      return Promise.reject("0");
+         }else{
+          return r.json();
+         }
+          }).then(e=>{ })
+},
 
 
 
@@ -341,7 +436,9 @@ const methodss={
 
 
 
+
 getmyData: function(){
+  if(this.newPhone!="" && this.newPass!="" && this.newPass  && this.newPass ){ 
   this.run=true;
 
   var x=JSON.stringify({phone:this.newPhone,pass:this.newPass});
@@ -351,24 +448,28 @@ getmyData: function(){
     if(!r.ok){ 
       return Promise.reject("0");
          }else{
-          this.$refs.oo.style.display="flex"
           return r.json();
          }
           }).then(e=>{ 
-  this.user = e.values; 
-  this.run=false;
-  if(this.user.length > 0 && this.user!="none" ){
+
+      this.run=false;
+  if(e.values && Array.isArray(e.values) && e.values!="none" ){
+    this.user = e.values; 
     localStorage.setItem("user",this.user);
     this.user[0]=='Admin'?this.route2='Admin':router.push('/socitey');   
    
   }else{  
      this.$refs.xxx.style.display="flex";
-     this.run=false;
   } 
   }).catch(e=>{
+    this.run=true;
         this.getmyData() ;
         
     })  
+
+  }else{
+    this.$refs.xx.style.display="flex";
+  }
 },
 
 
@@ -428,7 +529,8 @@ info: function(){
      this.world==""? this.world=this.item[2]      : this.item[2]  = this.world;
      this.price==""? this.price=this.item[3]      : this.item[3]  = this.price;
      this.title==""? this.title=this.item[0]      : this.item[0]  = this.title;
-     this.post== ""? this.post=this.item[1]       : this.item[1]   = this.post;
+     this.post== ""? this.post=this.item[1]       : this.item[1]  =  this.post;
+     this.hash== ""? this.hash=this.item[9]       : this.item[9]  =  this.hash;
      ///////////////////////////////////////////////////////////////////////
      this.item[8]=0;
      ///////////////////////////////////////////////////////////////////////
@@ -449,10 +551,70 @@ info: function(){
 
 
 
+   compressor: function(){
+  var input = document.getElementById('files');    const WIDTH =200;
+    if(input){ console.log(77)
+      input.addEventListener('change',(x)=>{
+
+      var oldImg = x.target.files[0];    this.fileN = oldImg.name;
+       
+           var reader = new FileReader();
+               reader.readAsDataURL(oldImg);
+               reader.onload = (e)=>{
+           var oldImgUrl= e.target.result;
+           var img = document.createElement("img");
+               img.src = oldImgUrl;
+ 
+           img.onload=(e)=>{
+             var canvas = document.createElement("canvas");
+             var ratio  = WIDTH / e.target.width;  canvas.width = WIDTH;   canvas.height= e.target.height*ratio;
+             
+             const context = canvas.getContext("2d");
+          
+                   context.drawImage(img,0,0,canvas.width,canvas.height);
+             let newImgUrl = context.canvas.toDataURL("img/jpeg",1.0);                    
+                
+             let newImg = document.createElement("img");
+                 newImg.src= newImgUrl;   newImg.class='imgimg';
+                 newImg.width=80;
+                 newImg.height=e.target.height*80/e.target.width;
+ 
+                  var dataA = newImgUrl.split(",");    
+                  var mimeType = dataA[0].match(/:(\w.+);/)[1];
+                  var data = dataA[1];
+             var file={ fileName: this.fileN , mimeType: mimeType , data: data} 
+             
+                if(this.files.length >= 2){ 
+                  this.$refs.xxxx.style.display="block";
+                 }else{ 
+                  this.files.push(file);
+                  document.getElementsByClassName('wrapper')[0].appendChild(newImg);
+                  document.getElementsByClassName('theImgs')[0].style.display="flex";
+                }
+              
+
+        }         
+               
+     }            
+    });
+  }else{ this.compressor}
+ },
+ 
+ imgR:function(){
+   this.files=[]
+     document.getElementsByClassName('wrapper')[0].querySelectorAll('img').forEach(x=> x.remove() );
+     document.getElementsByClassName('theImgs')[0].style.display="none";
+ },
+ 
 
 
 
-////////////////////////////////////////////
+
+
+
+
+
+///////////////////index/////////////////////////
 
 
 
@@ -496,6 +658,8 @@ moveOrder:function(orderId){  // for edit order to be index
 
 
 siteOrders:function(){
+    this.run=true;
+
   var x = JSON.stringify({type:this.indexOrderType});
   var y ="siteOrders";
   var url =this.url+`?x=${x}&y=${y}`;
@@ -506,24 +670,70 @@ siteOrders:function(){
      return r.json();
      }
 }).then(e=>{ 
-  var userOrders=[];
-  console.log(e)
-   e.forEach(i=>{
+    this.run=false;
+    var userOrders=[];
+    e.forEach(i=>{
     if(i.place==this.user[3]||this.user[3]=='syria'){
     userOrders.push(i);
     
     }
    })
    this.userOrders=userOrders;//use splice if obj
-   
+   setTimeout(this.siteOrders ,5000)
 }).catch(e=>{
-   this.FUNname = this.siteOrders ;
-   this.FUNrun =true;
+    this.run=false;
+    this.FUNname = this.siteOrders ;
+    this.FUNrun =true;
+     
+
 })    
 
 },
 
 
+
+
+indexedDB:function(){
+  // indexedDB.deleteDatabase('app')
+   const openDB = window.indexedDB.open('app',1);
+   openDB.addEventListener('success' , (ev)=>{ this.db = ev.target.result;})
+ 
+   openDB.addEventListener('error' , (ev)=>{ console.log(ev); }) ;
+ 
+   openDB.addEventListener('upgradeneeded', (ev)=>{
+     this.db = ev.target.result;
+     if(!this.db.objectStoreNames.contains('app')){
+       this.db.createObjectStore('app',{ keyPath:'id', });
+       }
+     
+   })
+ 
+   
+ },
+ 
+ makeTX:function(obj){
+     let tx = this.db.transaction('app','readwrite');
+     tx.onerror=(e)=>{};
+     tx.oncomplete= (e)=>{};
+     
+           if(obj==0){
+                 var e = tx.objectStore('app').getAll();
+                     e.onsuccess = (e)=>{ 
+                                 this.dbData=e.target.result;
+                                 
+                                 this.dbData.forEach(e=>{
+                                 e.date.split('/')[1]==7?tx.objectStore('app').delete(e.id):true;
+                                })
+                               } 
+                     e.onerror = (e)=>{ console.log(e) }
+        }else {
+                 var e = tx.objectStore('app').add(obj);
+                     e.onsuccess = (e)=>{ tx.commit(); }
+                     e.onerror = (e)=>{ console.log(e) }
+        }
+ 
+ },
+ 
 
 
 
@@ -568,7 +778,37 @@ siteOrders:function(){
 
 
 
+coloring:function(){
+ var stop=0;
+ var y; var x=this.color;
+ var one   = [  [255, 230, 109],  [63, 52, 13]  , [21, 21 ,  0] ,[249 , 224, 146] ];
+ var tow   = [  [165, 248, 255],  [0, 52,  82]  , [0 , 20 , 21] ,[146 ,249 , 238] ];
+ 
+ this.revColor?y=tow:y=one;
+ 
+ for(var i=0; i<x.length ; i++ ){
+ x[i][0]-y[i][0]!=0?(x[i][0]-y[i][0]>0?(x[i][0]-=1,stop=1):(x[i][0]+=1,stop=1)):true;
+ x[i][0]-y[i][0]!=0?(x[i][1]-y[i][1]>0?(x[i][1]-=1,stop=1):(x[i][1]+=1,stop=1)):true;
+ x[i][0]-y[i][0]!=0?(x[i][2]-y[i][2]>0?(x[i][2]-=1,stop=1):(x[i][2]+=1,stop=1)):true;
+}
 
+if (stop==0){
+    this.revColor = !this.revColor;
+  setTimeout(() => {
+       requestAnimationFrame(this.coloring);
+    }, 8000);
+  }else{
+  var obj = [ `rgb(${x[0][0]},${x[0][1]},${x[0][2]})`  ,`rgb(${x[1][0]},${x[1][1]},${x[1][2]})`,
+              `rgb(${x[2][0]},${x[2][1]},${x[2][2]})`  ,`rgb(${x[3][0]},${x[3][1]},${x[3][2]})`
+              ]
+              //`rgb(${x[4][0]},${x[4][1]},${x[4][2]})`  ,`rgb(${x[5][0]},${x[5][1]},${x[5][2]})` 
+  this.colors=obj;
+  
+       requestAnimationFrame(this.coloring);
+   
+  }
+
+},
 
 
 ///////////////////////////////////////////////////////
@@ -584,92 +824,83 @@ siteOrders:function(){
  
 
 
+addORdel:function(equation,item){     ////////////for cart items
+if(this.cartItem.length==0) 
+  return this.cartItem.push({title:item.title,count:item.count,price:item.price,z:this.allmydata.indexOf(item)});
+  //////////////////  
+  this.cartItem.forEach((x)=>{
+    if( x.title==item.title)
+     return equation=='+'?x.count+=1:(x.count!=1?x.count-=1:this.cartItem.splice(this.cartItem.indexOf(x),1))
+  })
+  //////////////////
+  var arr  =[]
+   this.cartItem.forEach(x=>{
+    arr.push(x.title);
+   }) 
+   if(equation=='+'&&arr.indexOf(item.title)==-1)
+    return this.cartItem.push({title:item.title,count:item.count,price:item.price,z:this.allmydata.indexOf(item)});
+
+
+ },
 
 
 
- compressor: function(){
-  var input = $("#files");
-  //this.xyz=2;
-  const WIDTH =200;
-      input.on("change",()=>{
-      var oldImg = input.prop('files')[0];
-      this.fileN = oldImg.name;
-       
-           var reader = new FileReader();
-               reader.readAsDataURL(oldImg);
-               reader.onload = (e)=>{
-           var oldImgUrl= e.target.result;
-           var img = document.createElement("img");
-               img.src = oldImgUrl;
+
+ xyPosition:function(e){
+  var {target} =e;
+  var cart = document.getElementsByClassName('cartBtn')[0];
+
+  const xyTarget = target.getBoundingClientRect();
+  const xTarget = xyTarget.left 
+  const yTarget = xyTarget.top 
+
+
+  const xyCart   = cart.getBoundingClientRect();
+  const xCart = xyCart.left+10;
+  const yCart = xyCart.top+10; 
+ ///////////////////////////////////////////////////
+ /////////////////////////////////////////////////
+ var img=document.createElement('img'); // this id the secret why it plased as the card place
+ img.src="icons/purchase.png";
+ img.style.position = 'absolute';
+ img.style.width='4.5vw';
+ img.style.left = `${xTarget}px`
+ img.style.top  = `${yTarget}px`;
+ img.style.transition= 'all 1.7s';
+ img.classList.add('tar');
+
+ document.getElementsByClassName('dialog')[0].appendChild(img);
+ var tar = document.querySelectorAll('.tar');
+ tar.forEach((t)=>{
+  setTimeout(()=>{
+            t.style.left=`${xCart}px`;
+            t.style.top =`${yCart}px`;},1)
+   
+   setTimeout(()=>t.remove(),1100)
+ })
+
  
-               img.onload=(e)=>{
-             var canvas = document.createElement("canvas");
-             var ratio    = WIDTH / e.target.width;
-             canvas.width = WIDTH;
-             canvas.height= e.target.height*ratio;
-             
-             const context = canvas.getContext("2d");
-          
-                   context.drawImage(img,0,0,canvas.width,canvas.height);
-             let newImgUrl = context.canvas.toDataURL("img/jpeg",99);
-                       
-                
-             let newImg = document.createElement("img");
-                 newImg.src= newImgUrl;
-                 newImg.width=80;
-                 newImg.height=e.target.height*80/e.target.width;
- 
-                  var dataA = newImgUrl.split(",");    
-                  var mimeType = dataA[0].match(/:(\w.+);/)[1];
-                  var data = dataA[1];
-             var file={ fileName: this.fileN , mimeType: mimeType , data: data} 
-             
-                if(this.files.length >= 2){ 
-                  this.$refs.xxxx.style.display="block";
-                 }else{ 
-                  this.files.push(file);
-      
-                 $("#wrapper").append(newImg);
-                 $(".theImgs").css({"display":"flex"});
-                }
-              
- 
- 
-        }         
-               
-     }
-              
-    });
+
+ },
+
+
+
+
+
+
+ /// for cart ////
+ date : function(){ 
+  var date = new Date();
+  var date ='('+(date.getDay()*1+16)+'/'+(date.getMonth()*1+1)+'/'+date.getFullYear()+')|*'+date.getHours()-1+':'+date.getMinutes()+'*|';
+  return date;
  },
  
  
  ocCart:function(){
-  
-  if(this.cart==0){
-    $('.pageTop').css({"transform":"rotateX(0deg)"});
-    $('.cart').fadeOut('slow');
-    $('#cartItem2').fadeOut();
-    $('#cartItem3').fadeOut();
-  }else if(this.cart==1){ 
-   $('.cart').fadeIn('slow').css({"display":"flex"});
-   $('.pageTop').css({"transform":"rotateX(180deg)"});
-   $('#cartItem1').fadeIn(); 
-   $('#cartItem2').fadeOut('slow');
-   $('.priceAll').fadeIn('slow');
-  }else if(this.cart==2){
-    $('#cartItem3').fadeOut('slow');
-    $('#cartItem1').fadeOut('slow');
-    $('#cartItem2').fadeIn('slow');
-    $('.priceAll').fadeOut('slow');
 
-  }else if(this.cart==3){
-    $('#cartItem2').fadeOut('slow');
-    $('#cartItem3').fadeIn('slow');
-    $('.myButton').fadeIn();
-    $('.btnPlace').fadeIn();
-  }else if(this.cart==4){
+  if(this.cart==3){
     
-    if(this.cartItem.length==0||this.orderPhone==''||this.inputP==''||this.geoL==null||this.geoL==''){
+    if(this.cartItem.length==0||this.iphone==''||this.geoL==null||this.geoL==''){
        this.errSend=true;
        
     }else{
@@ -677,7 +908,7 @@ siteOrders:function(){
      
       //// for api send data ///
       var id = Math.floor(1+Math.random()*1234567890);
-      var obj= {cartItem:this.cartItem,orderPhone:this.orderPhone,inputP:this.inputP,geoL:this.geoL,id:id,indexed:"order"};
+      var obj= {cartItem:this.cartItem,orderPhone:this.iphone,geoL:this.geoL,id:id,indexed:"order"};
       //- ------------------- -//
      ///// for idexedDb  /////
        var cartItem=JSON.stringify(this.cartItem);
@@ -696,17 +927,17 @@ siteOrders:function(){
       }).then(e=>{ 
          this.makeTX(data);
          this.telegram();
-         this.cartItem=[];this.orderPhone=null;this.inputP=null;this.geoL=null;
+         this.cartItem=[];this.orderPhone=null;this.geoL=null;
       }).catch(e=>{
         this.FUNrun=true;
         this.FUNname=this.ocCart;
       })
 
-
     }
    
   }
  },
+
 
 
  telegram:function(){
@@ -728,206 +959,95 @@ siteOrders:function(){
  },
 
 
-indexedDB:function(){
- // indexedDB.deleteDatabase('app')
-  const openDB = window.indexedDB.open('app',1);
-  openDB.addEventListener('success' , (ev)=>{ this.db = ev.target.result;})
-
-  openDB.addEventListener('error' , (ev)=>{ console.log(ev); }) ;
-
-  openDB.addEventListener('upgradeneeded', (ev)=>{
-    this.db = ev.target.result;
-    if(!this.db.objectStoreNames.contains('app')){
-      this.db.createObjectStore('app',{ keyPath:'id', });
-      }
-    
-  })
-
-  
-},
-
-makeTX:function(obj){
-    let tx = this.db.transaction('app','readwrite');
-    tx.onerror=(e)=>{};
-    tx.oncomplete= (e)=>{};
-    
-          if(obj==0){
-                var e = tx.objectStore('app').getAll();
-                    e.onsuccess = (e)=>{ 
-                                this.dbData=e.target.result;
-                                
-                                this.dbData.forEach(e=>{
-                                e.date.split('/')[1]==7?tx.objectStore('app').delete(e.id):true;
-                               })
-                              } 
-                    e.onerror = (e)=>{ console.log(e) }
-       }else {
-                var e = tx.objectStore('app').add(obj);
-                    e.onsuccess = (e)=>{ tx.commit(); }
-                    e.onerror = (e)=>{ console.log(e) }
-       }
-
-},
 
 
 
 
 
 
-
-
-
-
-
-
-
- imgR:function(){
-   this.files=[]
-   $("#wrapper").children("img").remove();
-   $(".theImgs").css({"display":"none"})
- },
  
  
+//  imgSlider:function(document,event){
+//    var $down = $(event.target).hasClass("down");
+//    var $up =   $(event.target).hasClass("up");
  
- imgSlider:function(document,event){
-   var $down = $(event.target).hasClass("down");
-   var $up =   $(event.target).hasClass("up");
+//   if($up){
+//    $(event.target).css({"display":"none"});
+//    $(event.target).siblings(".up").slideUp("fast")
+//    $(event.target).siblings(".down").slideDown("fast")
  
-  if($up){
-   $(event.target).css({"display":"none"});
-   $(event.target).siblings(".up").slideUp("fast")
-   $(event.target).siblings(".down").slideDown("fast")
+//   }else if($down){
+//    $(event.target).css({"display":"none"});
+//    $(event.target).siblings(".up").slideDown("fast")
+//    $(event.target).siblings(".down").slideUp("fast")
  
-  }else if($down){
-   $(event.target).css({"display":"none"});
-   $(event.target).siblings(".up").slideDown("fast")
-   $(event.target).siblings(".down").slideUp("fast")
- 
-  }
- },
- 
-
- 
- searchBar:function(){
-   if(this.searchBar0==false){ 
-      $(".search").css({"left": "145px","z-index": "6"})
-      $(".inputtext").css({ "width": "190px" , "opacity": "1"})
-      this.searchBar0=true;
-      $(".routeS").fadeOut("slow");
-      $('#search').removeClass('search').addClass("search2").text('إنهاء');
-      
-   }else{
-     $('#search').removeClass("search2").addClass('search').text('');
-      $(".search").css({"left": "5px","z-index": "6"})
-      $(".inputtext").css({ "width": "0px" , "opacity": "0"})
-      this.searchBar0=false;
-      $(".routeS").fadeIn("slow");
-      this.mydata=this.vadata;
-
-      
-   }
- },
- 
- 
- btnF:function(document,event){
-   var $element = $(event.target);
-    $element.css({"transform":`matrix(2, 0, 0, 2, 0, 0)` });
-    $element.parent().siblings('.centerPM').css({"font-size": '17px','color':'black'});
-    setTimeout(()=>{
-      $element.css({'transform':`matrix(1, 0, 0, 1, 0, 0)`});
-      $element.parent().siblings('.centerPM').css({"font-size": '12px','color':'white'});
-      },175);
- },
+//   }
+//  },
  
 
- 
- refresh:function(){
-  this.created();
-  $('.refresh').css({"transform":"rotateZ(360deg)"})
-  setTimeout(this.refreshB , 3000)
- },
- refreshB:function(){
-  $('.refresh').css({"transform":"rotateZ(0deg)"})
- },
- 
- onScroll: function(e){
-  // 
-     var lastScrollTop=0;
-   $(".inset").on("scroll", ()=>{    
- // <!-- 
- //     var scrollabc = 140 ;
- //     var nowScrollTop = $(".inset").scrollTop();
- //     if(nowScrollTop > scrollabc){
- //       if(nowScrollTop > lastScrollTop){
+
+
+//  onScroll: function(e){
+//   // 
+//      var lastScrollTop=0;
+//    $(".inset").on("scroll", ()=>{    
+//  // <!-- 
+//  //     var scrollabc = 140 ;
+//  //     var nowScrollTop = $(".inset").scrollTop();
+//  //     if(nowScrollTop > scrollabc){
+//  //       if(nowScrollTop > lastScrollTop){
         
- //         $(".topBar").height("-=6");
- //       }else{
- //         $(".topBar").height("+=6");
+//  //         $(".topBar").height("-=6");
+//  //       }else{
+//  //         $(".topBar").height("+=6");
          
- //       }
- //     }
- //     lastScrollTop=nowScrollTop; -->
+//  //       }
+//  //     }
+//  //     lastScrollTop=nowScrollTop; -->
  
  
-   if(($(".panels").height() - ($(window).height() + $(".inset").scrollTop()) <= 0)&& this.scroll < Object.keys(this.mydata).length){
-       this.scroll +=2;
+//    if(($(".panels").height() - ($(window).height() + $(".inset").scrollTop()) <= 0)&& this.scroll < Object.keys(this.mydata).length){
+//        this.scroll +=2;
  
-    }
+//     }
  
- })
- },
- 
- 
+//  })
+//  },
  
  
-// cartPrice:function(){
-//   var x=0;
-//   this.cartItem.forEach(i=>{
-//     x += i.count*i.price;
-//   })
-//   return x;
-// },
 
-myButton:function(){
-if(this.siteText){ 
-  this.geoL=null;
-    $('body').append(`<style> .myButton::before{transform: translate(0vh, -1vh);}</style>`);
-    $('.myButton').css({"background":"red"});
-    $('.myPlace').css({"display":"none"});
-    $('.btnPlace').fadeIn('slow');
+chosePlace:function(){
+ 
+  var geoL= document.getElementsByClassName('geoL')[0];
 
-  }else if(!this.siteText){
+if(this.siteText=='text'){ 
+  this.geoL=null;                 ///////  for text
+    geoL.style.display='flex';
+
+
+}else if(this.siteText=='gps'){          ///// for GPS 
+  geoL.style.display='none';
     this.geoL=null;
-    $('body').append(`<style> .myButton::before{transform: translate(-4vh, -1vh);}</style>`);
-    $('.myButton').css({"background":"none"});
-    $('.btnPlace').css({"display":"none"});
-    $('.myPlace').fadeIn('slow');
+      if(navigator.geolocation){ 
+        navigator.geolocation.getCurrentPosition((x)=>{
+        const latitude  = x.coords.latitude;
+        const longitude = x.coords.longitude;
+        this.geoL={latitude:latitude,longitude:longitude};
+        this.runSolve=true;
+       },
+      ()=>{this.runErr=true;}
+      )
+     
+      }else{
+          this.runErr=true;
+      }
 
   }
 },
 
-btnPlace:function(){
-this.myPlace=null;
-  
-if(navigator.geolocation){ 
-
-  navigator.geolocation.getCurrentPosition((x)=>{
-    const latitude  = x.coords.latitude;
-    const longitude = x.coords.longitude;
-    this.geoL={latitude:latitude,longitude:longitude};
-
-    $('.myButton').fadeOut('slow');
-    $('.btnPlace').fadeOut('slow');
-    this.runSolve=true;
-})
- 
-}else{
-      this.runErr=true;
-}
-
-},
 
 
+        
 
  //end   of   methodes
  };
@@ -935,1015 +1055,371 @@ if(navigator.geolocation){
  
  
  const computed ={
-     data4: function(){
-       return this.mydata.slice(0, this.scroll);
-     },
- 
- 
- 
-  //  filter: function(){
-  //      if(this.myroute=="light" || this.myroute=="سيارات"){
-  //        return "filter: hue-rotate(106deg);"//رskyblue
-  //       }else if( this.myroute=="فرص عمل"){
-  //        return "filter: hue-rotate(308deg);" // red 
-  //       }else if(this.myroute=="عقارات" ){
-  //        return "filter: hue-rotate(45deg);" //  green 
-  //       }else if( this.myroute=="C.V"){
-  //         return "filter: none" // أصفر  
-  //       }else if( this.myroute=="طلب مأجور"){
-  //         return "filter: hue-rotate(165deg);" // أزرق غامق
-  //      }
-  // <div :style="filter" >for learn</div>
-  //  },
- 
-    //  backGround: function(){
-    //          if(this.myroute=="light" || this.myroute=="سيارات"){
-    //      return "background:linear-gradient(0deg, #000000, rgb(107 145 142), rgb(255, 255, 255));"//رskyblue
-    //     }else if( this.myroute=="فرص عمل"){
-    //      return "background:linear-gradient(0deg, #000000, rgb(145 107 107) , rgb(255, 255, 255) )" // red 
-    //     }else if(this.myroute=="عقارات" ){
-    //      return "background:linear-gradient(0deg, #000000, rgb(114 145 107) 45%, rgb(255, 255, 255) 98%);"//green 
-    //     }else if( this.myroute=="C.V"|| this.myroute=="تسويق"){
-    //      return "background:linear-gradient(0deg, #000000, rgb(143 145 107), rgb(255, 255, 255));" // أصفر  
-    //     }else if( this.myroute=="طلب مأجور"){
-    //      return "background:linear-gradient(0deg, #000000, rgb(107 114 145), rgb(255, 255, 255));" // أزرق 
-    //    }
-       
-    //  },
+     data4: function(){  
 
+          
+               
+       return this.mydata//.slice(0, this.scroll);
+     },
+
+  
+ 
+ 
+   boxShadow: function(){
+     return `box-shadow: inset 0px -5px 10px ${this.colors[2]}, inset 0px 5px 10px ${this.colors[3]} 
+                                  ,0px 13px 17px #000000    , -2px -3px 8px #d4d4d459;`  
+  //<div :style="filter" >for learn</div>
+   },
+ 
+   backGround: function(){
+    return  ` background: linear-gradient(359deg, ${this.colors[0]} ,${this.colors[1]} );
+              box-shadow: inset 0px -5px 10px ${this.colors[2]}, inset 0px 5px 10px ${this.colors[3]} 
+                                  ,0px 13px 17px #000000  ; ` ;
+  }
+       
+  
       
  };
  
  
- 
- 
- const app = Vue.createApp({
-         data() {
-    return data;
+ const StaticHtml={
+       
+  data() { 
+          return  data
+           
          },
-       methods : methodss,
- 
-       computed: computed,
- 
- created(){
 
- }
- ,
-       mounted(){
-         
-         window.addEventListener('hashchange', () => {
-           var currentPath= window.location.hash;
-          if(currentPath=="#/"){ 
-           $('.cartButton').css({"display":"flex","transform":" translate(0vw, 1vw)"});
-             
-            }else if(currentPath=="#/inset"){
-               $('body').append(`<style> .cartButton::before{animation: cart 2s ease-in 0s;}</style>`);
-               $('.cartButton').css({"display":"flex","transform":" translate(-39vw, 1vw)"});
-               
-            }else if(currentPath=="#/account"||currentPath=="#/socitey"||currentPath=="#/index"){
-           $('.cartButton').css({"display":"none","transform":" translate(0vw, 1vw)"});
-            }
-          });
-          
-
-          this.funUser();
-          this.created();
-          this.indexedDB();
-         // this.notificM();
-         // this.siteOrders()
-
-
-                 }   
-                    
-                  })
- 
- 
- 
- 
- 
- 
- 
- 
- 
-     const Home = {
-        data() {
-    return data;
-              
-         },
        methods : methodss,    
-       computed: computed,
- 
-        template: `
- 
+       computed:{
+        cartPrice:function(){
+              var x=0;
+              this.cartItem.forEach(i=>{
+                x += i.count*i.price;
+              })
+              return x;
+            },
+          },
+         
+       
+       template: ` 
+           
+
+
+
+
+<!-- first log in ---- -->
+
+
+<div style="z-index: 901;width: 100vw;height: 100vh;position: absolute;background: rgb(255 255 255 / 46%);flex-direction: column;
+              display: flex;justify-content: center;align-items: center;" v-if="askMe"> 
+
+      <div class="plase" :class="{ shake2 : askMe }">
+        <p style="display: flex;justify-content: center;align-items: center;width: 100%;">
+         <p style="font-size: 21px;padding: 0 10px;"> &#128536; </p> 
+         من فضلك  .. أخبرني ما اسمك 
+        </p>
+      </div>
+
+  <div style="width: 95vw;height: 50vh;position: relative;transition: 2s;display: flex; flex-direction: column;align-items: center;justify-content: start;    border-radius: 2rem;
+               background: linear-gradient(311deg, black, #222222);">
+      <div class="test3" style="font-size: 50px;color:transparent;height: 30%;">Teleshop</div>
+
+      <div class="itemFlex" style="background: linear-gradient(270deg, #000000cf, transparent 50%);border-radius: 5rem;margin: 20px 0px;height: 15%;">
+         <input class="input" type="text" rows="1" dir="rtl" placeholder="الاسم" v-model="iname" />
+      </div>
     
- 
- <header class="header">
-   <div class="contaiiner">
+      <div  class="redButton" @click="firstLog()">
+           حفظ   
+      </div>
+     <!-- ------------- -->
 
-
-<div id="test3" dir="rtl">
- <div style="margin-right: 25px;">  SHOP  </div>
- <div>  TELE </div>
+ </div>
 </div>
- 
-   </div>
- </header>
+<!-- ------ -->
 
- 
 
- 
 
- 
- 
- 
- 
- <div class="menu-container" >
- 
- 
-   <ul class="vertical-nav" style="left:0px;" >
- 
-     <li  @click="route('خضار وفواكه')">
-       <a > 
-          <img src="icons/fruits.png" style="filter: drop-shadow(0.2px 1.5px 1px #000000); width: 35%;" />
-       </a> 
-     </li>
- 
-     <li  @click="route('مواد غذائية')">
-       <a >
-         <img src="icons/dairy-products.png" style="filter: drop-shadow(0.2px 1.5px 1px #000000); width: 35%;" />
-       </a>
-     </li>
+
+
+
+
+
+
+
+
+
      
- 
-     
-     <li @click="route('حلويات')">
-       <a >
-       <img src="icons/chocolate-bar.png" style="filter: drop-shadow(black 0px 0px 4px); width: 35%;" />
-       </a>
-     </li>
-    
-     <div class="log-out" @click="route('index'),makeTX(0)" >
-       <a  >
-         <img src="icons/file.png" style="width: 25px;filter: brightness(0.7);" />
-         </a>
-     </div>
- 
- 
- 
-   </ul>
- 
- 
- 
- 
-   <ul style="right:0px;" class="vertical-nav">
-    
-   <li @click="route('نقرشات')">
-       <a >
-       <img src="icons/nuts.png" style="filter: drop-shadow(#000000 0px 0px 4px); width: 40%;" />
-        </a>
-   </li>
- 
-     <li @click="route('مشروبات')">
-       <a >
-       <img src="icons/drink.png" style="filter: drop-shadow(#000000 0px 0px 4px); width: 35%;" />
-         </a>
-     </li>
-     
-    <li @click="route('تبغيات')">
-       <a >
-        <img src="icons/cigarette.png"  style="filter: drop-shadow(black 0px 0px 4px); width: 35%;" />
-       </a>
-    </li>
- 
-    
-     <div class="log-out" @click="route('verify')">
-       <a  @click="indexItem='addItem'">
-          <img src="icons/3d-lock.png" style="width: 25px;filter: brightness(0.7);" />
-       </a>
-     </div>
- 
-   </ul>
+ <div :class="{ cartBtn2 : $route.name=='inset'||$route.name=='search' }" class="cartBtn"  v-if='$route.name=="home"||$route.name=="inset"||$route.name=="search"' @click="cart=1">
+    <img src="icons/purchase.png" style="filter: hue-rotate(159deg); width: 40%;"/> 
+    <div :class="{ after2 : $route.name=='inset'||$route.name=='search' }" class="after" > </div>
+ </div>
 
 
 
-    </div>
- 
- 
-    
-    ` };
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-     const Inset = { 
-        data() {
-    
-    return data;
-              
-       
-         },
-       methods :methodss ,  
-       computed: computed,
-       
-       template: `
- <div   class="inset"  @scroll.once="onScroll(e)" >
-   
- <!---------------------------------------header-------------------------------------------------->
- <nav class="nav-mune"  id="fade3"  >
-  
- <ul class="header__menu"  style="top:0px;" >
- 
- 
-       <li class="header__item"    >
-         <div  class="searcher" >
-             <input type="text" dir="ltr" name="search" @input="searcher()" class="inputtext"  placeholder="اسم المادة..." v-model="inpSearch" />
-            <div   @click="searchBar()" class="search"  id='search' > </div>
-         </div>
-       </li>   
- 
- 
-       <li class="header__item routeS"    >
-         {{myroute}}
-       </li>   
- 
- 
-    <li class="header__item"  style="right:5px;">
-     <div class="heead "  style="display:block;" >
-      <h1 class="header__logo__name" @click="route('')" >
-         <i class="fa fa-home" style="text-shadow: #d8d8d8 0px 0px 1px;color:#d8d8d8;text-align: center;font-size: 22px;
-        margin: 2px;"></i>
-       </h1>
-     </div>
-    </li>
- 
- 
-     </ul> 
- 
- 
- </nav>
- 
-
-<div class="panels">
-<TransitionGroup name="list" >
- <template v-for="item in data4" :key="item" > 
-   
-<div class="panel"  >
 
 
-   <div class="page2">
 
-        <div class="itemFlex editDEL"  v-if='editBtn'>
-             
-              <router-link to="/account" >
-                <span @click="indexItem=allmydata.indexOf(item),imgId=[item.img1id,item.img2id],route1='addItem'">تعديل</span> 
-              </router-link>
 
-              <span @click="delItem=true">حذف</span>
-              <div v-if="delItem" class="delItemHolder" > 
-                <span @click="delItem=false">لا</span> 
-                <span @click="indexItem=allmydata.indexOf(item),imgId=[item.img1id,item.img2id],deleteItem()">حذف</span>
+
+<transition-group name="slide-fade">
+
+<div class='cart' v-if="cart!=0" >
+  <div   class="pageTop" :class="{ pageTop2 : cart!=0 }" >
+
+       <div   class="cartFront" >
+          <div class="test3" >tele shop</div>
+       </div>
+
+
+
+
+
+      <div class="cartBack" >
+
+          <div   :class="{ display : cart==1 }"  class="cartItem"  >
+              <div class="itemFlex" style="color:#ffffff;border-bottom: 1px solid wheat;height: 8%;">
+                <span style="background: #fefefe;border-radius: 2rem;color: black;">تعديل</span><span >المجموع</span><span >سعر الواحدة</span><span >العدد</span> <span >الطلب</span>
+              </div>
+              <div v-for="i in cartItem" :key="i" class="itemFlex " style="height: auto;">
+                <span style="background: red;color: rgb(255, 255, 255);justify-content: space-around;border-radius: 1rem;">
+                 <span @click="allmydata[i.z].count+=1,i.count+=1" style="color: ivory;font-size: 15px;">+</span>
+                 <span @click="allmydata[i.z].count-=1,i.count!=1?i.count-=1:cartItem.splice(cartItem.indexOf(i),1)" style="font-size: 15px;">-</span>
+                </span> 
+                 
+                 <span style="color: gold;">{{i.price*i.count}}</span><span style="color: greenyellow;">{{i.price}}</span> <span >{{i.count}}</span> <span style="color: rgb(255, 201, 209);">{{i.title}}</span>
               </div>
          </div>
+      
 
 
+
+       
+          <div :class="{ display : cart==2 }"  class="cartItem"  > 
+            <div class="itemFlex test1" style="background: repeating-linear-gradient(145deg, rgb(53 69 43), transparent 65%);border-radius: 2rem;height: 10%;" >: تحديد الموقع </div>
 
          
-      
-          <div class="titlee">{{item.title}}</div>
+      <div class="itemFlex" style="flex-direction: column;gap: 25px;justify-content: start;height: 55%;">
 
-          <div class="postText">
-                      {{item.post}}     
+            
+
+          <div class="itemFlex" style="border-radius: 5rem;margin: 10px 0px;height: 15%;">
+           <label for="text"   style="width: 13vh;"  @click="siteText='text',chosePlace('text'),run=false,runErr=false"   :class="{ 'shake2 hoverPlace' : siteText=='text'}">كتابة نصية</label> <input type="radio"       id="text">
+           <label for="GPS"    style="width: 13vh;"  @click="siteText='gps',chosePlace('gps'),run=false,runErr=false"    :class="{ 'shake2 hoverPlace' : siteText=='gps' }">   GPS     </label> <input type="radio"       id="GPS">      
           </div>
-      
 
 
-        <div class="holderCount">
 
+
+
+              <div class="itemFlex geoL" style='display: none;'>
+               <textarea type="text" cols="3" rows="3" dir="rtl" v-model="geoL"   placeholder=" قم بتحديد موقعك بالتفصيل"></textarea>
+              </div>
              
-           <div class="centerPM"> المجموع: {{item.count*item.price}}</div>
-
-
-             <div  class="centerPM" style="border:none;" >{{item.count}}: العدد</div> 
-             
-             <div class="centerPM">
-                      {{item.price}} : السعر 
-             </div>
-
-         </div>
-
-
-         
-
-
-
-
-      <div @click="item.count!=0?item.count=item.count*1-1:true,btnF(document, $event)" class="plusMinus" style="left: 30px;">
-         -
-      </div>  
-
-      <div @click="item.count=item.count*1+1,btnF(document, $event)" class="plusMinus " style=" right:30px;">
-         +
-      </div>
-
-
-
-
-
-
-     <div  class="imgDiv" >
-       <i v-if=" item.img1!='' && item.img2!='' " class="fas fa-angle-left down"  @click="imgSlider(document, $event)" style="left:10px;top: 30%;opacity: 0.5;font-size: 31px;position: absolute;color: white;"></i>
-       <img v-if=" item.img1!='' "  :src="item.img1"  class="imgg up"  />	
-       <img v-if=" item.img2!='' "  :src="item.img2"  class="imgg down" style="display:none;"/>
-       <img v-if="item.img1==''&&item.img2==''"  :src="userImg" class="imgg up" />
-       <i v-if="item.img1!=''&&item.img2!=''" class="fas fa-angle-right up"  @click="imgSlider(document, $event)"  style="right:10px;top:30%;opacity: 0.5;font-size: 31px;position: absolute;color:white;"></i>
-    
-     </div>
- 
-
-
- 
-  
-
-          
+              <div v-if="runErr"   class="errSolve" :class="{ shake2 : runErr }">حدث خطأ ما, يرجى تعيين الموقع كتابةً </div>
+              <div v-if="runSolve" class="errSolve" :class="{ shake2 : runSolve }">تم تحديد الموقع بنجاح</div>
+              
+            </div> 
         
-   </div>
- 
- 
-
- 
- <!----------------------------->
- <Transition name="slide-fade">
-    <div class="fade before" v-if="item.count!=0" name="fade">
-
-                <div class="before2"
-                   @click="cartItem.push({title:item.title,count:item.count,price:item.price}),item.count=0">
-                  <img src="icons/purchase.png" style=" filter: brightness(1.2);width: 21%;margin-right: 11px;max-width: 55px;" />إضافة 
-                </div>
-    </div>  <!------for before----------------->
- </Transition>
 
 
- 
-
-   </div>  <!--------for panal---------->
- 
-  </template>
- </TransitionGroup>
- </div>
- 
- 
-
-
- <!------------------------- end of inset holder--------->
-       </div> 
- 
-    
- 
- ` };
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- const Socitey = { 
-           data() {
-    return data;
-              
-         },
-       methods : methodss,    
-       computed: computed,
- 
-       template: ` 
- <div   class="inset" @scroll.once="onScroll(e)">
-   
- <!---------------------------------------header-------------------------------------------------->
-  <nav class="nav-mune"  id="fade3"  style="postion:relative;">
- 
-     <ul class="header__menu"   >
-
-       <li class="header__item refre"     @click="refresh(),deleteIndex()" v-if="route2=='Admin'" style="z-index:9;">
-         <i class="fas fa-sync refresh"  style="color: rgb(255 255 255);font-size: 13px;transition: 2s;text-shadow: rgb(255 36 101) 0px 0px 10px, black 0px 0px 5px;" ></i>
-       </li>   
-
-
-       <li class="header__item"  @click="indexOrderType='index',userOrders=[],siteOrders(indexOrderType)" v-if="indexOrderType=='order'">
-         <div class="index" style="margin-left: 55px;">الفهرس</div>
-       </li>  
-       
-       <li class="header__item"  @click="indexOrderType='order',userOrders=[],siteOrders(indexOrderType)" v-if="indexOrderType=='index'">
-         <div class="index" style="margin-left: 55px;">الطلبات</div>
-       </li>
-
- 
-   <li class="header__item"  style="right:5px;">
-     <div class="heead "  style="display:block;" >
-      <h1 class="header__logo__name"   @click="route('')">
-         <i class="fa fa-home" style="text-shadow:#d8d8d8 0px 0px 1px;color:#d8d8d8; text-align: center;font-size: 22px;margin: 2px;">
-         </i>
-       </h1>
-     </div>
-    </li>
- 
-     </ul> 
- </nav>
- 
- <!--------------------------------------------------------------------------------------->
- 
- 
- <div  style="margin: 120px 0px;" v-if='orderInfoSite==0'>
-  <template v-for="item in userOrders" :key="item" > 
-     <div style="background: linear-gradient(45deg,rgb(28, 28, 28),rgb(149, 149, 147));border-radius: 1rem;margin-top: 10px;">
-       <div >
-       <div class="itemFlex" >
-                <div class="span2" style="color:white;"><div >{{item.id}}</div> المعرف </div>
-          </div>
-          <div class="itemFlex" style="color:white;">
-                <div class="span2"><div >{{item.date}}</div> التاريخ </div>
-                <div class="span2">{{item.place}}</div>
-          </div>
-
-          <div class="itemFlex" style="color:#ffcc00;">
-                <div class="span2" @click='moveOrder(item.id)' v-if="indexOrderType=='order'">نقل للأرشيف</div>
-                <div class="span2" @click='orderPh=item.GPS,orderInfoSite=2'>موقع الطلب</div>
-                <div class="span2" @click='order=JSON.parse(item.data),orderInfoSite=1'>الطلب</div>
-          </div>
-          
-     </div>
-   </div>
-  </template>
-  </div>
- 
-
- <!---------------------------------------------->
-
-    <div  style='background: #2f2e2e;height: 90%;margin-top: 20%;width: 100%;border-radius: 1rem;'
-          v-if='orderInfoSite==1' >  
-
-          <div class="cartItem" id="cartItem" style='height:90%;margin-top:15%;'>
-            <div @click='orderInfoSite=0' class='back'>x</div>  
-
-             <div class="itemFlex" style="color:#87ffed;border-bottom: 1px solid wheat;height:5%;">
-                <span >المجموع</span><span >سعر الواحدة</span><span >العدد</span> <span >الطلب</span>
+            <div class="itemFlex" style="justify-content: space-evenly;background: repeating-linear-gradient(21deg, #435742, #4c6546 28px); margin: 10px 0px;height: 13%;box-shadow: inset 2px 1px 5px #0d0d0d, inset 0px -2px 8px #000000;">
+              <input id='i' type="text" dir="rtl" placeholder="ما اسمك" v-model="iname"  @input="editLog()"   style='width: 60%; background: none; border: none;font-weight: bolder;box-shadow: none;outline: none;display: flex;' />
+                <span style='font-weight: bold; color: #e2e294;text-shadow: 0px 0px 1px yellow;'> : اسمك</span>
              </div>
-             <div v-for="i in order"  class="itemFlex" style="height: auto;">
-               <span style="color: gold;">{{i.price*i.count}}</span><span style="color: greenyellow;">{{i.price}}</span> <span >{{i.count}}</span> <span style="color: rgb(255, 201, 209);">{{i.title}}</span>
+
+             <div class="itemFlex" style="justify-content: space-evenly;background: repeating-linear-gradient(21deg, #435742, #4c6546 28px); height: 13%;box-shadow: inset 2px 1px 5px #0d0d0d, inset 0px -2px 8px #000000;">
+              <input id='u' type="text"  dir="rtl" placeholder="ما رقمك" v-model="iphone"  @input="editLog()"  style='width: 60%; background: none; border: none;font-weight: bolder;box-shadow: none;outline: none;display: flex;' />
+                <span style='font-weight: bold; color: #e2e294;text-shadow: 0px 0px 1px yellow;'> : رقمك</span>
              </div>
-          </div>
-
-  </div>
- 
- <!-------------------------------------------->
-
-  <!---------------------------------------------->
-
-    <div  style='' v-if='orderInfoSite==2' >
-          <div class="cartItem" id="cartItem" style='height:90%;margin-top:20%;'>
-            <div @click='orderInfoSite=0' class='back'>x</div>  
-
-                <div class=''></div>
-                <div class=''></div>
-                <div class="">{{orderPh}}</div>
-            
-          </div>
-
-  </div>
- 
- <!-------------------------------------------->
- 
-   <div v-if="run" style="top:0px;width:100vw;height:100vh;position:fixed;background:#0a0a0a8c;z-index:9998;">
-    <div class="containerW" >
-       <div class="it item1"></div>
-       <div class="it item2"></div>
-       <div class="it item3"></div>
-     </div>
-   </div>
- 
- </div>
- 
- 
- 
- 
- 
-          `
-            }
- 
- 
- 
- 
- 
- 
- 
- const index={
-  data(){
-  return data;
-  },
-
-  methods: methodss,
-  computed: computed,
        
-       template: `
-       
-       
- <div   class="inset" @scroll.once="onScroll(e)">
-   
- <!---------------------------------------header-------------------------------------------------->
-  <nav class="nav-mune"  id="fade3"  style="postion:relative;">
- 
-     <ul class="header__menu"  style="justify-content: flex-end;" >
- 
-     <li class="header__item fatora"  >
-       سجل الفواتير 
-    </li>
-     
-    <li class="header__item"  v-if="route2=='Admin'" @click="editBtn=!editBtn" style='color: #fbfbfb;right: 20%;'>
-         تعديل
-    </li>
 
-   <li class="header__item"  style="right:5px;">
-     <div class="heead "  style="display:block;" >
-      <h1 class="header__logo__name"   @click="route('')">
-         <i class="fa fa-home" style="text-shadow:#d8d8d8 0px 0px 1px;color:#d8d8d8; text-align: center;font-size: 22px;margin: 2px;">
-         </i>
-       </h1>
-     </div>
-    </li>
- 
-     </ul> 
- </nav>
- 
- <!--------------------------------------------------------------------------------------->
- 
- 
- <div  style="margin: 120px 0px;" v-if="orderInfoSite==0">
-  <template v-for="item in dbData" :key="item" > 
-     <div style="background: linear-gradient(45deg,rgb(30, 30, 30),#8d5a5a);border-radius: 1rem;margin-top: 10px;">
-       <div >
-       <div class="itemFlex" >
-                <div class="span2" style="color:white;"><div >{{item.id}}</div> المعرف </div>
+
+
+
+       <div v-if="run" style="position:relative;z-index:9998;">
+         <div class="containerW" >
+          <div style="color: wheat;"> ..انتظر</div>
+           <div class="it item1"></div>
+           <div class="it item2"></div>
+           <div class="it item3"></div>
           </div>
-          <div class="itemFlex" style="color:white;">
-                <div class="span2"><div >{{item.date}}</div> التاريخ </div>
-                
-          </div>
-
-          <div class="itemFlex" style="color:#ffcc00;">
-                <div class="span2" @click='order=JSON.parse(item.cartItem),orderInfoSite=1'> الطلب</div>
-          </div>
-          
-     </div>
-   </div>
-  </template>
-  </div>
- 
- <!---------------------------------------------->
-
-   <div  style='background: #2f2e2e;height: 90%;margin-top: 20%;width: 100%;border-radius: 1rem;'
-          v-if='orderInfoSite==1' >  
-
-          <div class="cartItem" id="cartItem" style='height:90%;margin-top:15%;'>
-            <div @click='orderInfoSite=0' class='back'>x</div>  
-
-             <div class="itemFlex" style="color:#87ffed;border-bottom: 1px solid wheat;height:5%;">
-                <span >المجموع</span><span >سعر الواحدة</span><span >العدد</span> <span >الطلب</span>
-             </div>
-             <div v-for="i in order"  class="itemFlex" style="height: auto;">
-               <span style="color: gold;">{{i.price*i.count}}</span><span style="color: greenyellow;">{{i.price}}</span> <span >{{i.count}}</span> <span style="color: rgb(255, 201, 209);">{{i.title}}</span>
-             </div>
-          </div>
-
-  </div>
- 
- <!-------------------------------------------->
-
-  
-
-  </div>
- 
-    
- 
- <!-------------------------------------------->
- 
- 
- </div>
+       </div>
        
-       
-       `
-
- }
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-     const Account = { 
-           data() {
-    return data;
-              
-         },
-       methods : methodss,    
-       computed: computed,
-       
-       template: ` 
       
- 
- 
-      <div   >
- 
-   <div v-if="run" style="width:100vw;height:100vh;position:fixed;background:#0a0a0a8c;z-index:9998;
-        display: flex;justify-content: center;align-items: center;">
-    <div class="containerW" >
-       <div class="it item1"></div>
-       <div class="it item2"></div>
-       <div class="it item3"></div>
-     </div>
-   </div>
- 
-   <div ref="oo" class="oo"  style="z-index:9999;width:100%;height:100%;" @click="x(),route(''),bac=1,run=false" >
-     <div  style="justify-content: center;align-items: center;flex-direction: column;">
-      <h1   class="oh"  > اضغط للرجوع</h1>
-      <h5 class="display_error">تمت العملية بنجاح </h5>
-     </div>
-   </div>
- 
-    
    
-   <div class="navbar hexagon" >
-    
 
 
 
-
- 
-  <nav class="nav-mune"  id="fade3"   v-if="route2=='Admin'">
-
-    <ul class="header__menu"   >
-
-
- 
-         <li class="header__item"  @click="siteOrders(indexOrderType)">
-           <router-link to="/socitey" >
-             <div class="index">   المجتمع  </div>
-           </router-link>
-         </li>
-
-          <li class="header__item" v-if="indexItem=='addItem'" >
-            <div class="index" @click="route1='addItem'" > إضافة عنصر </div>
-         </li>
-
-           <li class="header__item"  >
-            <div class="index"   @click="route1='addUser'" style="margin-right: 10px;"> إنشاء حساب </div>
-         </li>
-  
-     </ul> 
- </nav>
-
-
-
-
- 
- 
-  <div ref="xx" class="xx"   >
-   <h1 @click="x()" class="xh" > x </h1>
-   <h5 class="display_error">قم بتعبئة كافة البيانات ,ليتم الإرسال</h5>
- </div>
- 
- <div ref="xxx" class="xx" >
-   <h1 @click="x()" class="xh" > x </h1>
-   <h5 class="display_error">عذرا لا يوجد حساب يطابق هذه المعلومات</h5>
- </div>
- 
- <div ref="xxxx" class="xx" >
-   <h1 @click="x()" class="xh" > x </h1>
-   <h5 class="display_error"> يمكن تحميل صورتان فقط </h5>
- </div>
- 
- 
- 
- 
- 
- 
-     
-   <div  v-if="route2=='verify'" >
-
-
-
-
-    <div class="main" v-if="route1=='verify'">
-     <div class="commenter" style="background: #00000066;top:200px;" >
-         <div  class="form-container">
-            <div style="display: flex;justify-content: center;color: #f37373;text-shadow: 0px 0px 3px black, 0px 0px 5px red;">
-                 مخصص للمتاجر العملاء
-             </div>
-
-            <div class="button">
-                 <button class="login"   @click="route1='تسجيل'"
-                > تسجيل دخول </button>
-             </div>
-            
- 
          </div>
      </div>
-   </div>
- 
- 
- 
- 
-   <div  v-if="route1=='تسجيل'" >
-     
- 
-   <div      style="padding: 10px;" >
- 
-    <div class="container">
-         <h2 class="title1">تسجيل الدخول</h2>
-         <div  class="form-container">
- 
-             <div class="input-box password">
-                 <input dir="rtl" type="text"   id="phone" v-model="newPhone"  placeholder="رقم الجوال" />
-           </div>
-           <div class="input-box password">
-                 <input  dir="rtl" type="text"   id="pass" v-model="newPass"  placeholder="كلمة السر" />
-           </div>
- 
-           <div @click="route1='forget'" class="forgetPass"
-           > هل نسيت كلمة المرور </div>
- 
-             <div class="button"  >
-                 <button class="login" @click="getmyData()">تحقق</button>
-             </div>
-             
- 
-             <div class="button" >
-                 <button class="login" @click="route1='verify'"
-                 >رجوع</button>
-             </div>
- 
-         </div>
+  </div>
+   
+
+
+    <div class="pageBottom">
+
+      <div v-if="errSend" class="errSolve errSolve2" :class="{ shake: errSend }"> 
+          لم تقم بتعبئة أو اختيار كامل المعلومات 
+          <br> <div @click="errSend=false,cart=2" 
+            style="width: 35%;font-size: 14px;padding: 5px;background: #232323;border-radius: 1rem;">حسناً</div>
        </div>
-     </div>
-   </div>
+
+      <div class="priceAll" v-if="cart==1"> 
+        <span>{{cartPrice}}</span> <span>مجموع الفاتورة</span> 
+      </div>
  
- 
- 
- 
- 
-  <div  v-if="route1=='forget'" >
-     
-   <div      style="padding: 10px;" >
- 
-    <div class="container">
-         <h2 class="title1" style="text-align: center;">
-          في حال نسيان كلمة المرور <br>
-          أرسل لنا رسالة واتساب من رقم مالك الحساب حصراً <br> 
-          ويتم الرد بكلمة السر حال تحقق البوت من صحة البيانات  
-         </h2>
- 
-         <div  class="form-container">
- 
-             <div class="button"  >
-                    <a class="login" :href="wts" style=" width: auto;">
-                    <i class="fa fa-phone" style="font-size:15px;color:green;">واتساب 
-                      +963 981715375
-                    </i> 
-                    </a>
-             </div>
-             
-             <div class="button" >
-                 <button class="login" @click="route1='verify'"
-                 >رجوع</button>
-             </div>
- 
-         </div>
-       </div>
+
+      <div class="buttonBottom" >
+        
+        <button  class="backword" @click="run=false,runErr=false,runSolve=false,cart!=0?cart-=1:true">رجوع</button>
+        <button  class="next"   v-if="cart!=2&&cart!=3"  @click="cart+=1">متابعة</button>
+        <button  class="next"   v-else-if="cart==2&&cart!=3"   @click="cart=3,ocCart()">إرسال الطلب</button>
+        <button  class="next"   v-else-if="cart==3"   >قيد الإرسال</button>
+        
+      </div>
+       
+
+
+      
+
     </div>
-   </div>
- 
- 
- 
- </div>
- 
-  
- 
- 
- 
- 
- 
- 
- <div   v-if="route2=='Admin'" >
-     
-
-
-
-
-<div class="container"   v-if="route1=='addUser'">
-         <h2 >إنشاء حساب</h2>
-     
-       <div  class="form-container">
- 
-           <div class="input-box password">
-             <input  dir="rtl" type="text"  id="name" name="Location"  placeholder="الإسم" />   
-           </div>
-           <div class="input-box password">
-             <input dir="rtl" type="text"   id="phone" name="Location"  placeholder="رقم الجوال" />  
-           </div>
-           <div class="input-box password">
-             <input  dir="rtl" type="text"   id="pass" name="Location"  placeholder="كلمة السر" />
-           </div>
-           <div class="input-box password">
-             <input  dir="rtl" type="text"   id="place" name="Location"  placeholder="المكان" />
-           </div>
-          
-   
-             <div class="button" style="bottom:20px;"  @click="addUser()">
-                 <button class="login" >إرسال</button>
-             </div>
-
- 
-     </div>
 </div>
 
 
+</transition-group>
+
+<!--------------------------------->
 
 
 
- <div class="container"   v-if='route1=="addItem"' style="height:auto;margin-top: 24%;">
-   
-     <div action="#" class="form-container">
-         
-         
- <h2  class="title2"> أهلاَ بك <br/>Mohammed   </h2>
-    
-     <div class="input-box password">
-         <input  dir="rtl" type="text" v-model="title"  placeholder="العنوان باختصار" />
-     </div>
- 
-     <div class="input-box email">
-        <textarea type="text" dir="rtl" class="input" v-model="post" required placeholder="كتابة البوست" rows="3" cols="30">
-        </textarea>
-     </div>
-    
-    <div class="input-box password">
-         <input  dir="rtl" type="text" v-model="price"  placeholder=" .. السعر" />
-    </div>
- 
-    <div class="select" style="width:100%" >
-      <select @change="onoff()" v-model="world" class="world" dir="rtl">
-       <option value="">اختر مكان الظهور</option>
-       <option >خضار وفواكه</option>
-       <option >مواد غذائية</option>
-       <option >نقرشات</option>
-       <option >حلويات</option>
-       <option >مشروبات</option>
-       <option >تبغيات</option>
-      </select>
-    </div>
-  
-  
-  
- 
- <div class="logi">
- 
-   <label  class="label5" @click.once="compressor()" > 
-    <div v-if="files.length==0"> اختر صورة  </div>
-    <div v-if="files.length>=1"> اختر صورة ثانية </div>
-   <input   name="file"  id="files" style="width:0px;" type="file"  multiple  />
-   </label>
- 
- </div>
- 
- <div class="theImgs" >
-   <div id="wrapper"></div>
-   <div  @click="imgR()" >إلغاء</div>
- </div>
- 
- 
- 
+
+<!--------------------------------------------------------------------------------------------------->
 
 
 
- 
+<div class="commenter survey" v-if="FUNrun" style="bottom: 155px;height: auto;" :class="{ shake: FUNrun }">
+  <div class="callx2"  @click="FUNrun=false" >x</div>
+  <div style="text-align:center;font-size: 14px;color: #ffffff;margin:20px;">
+    حدث خطأ أثناء جلب البيانات <br>
+    ..التغطية ضعيفة..
+      
+  </div> 
+          
+            <div class="button"  style="margin-top:10px;" @click="FUNname(),FUNrun=false">
+              <div class="login"  style="background: linear-gradient(0deg, black,white);">إعادة المحاولة</div>
+            </div>
 
- 
- 
- 
-             <div class="button" style="margin-bottom:75px;">
-                 <button class="login" @click="api()">تأكيد العملية</button>
-             </div>
-             
-             <div >
+  </div>
 
+<!-- ----------------for delete item done------------------------- -->
 
- 
-
- 
-         </div>
+<div class="commenter survey" v-if="delItemDone" style="bottom: 155px;height: auto;">
+  <div class="callx2"  @click="delItemDone=false" >x</div>
+  <div style="text-align:center;font-size: 14px;color: #ffffff;margin:20px;">
+   تم حذف العنصر
+      
+  </div> 
+          
+      <div class="button"  style="margin-top:10px;" @click="delItemDone=false">
+         <button class="login"  style="background: linear-gradient(0deg, black,white);">حسناً </button>
       </div>
-   </div>
- 
- 
+
+  </div>
+
+<!-- ----------------for send cart done------------------------- -->
+
+<div class="commenter survey" v-if="sendCartDone" style="bottom: 155px;height: 220px;" :class="{ shake: sendCartDone }">
+  <div class="callx2"  @click="sendCartDone=false" >x</div>
+  <div style="text-align:center;font-size: 17px;color: #ffffff;margin:20px;">
+  انتظر مكالمة من الساعي<br>
+  سنصل موقعك في أقرب وقت
     
+      
+  </div> 
+          
+      <div class="button"  style="margin-top:10px;" @click="sendCartDone=false,cart=0,ocCart(),cartItem=[]">
+         <button class="login"  style="background: linear-gradient(0deg, black,#ffffff);">حسناً </button>
+      </div>
+
+  </div>
+
+
+
+
+  
+
+       `
+ }
+
+
+
+
+
  
- </div>
- </div>
-        
- </div>
- 
- 
- ` };
- 
- 
- 
+ ///////////////////////////////
+ /////////////////////////
+ ///////////////////
+ //////////////
+ /////////
+ //////
+      // Vue App \\
  
  
  
+   const app = Vue.createApp({
+        data() {
+      return data;
+        },
+      methods : methodss,
+
+      computed: computed,
+      components:{StaticHtml},
  
+      mounted(){
+        this.$router.push({name:'home'});
+        // window.addEventListener('hashchange', () => {
+        //   var currentPath= window.location.hash;
+        //  if(currentPath=="#/"){ 
+
+        //    }else if(currentPath=="#/inset")
+        //  });
+         
+         this.funAdmin();
+     //    this.funUser();
+         this.created();
+         this.indexedDB();
+     //    this.coloring();
+
+        // this.notificM();
+        // this.siteOrders()
+   
+
+                }   
+                   
+                 })
+
  
      const routes = [
-         { path: "/", component: Home },
-         { path: "/inset", component: Inset },
-         { path: "/account", component: Account },
-         { path: "/socitey", component: Socitey },
-         { path: "/index", component: index },
-     ];
+         { path: "/",             name:"home",   component:  ()=> import('./views/Home.js').then(t => t.default.Home ) },
+         { path: "/inset/:inset", name:"inset",  component:  ()=> import('./views/Inset.js').then(t => t.default.Inset ) },
+         { path: "/account",      name:"account",component:  ()=> import('./views/Account.js').then(t => t.default.Account ) },
+         { path: "/socitey",      name:"socitey",component:  ()=> import('./views/Socitey.js').then(t => t.default.Socitey ) },
+         { path: "/index",        name:"index",  component:  ()=> import('./views/Index.js').then(t => t.default.Index ) },
+         { path: "/search",       name:"search", component:  ()=> import('./views/search.js').then(t => t.default.Search ) }
+    
+        ];
  
+    
+    
      const router = VueRouter.createRouter({
            history: VueRouter.createWebHashHistory(),
             routes
-     })
+     });
  
-     app.use(router)
-     app.mount('#app')
- 
+     app.use(router).mount('#app')
  
  
-
-
-
-
-
-
-
-
-   
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 

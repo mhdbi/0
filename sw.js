@@ -1,11 +1,10 @@
 ///////
-const version =10;
+const version =1;
 var cacheName =`staticCahe-${version}`;
 var dynamicName="dynamicCache"
 
-let assets=['index.html','home.css','tecno.css','app.js',"404.html","icons/3d-lock.png","icons/add.png","icons/chocolate-bar.png",
-  "icons/cigarette.png","icons/dairy-products.png","icons/drink.png","icons/file.png","icons/fruits.png","icons/minus.png",
-  "icons/nuts.png","icons/purchase.png","icons/logo.png","icons/screensh1.jpg","icons/screensh2.jpg",
+let assets=['index.html','home.css','tecno.css','app.js',"404.html","icons/add.png",
+  "icons/minus.png","icons/purchase.png","icons/tele_icon.svg","icons/screensh1.jpg","icons/screensh2.jpg",
   ];
 
 self.addEventListener("install" , (ev)=>{ 
@@ -50,37 +49,38 @@ self.addEventListener('activate' ,(ev)=>{
 ////////////////////////////////notific////////////////////////////////////////////////////
 ////////////////////////////msg/////msg///////////////////////////////////////////////////
 
+self.addEventListener('sync',(e)=>{});
 
-// self.addEventListener("push", (event) => {
-//   if (self.Notification && self.Notification.permission === "granted") {
+self.addEventListener("push", (event) => {
+  if (self.Notification && self.Notification.permission === "granted") {
 
   
 
-//   const data    =  event.data? event.data : {};
-//   const title   =  data.title   || "Something Has Happened";
-//   const message =  data.message || "Here's something you might want to check out.";
-//   const icon    = "images/new-notification.png";
+  const data    =  event.data? event.data : {};
+  const title   =  data.title   || "Something Has Happened";
+  const message =  data.message || "Here's something you might want to check out.";
+  const icon    = "images/new-notification.png";
 
  
-//   event.waitUntil(self.registration.showNotification('title', {
-//       body: 'message',
-//       tag: "simple-push-demo-notification",
-//        icon,
-//        data:"https://www.google.com"
-//      }
-//     ));
+  event.waitUntil(self.registration.showNotification('title', {
+      body: 'message',
+      tag: "simple-push-demo-notification",
+       icon,
+       data:"https://www.google.com"
+     }
+    ));
 
 
-// }
-// });
+}
+});
 
-// self.addEventListener('notificationclick', function (e){
-//   e.notification.close();
+self.addEventListener('notificationclick', function (e){
+  e.notification.close();
 
-//   e.waitUntil(
-//     clients.openWindow("https://mhdbi.github.io/00")
-//   )
-// })
+  e.waitUntil(
+    clients.openWindow("https://mhdbi.github.io/00")
+  )
+})
 
 
 //////////////////////////msg////////////////msg////////////////////////////////////////////
