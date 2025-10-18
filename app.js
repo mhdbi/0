@@ -1107,36 +1107,6 @@ if(this.siteText=='text'){
 
 
 
-<!-- first log in ---- -->
-
-
-<div style="z-index: 901;width: 100vw;height: 100vh;position: absolute;background: rgb(255 255 255 / 46%);flex-direction: column;
-              display: flex;justify-content: center;align-items: center;" v-if="askMe"> 
-
-      <div class="plase" :class="{ shake2 : askMe }">
-        <p style="display: flex;justify-content: center;align-items: center;width: 100%;">
-         <p style="font-size: 21px;padding: 0 10px;"> &#128536; </p> 
-         من فضلك  .. أخبرني ما اسمك 
-        </p>
-      </div>
-
-  <div style="width: 95vw;height: 50vh;position: relative;transition: 2s;display: flex; flex-direction: column;align-items: center;justify-content: start;    border-radius: 2rem;
-               background: linear-gradient(311deg, black, #222222);">
-      <div class="test3" style="font-size: 50px;color:transparent;height: 30%;">Teleshop</div>
-
-      <div class="itemFlex" style="background: linear-gradient(270deg, #000000cf, transparent 50%);border-radius: 5rem;margin: 20px 0px;height: 15%;">
-         <input class="input" type="text" rows="1" dir="rtl" placeholder="الاسم" v-model="iname" />
-      </div>
-    
-      <div  class="redButton" @click="firstLog()">
-           حفظ   
-      </div>
-     <!-- ------------- -->
-
- </div>
-</div>
-<!-- ------ -->
-
 
 
 

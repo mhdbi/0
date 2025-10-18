@@ -30,20 +30,20 @@ export default{
  
  
     <li class="header__item"  style="display:flex;width:40%;">
-      <h1 style='display:flex;font-size: 3vw;align-items: center;justify-content: center;' @click="$router.push({ name : 'home' })" >
+      <h1 style='color: #f1edb5;display:flex;font-size: 0.9rem;align-items: center;justify-content: center;' @click="$router.push({ name : 'home' })" >
              خروج
         </h1>
      </li>
 
        <li class="test3" id='test4'  style='letter-spacing: 1.3vw;font-size: 22px;-webkit-text-stroke-width: 1.5px;color: #8b8b8b;' >
-         {{$route.name}}
+         <img  style='filter: drop-shadow(0px 0px 3px yellow);width: 6vw;min-width: 4vh;max-width: 6vh;' src='icons/robot.png' />
        </li>   
  
  
     <li class="header__item"  style="display:flex;width:40%;">
 
        
-        <h1 class=" reco" style='display:flex;font-size: 3vw;align-items: center;justify-content: center;' >
+        <h1 class=" reco" style='color: #f1edb5;display:flex;font-size: 0.9rem;align-items: center;justify-content: center;' >
              متابعة البحث
         </h1>
     

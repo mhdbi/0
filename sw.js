@@ -3,9 +3,10 @@ const version =1;
 var cacheName =`staticCahe-${version}`;
 var dynamicName="dynamicCache"
 
-let assets=['index.html','home.css','tecno.css','app.js',"404.html","icons/add.png",
-  "icons/minus.png","icons/purchase.png","icons/tele_icon.svg","icons/screensh1.jpg","icons/screensh2.jpg",
-  ];
+let assets=['index.html','home.css','tecno.css','app.js',"404.html","icons/screensh1.jpg","icons/screensh2.jpg",
+           'icons/chocolate.jpg','icons/cigarette.jpg','icons/dairy-products.jpg','icons/drink.jpg',
+           'icons/fruits.jpg','icons/nuts.jpg','icons/purchase.png','icons/robot.png'];
+  
 
 self.addEventListener("install" , (ev)=>{ 
 
@@ -120,10 +121,10 @@ self.addEventListener('fetch'  , (ev)=>{
         if(referrer && icons){
           return ev.respondWith(cacheF(ev.request));
         }else if(thumb){
-          return ev.respondWith(fetch(ev.request,{method: "GET",mode: "no-cors",redirect:"follow",credentials:"include"}))
+          return ev.respondWith(fetch(ev.request,{method: "GET",mode: "no-cors",redirect:"follow",credentials:"omit"}))
             
           }else { 
-           return ev.respondWith(fetch(ev.request,{mode: "cors",credentials:"omit"}));
+           return ev.respondWith(fetch(ev.request,{mode: "cors",redirect:"follow",credentials:"omit"}));
           }
       
       // }else{

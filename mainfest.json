@@ -7,7 +7,7 @@
   "description":"E-commerce-app",
   "start_url":"https://mhdbi.github.io/0/",
   "background_color": "#232323",
-  "theme_color":"#ffcc00",
+  "theme_color":"#232323",
   "display":"standalone",
   "icons": [
     {
