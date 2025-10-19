@@ -46,14 +46,14 @@ export default{
          
             <svg width="33" height="33" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
               <!-- Roof -->
-              <polygon points="6,16 16,6 26,16" fill="#FFC107"/>
+              <polygon points="6,16 16,6 26,16" fill="#fde068"/>
               <!-- House body -->
-              <rect x="9" y="15" width="14" height="8" fill="#FFC107"/>
+              <rect x="9" y="15" width="14" height="8" fill="#fde068"/>
               <!-- Door -->
               <rect x="14" y="19" width="4" height="5" fill="#232323"/>
               <!-- Window -->
-              <rect x="11" y="18" width="3" height="3" fill="#FFB300"/>
-              <rect x="18" y="18" width="3" height="3" fill="#FFB300"/>
+              <rect x="11" y="18" width="3" height="3" fill="#fde068"/>
+              <rect x="18" y="18" width="3" height="3" fill="#fde068"/>
             </svg>
 
        </h1>

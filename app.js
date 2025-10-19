@@ -1358,7 +1358,7 @@ if(this.siteText=='text'){
        //    this.funUser();
          this.created();
          this.indexedDB();
-         setTimeout(this.coloring,5000);
+        // setTimeout(this.coloring,5000);
 
         // this.notificM();
         // this.siteOrders()
