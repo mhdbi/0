@@ -7,26 +7,27 @@ const data={
   db :null ,
   dbData: null ,
   recog:null,
-  searchItems :[],                  // for search result
+  searchItems :[],                                 // for search result
+  counter:0,
 
-  askMe:false,                      //for name & phone
+  downLTips:false,                                 //for download tips
   iname:  localStorage.getItem('iname')  ||null,
   iphone: localStorage.getItem('iphone') ||null,
 
-  accDB:false,                            // for switch acc db info
+  accDB:false,                                     // for switch acc db info
  
 
-  orderPh:'' ,                         //for users orders show phone &place                           
-  order:[] ,                           //for customer order 
-  userOrders:[] ,                      // for detect user order cover
+  orderPh:'' ,                                 //for users orders show phone &place                           
+  order:[] ,                                  //for customer order 
+  userOrders:[] ,                              // for detect user order cover
   indexOrderType:'order',                    // for indexed order of th user 
 
 
   wts    : "https://wa.me/+963981715375",
   userImg:"icons/LOGO.png",
-  indexItem:null,                       //for edit with index of item 
-
-  orderInfoSite:0,                      //for open close windo of site , index , order
+  indexItem:null,                           //for edit with index of item 
+ 
+  orderInfoSite:0,                         //for open close windo of site , index , order
 
 
   user:null,                             //for merchent user info only
@@ -775,10 +776,12 @@ indexedDB:function(){
 
 
 
-
-
-
 coloring:function(){
+     this.counter++;
+  requestAnimationFrame(this.coloring);
+},
+
+coloring0:function(){
  var stop=0;
  var y; var x=this.color;
  var one   = [  [255, 230, 109],  [63, 52, 13]  , [21, 21 ,  0] ,[249 , 224, 146] ];
@@ -796,7 +799,7 @@ if (stop==0){
     this.revColor = !this.revColor;
   setTimeout(() => {
        requestAnimationFrame(this.coloring);
-    }, 8000);
+    }, 10000);
   }else{
   var obj = [ `rgb(${x[0][0]},${x[0][1]},${x[0][2]})`  ,`rgb(${x[1][0]},${x[1][1]},${x[1][2]})`,
               `rgb(${x[2][0]},${x[2][1]},${x[2][2]})`  ,`rgb(${x[3][0]},${x[3][1]},${x[3][2]})`
@@ -1056,22 +1059,19 @@ if(this.siteText=='text'){
  
  const computed ={
      data4: function(){  
-
-          
-               
+ 
        return this.mydata//.slice(0, this.scroll);
      },
 
   
  
  
-   boxShadow: function(){
-     return `box-shadow: inset 0px -5px 10px ${this.colors[2]}, inset 0px 5px 10px ${this.colors[3]} 
-                                  ,0px 13px 17px #000000    , -2px -3px 8px #d4d4d459;`  
+   backGround: function(){
+     return `background: linear-gradient(${this.counter+`deg`}, rgb(255, 230, 109), rgb(63, 52, 13));`  
   //<div :style="filter" >for learn</div>
    },
  
-   backGround: function(){
+   backGround0: function(){
     return  ` background: linear-gradient(359deg, ${this.colors[0]} ,${this.colors[1]} );
               box-shadow: inset 0px -5px 10px ${this.colors[2]}, inset 0px 5px 10px ${this.colors[3]} 
                                   ,0px 13px 17px #000000  ; ` ;
@@ -1355,10 +1355,10 @@ if(this.siteText=='text'){
         //  });
          
          this.funAdmin();
-     //    this.funUser();
+       //    this.funUser();
          this.created();
          this.indexedDB();
-     //    this.coloring();
+         setTimeout(this.coloring,5000);
 
         // this.notificM();
         // this.siteOrders()

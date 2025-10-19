@@ -1,11 +1,12 @@
 ///////
-const version =1;
+const version =2;
 var cacheName =`staticCahe-${version}`;
 var dynamicName="dynamicCache"
 
 let assets=['index.html','home.css','tecno.css','app.js',"404.html","icons/screensh1.jpg","icons/screensh2.jpg",
            'icons/chocolate.jpg','icons/cigarette.jpg','icons/dairy-products.jpg','icons/drink.jpg',
-           'icons/fruits.jpg','icons/nuts.jpg','icons/purchase.png','icons/robot.png'];
+           'icons/fruits.jpg','icons/nuts.jpg','icons/purchase.png','icons/robot.png',
+           'icons/1.jpg','icons/2.jpg','icons/3.jpg'];
   
 
 self.addEventListener("install" , (ev)=>{ 
@@ -51,7 +52,7 @@ self.addEventListener('activate' ,(ev)=>{
 ////////////////////////////msg/////msg///////////////////////////////////////////////////
 
 self.addEventListener('sync',(e)=>{});
-
+self.addEventListener('periodicsync', (e)=>{});
 self.addEventListener("push", (event) => {
   if (self.Notification && self.Notification.permission === "granted") {
 

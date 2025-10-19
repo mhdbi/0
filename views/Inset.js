@@ -15,6 +15,7 @@ export default{
        computed: computed,
        mounted(){
         this.data();
+   
       },
 
        template: `
@@ -141,7 +142,7 @@ export default{
 
      <div  class="imgDiv" >
        <i v-if=" item.img1!='' && item.img2!='' " class="fas fa-angle-left down"   style="left:10px;top: 30%;opacity: 0.5;font-size: 31px;position: absolute;color: white;"></i>
-       <img v-if=" item.img1!='' "  :src="item.img1"  class="imgg up"  />	
+       <img v-if=" item.img1!='' "  :src="item.img1"  class="imgg up" @error='(e) => { e.currentTarget.src=e.currentTarget.src }' />	
        <img v-if=" item.img2!='' "  :src="item.img2"  class="imgg down" style="display:none;"/>
        <img v-if="item.img1==''&&item.img2==''"  :src="userImg" class="imgg up" />
        <i v-if="item.img1!=''&&item.img2!=''" class="fas fa-angle-right up"    style="right:10px;top:30%;opacity: 0.5;font-size: 31px;position: absolute;color:white;"></i>
