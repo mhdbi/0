@@ -212,7 +212,8 @@ const methodss={
                            })
                            this.mydata=y;     this.vadata=y;
       
-              if(this.mydata.length<=0)return setTimeout( this.data , 1000);       
+              if(this.mydata.length<=0)return setTimeout( this.data , 1000);    
+
               // for add the semeler items to the hash arry
                 this.mydata.forEach(e=>{
                     var ee= e.title.split(' '),arr=[];
@@ -220,7 +221,7 @@ const methodss={
                         this.mydata.forEach((i,y)=>{   
                           var ii= i.title.split(' '),iii;
                               ii.length<=2?iii=0:iii=1;
-                          if(e!=i && ee[iii]==ii[iii]){ 
+                          if(e!=i&& ee.length==ii.length && ee[iii]==ii[iii]){ 
                             arr.push({name:ii.slice(1).join(' '),item:i});
                             e.hash=arr;
                           }
@@ -230,7 +231,11 @@ const methodss={
               // for remove the same items title from the myadta arry
                 this.mydata.forEach(e=>{
                     if(e.hash){
-                      e.hash.forEach(x=> this.mydata.indexOf(x.item)>=0?this.mydata.splice(x.it,1):null );
+                       var i;
+                      e.hash.forEach((x)=>{  
+                        i= this.mydata.indexOf(x.item);
+                        i>=0?this.mydata.splice(i,1):null;}
+                        );
                       }
                       })
     },
@@ -1067,7 +1072,7 @@ if(this.siteText=='text'){
  
  
    backGround: function(){
-     return `background: linear-gradient(${this.counter+`deg`}, rgb(255, 230, 109), rgb(63, 52, 13));`  
+     return `background: linear-gradient(${this.counter+`deg`}, rgb(88 ,51, 98), rgb(238 ,238, 238))`  
   //<div :style="filter" >for learn</div>
    },
  
@@ -1120,7 +1125,7 @@ if(this.siteText=='text'){
 
      
  <div :class="{ cartBtn2 : $route.name=='inset'||$route.name=='search' }" class="cartBtn"  v-if='$route.name=="home"||$route.name=="inset"||$route.name=="search"' @click="cart=1">
-    <img src="icons/purchase.png" style="filter: hue-rotate(159deg); width: 40%;"/> 
+    <img src="icons/purchase.png" style="filter: hue-rotate(38deg); width: 40%;"/> 
     <div :class="{ after2 : $route.name=='inset'||$route.name=='search' }" class="after" > </div>
  </div>
 
@@ -1358,7 +1363,7 @@ if(this.siteText=='text'){
        //    this.funUser();
          this.created();
          this.indexedDB();
-        // setTimeout(this.coloring,5000);
+         setTimeout(this.coloring,6000);
 
         // this.notificM();
         // this.siteOrders()

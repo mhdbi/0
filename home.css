@@ -123,9 +123,8 @@ a {
     flex-grow: 1;
     max-width: 140px;
     height: 14vh;
-box-shadow: rgb(21 0 0) 0px -5px 10px inset, rgb(226 185 240) 0px 5px 10px inset, rgb(0, 0, 0) 0px 13px 17px;
-    background: linear-gradient(359deg, rgb(104 47 119), rgb(238 238 238)); 
-
+    box-shadow: rgb(21 0 0) 0px -5px 10px inset, rgb(253 253 253) 0px 5px 10px inset, rgb(0, 0, 0) 0px 13px 17px;
+    background: linear-gradient(359deg, rgb(88 51 98), rgb(238 238 238));
 }
 
 :root{
@@ -379,18 +378,19 @@ box-shadow: 0px 0px 10px black;
 
 
 .cartBtn {
-  transition: all 3s;
-  z-index: 900;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  position: absolute;
-  bottom: 1.5vh;
-  width: 9vh;
-  height: 9vh;
-  background: radial-gradient(circle farthest-corner at 37px 15px, #fff8a8, #837439, #342d12, #1f1d0f);
-  box-shadow: -4px 4px 9px #0000006b, 3px -3px 9px #f3f3f34f;
-  border-radius: 50%;
+      transition: all 3s;
+    z-index: 900;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: absolute;
+    bottom: 1.5vh;
+    width: 9vh;
+    border-bottom: 0.1px solid #1f1f1f;
+    height: 9vh;
+    background: radial-gradient(circle farthest-corner at 37px 15px, #fffdfd, #9b9b9b, #312834, #000000);
+    box-shadow: -5px 16px 9px #000000c7;
+    border-radius: 50%;
 
 }
 
@@ -1338,10 +1338,6 @@ img{
     box-shadow: 0px 0px 8px #ff0000, 0px 0px 11px #000000;
 
 }
-
-
-
-
 
 
 

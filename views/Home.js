@@ -71,19 +71,19 @@
  
    <ul class="vertical-nav" style="left:0px;" >
   
-     <li  @click="$router.push({ name : 'inset', params :{ inset : 'خضار وفواكه' } })" >
+     <li  @click="$router.push({ name : 'inset', params :{ inset : 'خضار وفواكه' } })" :style="backGround">
        <a style='animation: 6s lightCircle ease-in 0s;'>  </a>
           <img src="icons/fruits.jpg"  class='imgHome' />
      </li>
  
-     <li  @click="$router.push({name : 'inset',params:{inset:'مواد غذائية'}})" >
+     <li  @click="$router.push({name : 'inset',params:{inset:'مواد غذائية'}})" :style="backGround">
        <a style='animation: 15s lightCircle ease-in 0s;'> </a>
          <img src="icons/dairy-products.jpg"  class='imgHome' />
      </li>
      
  
      
-     <li @click="$router.push({name : 'inset',params:{inset:'حلويات'}})" >
+     <li @click="$router.push({name : 'inset',params:{inset:'حلويات'}})" :style="backGround">
        <a style='animation: 6s lightCircle ease-in 0s;'> </a>
        <img src="icons/chocolate.jpg"  class='imgHome' />
      </li>
@@ -103,17 +103,17 @@
  
  
    <ul style="right:0px;" class="vertical-nav">
-     <li @click="$router.push({name : 'inset',params:{inset:'نقرشات'}})" >
+     <li @click="$router.push({name : 'inset',params:{inset:'نقرشات'}})" :style="backGround">
       <a style='animation: 8s lightCircle ease-in 1s forwards;'> </a>
        <img src="icons/nuts.jpg"  class='imgHome' />
      </li>
 
-     <li @click="$router.push({name : 'inset',params:{inset:'مشروبات'}})" >
+     <li @click="$router.push({name : 'inset',params:{inset:'مشروبات'}})" :style="backGround">
        <a style='animation: 5s lightCircle ease-in 0s;'>  </a>
        <img src="icons/drink.jpg"  class='imgHome' />  
      </li>
      
-    <li @click="$router.push({name : 'inset',params:{inset:'تبغيات'}})" >
+    <li @click="$router.push({name : 'inset',params:{inset:'تبغيات'}})"  :style="backGround">
        <a style='animation: 11s lightCircle ease-in 0s;'>  </a>
         <img src="icons/cigarette.jpg"   class='imgHome'/>      
     </li>

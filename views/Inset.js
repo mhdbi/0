@@ -115,7 +115,7 @@ export default{
 
              <div  class="centerPM" style="border:none;" >{{item.count}}: العدد</div> 
              
-             <div class="centerPM">
+             <div class="centerPM" style:'color: #a7eff4ff;'>
                       {{item.price}} : السعر 
              </div>
 
