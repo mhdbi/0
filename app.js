@@ -1074,7 +1074,7 @@ if(this.siteText=='text'){
  
  
    backGround: function(){
-     return `background: conic-gradient(from ${this.counter+`deg`}, #58c8c8 40deg, #8a4c92 80deg, #ffff4d 155deg, #ffff4d 222deg, #8a459b 293deg, #58c8c8 354deg);`  
+     return `background: conic-gradient(from ${this.counter+`deg`}, #6de5e5 40deg, #a862b1 80deg, #ffff4d 155deg, #ffff4d 222deg, #a862b1 293deg, #6de5e5 354deg);`  
   //<div :style="filter" >for learn</div>
    },
  

@@ -123,7 +123,7 @@ a {
     flex-grow: 1;
     max-width: 140px;
     height: 14vh;
-    box-shadow: rgb(42 42 42) 0px -5px 10px inset, rgb(192 192 192) 0px 5px 10px inset, rgb(0, 0, 0) 0px 27px 25px;
+    box-shadow: rgb(42 42 42) 0px -5px 10px inset, rgb(236, 236, 236) 0px 5px 10px inset, rgb(0, 0, 0) 0px 27px 25px;
 }
 
 :root{
