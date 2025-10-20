@@ -104,7 +104,7 @@
  
    <ul style="right:0px;" class="vertical-nav">
      <li @click="$router.push({name : 'inset',params:{inset:'نقرشات'}})" :style="backGround">
-      <a style='animation: 8s lightCircle ease-in 1s forwards;'> </a>
+      <a style='animation: 20s lightCircle ease-in 0s forwards;'> </a>
        <img src="icons/nuts.jpg"  class='imgHome' />
      </li>
 

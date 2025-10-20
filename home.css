@@ -123,8 +123,7 @@ a {
     flex-grow: 1;
     max-width: 140px;
     height: 14vh;
-    box-shadow: rgb(21 0 0) 0px -5px 10px inset, rgb(253 253 253) 0px 5px 10px inset, rgb(0, 0, 0) 0px 13px 17px;
-    background: linear-gradient(359deg, rgb(88 51 98), rgb(238 238 238));
+    box-shadow: rgb(42 42 42) 0px -5px 10px inset, rgb(192 192 192) 0px 5px 10px inset, rgb(0, 0, 0) 0px 27px 25px;
 }
 
 :root{

@@ -68,7 +68,7 @@ const data={
 
 
     warning :  false,
-    scroll :    6   ,
+    scroll :    4   ,
 
     run  : false  , 
     delItem:false,       //for holder delete items
@@ -83,8 +83,8 @@ const data={
   newPass:'',
   
    ///for color
-  colors: ['rgb(255, 230, 109)','rgb(63, 52, 13)','rgb(21, 21, 0)','rgb(249, 224, 146)'],
-  color:[  [255, 230, 109],  [63, 52, 13]  , [21, 21 ,  0] ,[249 , 224, 146] ],
+  //colors: ['rgb(255, 230, 109)','rgb(63, 52, 13)','rgb(21, 21, 0)','rgb(249, 224, 146)'],
+  //color:[  [255, 230, 109],  [63, 52, 13]  , [21, 21 ,  0] ,[249 , 224, 146] ],
   revColor:true ,
 
   //for cart
@@ -214,30 +214,31 @@ const methodss={
       
               if(this.mydata.length<=0)return setTimeout( this.data , 1000);    
 
-              // for add the semeler items to the hash arry
-                this.mydata.forEach(e=>{
-                    var ee= e.title.split(' '),arr=[];
+          // for add the semeler items to the hash arry
+                // this.mydata.forEach(e=>{
+                //     var ee= e.title.split(' '),arr=[];
                       
-                        this.mydata.forEach((i,y)=>{   
-                          var ii= i.title.split(' '),iii;
-                              ii.length<=2?iii=0:iii=1;
-                          if(e!=i&& ee.length==ii.length && ee[iii]==ii[iii]){ 
-                            arr.push({name:ii.slice(1).join(' '),item:i});
-                            e.hash=arr;
-                          }
-                        })
+                //         this.mydata.forEach((i,y)=>{   
+                //           var ii= i.title.split(' '),iii;
+                //               ii.length<=2?iii=0:iii=1;
+                //           if(e!=i&& ee.length==ii.length && ee[iii]==ii[iii]){ 
+                //             arr.push({name:ii.slice(1).join(' '),item:i});
+                //             e.hash=arr;
+                //           }
+                //         })
 
-                      })
-              // for remove the same items title from the myadta arry
-                this.mydata.forEach(e=>{
-                    if(e.hash){
-                       var i;
-                      e.hash.forEach((x)=>{  
-                        i= this.mydata.indexOf(x.item);
-                        i>=0?this.mydata.splice(i,1):null;}
-                        );
-                      }
-                      })
+                //       })
+
+           // for remove the same items title from the myadta arry
+                // this.mydata.forEach(e=>{
+                //     if(e.hash){
+                //        var i;
+                //       e.hash.forEach((x)=>{  
+                //         i= this.mydata.indexOf(x.item);
+                //         i>=0?this.mydata.splice(i,1):null;}
+                //         );
+                //       }
+                //       })
     },
 
 
@@ -559,7 +560,7 @@ info: function(){
 
    compressor: function(){
   var input = document.getElementById('files');    const WIDTH =200;
-    if(input){ console.log(77)
+    if(input){ 
       input.addEventListener('change',(x)=>{
 
       var oldImg = x.target.files[0];    this.fileN = oldImg.name;
@@ -585,10 +586,9 @@ info: function(){
                  newImg.width=80;
                  newImg.height=e.target.height*80/e.target.width;
  
-                  var dataA = newImgUrl.split(",");    
+                  var dataA = oldImgUrl.split(",");    
                   var mimeType = dataA[0].match(/:(\w.+);/)[1];
-                  var data = dataA[1];
-             var file={ fileName: this.fileN , mimeType: mimeType , data: data} 
+             var file={ fileName: this.fileN , mimeType: mimeType , data: dataA[1]} 
              
                 if(this.files.length >= 2){ 
                   this.$refs.xxxx.style.display="block";
@@ -995,32 +995,34 @@ if(this.cartItem.length==0)
 
 
 
-//  onScroll: function(e){
-//   // 
-//      var lastScrollTop=0;
-//    $(".inset").on("scroll", ()=>{    
-//  // <!-- 
-//  //     var scrollabc = 140 ;
-//  //     var nowScrollTop = $(".inset").scrollTop();
-//  //     if(nowScrollTop > scrollabc){
-//  //       if(nowScrollTop > lastScrollTop){
+ onScroll: function(e){
+   
+   //  var lastScrollTop=0;
+   var inset = document.getElementsByClassName("inset")[0];
+   var panal = document.getElementsByClassName('panels')[0];
+   if(inset&&panal){ 
+   inset.addEventListener("scroll", ()=>{    
+ // <!-- 
+ //     var scrollabc = 140 ;
+ //     var nowScrollTop = $(".inset").scrollTop();
+ //     if(nowScrollTop > scrollabc){
+ //       if(nowScrollTop > lastScrollTop){
         
-//  //         $(".topBar").height("-=6");
-//  //       }else{
-//  //         $(".topBar").height("+=6");
+ //         $(".topBar").height("-=6");
+ //       }else{
+ //         $(".topBar").height("+=6");
          
-//  //       }
-//  //     }
-//  //     lastScrollTop=nowScrollTop; -->
- 
- 
-//    if(($(".panels").height() - ($(window).height() + $(".inset").scrollTop()) <= 0)&& this.scroll < Object.keys(this.mydata).length){
-//        this.scroll +=2;
- 
-//     }
- 
-//  })
-//  },
+ //       }
+ //     }
+ //     lastScrollTop=nowScrollTop; -->
+   if((panal.offsetHeight - (window.innerHeight + inset.scrollTop) <= 0)&& this.scroll < Object.keys(this.mydata).length){
+       this.scroll +=2;
+    }
+  })
+}else{
+  this.onScroll();
+}
+ },
  
  
 
@@ -1065,14 +1067,14 @@ if(this.siteText=='text'){
  const computed ={
      data4: function(){  
  
-       return this.mydata//.slice(0, this.scroll);
+       return this.mydata.slice(0, this.scroll);
      },
 
   
  
  
    backGround: function(){
-     return `background: linear-gradient(${this.counter+`deg`}, rgb(88 ,51, 98), rgb(238 ,238, 238))`  
+     return `background: conic-gradient(from ${this.counter+`deg`}, #58c8c8 40deg, #8a4c92 80deg, #ffff4d 155deg, #ffff4d 222deg, #8a459b 293deg, #58c8c8 354deg);`  
   //<div :style="filter" >for learn</div>
    },
  
@@ -1125,7 +1127,7 @@ if(this.siteText=='text'){
 
      
  <div :class="{ cartBtn2 : $route.name=='inset'||$route.name=='search' }" class="cartBtn"  v-if='$route.name=="home"||$route.name=="inset"||$route.name=="search"' @click="cart=1">
-    <img src="icons/purchase.png" style="filter: hue-rotate(38deg); width: 40%;"/> 
+    <img src="icons/purchase.png" style="filter: hue-rotate(20deg); width: 40%;"/> 
     <div :class="{ after2 : $route.name=='inset'||$route.name=='search' }" class="after" > </div>
  </div>
 
@@ -1363,8 +1365,8 @@ if(this.siteText=='text'){
        //    this.funUser();
          this.created();
          this.indexedDB();
-         setTimeout(this.coloring,6000);
-
+         setTimeout(this.coloring,4000);
+         
         // this.notificM();
         // this.siteOrders()
    

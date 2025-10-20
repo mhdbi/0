@@ -15,8 +15,13 @@ export default{
        computed: computed,
        mounted(){
         this.data();
+        this.onScroll();
    
       },
+       beforeDestroy() {
+             var inset = document.getElementsByClassName("inset")[0];
+             inset.removeEventListener('scrooll', this.recog.start());
+             },
 
        template: `
  <div   class="inset" >
@@ -113,9 +118,9 @@ export default{
            <div class="centerPM"> المجموع: {{item.count*item.price}}</div>
 
 
-             <div  class="centerPM" style="border:none;" >{{item.count}}: العدد</div> 
+             <div  class="centerPM" style='border:none;color: #affaffff;'>{{item.count}}: العدد</div> 
              
-             <div class="centerPM" style:'color: #a7eff4ff;'>
+             <div class="centerPM" >
                       {{item.price}} : السعر 
              </div>
 
