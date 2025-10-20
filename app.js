@@ -502,7 +502,6 @@ deleteItem:function(){
 },
 
 
-
 api: async function(){   // for edit and add
       var obj = await this.info();
 

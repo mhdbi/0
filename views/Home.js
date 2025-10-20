@@ -6,11 +6,25 @@
         return data;
                   
              },
-           methods : methodss,    
+           methods : {...methodss, 
+
+             er:function(e){
+              var n=navigator.onLine;
+              if(n){
+                e.currentTarget.style.display='flex';
+                e.currentTarget.src=e.currentTarget.src;
+               }else{
+                e.currentTarget.style.display='none';
+                e.currentTarget.src=e.currentTarget.src;
+              
+               }
+             },
+
+           },    
            computed: computed, 
              mounted() {       
                this.recognition();
-
+               
              },
             beforeDestroy() {
              window.removeEventListener('click', this.recog.start());
@@ -55,6 +69,8 @@
   <div class='between'></div>
 </div>
 
+<img style ='position: absolute;top: 1%;width: 100%;z-index: 2;filter: invert(0.14) drop-shadow(0px 20px 6px black);' 
+src='thin (1).png' alt='no net' @error='er($event)' />
 
 <div class="openBottom">
   <div class='between'></div>
@@ -149,24 +165,24 @@
           <div style="width: 95vw;height: 95vh;position: relative;transition: 2s;display: flex; flex-direction: column;align-items: center;justify-content: start;    border-radius: 2rem; background: linear-gradient(311deg, black, #222222);">
             
             
-           <div class="plase" :class="{ shake2 : askMe }">
+           <div class="plase" >
               <div style="display: flex;justify-content: center;align-items: center;width: 100%;">
               Teleshop   لتحميل تطبيق  
               </div>
             </div>
               <div class="itemFlex" style='flex-direction: column;align-items: end;'> 
                 <div class="test5" > أولاً :</div>
-                <img style='width: 95%;height: 16vh;border-radius: 0.5rem;'  src='icons/1.jpg' />
+                <img style='width: 95%;height: 16vh;border-radius: 0.5rem;'  src='icons/1.jpg' @error='er($event)' />
               </div>
 
               <div class="itemFlex" style='flex-direction: column;align-items: end;'> 
                 <div class="test5" >  ثانياُ :</div>
-                <img style='width: 95%;height: 16vh;border-radius: 0.5rem;'    src='icons/2.jpg' />
+                <img style='width: 95%;height: 16vh;border-radius: 0.5rem;'    src='icons/2.jpg' @error='er($event)' />
               </div>
 
                 <div class="itemFlex" style='flex-direction: column;align-items: end;'> 
                   <div class="test5" > ثالثاُ :</div>
-                  <img style='width: 95%;height: 16vh;border-radius: 0.5rem;'    src='icons/3.jpg' />
+                  <img style='width: 95%;height: 16vh;border-radius: 0.5rem;'    src='icons/3.jpg'  @error='er($event)' />
                 </div>
                   
                     <div  class="redButton" @click="downLTips=!downLTips">
