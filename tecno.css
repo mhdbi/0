@@ -49,7 +49,7 @@ text.innerHTML = "welcom-to i-us social media new-webApp---2025".split("").map(
 .test3 {
       letter-spacing: 5vw;
     direction: rtl;
-    color: #000000ba;
+    text-shadow: 0px 11px 6px black;
     font-size: 29px;
     font-weight: 900;
     background: linear-gradient(90deg, hsl(183, 100%, 50%) 10%, #fde068 25%, hsl(295.75deg 33.02% 60.03%) 31%, hsl(171.14deg 90.47% 68.62%) 51%, hsl(55.94deg 100% 71.94%) 71%, hsl(295.2deg 25.66% 59.33%) 86%, hsl(0deg 0% 94.02%) 100%); background-clip: text;

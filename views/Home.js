@@ -53,12 +53,14 @@
 
     </div>
 
-    
+    <!- ----------------- ------------>
    <div class="test3" dir="rtl">
+   <img style ='position: absolute;top:0;left:0vw;width: 10vw;z-index: 2;filter: invert(0.1) drop-shadow(0px 20px 6px black);' 
+     src='stars.png' alt='no net' @error='er($event)' />
+
      <div >  Tele shop  </div>
-
    </div>
-
+  <!- ----------------- ------------>
    </div>
  </header>
 
@@ -69,8 +71,8 @@
   <div class='between'></div>
 </div>
 
-<img style ='position: absolute;top: 1%;width: 100%;z-index: 2;filter: invert(0.14) drop-shadow(0px 20px 6px black);' 
-src='thin (1).png' alt='no net' @error='er($event)' />
+<img style ='position: absolute;top: 20%;width: 100%;z-index: 2;filter: invert(0.05) drop-shadow(0px 15px 6px black);' 
+src='thin.png' alt='no net' @error='er($event)' />
 
 <div class="openBottom">
   <div class='between'></div>
