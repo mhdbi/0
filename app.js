@@ -3,12 +3,13 @@
 
 const data={
 
-  url : "https://script.google.com/macros/s/AKfycbyVKJnEGb2KYOOi6pHG0m0_hLmVwoZo9ecmxwULAwWE0a3NeXYgKdC22dOjJZKMK-nrxw/exec",
+  url : "https://script.google.com/macros/s/AKfycby2lrAKSJi_gAE9od_M_y1GuArD43SljOmfYC8z8VmI9lkz2ryg0A863W5MabXaeRE9MA/exec",
   db :null ,
   dbData: null ,
   recog:null,
   searchItems :[],                                 // for search result
   counter:0,
+  
 
   downLTips:false,                                 //for download tips
   iname:  localStorage.getItem('iname')  ||null,
@@ -24,14 +25,13 @@ const data={
 
 
   wts    : "https://wa.me/+963981715375",
-  userImg:"icons/LOGO.png",
   indexItem:null,                           //for edit with index of item 
  
   orderInfoSite:0,                         //for open close windo of site , index , order
 
 
   user:null,                             //for merchent user info only
-
+  xhr:null ,
 
   item:['','','','','','','','',''],   //for add item only
   world :"",
@@ -168,7 +168,7 @@ const methodss={
 
 
             // ///////////////////////
-         created: function (){
+         created:  function (){
           
             var x = 1;
             var y ="created";
@@ -181,7 +181,13 @@ const methodss={
                return r.json();
                }
           }).then(e=>{ 
+            console.log(e)
               this.allmydata = e;
+              this.allmydata.map(x=>{ 
+                 x.count=0 ;
+                 x.img1id= `https://drive.google.com/thumbnail?id=${x.img1id}&sz=w1000`;
+                });
+
             
             //  this.allmydata.splice(0,1);
             //  this.allmydata  = e.sort((a,b)=>0.5-Math.random());
@@ -204,6 +210,8 @@ const methodss={
 
            data: function(){
               // for check the router param to filter the allmyData
+              if(this.allmydata.length<=0)return setTimeout( this.data , 1000); 
+
                      var y = [];
                      this.allmydata.forEach(x=>{    
                             if(x.world==this.$route.params.inset){
@@ -212,8 +220,7 @@ const methodss={
                            })
                            this.mydata=y;     this.vadata=y;
       
-              if(this.mydata.length<=0)return setTimeout( this.data , 1000);    
-
+              
           // for add the semeler items to the hash arry
                 // this.mydata.forEach(e=>{
                 //     var ee= e.title.split(' '),arr=[];
@@ -502,63 +509,46 @@ deleteItem:function(){
 },
 
 
-api: async function(){   // for edit and add
-      var obj = await this.info();
 
-     fetch(this.url,{method:"POST",body:JSON.stringify(obj)}) 
-     .then(r=> {  
-      if(!r.ok){ 
-      return Promise.reject("0");
-         }else{
-          this.$refs.oo.style.display="flex";
-          return r.json();
-         }
-      }).then(x=>{
-        this.files=[]; this.imgId=[];
-        this.run=false;
-      })
-      .catch(e=>{
-       this.imgId=[];this.files=[];
-       this.FUNname = this.api ;
-       this.FUNrun =true;
-       this.run=false;
-      }) 
-      
+
+
+//////////for post data 
+
+
+// api: async function(){   // for edit and add
     
-},
+//   var obj =  this.info();
+
+//      fetch(this.url,{method:"POST",body:JSON.stringify(obj)}).then(r=> {  
+//       if(!r.ok){  return Promise.reject("0");    }else{  return r.json();}
+//       }).then(r=>{
+//           this.$refs.oo.style.display="flex";    // تمت العملية بنجاح
+//           this.imgId=[] , this.files=[]  , this.run=false;
+         
+//       }).catch(e=>{
+//        this.imgId=[];this.files=[];
+//        this.FUNname = this.api ;
+//        this.FUNrun =true;
+//        this.run=false;
+//       });
+//     },
 
 
 
 info: function(){
-     this.run=true;
-
-     this.world==""? this.world=this.item[2]      : this.item[2]  = this.world;
-     this.price==""? this.price=this.item[3]      : this.item[3]  = this.price;
+    // this.run=true;
+     
      this.title==""? this.title=this.item[0]      : this.item[0]  = this.title;
      this.post== ""? this.post=this.item[1]       : this.item[1]  =  this.post;
-     this.hash== ""? this.hash=this.item[9]       : this.item[9]  =  this.hash;
-     ///////////////////////////////////////////////////////////////////////
-     this.item[8]=0;
-     ///////////////////////////////////////////////////////////////////////
-     var files = this.files;
-     ///////////////////////////////////////////////////////////////////////
-     //////////////////////////////////////////////////////////////////////
-      return new Promise(r => {
-             if (files.length==0) {
-              r({file: null ,item: this.item  ,imgId:this.imgId ,indexItem:this.indexItem });
-        }else{  
-              r({file: files ,item: this.item ,imgId:this.imgId ,indexItem:this.indexItem});
+     this.world==""? this.world=this.item[2]      : this.item[2]  = this.world;
+     this.price==""? this.price=this.item[3]      : this.item[3]  = this.price;
+     
+  return {file: this.files.length==0?null:this.files ,item: this.item ,imgId:this.imgId ,indexItem:this.indexItem};
              
-        }
-       })
 },
 
-
-
-
-
    compressor: function(){
-  var input = document.getElementById('files');    const WIDTH =200;
+  var input = document.getElementById('files');    const WIDTH =500;
     if(input){ 
       input.addEventListener('change',(x)=>{
 
@@ -582,10 +572,9 @@ info: function(){
                 
              let newImg = document.createElement("img");
                  newImg.src= newImgUrl;   newImg.class='imgimg';
-                 newImg.width=80;
-                 newImg.height=e.target.height*80/e.target.width;
+                 newImg.width=80;         newImg.height=e.target.height*80/e.target.width;
  
-                  var dataA = oldImgUrl.split(",");    
+                  var dataA = newImgUrl.split(",");    
                   var mimeType = dataA[0].match(/:(\w.+);/)[1];
              var file={ fileName: this.fileN , mimeType: mimeType , data: dataA[1]} 
              
@@ -612,7 +601,7 @@ info: function(){
  },
  
 
-
+///////////////////////
 
 
 

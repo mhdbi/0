@@ -3,39 +3,84 @@
 export default{
 
     
-     Account : { 
+ Account : { 
         
-        data() {
- return data;
-           
-      },
-    methods : methodss,    
-    computed: {
-  
+    data() {
+           return data;
+           },
+
+     methods : {...methodss,
+          xml:function(){ 
+              var status =document.getElementById('status'),
+                  percentText=document.getElementById('percentText'),
+                  progressBar =document.getElementById('progressBar'),
+                  xhr=new XMLHttpRequest();
+              if(status&&percentText&&progressBar){
+                      xhr.upload.onprogress=(event)=>{
+                        console.log(1);
+                        if(event.lengthComputable){
+                          var pec = (event.loaded / event.total)*100;
+                            progressBar.value=pec;
+                            percentText.textContent=Math.round(pec)+'%';
+                            status.textContent='Uploading...';
+                        }
+                      };
+                      xhr.addEventListener('load',()=>{
+                        if(xhr.status>=200 && xhr.status<300){
+                          status.textContent='Upload successful!'; progressBar.value=100;percentText.textContent=100+'%';
+                          this.imgId=[] ,this.files=[],this.title='',this.world='',this.post='',this.price='';
+                         // JSON.parse(xhr.responseText);
+                        }else{
+                          status.textContent='Upload failed!';
+                          this.imgId=[] , this.files=[];
+                          this.FUNname = this.xhr , this.FUNrun =true ,  this.run=false;
+                        }
+                      });
+                      xhr.addEventListener('error',()=>{
+                          status.textContent='Upload error failed!';
+                          this.imgId=[] , this.files=[];
+                          this.FUNname = this.xhrApi , this.FUNrun =true ,  this.run=false;
+                      });
+                      xhr.addEventListener('abort',()=>{
+                        status.textContent='upload aborted.';
+                      });
+              progressBar.value=50; status.textContent='Uploading...';percentText.textContent=50+'%';
+          var obj =  this.info();
+              xhr.open('POST' , this.url ,true);  // this.xhr.withCredentials=true;
+              xhr.setRequestHeader('Content-Type' , 'text/plain;charset=utf-8' );
+              xhr.send(JSON.stringify( obj) );
+
+              }else{ setTimeout(this.xhrEv ,700);  }
+            },
+
+
+    },    
     
-  },
+    mounted() {
+ 
+    },
  
     template: ` 
    
 
 
-   <div   >
+<div >
 
-<div v-if="run" style="width:100vw;height:100vh;position:fixed;background:#0a0a0a8c;z-index:9998;
-     display: flex;justify-content: center;align-items: center;">
- <div class="containerW" >
-    <div class="it item1"></div>
-    <div class="it item2"></div>
-    <div class="it item3"></div>
-  </div>
-</div>
+    <div v-if="run" style="width:100vw;height:100vh;position:fixed;background:#0a0a0a8c;z-index:9998;
+        display: flex;justify-content: center;align-items: center;">
+    <div class="containerW" >
+        <div class="it item1"></div>
+        <div class="it item2"></div>
+        <div class="it item3"></div>
+      </div>
+    </div>
 
-<div ref="oo" class="oo"  style="z-index:9999;width:100%;height:100%;" @click="x(),$router.push({ name : 'home' }),bac=1,run=false" >
-  <div  style="justify-content: center;align-items: center;flex-direction: column;">
-   <h1   class="oh"  > اضغط للرجوع</h1>
-   <h5 class="display_error">تمت العملية بنجاح </h5>
-  </div>
-</div>
+    <div ref="oo" class="oo"  style="z-index:9999;width:100%;height:100%;" @click="x(),$router.push({ name : 'home' }),bac=1,run=false" >
+      <div  style="justify-content: center;align-items: center;flex-direction: column;">
+      <h1   class="oh"  > اضغط للرجوع</h1>
+      <h5 class="display_error">تمت العملية بنجاح </h5>
+      </div>
+    </div>
 
  
 
@@ -258,7 +303,7 @@ export default{
  </div>
 
  <div class="select" style="width:100%" >
-   <select @change="onoff()" v-model="world" class="world" dir="rtl">
+   <select @change="" v-model="world" class="world" dir="rtl">
     <option value="">اختر مكان الظهور</option>
     <option >خضار وفواكه</option>
     <option >مواد غذائية</option>
@@ -289,14 +334,14 @@ export default{
 
 
 
-
-
-
+  <progress id="progressBar" value="0" max="100" style='width: 80%;height: 2.5vh;margin-top: 1vh;filter: drop-shadow(2px 4px 6px black);'></progress>
+  <span id="percentText" style='text-shadow: 0px 0px 5px wheat;'>0%</span>
+  <div id="status" style='text-shadow: 0px 0px 5px wheat;'></div>
 
 
 
           <div class="button" style="margin-bottom:75px;">
-              <div class="login" @click="api()">تأكيد العملية</div>
+              <div class="login" @click="xml()">تأكيد العملية</div>
           </div>
           
           <div >

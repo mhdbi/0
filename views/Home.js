@@ -55,7 +55,7 @@
 
     <!- ----------------- ------------>
    <div class="test3" dir="rtl">
-   <img style ='position: absolute;top:0;left:0vw;width: 10vw;z-index: 2;filter: invert(0.1) drop-shadow(0px 20px 6px black);' 
+   <img style ='position: absolute;top:0;left:0vw;width: 10vw;z-index: 2;filter: invert(0.1) drop-shadow(0px 18px 6px black);' 
      src='stars.png' alt='no net' @error='er($event)' />
 
      <div >  Tele shop  </div>

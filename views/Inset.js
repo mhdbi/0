@@ -24,6 +24,15 @@ export default{
               
                }
              },
+            dimintion:function(e){
+                  var img= e.currentTarget;
+                  var w=img.offsetWidth  ,  h=img.offsetHeight , p=img.parentNode.offsetWidth;
+                  // we take h/w  to git the aspect ratio from the width
+                  img.style.width= p+'px';
+                  img.style.height= p*h/w+'px';
+
+             },
+
 
            }, 
 
@@ -161,12 +170,9 @@ export default{
 
 
      <div  class="imgDiv" >
-       <i v-if=" item.img1!='' && item.img2!='' " class="fas fa-angle-left down"   style="left:10px;top: 30%;opacity: 0.5;font-size: 31px;position: absolute;color: white;"></i>
-       <img v-if=" item.img1!='' "  :src="item.img1"  class="imgg up" @error='er($event)' alt='no' />	
-       <img v-if=" item.img2!='' "  :src="item.img2"  class="imgg down" style="display:none;"/>
-       <img v-if="item.img1==''&&item.img2==''"  :src="userImg" class="imgg up" />
-       <i v-if="item.img1!=''&&item.img2!=''" class="fas fa-angle-right up"    style="right:10px;top:30%;opacity: 0.5;font-size: 31px;position: absolute;color:white;"></i>
-    
+
+      <img v-if=" item.img1id!='' "  :src='item.img1id'   class="imgg up" @load='dimintion($event)' @error='er($event)' alt='no' />	
+
      </div>
  
 
@@ -201,5 +207,19 @@ export default{
  
  
  
+// for multiple imges
+///////////////////////////////////////////////
+    // <div  class="imgDiv" >
+     
+    //    <i v-if=" item.img1!='' && item.img2!='' " class="fas fa-angle-left down"   style="left:10px;top: 30%;opacity: 0.5;font-size: 31px;position: absolute;color: white;"></i>
+    //    <img v-if=" item.img1!='' "  :src="item.img1"  class="imgg up" @error='er($event)' alt='no' />	
+    //    <img v-if=" item.img2!='' "  :src="item.img2"  class="imgg down" style="display:none;"/>
+    //   <i v-if="item.img1!=''&&item.img2!=''" class="fas fa-angle-right up"    style="right:10px;top:30%;opacity: 0.5;font-size: 31px;position: absolute;color:white;"></i>
+    
+    //  </div>
+/////////////////////////////////////////////////
+
+
+
 
 }
