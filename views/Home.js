@@ -164,7 +164,7 @@ src='icons/thin.png' alt='no net' @error='er($event)' />
         <div style="z-index: 901;width: 100vw;height: 100vh;position: absolute;background: rgb(255 255 255 / 70%);flex-direction: column;
                 display: flex;justify-content: center;align-items: center;" v-if="downLTips"> 
 
-          <div style="top:-1vh;width: 85vw;height: 90vh;position: relative;transition: 2s;display: flex; flex-direction: column;align-items: center;justify-content: start;    border-radius: 2rem; background: linear-gradient(75deg, black, rgb(81, 106, 105));box-shadow: -4vw 2.5vh 15px black;">
+          <div style="top:-5vh;width: 85vw;height: 85vh;position: relative;transition: 2s;display: flex; flex-direction: column;align-items: center;justify-content: start;    border-radius: 2rem; background: linear-gradient(75deg, black, rgb(81, 106, 105));box-shadow: -4vw 2.5vh 15px black;">
             
             
            <div class="plase" >
@@ -174,7 +174,7 @@ src='icons/thin.png' alt='no net' @error='er($event)' />
             </div>
               <div class="itemFlex" style='flex-direction: column;align-items: center;'> 
                 <div class="test5" > أولاً :</div>
-                <img style='width: 85%;height: 16vh;border-radius: 0.5rem;width: 300px;'  src='icons/1.jpg' @error='er($event)' />
+                <img style='max-width: 100%;height: 16vh;border-radius: 0.5rem;width: 300px;'  src='icons/1.jpg' @error='er($event)' />
               </div>
 
               <div class="itemFlex" style='flex-direction: column;align-items: center;'> 
