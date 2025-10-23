@@ -49,20 +49,20 @@
 
 
 
-async function selectImg() {
-  try{
-    const [fileHandle] = await window.showOpenFilePicker({
-      types:[{ description: 'Images' , accept :{'Images/*' : ['.png','.gif','.jpeg','.jpg']} }],
-      multiple :false
-    });
-    const file =await fileHandle.getFile();
-    console.log(file)
-  }catch(err){
-    console.log(1)
-    console.log(err)
-  }
+// async function selectImg() {
+//   try{
+//     const [fileHandle] = await window.showOpenFilePicker({
+//       types:[{ description: 'Images' , accept :{'Images/*' : ['.png','.gif','.jpeg','.jpg']} }],
+//       multiple :false
+//     });
+//     const file =await fileHandle.getFile();
+//     console.log(file)
+//   }catch(err){
+//     console.log(1)
+//     console.log(err)
+//   }
   
-}
+// }
 
 
     // import v from "./test.js";  //need module

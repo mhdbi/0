@@ -19,20 +19,7 @@
               
                }
              },
-          selectImg:async function() {
-                    try{
-                      const [fileHandle] = await window.showOpenFilePicker({
-                        types:[{ description: 'Images' , accept :{'Images/*' : ['.png','.gif','.jpeg','.jpg']} }],
-                        multiple :false
-                      });
-                      const file =await fileHandle.getFile();
-                      console.log(file)
-                    }catch(err){
-                      console.log(1)
-                      console.log(err)
-                    }
-                    
-                  }
+          
            },    
            computed: computed, 
              mounted() {       
@@ -71,7 +58,7 @@
    <img style ='position: absolute;top:0;left:0vw;max-width: 50px;width: 10vw;z-index: 2;filter: invert(0.15) drop-shadow(0px 17px 6px black);' 
      src='icons/stars.png' alt='no net' @error='er($event)' />
 
-     <div @click='selectImg()'>  Tle   </div>
+     <div >  Tele shop  </div>
    </div>
   <!- ----------------- ------------>
    </div>
