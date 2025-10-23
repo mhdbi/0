@@ -31,9 +31,9 @@
       
       <progress id="progressBar" value="0" max="100"></progress>
       <span id="percentText">0%</span>
-      <div id="status"></div>
+      <div id="status" onclick="selectImg()" style="background: red;"> hhhh</div>
 
-
+<input type="file" >
 
 
 
@@ -47,14 +47,24 @@
 
 
 
- var arr =[1,2,2,3,4,5,2];
 
-var a=arr;
-var b=arr;
-b[3]=9;
-var r=[];
-if(r){console.log(1)}else{console.log(0)}
-console.log(a)
+
+async function selectImg() {
+  try{
+    const [fileHandle] = await window.showOpenFilePicker({
+      types:[{ description: 'Images' , accept :{'Images/*' : ['.png','.gif','.jpeg','.jpg']} }],
+      multiple :false
+    });
+    const file =await fileHandle.getFile();
+    console.log(file)
+  }catch(err){
+    console.log(1)
+    console.log(err)
+  }
+  
+}
+
+
     // import v from "./test.js";  //need module
   
   // const template =()=> import('/test.js').then(t => console.log(t.default));

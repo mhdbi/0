@@ -123,7 +123,7 @@ export default{
          
       
           <div class="titlee" >{{item.title}}</div>
-          <div class='postTextE'></div>
+  
           <div class="postText">
                  <div> {{item.post}}   </div>
 

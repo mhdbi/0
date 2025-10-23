@@ -287,8 +287,7 @@ export default{
   <div action="#" class="form-container">
       
       
-<h2  class="title2"> أهلاَ بك <br/>Mohammed   </h2>
- 
+
   <div class="input-box password">
       <input  dir="rtl" type="text" v-model="title"  placeholder="العنوان باختصار" />
   </div>
@@ -303,7 +302,7 @@ export default{
  </div>
 
  <div class="select" style="width:100%" >
-   <select @change="" v-model="world" class="world" dir="rtl">
+   <select @change="" v-model="world" class="world" dir="rtl" name='select'>
     <option value="">اختر مكان الظهور</option>
     <option >خضار وفواكه</option>
     <option >مواد غذائية</option>

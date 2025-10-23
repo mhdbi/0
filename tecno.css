@@ -1324,8 +1324,6 @@ select {
    background-image: none;
    flex: 1;
    padding: 0 .5em;
-        text-shadow: 0px 0px 3px #ffffff, 0px 0px 5px #ffffff;
-   color: black;
    cursor:pointer;
    font-size: 15px;
    font-family: 'Open Sans', sans-serif;
@@ -1335,7 +1333,7 @@ select::-ms-expand {
 }
 .select {
      border-radius:2rem;
-    border:2px dashed #fefeff;
+    border:1px dashed #fefeff;
     box-shadow:0px 0px 1px #fff0ef,inset 0px 0px 15px #000000;
     margin-top: 15px;
     position: relative;
@@ -1343,6 +1341,9 @@ select::-ms-expand {
     width: 15em;
     line-height: 3;
     overflow: hidden;
+}
+.select option{
+  color: #000000;
 }
 .select::after {
    content: '\25BC';
@@ -1354,6 +1355,7 @@ select::-ms-expand {
    cursor:pointer;
    pointer-events:none;
    transition:.25s all ease;
+   border-radius: 2rem;
 }
 .select:hover::after {
    color: #23b499;
@@ -1381,20 +1383,7 @@ select::-ms-expand {
   height: 90%;
   width: 95%;
 }
-.title2{
-    text-align: center;
-    text-shadow: 0px 0px 4px;
-    color: #ffffff;
-    position: relative;
-    top: 0px;
-    margin-bottom: 30px;
-    border-bottom: 2px dashed #000000;
-    margin-top: 15px;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 
 .forgetPass{
     position: relative;
@@ -1421,7 +1410,7 @@ select::-ms-expand {
 .input-box input,
 .input-box textarea{
   border-radius:2rem;
-  border:2px dashed #fefeff;
+  border:1px dashed #fefeff;
   box-shadow:0px 0px 1px #fff0ef,inset 0px 0px 15px #000000;
   width: 100%;
   outline: 0;

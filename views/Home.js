@@ -19,7 +19,20 @@
               
                }
              },
-
+          selectImg:async function() {
+                    try{
+                      const [fileHandle] = await window.showOpenFilePicker({
+                        types:[{ description: 'Images' , accept :{'Images/*' : ['.png','.gif','.jpeg','.jpg']} }],
+                        multiple :false
+                      });
+                      const file =await fileHandle.getFile();
+                      console.log(file)
+                    }catch(err){
+                      console.log(1)
+                      console.log(err)
+                    }
+                    
+                  }
            },    
            computed: computed, 
              mounted() {       
@@ -55,10 +68,10 @@
 
     <!- ----------------- ------------>
    <div class="test3" dir="rtl">
-   <img style ='position: absolute;top:0;left:0vw;width: 10vw;z-index: 2;filter: invert(0.15) drop-shadow(0px 17px 6px black);' 
+   <img style ='position: absolute;top:0;left:0vw;max-width: 50px;width: 10vw;z-index: 2;filter: invert(0.15) drop-shadow(0px 17px 6px black);' 
      src='icons/stars.png' alt='no net' @error='er($event)' />
 
-     <div >  Tele shop  </div>
+     <div @click='selectImg()'>  Tele   </div>
    </div>
   <!- ----------------- ------------>
    </div>
@@ -164,7 +177,7 @@ src='icons/thin.png' alt='no net' @error='er($event)' />
         <div style="z-index: 901;width: 100vw;height: 100vh;position: absolute;background: rgb(255 255 255 / 70%);flex-direction: column;
                 display: flex;justify-content: center;align-items: center;" v-if="downLTips"> 
 
-          <div style="top:-5vh;width: 85vw;height: 85vh;position: relative;transition: 2s;display: flex; flex-direction: column;align-items: center;justify-content: start;    border-radius: 2rem; background: linear-gradient(75deg, black, rgb(81, 106, 105));box-shadow: -4vw 2.5vh 15px black;">
+          <div style="top:-5vh;width: 85vw;height: 85vh;position: relative;transition: 2s;display: flex; flex-direction: column;align-items: center;justify-content: start;    border-radius: 2rem; background: linear-gradient(75deg, black, rgb(81, 106, 105));box-shadow: #000000c2 -3.5vw 2.5vh 18px">
             
             
            <div class="plase" >

@@ -355,14 +355,13 @@ box-shadow: 0px 0px 10px black;
     
 .panel {
      filter: drop-shadow(0px 6px 8px #000000);
-    height: 35vh;
+    height: 40vh;
     position: relative;
     width: 99vw;
     background: conic-gradient(from 61deg, #363636 60deg, #0f0f0f 84deg, transparent 84deg, transparent 154deg, #0f0f0f 154deg, #363636 171deg);
     max-width: 500px;
-    margin-bottom: 40px;
-    display: flex
-;
+    margin-bottom: 25px;
+    display: flex;
     justify-content: center;
     text-align: center;
     transition: all 1s;
@@ -947,15 +946,16 @@ width: 4vw;
 }
 
 .page2 {
-  position: static;
-  z-index: 888;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  display: flex;
-  height: 30vh;
-  flex-direction: row;
-  width: 100%;
+ position: static;
+    z-index: 888;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    display: flex;
+    height: 80%;
+    flex-direction: row;
+    width: 100%;
+    background: linear-gradient(0deg, black, #46463d);
 }
 /* 88888888888 */
 
@@ -963,7 +963,7 @@ width: 4vw;
 .imgDiv {
      top: 0;
     position: absolute;
-    height: calc(100% - 12.2vh);
+    height: calc(100% - 10.2vh);
     width: 100%;
     background: linear-gradient(200deg, black -2%, #00000000, #ffffff00), linear-gradient(0deg, #000000 -90% -50%, transparent, transparent);
     align-items: center;
@@ -978,16 +978,14 @@ width: 4vw;
 .holderCount{
   color: #fde068;
   width: 100%;
-  height: 7.5vh;
-  display: flex
-;
+  height: 5.5vh;
+  display: flex;
   flex-direction: row;
   position: absolute;
   bottom: 5.1vh;
   justify-content: center;
   align-items: center;
-  background: conic-gradient(from 135deg at 33%, #191919 3deg, #191919 270deg, #00000000 0deg), conic-gradient(from 136.2deg at 33.68%, #fde068 4deg, #fde068 269deg, #00000000 -7deg), conic-gradient(from 135deg at 34%, #191919 0deg, #191919 270deg, #00000000 3deg), conic-gradient(from 315deg at 66.5%, #cc000000 0deg, #cc000000 270deg, #808067 35deg), conic-gradient(from -46deg at 67%, #ffffff00 0deg, #ffffff00 271deg, #191919 -8deg), conic-gradient(from -45deg at 67.5%, #191919 -11deg, #191919 270deg, #fde068 -8deg);
-  border-bottom: 1.5px solid #fde068;
+  background: conic-gradient(from 135deg at 33%, #191919 3deg, #191919 270deg, #00000000 0deg), conic-gradient(from 135.1deg at 33.5%, #fde068 4deg, #fde068 269deg, #00000000 -7deg), conic-gradient(from 135deg at 34%, #191919 0deg, #191919 270deg, #00000000 3deg), conic-gradient(from 315deg at 66.5%, #cc000000 0deg, #cc000000 270deg, #808067 35deg), conic-gradient(from -46deg at 67%, #ffffff00 0deg, #ffffff00 271deg, #191919 -8deg), conic-gradient(from -45deg at 67.5%, #191919 -11deg, #191919 270deg, #fde068 -8deg); border-bottom: 0.1px solid #fde068;
   box-shadow: inset #000000 3px 5px 15px, inset #000000 -3px 2px 5px;
 }
 
@@ -1018,38 +1016,28 @@ img{
 }
 
 .centerPM{
-  transition: all 0.175s;
-  font-size: 9.8px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  width: 50%;
-  color: #fde068;
-  text-shadow: 0px 0px 1px #b3b3b3;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-  display: flex
-;
-  position: relative;
-}
-
-.postTextE{
-   top: 0;
-    position: absolute;
-    background: linear-gradient(-5deg, black, #262626);
-    z-index: -3;
-    width: 100%;
-    height: 70%;
-
-}
-.postText{
-  color: white;
-    z-index: 0;
-    font-size: 13px;
-    width: 100%;
+    transition: all 0.175s;
+    font-size: 10.5px;
+    width: 50%;
+    color: #fff2be;
+    text-shadow: 1px 3px 3px #000000;
     height: 100%;
-    padding: 8vh 3vh 1vh 0px;
-    text-align: end;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: relative;
+}
+
+
+.postText{
+    position: absolute;
+    right: 35px;
+    top: 55px;
+    color: #93e3cf;
+    text-shadow: 0px 0px 3px #95fff869;
+    z-index: 1;
+    font-size: 13px;
+    text-align: start;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -1085,16 +1073,16 @@ img{
 
 
 .titlee{
-    top: 0px;
+   top: 12px;
+    right: 20px;
     position: absolute;
     color: #f9cbff;
     text-shadow: 0px 0px 3px #b28fbc;
     font-size: 24px;
-    width: 100%;
     z-index: 1;
     display: flex;
+    flex-direction: column;
     justify-content: flex-end;
-  padding: 1vw 6vw 0px 0vh;
 }
 
 
