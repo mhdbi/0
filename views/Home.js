@@ -71,7 +71,7 @@
    <img style ='position: absolute;top:0;left:0vw;max-width: 50px;width: 10vw;z-index: 2;filter: invert(0.15) drop-shadow(0px 17px 6px black);' 
      src='icons/stars.png' alt='no net' @error='er($event)' />
 
-     <div @click='selectImg()'>  Tele   </div>
+     <div @click='selectImg()'>  Tle   </div>
    </div>
   <!- ----------------- ------------>
    </div>
