@@ -67,7 +67,7 @@ text.innerHTML = "welcom-to i-us social media new-webApp---2025".split("").map(
 
 .test5{          /* for download tips  */
     margin-top: 1vh;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: normal;
     letter-spacing: 1.2vw;
     direction: rtl;
@@ -657,12 +657,12 @@ main footer a{
 }
 
 .nav-mune{
-  z-index: 99;
-  background: conic-gradient(from 79deg, #232323 0deg, #232323 40deg, transparent 39deg, transparent 160deg, #232323 160deg);
-  height: 55px;
-  filter: drop-shadow(0px 1.5px 1px #fde068) drop-shadow(0px 2px 0px #000000) drop-shadow(0px 1px 4px black);
-  position: fixed;
-  width: 100%;
+     z-index: 99;
+    background: conic-gradient(from 79deg, #494834 10deg, #323232 40deg, transparent 39deg, transparent 160deg, #323232 164deg, #494834 190deg);
+    height: 55px;
+    filter: drop-shadow(0px 5px 4px black);
+    position: fixed;
+    width: 100%;
 }
  
 

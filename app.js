@@ -181,7 +181,6 @@ const methodss={
                return r.json();
                }
           }).then(e=>{ 
-            console.log(e)
               this.allmydata = e;
               this.allmydata.map(x=>{ 
                  x.count=0 ;
@@ -548,7 +547,7 @@ info: function(){
 },
 
    compressor: function(){
-  var input = document.getElementById('files');    const WIDTH =500;
+  var input = document.getElementById('files');    const WIDTH =600;
     if(input){ 
       input.addEventListener('change',(x)=>{
 
