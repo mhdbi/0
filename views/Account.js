@@ -320,7 +320,7 @@ export default{
   <label  class="label5"  > 
       <div v-if="files.length==0"> اختر صورة  </div>
       <div v-if="files.length>=1"> اختر صورة ثانية </div>
-      <input   name="file"  id="files" style="width:0px;" type="file"  multiple  />
+      <input   name="file"  id="files" style="width:0px;" type="file"  multiple accept='image/*'  />
   </label>
 </div>
 
