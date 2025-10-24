@@ -24,6 +24,12 @@
  
 
   "icons": [
+             {
+                "src": "icons/teleee_icon.svg",
+                "sizes": "144x144",
+                "type": "image/svg+xml",
+                "purpose": "maskable"
+              },
               {
                 "src": "icons/telee_icon.svg",
                 "sizes": "192x192",
