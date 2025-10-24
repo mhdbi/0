@@ -2,23 +2,23 @@
 
 {
   "name":"Teleshop",
-  "id" :"/0",
+  "id" :"/",
   "short_name":"Teleshop",
   "description":"E-commerce-app",
-  "start_url":"https://mhdbi.github.io/0/",
+  "start_url":"/",
   "background_color": "#232323",
   "theme_color":"#232323",
-  "display":"standalone",
+  "display":"fullscreen",
   "display_override":["window-controls-overlay", "standalone", "browser"],
   "dir":"ltr",
-  "scope":"https://mhdbi.github.io/0/",
+  "scope":"/",
   "lang" : "en",
   "orientation":"portrait",
 
   "lanch_handler":{ "client_mode":["navigate-existing","auto"] },
   "handle_links":"preferred",
 
-  "web_apps":[  { "web_app_identity":"https://mhdbi.github.io/0"  }  ],
+  "web_apps":[  { "web_app_identity":"https://mhdbi.github.io/0/"  }  ],
   "categories":["navigation" , "food" ],
 
  
@@ -26,19 +26,19 @@
   "icons": [
              {
                 "src": "icons/teleee_icon.svg",
-                "sizes": "144x144",
+                "sizes": "any",
                 "type": "image/svg+xml",
                 "purpose": "any"
               },
               {
                 "src": "icons/telee_icon.svg",
-                "sizes": "192x192",
+                "sizes": "any",
                 "type": "image/svg+xml",
                 "purpose": "any"
               },
               {
                 "src": "icons/tele_icon.svg",
-                "sizes": "512x512",
+                "sizes": "any",
                 "type": "image/svg+xml",
                 "purpose": "any"
               }

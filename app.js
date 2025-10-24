@@ -208,6 +208,7 @@ const methodss={
           
 
            data: function(){
+               this.mydata=[];
               // for check the router param to filter the allmyData
               if(this.allmydata.length<=0)return setTimeout( this.data , 1000); 
 
@@ -1080,7 +1081,6 @@ if(this.siteText=='text'){
        
   data() { 
           return  data
-           
          },
 
        methods : {...methodss,

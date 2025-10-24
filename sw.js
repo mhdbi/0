@@ -1,5 +1,5 @@
 ///////
-const version =8;
+const version =1;
 var cacheName =`staticCahe-${version}`;
 var dynamicName="dynamicCache"
 
@@ -35,8 +35,7 @@ function addAsset(){
     })
 
  }
-
-
+ 
 
 self.addEventListener('activate' ,(ev)=>{
   clients.claim().then(c=>{      });
