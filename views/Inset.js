@@ -12,18 +12,6 @@ export default{
        
          },
         methods : {...methodss, 
-
-            er:function(e){
-              var n=navigator.onLine;
-              if(n){
-                e.currentTarget.style.display='flex';
-                e.currentTarget.src=e.currentTarget.src;
-               }else{
-                e.currentTarget.style.display='none';
-                e.currentTarget.src=e.currentTarget.src;
-              
-               }
-             },
             dimintion:function(e){
                   var img= e.currentTarget;
                   var w=img.offsetWidth  ,  h=img.offsetHeight , p=img.parentNode.offsetWidth;
@@ -37,6 +25,7 @@ export default{
            }, 
 
        computed: computed,
+       
        mounted(){
         this.data();
         this.onScroll();
@@ -45,6 +34,7 @@ export default{
        beforeDestroy() {
              var inset = document.getElementsByClassName("inset")[0];
              inset.removeEventListener('scrooll', this.recog.start());
+             this.mydata=[];
              },
 
        template: `

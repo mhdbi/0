@@ -103,7 +103,7 @@ self.addEventListener('fetch'  , (ev)=>{
  var onLine = self.navigator.onLine; 
  var url  = new URL(ev.request.url);
  
- var img  = url.hostname.includes('picsum.photos')||url.pathname.includes('.png')||url.pathname.includes('.jpj');
+ var img  = url.hostname.includes('picsum.photos')||url.pathname.includes('.png')||url.pathname.includes('.jpj')||url.pathname.includes('.svg');
  var Json = url.hostname.includes('random-data-api.com');
  var css  = url.pathname.includes('.css')||url.hostname.includes('googleapis.com');
  var font = url.hostname.includes('gstatic')||url.pathname.includes('woff2');
@@ -122,7 +122,9 @@ self.addEventListener('fetch'  , (ev)=>{
           return ev.respondWith(cacheF(ev.request));
         }else if(thumb){
           return ev.respondWith(fetch(ev.request,{method: "GET",mode: "no-cors",redirect:"follow",credentials:"omit"}))
-            
+         } else if(img){
+          console.log(1)
+            return ev.respondWith(fetch(ev.request));
           }else { 
            return ev.respondWith(fetch(ev.request,{mode: "cors",redirect:"follow",credentials:"omit"}));
           }

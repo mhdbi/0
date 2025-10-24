@@ -208,7 +208,6 @@ const methodss={
           
 
            data: function(){
-               this.mydata=[];
               // for check the router param to filter the allmyData
               if(this.allmydata.length<=0)return setTimeout( this.data , 1000); 
 
@@ -604,7 +603,17 @@ info: function(){
 ///////////////////////
 
 
-
+   er:function(e){
+              var n=navigator.onLine;
+              if(n){
+                e.currentTarget.style.display='flex';
+                e.currentTarget.src=e.currentTarget.src;
+               }else{
+                e.currentTarget.style.display='none';
+                e.currentTarget.src=e.currentTarget.src;
+              
+               }
+             },
 
 
 
@@ -857,14 +866,15 @@ if(this.cartItem.length==0)
  ///////////////////////////////////////////////////
  /////////////////////////////////////////////////
  var img=document.createElement('img'); // this id the secret why it plased as the card place
- img.src="icons/purchase.png";
+ img.src="puplic/icons/purchase.png";
  img.style.position = 'absolute';
- img.style.width='4.5vw';
+ img.style.width='4.7vw';
  img.style.left = `${xTarget}px`
  img.style.top  = `${yTarget}px`;
  img.style.transition= 'all 1.7s';
  img.classList.add('tar');
 
+ //img.addEventListener('error' , this.er)
  document.getElementsByClassName('dialog')[0].appendChild(img);
  var tar = document.querySelectorAll('.tar');
  tar.forEach((t)=>{
@@ -1083,19 +1093,8 @@ if(this.siteText=='text'){
           return  data
          },
 
-       methods : {...methodss,
-        er:function(e){
-              var n=navigator.onLine;
-              if(n){
-                e.currentTarget.style.display='flex';
-                e.currentTarget.src=e.currentTarget.src;
-               }else{
-                e.currentTarget.style.display='none';
-                e.currentTarget.src=e.currentTarget.src;
-              
-               }
-             },
-       },    
+       methods :methodss,
+         
        computed:{
         cartPrice:function(){
               var x=0;
