@@ -24,12 +24,6 @@
  
 
   "icons": [
-             {
-                "src": "icons/teleee_icon.svg",
-                "sizes": "any",
-                "type": "image/svg+xml",
-                "purpose": "any"
-              },
               {
                 "src": "icons/logo.png",
                 "sizes": "500x500",
