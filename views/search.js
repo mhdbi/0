@@ -36,7 +36,7 @@ export default{
      </li>
 
        <li class="test3" id='test4'  style='letter-spacing: 1.3vw;font-size: 22px;-webkit-text-stroke-width: 1.5px;color: #8b8b8b;' >
-         <img  style='filter: drop-shadow(0px 0px 3px yellow);width: 6vw;min-width: 4vh;max-width: 6vh;' src='icons/robot.png' />
+         <img  style='filter: drop-shadow(0px 0px 3px yellow);width: 6vw;min-width: 4vh;max-width: 6vh;' src='puplic/icons/robot.png' />
        </li>   
  
  
@@ -77,14 +77,14 @@ export default{
 
          
       
-          <div class="titlee">{{item.title}}</div>
-
+       <div class="titlee" >{{item.title}}</div>
+  
           <div class="postText">
                  <div> {{item.post}}   </div>
 
                        <div  class='postSame'>
-                        <template v-for='s in item.same' >
-                            <div @click='mydata.splice(y, 0, s.it)'  > {{s.name}} </div>
+                        <template v-for='s in item.hash' >
+                            <div @click='mydata.splice(y, 1, s.item)'  > {{s.name}} </div>
                         </template>
                       </div>  
           </div>
@@ -97,9 +97,9 @@ export default{
            <div class="centerPM"> المجموع: {{item.count*item.price}}</div>
 
 
-             <div  class="centerPM" style="border:none;" >{{item.count}}: العدد</div> 
+             <div  class="centerPM" style='border:none;color: #affaffff;'>{{item.count}}: العدد</div> 
              
-             <div class="centerPM">
+             <div class="centerPM" >
                       {{item.price}} : السعر 
              </div>
 
@@ -124,13 +124,11 @@ export default{
 
 
 
+     
      <div  class="imgDiv" >
-       <i v-if=" item.img1!='' && item.img2!='' " class="fas fa-angle-left down"   style="left:10px;top: 30%;opacity: 0.5;font-size: 31px;position: absolute;color: white;"></i>
-       <img v-if=" item.img1!='' "  :src="item.img1"  class="imgg up"  />	
-       <img v-if=" item.img2!='' "  :src="item.img2"  class="imgg down" style="display:none;"/>
-       <img v-if="item.img1==''&&item.img2==''"  :src="userImg" class="imgg up" />
-       <i v-if="item.img1!=''&&item.img2!=''" class="fas fa-angle-right up"    style="right:10px;top:30%;opacity: 0.5;font-size: 31px;position: absolute;color:white;"></i>
-    
+
+      <img v-if=" item.img1id!='' "  :src='item.img1id'   class="imgg up" @load='dimintion($event)' @error='er($event)' alt='no' />	
+
      </div>
  
 

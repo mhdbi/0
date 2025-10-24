@@ -1,12 +1,12 @@
 ///////
-const version =2;
+const version =1;
 var cacheName =`staticCahe-${version}`;
 var dynamicName="dynamicCache"
 
-let assets=['index.html','home.css','tecno.css','app.js',"404.html","icons/screensh1.jpg","icons/screensh2.jpg",
-           'icons/chocolate.jpg','icons/cigarette.jpg','icons/dairy-products.jpg','icons/drink.jpg',
-           'icons/fruits.jpg','icons/nuts.jpg','icons/purchase.png','icons/robot.png',
-           'icons/1.jpg','icons/2.jpg','icons/3.jpg'];
+let assets=['index.html','home.css','tecno.css','app.js',"404.html","puplic/icons/screensh1.jpg","puplic/icons/screensh2.jpg",
+           'puplic/icons/chocolate.jpg','puplic/icons/cigarette.jpg','puplic/icons/dairy-products.jpg','puplic/icons/drink.jpg',
+           'puplic/icons/fruits.jpg','puplic/icons/nuts.jpg','puplic/icons/purchase.png','puplic/icons/robot.png',
+           'puplic/icons/1.jpg','puplic/icons/2.jpg','puplic/icons/3.jpg'];
   
 
 self.addEventListener("install" , (ev)=>{ 
@@ -21,7 +21,7 @@ self.addEventListener("install" , (ev)=>{
         }).catch(e=>{console.log(e)})                  
       )
 
-})
+});
 
 function addAsset(){
 
