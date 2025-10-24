@@ -27,7 +27,7 @@
              {
                 "src": "icons/teleee_icon.svg",
                 "sizes": "any",
-                "type": "image/svg+xml",
+                "type": "image/svg",
                 "purpose": "any"
               }
               
