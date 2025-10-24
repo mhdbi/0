@@ -1083,7 +1083,19 @@ if(this.siteText=='text'){
            
          },
 
-       methods : methodss,    
+       methods : {...methodss,
+        er:function(e){
+              var n=navigator.onLine;
+              if(n){
+                e.currentTarget.style.display='flex';
+                e.currentTarget.src=e.currentTarget.src;
+               }else{
+                e.currentTarget.style.display='none';
+                e.currentTarget.src=e.currentTarget.src;
+              
+               }
+             },
+       },    
        computed:{
         cartPrice:function(){
               var x=0;
@@ -1114,7 +1126,7 @@ if(this.siteText=='text'){
 
      
  <div :class="{ cartBtn2 : $route.name=='inset'||$route.name=='search' }" class="cartBtn"  v-if='$route.name=="home"||$route.name=="inset"||$route.name=="search"' @click="cart=1">
-    <img src="puplic/icons/purchase.png" style="filter: hue-rotate(20deg); width: 40%;"/> 
+    <img src="puplic/icons/purchase.png" @error='er($event)' style="filter: hue-rotate(20deg); width: 40%;"/> 
     <div :class="{ after2 : $route.name=='inset'||$route.name=='search' }" class="after" > </div>
  </div>
 

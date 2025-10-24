@@ -11,7 +11,7 @@
   "display":"standalone",
   "display_override":["window-controls-overlay", "standalone", "browser"],
   "dir":"ltr",
-  "scope":"https://mhdbi.github.io/0/",
+  "scope":"https://mhdbi.github.io/0",
   "lang" : "en",
   "orientation":"portrait",
 
