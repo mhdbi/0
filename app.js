@@ -1114,7 +1114,7 @@ if(this.siteText=='text'){
 
      
  <div :class="{ cartBtn2 : $route.name=='inset'||$route.name=='search' }" class="cartBtn"  v-if='$route.name=="home"||$route.name=="inset"||$route.name=="search"' @click="cart=1">
-    <img src="icons/purchase.png" style="filter: hue-rotate(20deg); width: 40%;"/> 
+    <img src="puplic/icons/purchase.png" style="filter: hue-rotate(20deg); width: 40%;"/> 
     <div :class="{ after2 : $route.name=='inset'||$route.name=='search' }" class="after" > </div>
  </div>
 
