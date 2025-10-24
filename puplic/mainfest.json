@@ -21,12 +21,7 @@
   "web_apps":[  { "web_app_identity":"https://mhdbi.github.io/0"  }  ],
   "categories":["navigation" , "food" ],
 
-  "shortcuts":[
-                {
-                  "name":"home",
-                  "url":"/"
-                }    
-              ],
+ 
 
   "icons": [
               {
