@@ -25,9 +25,15 @@
 
   "icons": [
               {
-                "src": "icons/logo.png",
-                "sizes": "500x500",
-                "type": "image/png",
+                "src": "../teleee_icon.svg",
+                "sizes": "any",
+                "type": "image/svg+xml",
+                "purpose": "maskable"
+              },
+              {
+                "src": "../teleee_icon.svg",
+                "sizes": "any",
+                "type": "image/svg+xml",
                 "purpose": "any"
               }
               
@@ -37,7 +43,7 @@
               {
                   "src":"icons/screensh1.jpg",
                   "sizes":"720x1440",
-                  "type": "image/jpeg",
+                  "type": "image/jpg",
                   "form_factor":"wide",
                   "purpose":"any",
                   "label":"Hi-there"
