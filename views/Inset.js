@@ -25,7 +25,9 @@ export default{
            }, 
 
        computed: computed,
-       
+       beforeMount() {
+        this.mydata=[]
+       },
        mounted(){
         this.data();
         this.onScroll();
