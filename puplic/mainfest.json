@@ -29,26 +29,15 @@
                 "sizes": "any",
                 "type": "image/svg+xml",
                 "purpose": "any"
-              },
-              {
-                "src": "icons/telee_icon.svg",
-                "sizes": "any",
-                "type": "image/svg+xml",
-                "purpose": "any"
-              },
-              {
-                "src": "icons/tele_icon.svg",
-                "sizes": "any",
-                "type": "image/svg+xml",
-                "purpose": "any"
               }
+              
             ],
 
  "screenshots":[
               {
                   "src":"icons/screensh1.jpg",
                   "sizes":"720x1440",
-                  "type": "image/jpg",
+                  "type": "image/jpeg",
                   "form_factor":"wide",
                   "purpose":"any",
                   "label":"Hi-there"
