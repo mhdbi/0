@@ -1,12 +1,12 @@
 ///////
-const version =1;
+const version =10;
 var cacheName =`staticCahe-${version}`;
 var dynamicName="dynamicCache"
 
-let assets=['index.html','home.css','tecno.css','app.js',"404.html","puplic/icons/screensh1.jpg","puplic/icons/screensh2.jpg",
+let assets=['/','index.html','home.css','tecno.css','app.js',"404.html","puplic/icons/screensh1.jpg","puplic/icons/screensh2.jpg",
            'puplic/icons/chocolate.jpg','puplic/icons/cigarette.jpg','puplic/icons/dairy-products.jpg','puplic/icons/drink.jpg',
            'puplic/icons/fruits.jpg','puplic/icons/nuts.jpg','puplic/icons/purchase.png','puplic/icons/robot.png',
-           'puplic/icons/1.jpg','puplic/icons/2.jpg','puplic/icons/3.jpg'];
+           'puplic/icons/1.jpg','puplic/icons/2.jpg','puplic/icons/3.jpg','512.png','192.png'];
   
 
 self.addEventListener("install" , (ev)=>{ 
@@ -122,9 +122,6 @@ self.addEventListener('fetch'  , (ev)=>{
           return ev.respondWith(cacheF(ev.request));
         }else if(thumb){
           return ev.respondWith(fetch(ev.request,{method: "GET",mode: "no-cors",redirect:"follow",credentials:"omit"}))
-         } else if(img){
-          console.log(1)
-            return ev.respondWith(fetch(ev.request));
           }else { 
            return ev.respondWith(fetch(ev.request,{mode: "cors",redirect:"follow",credentials:"omit"}));
           }
