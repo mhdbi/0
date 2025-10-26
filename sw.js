@@ -1,12 +1,13 @@
 ///////
-const version =1;
+const version =100;
 var cacheName =`staticCahe-${version}`;
 var dynamicName="dynamicCache"
 
 let assets=['/','/0','index.html','home.css','tecno.css','app.js',"404.html","puplic/icons/screensh1.jpg","puplic/icons/screensh2.jpg",
            'puplic/icons/chocolate.jpg','puplic/icons/cigarette.jpg','puplic/icons/dairy-products.jpg','puplic/icons/drink.jpg',
            'puplic/icons/fruits.jpg','puplic/icons/nuts.jpg','puplic/icons/purchase.png','puplic/icons/robot.png',
-           'puplic/icons/1.jpg','puplic/icons/2.jpg','puplic/icons/3.jpg','512m.png','512.png','192.png','tele.svg'];
+           'puplic/icons/1.jpg','puplic/icons/2.jpg','puplic/icons/3.jpg',
+           'puplic/icons/512m.png','puplic/icons/512.png','puplic/icons/192.png','tele.svg'];
   
 
 self.addEventListener("install" , (ev)=>{ 
