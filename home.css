@@ -1006,6 +1006,8 @@ width: 4vw;
 }
 
 img{
+  user-select: none;
+  pointer-events: none;
   transition: all 0.175s;
 }
 
@@ -1096,6 +1098,8 @@ img{
 
 /*****************************************************/
 .imgg {
+  user-select: none;
+  pointer-events: none;
   z-index: -2;
   box-shadow: 0px 0px 3px black;
   align-items: center;
@@ -1106,7 +1110,10 @@ img{
 }
 
 
-
+img{
+  user-select: none;
+  pointer-events: none;
+}
 
   .callx4{
     height: 44px;

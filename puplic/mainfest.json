@@ -37,15 +37,10 @@
                 "purpose": "any"
               },
               {
-                "src": "512.png",
+                "src": "512m.png",
                 "sizes": "512x512",
                 "type": "image/png",
                 "purpose": "maskable"
-              },
-              {
-                "src": "tele.svg",
-                "sizes": "512x512",
-                "type": "image/svg+xml"
               }
               
             ],
