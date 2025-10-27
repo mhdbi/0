@@ -1,5 +1,5 @@
 ///////
-const version =445;
+const version =1;
 var cacheName =`staticCahe-${version}`;
 var dynamicName="dynamicCache"
 
@@ -148,7 +148,9 @@ self.addEventListener('fetch'  , (ev)=>{
  function cacheF(ev){
    return caches.match(ev).then(resC=>{
      var resF =  fetch(ev).then(resF=>{
-        var resf= caches.open(cacheName,{mode: "no-cors",credentials:"omit"}).then(cache=>{
+        resF.headers.set('Cache-Control',`public,max-age=${60*60*24*7},s-maxage=${60*60*24*30}`);
+        resF.headers.set('Access-Control-Allow-Origin','*');
+        var resf= caches.open(cacheName,{mode: "cors",redirect:"follow",credentials:"omit"}).then(cache=>{
           cache.put(ev , resF.clone());
           return resF;
         })    
