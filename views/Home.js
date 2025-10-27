@@ -71,14 +71,80 @@
   <div class='between'></div>
 </div>
 
-<img style ='position: absolute;top: 20%;width: 100%;max-width:600px;z-index: 2;filter: invert(0.06) drop-shadow(0px 15px 6px black);' 
-src='puplic/icons/thin.png' alt='no net' @error='er($event)' />
-
 <div class="openBottom">
   <div class='between'></div>
 </div>
 
 <!-- for open page on ---- -->
+
+
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" style='z-index: 1; height: 100%;opacity: 0.5;'>
+  <!-- Define reusable shapes -->
+  <defs>
+    <!-- A symbol for a 6-pointed star -->
+    <symbol id="six-point-star" viewBox="0 0 100 100">
+      <polygon points="50,0 60,35 95,35 65,60 75,95 50,70 25,95 35,60 5,35 40,35" />
+    </symbol>
+  </defs>
+  <!-- Background color -->
+  <rect width="100%" height="100%" fill="#23232300" />
+  
+  <!-- Stars -->
+  <g fill="black">
+    <use href="#six-point-star" x="50" y="50" width="30" height="30" />
+    <use href="#six-point-star" x="150" y="100" width="20" height="20" />
+    <use href="#six-point-star" x="250" y="70" width="25" height="25" />
+    <use href="#six-point-star" x="350" y="150" width="35" height="35" />
+    <use href="#six-point-star" x="450" y="10" width="20" height="20" />
+    <use href="#six-point-star" x="550" y="80" width="25" height="25" />
+    <use href="#six-point-star" x="650" y="120" width="30" height="30" />
+    <use href="#six-point-star" x="750" y="60" width="20" height="20" />
+    <use href="#six-point-star" x="850" y="100" width="25" height="25" />
+    <use href="#six-point-star" x="900" y="30" width="20" height="20" />
+    <use href="#six-point-star" x="100" y="200" width="25" height="25" />
+    <use href="#six-point-star" x="200" y="250" width="30" height="30" />
+    <use href="#six-point-star" x="300" y="220" width="20" height="20" />
+    <use href="#six-point-star" x="400" y="280" width="35" height="35" />
+    <use href="#six-point-star" x="500" y="200" width="40" height="40" />
+    <use href="#six-point-star" x="600" y="260" width="25" height="25" />
+    <use href="#six-point-star" x="700" y="300" width="30" height="30" />
+    <use href="#six-point-star" x="800" y="240" width="20" height="20" />
+    <use href="#six-point-star" x="900" y="280" width="25" height="25" />
+    <use href="#six-point-star" x="950" y="220" width="30" height="30" />
+
+    <use href="#six-point-star" x="50"  y="350" width="40" height="40" />
+    <use href="#six-point-star" x="150" y="400" width="20" height="20" />
+    <use href="#six-point-star" x="250" y="370" width="25" height="25" />
+    <use href="#six-point-star" x="350" y="450" width="35" height="35" />
+    <use href="#six-point-star" x="450" y="310" width="20" height="20" />
+    <use href="#six-point-star" x="550" y="380" width="25" height="25" />
+    <use href="#six-point-star" x="650" y="420" width="40" height="40" />
+    <use href="#six-point-star" x="750" y="360" width="20" height="20" />
+    <use href="#six-point-star" x="850" y="400" width="25" height="25" />
+    <use href="#six-point-star" x="900" y="330" width="20" height="20" />
+    <use href="#six-point-star" x="100" y="500" width="25" height="25" />
+    <use href="#six-point-star" x="200" y="550" width="30" height="30" />
+    <use href="#six-point-star" x="300" y="520" width="20" height="20" />
+    <use href="#six-point-star" x="400" y="580" width="35" height="35" />
+    <use href="#six-point-star" x="500" y="500" width="20" height="20" />
+    <use href="#six-point-star" x="600" y="560" width="25" height="25" />
+    <use href="#six-point-star" x="700" y="600" width="30" height="30" />
+    <use href="#six-point-star" x="800" y="540" width="20" height="20" />
+    <use href="#six-point-star" x="900" y="580" width="25" height="25" />
+    <use href="#six-point-star" x="950" y="520" width="30" height="30" />
+
+
+  </g>
+  
+
+</svg>
+
+
 
 
  

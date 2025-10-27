@@ -1,41 +1,23 @@
 ///////
-const version =100;
+const version =1;
 var cacheName =`staticCahe-${version}`;
 var dynamicName="dynamicCache"
 
-let assets=['/','index.html','home.css','tecno.css','app.js',"404.html","puplic/icons/screensh1.jpg","puplic/icons/screensh2.jpg",
-           'puplic/icons/chocolate.jpg','puplic/icons/cigarette.jpg','puplic/icons/dairy-products.jpg','puplic/icons/drink.jpg',
-           'puplic/icons/fruits.jpg','puplic/icons/nuts.jpg','puplic/icons/purchase.png','puplic/icons/robot.png',
-           'puplic/icons/1.jpg','puplic/icons/2.jpg','puplic/icons/3.jpg',
-           'puplic/icons/512m.png','puplic/icons/512.png','puplic/icons/192.png','tele.svg'];
+let assets=['/','/index.html','/home.css','/tecno.css','/app.js',"/404.html","/puplic/icons/screensh1.jpg","/puplic/icons/screensh2.jpg",
+           '/puplic/icons/chocolate.jpg','/puplic/icons/cigarette.jpg','/puplic/icons/dairy-products.jpg','/puplic/icons/drink.jpg',
+           '/puplic/icons/fruits.jpg','/puplic/icons/nuts.jpg','/puplic/icons/purchase.png','/puplic/icons/robot.png',
+           '/puplic/icons/1.jpg','/puplic/icons/2.jpg','/puplic/icons/3.jpg',
+           '/puplic/512m.png','/puplic/512.png','/puplic/192.png'];
   
 
 self.addEventListener("install" , (ev)=>{ 
 
     ev.waitUntil(
-        Promise.resolve()
-        .then((e)=>{
-          return addAsset()
-        })
-        .then((e)=>{
-          self.skipWaiting();
-        }).catch(e=>{console.log(e)})                  
-      )
-
+        caches.open(cacheName).then( c=>{  c.addAll(assets)
+                            }).catch(e=>{  console.log(e)  })
+       )
 });
 
-function addAsset(){
-
-    caches.open(cacheName).then(c=>{    
-        c.addAll(assets).then((e)=>{
-         console.log('added'),
-            (e)=>{
-         console.log(e)
-             }
-      }).catch(e=>{ console.log(e)  });
-    })
-
- }
  
 
 self.addEventListener('activate' ,(ev)=>{
