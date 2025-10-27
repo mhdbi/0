@@ -148,7 +148,7 @@ self.addEventListener('fetch'  , (ev)=>{
  function cacheF(ev){
    return caches.match(ev).then(resC=>{
      var resF =  fetch(ev).then(resF=>{
-        var resf= caches.open(cacheName,{mode: "cors",credentials:"omit"}).then(cache=>{
+        var resf= caches.open(cacheName,{mode: "no-cors",credentials:"omit"}).then(cache=>{
           cache.put(ev , resF.clone());
           return resF;
         })    
