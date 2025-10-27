@@ -1,5 +1,5 @@
 ///////
-const version =1;
+const version =55;
 var cacheName =`staticCahe-${version}`;
 var dynamicName="dynamicCache"
 
@@ -12,10 +12,11 @@ let assets=['/','/index.html','/home.css','/tecno.css','/app.js',"/404.html","/p
 
 self.addEventListener("install" , (ev)=>{ 
 
-    ev.waitUntil(
-        caches.open(cacheName).then( c=>{  c.addAll(assets)
+       ev.waitUntil(
+               caches.open(cacheName).then( c=>{  c.addAll(assets)
                             }).catch(e=>{  console.log(e)  })
-       )
+                );
+       self.skipWaiting();
 });
 
  

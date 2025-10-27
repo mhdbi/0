@@ -83,7 +83,7 @@
 
 
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" style='z-index: 1; height: 100%;opacity: 0.5;'>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" style='z-index: 1;height: 100%;opacity: 0.35;max-width: 550px;'>
   <!-- Define reusable shapes -->
   <defs>
     <!-- A symbol for a 6-pointed star -->
