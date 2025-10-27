@@ -2,23 +2,22 @@
 
 {
   "name":"Teleshop",
-  "id" :"/0",
+  "id" :"/",
   "short_name":"Teleshop",
   "description":"E-commerce-app",
-  "start_url":"/0",
+  "start_url":"/",
   "background_color": "#232323",
   "theme_color":"#232323",
   "display":"standalone",
-  "display_override":["window-controls-overlay", "standalone", "browser"],
   "dir":"ltr",
-  "scope":"/0",
+  "scope":"/",
   "lang" : "en",
   "orientation":"portrait",
 
   "lanch_handler":{ "client_mode":["navigate-existing","auto"] },
   "handle_links":"preferred",
 
-  "web_apps":[  { "web_app_identity":"/0"  }  ],
+  "web_apps":[  { "web_app_identity":"/"  }  ],
   "categories":["navigation" , "food" ],
 
  
@@ -27,6 +26,18 @@
               {
                 "src": "192.png",
                 "sizes": "192x192",
+                "type": "image/png",
+                "purpose": "any"
+              },
+              {
+                "src": "tele.svg",
+                "sizes": "any",
+                "type": "image/svg+xml",
+                "purpose": "any"
+              },
+              {
+                "src": "512.png",
+                "sizes": "512x512",
                 "type": "image/png",
                 "purpose": "any"
               },
