@@ -1,5 +1,5 @@
 ///////
-const version =55;
+const version =45;
 var cacheName =`staticCahe-${version}`;
 var dynamicName="dynamicCache"
 
@@ -159,7 +159,7 @@ self.addEventListener('fetch'  , (ev)=>{
 }
 
 function html404(){
-  return caches.match('404.html');
+  return caches.match('/404.html');
 
 }
 
