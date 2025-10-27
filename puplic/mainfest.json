@@ -8,7 +8,7 @@
   "start_url":"/",
   "background_color": "#232323",
   "theme_color":"#232323",
-  "display":"standalone",
+  "display":"fullscreen",
   "dir":"ltr",
   "scope":"/",
   "lang" : "en",
@@ -27,12 +27,6 @@
                 "src": "192.png",
                 "sizes": "192x192",
                 "type": "image/png",
-                "purpose": "any"
-              },
-              {
-                "src": "tele.svg",
-                "sizes": "any",
-                "type": "image/svg+xml",
                 "purpose": "any"
               },
               {
