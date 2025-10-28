@@ -1,22 +1,41 @@
 
 ///////
-const version =121;
+const version =21;
 var cacheName =`staticCahe-${version}`;
 var dynamicName="dynamicCache";
 
-let assets=['/','index.html','home.css','tecno.css','app.js',"404.html","/puplic/icons/screensh1.jpg","/puplic/icons/screensh2.jpg",
-           '/puplic/icons/chocolate.jpg','/puplic/icons/cigarette.jpg','/puplic/icons/dairy-products.jpg','/puplic/icons/drink.jpg',
-           '/puplic/icons/fruits.jpg','/puplic/icons/nuts.jpg','/puplic/icons/purchase.png','/puplic/icons/robot.png',
-           '/puplic/icons/1.jpg','/puplic/icons/2.jpg','/puplic/icons/3.jpg',
-           '/puplic/512m.png','/puplic/512.png','/puplic/192.png'];
+let assets=['/','index.html','home.css','tecno.css','app.js',"404.html","puplic/icons/screensh1.jpg","puplic/icons/screensh2.jpg",
+           'puplic/icons/chocolate.jpg','puplic/icons/cigarette.jpg','puplic/icons/dairy-products.jpg','puplic/icons/drink.jpg',
+           'puplic/icons/fruits.jpg','puplic/icons/nuts.jpg','puplic/icons/purchase.png','puplic/icons/robot.png',
+           'puplic/icons/1.jpg','puplic/icons/2.jpg','puplic/icons/3.jpg',
+           'puplic/512m.png','puplic/512.png','puplic/192.png'];
   
 
 self.addEventListener("install" , (ev)=>{ 
 
        ev.waitUntil(
-               caches.open(cacheName).then( c=>{  c.addAll(assets)
-                            }).catch(e=>{  console.log(e)  })
-                );
+        assets.map(as=>{ 
+              caches.match(as).then((cacheRes)=>{if(cacheRes)return cacheRes;
+
+                  return fetch(as).then(netRes=>{
+                      if(!netRes || netRes.status !==200 || netRes.type!=='basic'){ return netRes }
+
+                            const resTOcache  = netRes, newMaxAge ='public , max-age=31536000'; 
+                              
+                            caches.open(cacheName).then(cache=>{   
+                                    const cacheHeader = new Headers(resTOcache.headers);
+                                    cacheHeader.set('Cache-Control', newMaxAge);
+                                    const modifiedCacheRes = new Response(resTOcache.body , {
+                                      status: resTOcache.status,
+                                      statusText: resTOcache.statusText,
+                                      headers: cacheHeader
+                                    })     
+                                    cache.put(as , modifiedCacheRes);
+                              })//for cache
+                          })
+                        })
+                  })
+             );
        self.skipWaiting();
 });
 
@@ -103,8 +122,8 @@ self.addEventListener('fetch'  , (ev)=>{
 
  if(onLine ){
 
-        if(referrer || icons){
-          return ev.respondWith(cacheF(ev.request));
+        if(referrer ){
+          return ev.respondWith(cacheF(ev));
         }else if(thumb){
           return ev.respondWith(fetch(ev.request,{method: "GET",mode: "no-cors",redirect:"follow",credentials:"omit"}))
           }else { 
@@ -126,12 +145,11 @@ self.addEventListener('fetch'  , (ev)=>{
 
  function cacheF(ev){
  
-  const isNet = ev.request.url.startWith('http');
+  const isNet = ev.request.url.startsWith('http');
 if(isNet){
-  ev.respondWith(
-    cashes.match(ev.request).then((cacheRes)=>{
-         if(cacheRes){return cacheRes};
-
+    caches.match(ev.request).then((cacheRes)=>{
+         if(cacheRes){return cacheRes};})
+    
           return fetch(ev.request).then(netRes=>{
               if(!netRes || netRes.status !==200 || netRes.type!=='basic'){ return netRes }
 
@@ -146,7 +164,7 @@ if(isNet){
                })     
               
              caches.open(cacheName).then(cache=>{   
-                    const cacheHeader = new headers(resTOcache.headers);
+                    const cacheHeader = new Headers(resTOcache.headers);
                     cacheHeader.set('Cache-Control', newMaxAge);
                     const modifiedCacheRes = new Response(resTOcache.body , {
                       status: resTOcache.status,
@@ -158,8 +176,7 @@ if(isNet){
 
               return modifiedRes;
           })
-     })
-   )
+     
  } // for if first
 
 }

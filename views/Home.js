@@ -6,21 +6,9 @@
         return data;
                   
              },
-           methods : {...methodss, 
-
-             er:function(e){
-              var n=navigator.onLine;
-              if(n){
-                e.currentTarget.style.display='flex';
-                e.currentTarget.src=e.currentTarget.src;
-               }else{
-                e.currentTarget.style.display='none';
-                e.currentTarget.src=e.currentTarget.src;
-              
-               }
-             },
+           methods : methodss,
           
-           },    
+              
            computed: computed, 
              mounted() {       
                this.recognition();
