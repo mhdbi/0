@@ -71,7 +71,7 @@
 
 
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" style='z-index: 1;height: 100%;opacity: 0.35;max-width: 550px;'>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" style='z-index: 1;height: 100%;max-width: 550px;filter: drop-shadow(0px 15vh .5px purple) drop-shadow(0px -4vh 0px #87ceebc7);'>
   <!-- Define reusable shapes -->
   <defs>
     <!-- A symbol for a 6-pointed star -->
