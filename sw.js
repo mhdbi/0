@@ -1,6 +1,6 @@
 
 ///////
-const version =21;
+const version =22;
 var cacheName =`staticCahe-${version}`;
 var dynamicName="dynamicCache";
 
@@ -20,7 +20,7 @@ self.addEventListener("install" , (ev)=>{
                   return fetch(as).then(netRes=>{
                       if(!netRes || netRes.status !==200 || netRes.type!=='basic'){ return netRes }
 
-                            const resTOcache  = netRes, newMaxAge ='public , max-age=31536000'; 
+                            const resTOcache  = netRes, newMaxAge ='public , max-age=31536000,s-maxage=31536000'; 
                               
                             caches.open(cacheName).then(cache=>{   
                                     const cacheHeader = new Headers(resTOcache.headers);
@@ -153,7 +153,7 @@ if(isNet){
           return fetch(ev.request).then(netRes=>{
               if(!netRes || netRes.status !==200 || netRes.type!=='basic'){ return netRes }
 
-            const resTOcache  = netRes.clone(), resTObroser = netRes, newMaxAge ='public , max-age=31536000';
+            const resTOcache  = netRes.clone(), resTObroser = netRes, newMaxAge ='public , max-age=31536000,s-maxage=31536000';
 
             const resHeader    = new Headers(resTObroser.headers);
                   resHeader.set('Cache-Control', newMaxAge);// 1 year
