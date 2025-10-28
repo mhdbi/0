@@ -1,7 +1,8 @@
+
 ///////
-const version =101;
+const version =121;
 var cacheName =`staticCahe-${version}`;
-var dynamicName="dynamicCache"
+var dynamicName="dynamicCache";
 
 let assets=['/','index.html','home.css','tecno.css','app.js',"404.html","/puplic/icons/screensh1.jpg","/puplic/icons/screensh2.jpg",
            '/puplic/icons/chocolate.jpg','/puplic/icons/cigarette.jpg','/puplic/icons/dairy-products.jpg','/puplic/icons/drink.jpg',
@@ -102,7 +103,7 @@ self.addEventListener('fetch'  , (ev)=>{
 
  if(onLine ){
 
-        if(referrer && icons){
+        if(referrer || icons){
           return ev.respondWith(cacheF(ev.request));
         }else if(thumb){
           return ev.respondWith(fetch(ev.request,{method: "GET",mode: "no-cors",redirect:"follow",credentials:"omit"}))
@@ -119,6 +120,64 @@ self.addEventListener('fetch'  , (ev)=>{
  }
 
 });
+
+
+
+
+ function cacheF(ev){
+ 
+  const isNet = ev.request.url.startWith('http');
+if(isNet){
+  ev.respondWith(
+    cashes.match(ev.request).then((cacheRes)=>{
+         if(cacheRes){return cacheRes};
+
+          return fetch(ev.request).then(netRes=>{
+              if(!netRes || netRes.status !==200 || netRes.type!=='basic'){ return netRes }
+
+            const resTOcache  = netRes.clone(), resTObroser = netRes, newMaxAge ='public , max-age=31536000';
+
+            const resHeader    = new Headers(resTObroser.headers);
+                  resHeader.set('Cache-Control', newMaxAge);// 1 year
+            const modifiedRes = new Response(resTObroser.body , {
+                status: resTObroser.status,
+                statusText: resTObroser.statusText,
+                headers: resHeader
+               })     
+              
+             caches.open(cacheName).then(cache=>{   
+                    const cacheHeader = new headers(resTOcache.headers);
+                    cacheHeader.set('Cache-Control', newMaxAge);
+                    const modifiedCacheRes = new Response(resTOcache.body , {
+                      status: resTOcache.status,
+                      statusText: resTOcache.statusText,
+                      headers: cacheHeader
+                    })     
+                    cache.put(ev.request , modifiedCacheRes);
+               })//for cache
+
+              return modifiedRes;
+          })
+     })
+   )
+ } // for if first
+
+}
+
+function html404(){
+  return caches.match('/404.html');
+
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -145,25 +204,32 @@ self.addEventListener('fetch'  , (ev)=>{
 //   })
 // }
 
- function cacheF(ev){
-   return caches.match(ev).then(resC=>{
-     var resF =  fetch(ev).then(resF=>{
-        // resF.headers.set('Cache-Control',`public,max-age=${60*60*24*7},s-maxage=${60*60*24*30}`);
-        // resF.headers.set('Access-Control-Allow-Origin','*');
-        var resf= caches.open(cacheName,{mode: "cors",redirect:"follow",credentials:"omit"}).then(cache=>{
-          cache.put(ev , resF.clone());
-          return resF;
-        })    
-        return resf;
-      }) ; 
-     return resC|| resF;
-   }).catch(e=>{ cacheF(ev) }) 
-}
 
-function html404(){
-  return caches.match('/404.html');
 
-}
+
+
+
+
+
+
+//  function cacheF(ev){
+//    return caches.match(ev).then(resC=>{
+//      var resF =  fetch(ev).then(resF=>{
+//         // resF.headers.set('Cache-Control',`public,max-age=${60*60*24*7},s-maxage=${60*60*24*30}`);
+//         // resF.headers.set('Access-Control-Allow-Origin','*');
+//         var resf= caches.open(cacheName,{mode: "cors",redirect:"follow",credentials:"omit"}).then(cache=>{
+//           cache.put(ev , resF.clone());
+//           return resF;
+//         })    
+//         return resf;
+//       }) ; 
+//      return resC|| resF;
+//    }).catch(e=>{ cacheF(ev) }) 
+// }
+
+
+
+
 
 // function fetchF(ev){
 //  return fetch(ev.request,{mode:'cors', credentials:'omit'}).then(resF=>{
