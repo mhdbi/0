@@ -182,7 +182,7 @@ if(isNet){
 }
 
 function html404(){
-  return caches.match('/404.html');
+  return caches.match('404.html');
 
 }
 
