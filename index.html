@@ -11,8 +11,8 @@
   <meta name="viewport" content="user-scalable=no, initial-scale=1.0001, maximum-scale=1.0001, width=device-width, viewport-fit=cover">
   <meta http-equiv="cleartype" content="on">
 
-   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#000000" />
-   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000" />
+   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#232323" />
+   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#232323" />
   
 
   <meta name="apple-mobile-web-capable" content="yes">
@@ -127,17 +127,17 @@ window.addEventListener("load", init());
 }
 
 ////  color ui 
-(function(){
-  const metaa = document.querySelectorAll("meta[name='theme-color']");
-  if('launchQueue' in window){ launchQueue.setConsumer(launchParam =>{}) }
- // if(metaa){metaa.setAttribute('content', '#232323')}
-  var m = document.createComment('meta');
-      m.name="theme-color";
-      m.content="#000000";
-      document.head.appendChild(m);
-  if('themeColor' in document.documentElement.style){document.documentElement.style.themeColor='#000000';}
+// (function(){
+//   const metaa = document.querySelectorAll("meta[name='theme-color']");
+//   if('launchQueue' in window){ launchQueue.setConsumer(launchParam =>{}) }
+//  // if(metaa){metaa.setAttribute('content', '#232323')}
+//   var m = document.createComment('meta');
+//       m.name="theme-color";
+//       m.content="#232323";
+//       document.head.appendChild(m);
+//   if('themeColor' in document.documentElement.style){document.documentElement.style.themeColor='#232323';}
   
-})()
+// })()
 
 
 
