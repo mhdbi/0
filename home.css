@@ -17,7 +17,7 @@ html{
 }
 @supports(padding: max(0px)){
       body {
-        background-color: #000000;
+        background-color: #232323;
         margin: 0;
         padding: 0;
         display: flex;
