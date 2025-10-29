@@ -12,7 +12,7 @@
   "dir":"ltr",
   "scope":"/",
   "lang" : "en",
-  "orientation":"portrait",
+  "orientation":"portrait-primary",
 
   "lanch_handler":{ "client_mode":["navigate-existing","auto"] },
   "handle_links":"preferred",
