@@ -24,7 +24,7 @@
 
 <link rel="stylesheet" href="tecno.css" >
 <link rel="stylesheet" href="home.css" >
-<link rel="manifest"   href="puplic/mainfest.json" />
+<link rel="manifest"   href="/puplic/manifest.json" />
 
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" /> -->
  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
@@ -128,9 +128,13 @@ window.addEventListener("load", init());
 
 ////  color ui 
 (function(){
-  const meta = document.querySelectorAll('meta[name=theme-color]');
+  const metaa = document.querySelectorAll("meta[name='theme-color']");
   if('launchQueue' in window){ launchQueue.setConsumer(launchParam =>{}) }
-  if(meta) meta.setAttribute('content', '#232323');
+ // if(metaa){metaa.setAttribute('content', '#232323')}
+  var m = document.createComment('meta');
+      m.name="theme-color";
+      m.content="#232323";
+      document.head.appendChild(m);
   if('themeColor' in document.documentElement.style){document.documentElement.style.themeColor='#232323';}
   
 })()
