@@ -17,7 +17,7 @@ html{
 }
 @supports(padding: max(0px)){
       body {
-        background-color: #232323;
+        background-color: #000000;
         margin: 0;
         padding: 0;
         display: flex;
@@ -37,7 +37,7 @@ html{
 }
 @media(prefers-color-scheme: dark){
   :root{
-    --status-bar-color:#232323;
+    --status-bar-color:#000000;
   }
 }
 
