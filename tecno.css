@@ -571,7 +571,7 @@ main footer a{
   position: absolute;
     height: 100%;
     width: 100%;
-background: conic-gradient(from 125deg at 30% 97%, #ffe888 145deg, #ffe888 -83deg, #0000 10deg), conic-gradient(from 90deg at 70% 97%, #ffe888 145deg, #ffe888 -83deg, #00000000 10deg), conic-gradient(from 135deg at 50% 86%, #393930 90deg, #00000000 56deg), conic-gradient(from 270deg at 30% 18%, #ffe888 135deg, #00000000 56deg), conic-gradient(from -45deg at 70% 18%, #ffe888 135deg, #0000 56deg), conic-gradient(from 135deg at 50% 85%, #ffe888 90deg, #00000000 56deg), conic-gradient(from 135deg at 50% 84%, #b6dfe14f 90deg, #00000000 56deg);
+background: conic-gradient(from 225deg at 28% 97%, #ffe888 45deg, #ffe888 -83deg, #0000 10deg), conic-gradient(from 90deg at 72% 97%, #ffe888 45deg, #ffe888 -83deg, #00000000 10deg), conic-gradient(from 90deg at 50% 99.5%, #ffe888 180deg, #00000000 2deg), conic-gradient(from 135deg at 50% 86%, #504c36 90deg, #00000000 56deg), conic-gradient(from 270deg at 30% 18%, #ffe888 135deg, #00000000 56deg), conic-gradient(from -45deg at 70% 18%, #ffe888 135deg, #b6616100 56deg), conic-gradient(from 135deg at 50% 85%, #23414a 90deg, #00000000 56deg), conic-gradient(from 135deg at 50% 84%, #453043c7 90deg, #00000000 56deg);
 }
 
 
