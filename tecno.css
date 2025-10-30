@@ -569,28 +569,12 @@ main footer a{
 *********menu/////menu///////menu******************/
 .openTop{
   position: absolute;
-  height: 165vh;
-  width: 100%;
-  background: conic-gradient(from 78deg, #232323 57deg, #fde068 58deg, #00000000 55deg, #00000000 147deg, 63deg, #232323 149deg);
-  filter: drop-shadow(0px 2px 0px #fde068);
-}
-
-.openBottom{
-  transform: rotateZ(180deg);
-  bottom: 0px;
-  position: absolute;
-  height: 5.1vh;
-  width: 100%;
-  background: conic-gradient(from 78deg at 50% -71%, #232323 12deg, #232323 57deg, #00000000 55deg, #00000000 147deg, #232323 130deg);
-  filter: drop-shadow(0px 2px 0px #fde068);
-}
-
-.between{
-  filter: drop-shadow(0px 0px 0px #fde068);
-    background: conic-gradient(from 135.5deg at 49.5%, #00000000 20deg, #00000000 90.2deg, #fde068 50deg, #fde068 100deg);
-    height: 11%;
+    height: 100%;
     width: 100%;
+background: conic-gradient(from 125deg at 30% 97%, #ffe888 145deg, #ffe888 -83deg, #0000 10deg), conic-gradient(from 90deg at 70% 97%, #ffe888 145deg, #ffe888 -83deg, #00000000 10deg), conic-gradient(from 135deg at 50% 86%, #393930 90deg, #00000000 56deg), conic-gradient(from 270deg at 30% 18%, #ffe888 135deg, #00000000 56deg), conic-gradient(from -45deg at 70% 18%, #ffe888 135deg, #0000 56deg), conic-gradient(from 135deg at 50% 85%, #ffe888 90deg, #00000000 56deg), conic-gradient(from 135deg at 50% 84%, #b6dfe14f 90deg, #00000000 56deg);
 }
+
+
 
 .contaiiner {
   align-items: center;
@@ -604,7 +588,7 @@ main footer a{
 
 .header {
   filter: drop-shadow(0px 2px 0px #fde068);
-  background: #232323;
+  background: conic-gradient(from 44deg at 67% 9%, #232323 46deg, #00000000 44deg), conic-gradient(from -44deg at 33% 8%, #ffe888 134deg, #232323 56deg);
   position: absolute;
   z-index: 99;
   width: 100%;
@@ -1589,7 +1573,10 @@ textarea::placeholder{
 
 .imgHome{
     width: 73%;
+    aspect-ratio: 1;
+    background-color: #8e8e8e;
     border-radius: 50%;
+
 }
 
 

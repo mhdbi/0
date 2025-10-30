@@ -43,7 +43,7 @@
 
     <!- ----------------- ------------>
    <div class="test3" dir="rtl">
-   <img style ='position: absolute;top:0;left:0vw;max-width: 50px;width: 10vw;z-index: 2;filter: invert(0.15) drop-shadow(0px 17px 6px black);' 
+   <img style ='position: absolute;top:2vh;left:0vw;max-width: 2rem;width: 8vw;z-index: 2;filter: invert(0.15) drop-shadow(0px 17px 6px black);' 
      src='puplic/icons/stars.png' alt='no net' @error='er($event)' />
 
      <div >  Tele shop  </div>
@@ -56,12 +56,8 @@
 <!-- for open page on ---- -->
 
 <div class="openTop">
-  <div class='between'></div>
 </div>
 
-<div class="openBottom">
-  <div class='between'></div>
-</div>
 
 <!-- for open page on ---- -->
 
@@ -71,7 +67,7 @@
 
 
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" style='z-index: 1;height: 100%;max-width: 550px;filter: contrast(0.7) drop-shadow(hsl(302deg 100% 50% / 30%) 0px 15vh 0.5px) drop-shadow(rgba(135, 206, 235, 0.2) 0px -4vh 0px);'>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" style='z-index: 1;height: 100%;max-width: 550px;filter: contrast(0.7) drop-shadow(hsl(302deg 100% 50% / 30%) 0px 17vh 0.5px) drop-shadow(rgba(135, 206, 235, 0.2) 0px -6vh 0px);'>
   <!-- Define reusable shapes -->
   <defs>
     <!-- A symbol for a 6-pointed star -->

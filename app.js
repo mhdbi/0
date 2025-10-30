@@ -600,23 +600,22 @@ info: function(){
  },
  
 
-///////////////////////
-
-
    er:function(e){
-              // var n=navigator.onLine;
-              // if(n){
-              //   e.currentTarget.style.display='flex';
-              //   e.currentTarget.src=e.currentTarget.src;
-              //  }else{
-              //   e.currentTarget.style.display='none';
-              //   e.currentTarget.src=e.currentTarget.src;
+              var n=navigator.onLine;
+              if(n){
+                e.currentTarget.style.display='flex';
+                e.currentTarget.src=e.currentTarget.src;
+               }else{
+                e.currentTarget.style.display='none';
+                e.currentTarget.src=e.currentTarget.src;
               
-              //  }
+               }
              },
 
 
 
+
+             
 ///////////////////index/////////////////////////
 
 
@@ -1363,7 +1362,7 @@ if(this.siteText=='text'){
        //    this.funUser();
          this.created();
          this.indexedDB();
-         setTimeout(this.coloring,4000);
+        // setTimeout(this.coloring,4000);
          
         // this.notificM();
         // this.siteOrders()

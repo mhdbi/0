@@ -156,7 +156,10 @@ export default{
               <div class="login"   @click="route1='تسجيل'"
              > تسجيل دخول </div>
           </div>
-         
+         <div class="button">
+              <div class="login"   @click="$router.push({ name : 'home' })"
+             >  رجوع </div>
+          </div>
 
       </div>
   </div>

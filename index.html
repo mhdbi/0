@@ -29,14 +29,14 @@
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" /> -->
  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
 
-	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"> </script>
   <script  src="https://unpkg.com/vue-router@4"></script>
 
 </head>
 <body >
 
 	<div id="app"  >
-    <dialog open  class="dialog" style="  padding: 0px;top:0px;bottom: 0px;background-color: #fde068;
+    <dialog open  class="dialog" style="  padding: 0px;top:0px;bottom: 0px;background: linear-gradient(0deg, #000000, #2b2b2b);
     margin: 0px;  
     border: none;
     width: 100%;
@@ -105,12 +105,12 @@
 </script>
 
 <script  src="app.js" ></script>
-<script  > 
+<script> 
 
 let serviceWorkerRegisteration = null;
 //let isPushSubscribed = false;
 
-window.addEventListener("load", init());
+window.addEventListener("load", init() );
 
   function init(){
    if('serviceWorker' in navigator){ 
@@ -138,8 +138,6 @@ window.addEventListener("load", init());
 //   if('themeColor' in document.documentElement.style){document.documentElement.style.themeColor='#232323';}
   
 // })()
-
-
 
 </script>
 
