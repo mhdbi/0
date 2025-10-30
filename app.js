@@ -1362,7 +1362,7 @@ if(this.siteText=='text'){
        //    this.funUser();
          this.created();
          this.indexedDB();
-        // setTimeout(this.coloring,4000);
+         setTimeout(this.coloring,4000);
          
         // this.notificM();
         // this.siteOrders()

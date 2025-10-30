@@ -568,12 +568,11 @@ main footer a{
 /****
 *********menu/////menu///////menu******************/
 .openTop{
-  position: absolute;
+    position: absolute;
     height: 100%;
     width: 100%;
-background: conic-gradient(from 225deg at 28% 97%, #ffe888 45deg, #ffe888 -83deg, #0000 10deg), conic-gradient(from 90deg at 72% 97%, #ffe888 45deg, #ffe888 -83deg, #00000000 10deg), conic-gradient(from 90deg at 50% 99.5%, #ffe888 180deg, #00000000 2deg), conic-gradient(from 135deg at 50% 86%, #504c36 90deg, #00000000 56deg), conic-gradient(from 270deg at 30% 18%, #ffe888 135deg, #00000000 56deg), conic-gradient(from -45deg at 70% 18%, #ffe888 135deg, #b6616100 56deg), conic-gradient(from 135deg at 50% 85%, #23414a 90deg, #00000000 56deg), conic-gradient(from 135deg at 50% 84%, #453043c7 90deg, #00000000 56deg);
+    background: conic-gradient(from 225deg at 25% 97%, #ffe888 45deg, #ffe888 -83deg, #0000 10deg), conic-gradient(from 90deg at 75% 97%, #ffe888 45deg, #ffe888 -83deg, #00000000 10deg), conic-gradient(from 90deg at 50% 99%, #ffe888 180deg, #00000000 2deg), conic-gradient(from 135deg at 50% 86%, #213031 90deg, #00000000 56deg), conic-gradient(from 270deg at 30% 18%, #ffe888 135deg, #00000000 56deg), conic-gradient(from -45deg at 70% 18%, #ffe888 135deg, #b6616100 56deg), conic-gradient(from 135deg at 15% 88%, #232323 90deg, #00000000 56deg), conic-gradient(from 135deg at 85% 88%, #232323 90deg, #00000000 56deg), conic-gradient(from 315deg at 50% 87%, #00000000 0deg, #282828 45deg, #00000000 90deg);
 }
-
 
 
 .contaiiner {
