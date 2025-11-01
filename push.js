@@ -1,44 +1,166 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Push Notification Demo</title><script src="https://unpkg.com/web-push@3.5.0/build/web-push.min.js"></script>
-   
-</head>
-<body>
-    <h1>Web Push Notification Demo</h1>
-    <button id="subscribeButton">Subscribe to Push Notifications</button>
-    <button id="sendPushButton" disabled>Send Test Push</button>
-    <p id="status"></p>
- <script>
-        // Replace these with your actual values
-        const VAPID_PUBLIC_KEY = 'BK8PXwtEqbAqq390C1GAKeTFOhIGUfkVXOBfiCGOjgsgZdwvMD7mFhwx8HGTj-C8LOPoD24dFOJc-gWQFJOVPuQ';
-        const VAPID_PRIVATE_KEY_PEM = `-----BEGIN PRIVATE KEY-----
+
+
+
+
+
+
+
+const VAPID_PUBLIC_KEY = 'BK8PXwtEqbAqq390C1GAKeTFOhIGUfkVXOBfiCGOjgsgZdwvMD7mFhwx8HGTj-C8LOPoD24dFOJc-gWQFJOVPuQ';
+const VAPID_PRIVATE_KEY_PEM = `-----BEGIN PRIVATE KEY-----
 MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQg9f8/qdb+OVqzUgTz
 CLFbLwN3vPW8kYiHA1Xr/cqBYmSgCgYIKoZIzj0DAQehRANCAASvD18LRKmwKqt/
 dAtRgCnkxToSBlH5FVzgX4ghjo4LIGXcLzA+5hYcMfBxk4/gvCzj6A9uHRTiXPoF
 kBSTlT7k
 -----END PRIVATE KEY-----`;
-        const GAS_URL = 'https://script.google.com/macros/s/AKfycbx7P2Y1pdwXTqjBXT8abvgdPZG82b0s90EHSUXSrVJrM5bzH2ETA5hxuVB5KJCOI3V6yg/exec'; // Replace with your GAS deployed URL
-        const SUBJECT = 'mailto:you@example.com'; // Your contact email
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbx7P2Y1pdwXTqjBXT8abvgdPZG82b0s90EHSUXSrVJrM5bzH2ETA5hxuVB5KJCOI3V6yg/exec'; // Replace with your GAS deployed URL
+const SUBJECT = 'mailto:you@example.com'; // Your contact email
+
+/////////////////////////////////////////////////////////////////////////////
 
 
+window.addEventListener("load", init());
 
+  function init(){
+   if('serviceWorker' in navigator){ 
+     navigator.serviceWorker.register('sw.js').then(registration=>{
+     return serviceWorkerRegisteration = registration;
+      //registration.installing || registration.waiting || registration.active ;
+     }).catch(e=>{console.log(e)})
+ 
+      navigator.serviceWorker.addEventListener('controllerchange',async()=>{ 
+      serviceWorkerRegisteration = navigator.serviceWorker.controller;
+       })
+   }
+  
+  // getNotificationPermission();
 
-
-
-        // Helper: Base64URL Encode
-       function base64urlEncode(buffer) {
-  const bytes = new Uint8Array(buffer);
-  let bin = '';
-  for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
-  return btoa(bin)
-    .replace(/\+/g, '-')
-    .replace(/\//g, '_')
-    .replace(/=+$/, '');   // <-- strip padding (safe for URL)
 }
-        // Helper: Base64URL Decode
+
+function getNotificationPermission(){
+  Notification.requestPermission(function(result) {
+    if (result === 'granted') {
+        subscribeUser().then(e=>{
+         //  updateButton();
+         var res= JSON.parse(JSON.stringify(e)); // we do jsom for parse the keys auth p256
+         var endpoint = res.endpoint;
+         var auth = res.keys.auth;
+         var p256dh =res.keys.p256dh;
+         sendPushMessage(endpoint,p256dh,auth);
+        // console.log(endpoint,'22222222222'+p256dh,'33333333333333'+auth);
+        })
+      }
+  }).catch(e=>{
+    if(e=="support"){
+      alert("your browser doesn't support push messaging ")
+    }else if(e=="denied"){
+      alert("you block notification")
+    }
+  })
+}
+
+
+
+    async function subscribeUser() {
+        const swRegistration = await navigator.serviceWorker.ready;
+        const convertedVapidKey = urlB64ToUint8Array(VAPID_PUBLIC_KEY); // Convert to Uint8Array
+
+        try {
+          const subscription = await swRegistration.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: convertedVapidKey
+            });
+            return subscription;
+           // console.log('Push Subscription:', subscription);
+            // Send subscription to your server
+           // sendSubscriptionToServer(subscription);
+        } catch (error) {
+            console.error('Push subscription failed:', error);
+        }
+    }
+
+
+    // function sendSubscriptionToServer(subscription) {
+    //     fetch('/save-subscription', { // Your server endpoint
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify(subscription)
+    //     })
+    //     .then(response => {
+    //         if (!response.ok) {
+    //             throw new Error('Failed to save subscription on server.');
+    //         }
+    //         console.log('Subscription saved on server.');
+    //     })
+    //     .catch(error => {
+    //         console.error('Error sending subscription to server:', error);
+    //     });
+    // }
+
+
+function updateButton(){
+ if(Notification.permission=='denied'){
+   pushButton.disabled = true;
+ }
+ pushButton.disabled = false;
+}
+
+
+function unsubscribeUser(){
+  pushButton.disabled=true;
+  serviceWorkerRegisteration.pushManager.getSubscription().then(subscription=>{
+    if(subscription)
+      subscription.unsubscribe();
+     return subscription;
+  }).then(subscription=>{
+    updateSubscriptionOnServer(subscription,false);
+    isPushSubscibed=false;
+    updateButton();
+  }).catch(e=>{})
+
+}
+
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+    // Helper function to convert URL-safe Base64 to Uint8Array
+
+//start
+getNotificationPermission();
+
+
+
+
+
+
+
+
+
+
+
+
+function urlB64ToUint8Array(base64String) {
+            const padding = '='.repeat((4 - base64String.length % 4) % 4);
+            const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+            const rawData = window.atob(base64);
+            const outputArray = new Uint8Array(rawData.length);
+            for (let i = 0; i < rawData.length; ++i) {
+                outputArray[i] = rawData.charCodeAt(i);
+            }
+            return outputArray;
+        }
+
+  
+
+     function base64urlEncode(buffer){
+          const bytes = new Uint8Array(buffer);
+            let bin = '';
+            for (let i = 0; i < bytes.length; i++) {bin += String.fromCharCode(bytes[i])};
+              return btoa(bin).replace(/\+/g, '-')
+              .replace(/\//g, '_')
+              .replace(/=+$/, '');   
+             }
+        // Helper: Base64URL Decode;
         function base64urlDecode(str) {
             let b64 = str.replace(/-/g, '+').replace(/_/g, '/');
             while (b64.length % 4) b64 += '=';
@@ -49,15 +171,6 @@ kBSTlT7k
             return bytes;
         }
 
-        // Helper: ArrayBuffer to Base64URL
-        function arrayBufferToBase64url(buffer) {
-            const bytes = new Uint8Array(buffer);
-            let binary = '';
-            for (let i = 0; i < bytes.length; i++) {
-                binary += String.fromCharCode(bytes[i]);
-            }
-            return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-        }
 
         // Helper: PEM to DER
         function pemToDer(pem) {
@@ -110,10 +223,10 @@ kBSTlT7k
         }
         ////////////////////////////////////////////////
       async function isValidP256Point(publicKeyBytes) {
-  if (publicKeyBytes.length !== 65 || publicKeyBytes[0] !== 4) {
-    console.error('Invalid length or not uncompressed');
-    return false;
-  }
+          if (publicKeyBytes.length !== 65 || publicKeyBytes[0] !== 4) {
+            console.error('Invalid length or not uncompressed');
+            return false;
+          }
 
   // Extract x and y as BigInt (32 bytes each)
   const hex = (arr) => Array.from(arr).map(b => b.toString(16).padStart(2, '0')).join('');
@@ -214,7 +327,7 @@ kBSTlT7k
   const nonce = await hkdfExpand(contentPrk, new TextEncoder().encode('Content-Encoding: nonce\0'), 12);
 
   // 5. Pad plaintext (RFC 8291: padding (0s) + payload + delimiter (1 if no padding, 2 if padding >0)
-  const rs = 1024; // Ciphertext length (must match your GAS check)
+  const rs = 4058; // Ciphertext length (must match your GAS check)
   const plaintextLen = rs - 16; // Subtract GCM tag
   const contentLen = payloadUtf8.length;
   let paddingLen = plaintextLen - contentLen - 1; // Room for delimiter (1 byte)
@@ -241,96 +354,27 @@ kBSTlT7k
     saltB64: base64urlEncode(salt),
     dhB64: base64urlEncode(serverPublicBytes)
   };
-} // Convert base64url to Uint8Array for applicationServerKey
-       
-/////////////////////////////
-function urlB64ToUint8Array(base64String) {
-            const padding = '='.repeat((4 - base64String.length % 4) % 4);
-            const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
-            const rawData = window.atob(base64);
-            const outputArray = new Uint8Array(rawData.length);
-            for (let i = 0; i < rawData.length; ++i) {
-                outputArray[i] = rawData.charCodeAt(i);
-            }
-            return outputArray;
-        }
+} 
+    
 
-        // Main Logic
-        const status = document.getElementById('status');
-        const subscribeButton = document.getElementById('subscribeButton');
-        const sendPushButton = document.getElementById('sendPushButton');
-
-        let pushSubscription = null;
-
-        // Register Service Worker
-        if ('serviceWorker' in navigator && 'PushManager' in window) {
-            navigator.serviceWorker.register('registerAll.js')
-                .then(registration => {
-                    console.log('Service Worker registered');
-                    subscribeButton.disabled = false;
-                })
-                .catch(err => {
-                    status.textContent = 'Service Worker registration failed: ' + err;
-                });
-        } else {
-            status.textContent = 'Push notifications not supported.';
-        }
-
-        // Subscribe Button Click
-        subscribeButton.addEventListener('click', async () => {
-            try {
-                const permission = await Notification.requestPermission();
-                if (permission !== 'granted') {
-                    status.textContent = 'Permission denied.';
-                    return;
-                }
-
-                const registration = await navigator.serviceWorker.ready;
-                pushSubscription = await registration.pushManager.subscribe({
-                    userVisibleOnly: true,
-                    applicationServerKey: urlB64ToUint8Array(VAPID_PUBLIC_KEY)
-                });
-
-                // Optionally send subscription to your server here
-                console.log('Subscribed:', pushSubscription);
-
-                status.textContent = 'Subscribed successfully!';
-                sendPushButton.disabled = false;
-            } catch (err) {
-                status.textContent = 'Subscription failed: ' + err;
-            }
-        });
-
-        // Send Push Button Click
-sendPushButton.addEventListener('click', async () => {
-    if (!pushSubscription) return;
-
+// Main function to send the push message
+async function sendPushMessage(endpoint,p256dh,auth) {
+  // TODO: Fill in your values here
     try {
-        const payload = JSON.stringify({
-            title: 'Test',
-            body: 'o!'
-        });
-
-        const p256dh = arrayBufferToBase64url(pushSubscription.getKey('p256dh'));
-        const auth = arrayBufferToBase64url(pushSubscription.getKey('auth'));
+     const payload = JSON.stringify({   title: 'Test',  body: 'o!'});
 
         // ENCRYPT
         const encrypted = await encryptPayload(payload, p256dh, auth);
         console.log('Encryption result:', encrypted);  // ← DEBUG: Check dhB64 here
 
         // VAPID HEADER
-        const authorization = await generateVapidHeader(
-            pushSubscription.endpoint,
-            VAPID_PUBLIC_KEY,
-            VAPID_PRIVATE_KEY_PEM,
-            SUBJECT
-        );
+const authorization = await generateVapidHeader(endpoint,VAPID_PUBLIC_KEY,VAPID_PRIVATE_KEY_PEM,SUBJECT);
 
         // SEND TO GAS — MUST INCLUDE dhB64!
         const response = await fetch(GAS_URL, {
             method: 'POST',
             body: JSON.stringify({
-                endpoint: pushSubscription.endpoint,
+                endpoint: endpoint,
                 ciphertextB64: encrypted.ciphertextB64,
                 saltB64: encrypted.saltB64,
                 dhB64: encrypted.dhB64,        // ← THIS WAS MISSING!
@@ -348,9 +392,9 @@ sendPushButton.addEventListener('click', async () => {
         status.textContent = 'Error sending push: ' + err.message;
         console.error(err);
     }
-});
 
 
-</script>
-</body>
-</html>
+}
+
+////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////

@@ -1,6 +1,6 @@
 
 ///////
-const version =92;
+const version =2076;
 var cacheName =`staticCahe-${version}`;
 var dynamicName="dynamicCache";
 
@@ -54,29 +54,27 @@ self.addEventListener('activate' ,(ev)=>{
 ////////////////////////////////notific////////////////////////////////////////////////////
 ////////////////////////////msg/////msg///////////////////////////////////////////////////
 
-self.addEventListener('sync',(e)=>{});
-self.addEventListener('periodicsync', (e)=>{});
+// self.addEventListener('sync',(e)=>{});
+// self.addEventListener('periodicsync', (e)=>{});
 self.addEventListener("push", (event) => {
+  console.log(event);
   if (self.Notification && self.Notification.permission === "granted") {
 
   
 
-  const data    =  event.data? event.data : {};
-  const title   =  data.title   || "Something Has Happened";
-  const message =  data.message || "Here's something you might want to check out.";
-  const icon    = "images/new-notification.png";
-
+  const data    =  event.data? event.data.json() : {};
+  var title   =  data.title   || "Something Has Happened";
+  var options={ 
+   body : data.message || "Here's something you might want to check out.",
+   icon    : null , //"images/new-notification.png"
+   tag   : 'this is tag',
+   data  : 'https://www.google.come'
+  }
  
-  event.waitUntil(self.registration.showNotification('title', {
-      body: 'message',
-      tag: "simple-push-demo-notification",
-       icon,
-       data:"https://www.google.com"
-     }
-    ));
-
-
+  event.waitUntil(self.registration.showNotification(title , options ) );
 }
+
+
 });
 
 self.addEventListener('notificationclick', function (e){
@@ -122,7 +120,7 @@ self.addEventListener('fetch'  , (ev)=>{
 
  if(onLine ){
 
-        if(referrer ){
+        if(referrer && icons){
           return ev.respondWith(cacheF(ev));
         }else if(thumb){
           return ev.respondWith(fetch(ev.request,{method: "GET",mode: "no-cors",redirect:"follow",credentials:"omit"}))
