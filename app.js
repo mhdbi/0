@@ -896,12 +896,11 @@ if(this.cartItem.length==0)
 
   if(this.cart==3){
     
-    if(this.cartItem.length==0||this.iphone==''||this.geoL==null||this.geoL==''){
+    if(this.cartItem.length==0|| this.iphone==''|| this.iname==''|| !this.iphone|| !this.iname||this.geoL==null||this.geoL==''){
        this.errSend=true;
-       
+       run
     }else{
-    
-     
+       this.run=true;
       //// for api send data ///
       var id = Math.floor(1+Math.random()*1234567890);
       var obj= {cartItem:this.cartItem,orderPhone:this.iphone,geoL:this.geoL,id:id,indexed:"order"};
@@ -910,7 +909,7 @@ if(this.cartItem.length==0)
        var cartItem=JSON.stringify(this.cartItem);
        var data={id:id,cartItem:cartItem,date:this.date()};
      ///// for idexedDb  /////
-
+     
       var x  = JSON.stringify(obj);
       var y  ="newOrder";
       var url =this.url+`?x=${x}&y=${y}`;
@@ -918,6 +917,7 @@ if(this.cartItem.length==0)
         if(!r.ok){
            return Promise.reject();
         }else{
+           this.run=false;
            this.sendCartDone=true;
            return r.json();}
       }).then(e=>{ 
@@ -926,6 +926,7 @@ if(this.cartItem.length==0)
          this.pushN();
          this.cartItem=[];this.orderPhone=null;siteText=null;this.geoL=null;
       }).catch(e=>{
+        this.run=false;
         this.FUNrun=true;
         this.FUNname=this.ocCart;
       })
