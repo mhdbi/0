@@ -1141,7 +1141,10 @@ notifINIT:function(){
           return;
         }else if(this.user && this.user[0]=='Admin' && this.sw){
           c.style.display='flex'; 
-          c.addEventListener('click', ()=>{c.style.display='none'; Notification.requestPermission().then(permission => {if(permission === 'granted')return this.notef()}) })
+        return  c.addEventListener('click', ()=>{c.style.display='none'; Notification.requestPermission()
+          .then(permission => {
+                if(permission === 'granted'){return this.notef()}}).catch(e=>{})
+             })
         }else{
           return;
         }
