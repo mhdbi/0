@@ -80,9 +80,9 @@ const messaging = firebase.messaging();
 messaging.onBackgroundMessage((payload) => {
   console.log('[SW] Background Message:', payload);
 
-  const title = payload.notification?.title || 'Notification';
+  const title = payload.data?.title || 'Notification';
   const options = {
-    body: payload.notification?.body || '',
+    body: payload.data?.body || '',
     icon: 'puplic/192.png',
     badge: 'puplic/192.png',
     data: { url: payload.data?.click_action || '/' },

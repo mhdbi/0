@@ -4,6 +4,7 @@
 const data={
 
   url : "https://script.google.com/macros/s/AKfycby2lrAKSJi_gAE9od_M_y1GuArD43SljOmfYC8z8VmI9lkz2ryg0A863W5MabXaeRE9MA/exec",
+  pushUrl :'https://script.google.com/macros/s/AKfycbxSi8Jm_0fHpVJVW01uJO70KivHopRaHxsxgtFzc2hQCslSZGQHQu7e1d9Je0yiQ0GS8A/exec',
   db :null ,
   sw : null ,
   dbData: null ,
@@ -935,8 +936,7 @@ if(this.cartItem.length==0)
  },
 
 pushN:function(){
-  var url = 'https://script.google.com/macros/s/AKfycby5hNb8lp3aC0tlswvFmnZ3B8wJHER24IWrGSaRJoPyy8OSv6QuI8uQxiLGXtWR_5WfTA/exec';
-  fetch(url + '?action=push' ,{ method:'post' ,body: JSON.stringify({ userN: 'Admin' })}).then(x=> x.json()).catch(e=>{console.log(e)});
+ fetch(this.pushUrl + '?action=push' ,{ method:'post' ,body: JSON.stringify({ userN: 'Admin' })}).then(x=> x.json()).catch(e=>{console.log(e)});
 },
 
  telegram:function(){
@@ -1099,9 +1099,8 @@ notef:function(){
             
 
       function sendTokenToServer(currentToken) {
-          const gasUrl = 'https://script.google.com/macros/s/AKfycby5hNb8lp3aC0tlswvFmnZ3B8wJHER24IWrGSaRJoPyy8OSv6QuI8uQxiLGXtWR_5WfTA/exec';  // Replace with your URL
-  
-          fetch(gasUrl + '?action=save-token', {
+
+          fetch(this.pushUrl + '?action=save-token', {
             method: 'POST',
         
             body: JSON.stringify({ token: currentToken , userN: 'Admin' })
