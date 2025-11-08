@@ -4,7 +4,7 @@
 const data={
 
   url : "https://script.google.com/macros/s/AKfycby2lrAKSJi_gAE9od_M_y1GuArD43SljOmfYC8z8VmI9lkz2ryg0A863W5MabXaeRE9MA/exec",
-  pushUrl :'https://script.google.com/macros/s/AKfycbxSi8Jm_0fHpVJVW01uJO70KivHopRaHxsxgtFzc2hQCslSZGQHQu7e1d9Je0yiQ0GS8A/exec',
+  pushUrl :`https://script.google.com/macros/s/AKfycbxSi8Jm_0fHpVJVW01uJO70KivHopRaHxsxgtFzc2hQCslSZGQHQu7e1d9Je0yiQ0GS8A/exec`,
   db :null ,
   sw : null ,
   dbData: null ,
@@ -937,7 +937,7 @@ if(this.cartItem.length==0)
  },
 
 pushN:function(){
- fetch(this.pushUrl + '?action=push' ,{ method:'post' ,body: JSON.stringify({ userN: 'Admin' })}).then(x=> x.json()).catch(e=>{console.log(e)});
+ fetch(this.pushUrl + `?action=push` ,{ method:'post' ,body: JSON.stringify({ userN: 'Admin' })}).then(x=> x.json()).catch(e=>{console.log(e)});
 },
 
  telegram:function(){
@@ -1084,6 +1084,7 @@ notef:function(){
            // Replace with your Public VAPID key from Step 1
       const publicVapidKey = 'BFjb5Hz9DHFRIWslwn0FJ89P_y-zNE2jHU4sc_wK79g6YulvSkEAjPfJmRidZiqlgxgxzD9VisP9ygQKo5wIPd4';
         if(!this.sw) {return setTimeout(this.notef,1000);}
+
           messaging.getToken({
             vapidKey: publicVapidKey,
             serviceWorkerRegistration: this.sw  // Key fix: Pass the registration
@@ -1101,7 +1102,7 @@ notef:function(){
 
       function sendTokenToServer(currentToken) {
 
-          fetch(this.pushUrl + '?action=save-token', {
+          fetch(this.pushUrl + `?action=save-token`, {
             method: 'POST',
         
             body: JSON.stringify({ token: currentToken , userN: 'Admin' })
@@ -1136,16 +1137,14 @@ notifINIT:function(){
   var c = document.getElementById('notifyBtn');
    if(c){
 
-        if (Notification.permission === 'granted' && 'Notification' in window && this.user && this.user[0]=='Admin' && this.sw) {
+        if (Notification.permission == 'granted' && 'Notification' in window && this.user && this.user[0]=='Admin' && this.sw) {
           this.notef();
           return;
         }else if(this.user && this.user[0]=='Admin' && this.sw){
           c.style.display='flex'; 
-          c.addEventListener('click', ()=>{c.style.display='none'; 
-            Notification.requestPermission().then(permission => {
-                if(permission === 'granted'){ //this.notef()
-                }}).catch(e=>{})
-             })
+          c.addEventListener('click', ()=>{c.style.display='none'; Notification.requestPermission().then(permission => {if(permission === 'granted')return this.notef()}) })
+        }else{
+          return;
         }
 
      }else{
