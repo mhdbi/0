@@ -1145,7 +1145,7 @@ notifINIT:function(){
         }
 
      }else{
-     return setTimeout(this.notifINIT , 1000)
+           setTimeout(this.notifINIT , 1000);
     };
 
   
@@ -1155,12 +1155,13 @@ notifINIT:function(){
 
 
 
-
-
  //end   of   methodes
  };
  
  
+
+
+
  
  const computed ={
      data4: function(){  
