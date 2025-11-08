@@ -1,9 +1,9 @@
 
-const version =44;
+const version =84;
 var cacheName =`staticCahe-${version}`;
 var dynamicName="dynamicCache";
 
-let assets=['/','index.html','home.css','tecno.css','app.js',"404.html",'views/Account.js','views/Home.js','views/Index.js','views/Inset.js','views/search.js','views/Socitey.js',
+let assets=['/','index.html','home.css','tecno.css','app.js',"404.html",
            "puplic/icons/screensh1.jpg","puplic/icons/screensh2.jpg",'puplic/icons/chocolate.jpg','puplic/icons/cigarette.jpg','puplic/icons/dairy-products.jpg','puplic/icons/drink.jpg',
            'puplic/icons/fruits.jpg','puplic/icons/nuts.jpg','puplic/icons/purchase.png','puplic/icons/robot.png',
            'puplic/icons/1.jpg','puplic/icons/2.jpg','puplic/icons/3.jpg',
