@@ -1136,17 +1136,16 @@ notifINIT:function(){
   var c = document.getElementById('notifyBtn');
    if(c){
 
-        if (Notification.permission == 'granted' && 'Notification' in window && this.user && this.user[0]=='Admin' && this.sw) {
+        if (Notification.permission === 'granted' && 'Notification' in window && this.user && this.user[0]=='Admin' && this.sw) {
           this.notef();
           return;
         }else if(this.user && this.user[0]=='Admin' && this.sw){
           c.style.display='flex'; 
-        return  c.addEventListener('click', ()=>{c.style.display='none'; Notification.requestPermission()
-          .then(permission => {
-                if(permission === 'granted'){return this.notef()}}).catch(e=>{})
+          c.addEventListener('click', ()=>{c.style.display='none'; 
+            Notification.requestPermission().then(permission => {
+                if(permission === 'granted'){ //this.notef()
+                }}).catch(e=>{})
              })
-        }else{
-          return;
         }
 
      }else{
