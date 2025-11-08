@@ -26,10 +26,10 @@ export default{
         <span @click="accDB=false" :style="!accDB?'color:#69f8ed;':'' "> سجل الفواتير </span> | <span :style="accDB?'color:#69f8ed;':'' " @click="accDB=true"> حسابي </span>
       </li>
        
-      <li class="header__item"  v-if="route2=='Admin'&&!editBtn" @click="editBtn=!editBtn" style='color: #fbfbfb;right: 20%;'>
+      <li class="header__item"  v-if="route2=='Admin'&&!editBtn" @click="editBtn=!editBtn" style='color: #fbfbfb;right: 15%;'>
             وضع التعديل
       </li>
-      <li class="header__item"  v-if="route2=='Admin'&&editBtn" @click="editBtn=!editBtn" style='color: #fbfbfb;right: 20%;'>
+      <li class="header__item"  v-if="route2=='Admin'&&editBtn" @click="editBtn=!editBtn" style='color: #fbfbfb;right: 15%;'>
            وضع المستخدم
       </li>
   

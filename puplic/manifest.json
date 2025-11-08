@@ -24,20 +24,20 @@
 
   "icons": [
               {
-                "src": "test.png",
-                "sizes": "192x192",
+                "src": "tele.png",
+                "sizes": "192x192 any",
                 "type": "image/png",
                 "purpose": "maskable"
               },
               {
-                "src": "test2.png",
-                "sizes": "512x512",
+                "src": "tele.png",
+                "sizes": "512x512 any",
                 "type": "image/png",
                 "purpose": "any"
               },
               {
-                "src": "test2.png",
-                "sizes": "512x512",
+                "src": "tele.png",
+                "sizes": "512x512 any",
                 "type": "image/png",
                 "purpose": "maskable"
               }
