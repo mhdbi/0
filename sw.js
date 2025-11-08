@@ -1,5 +1,5 @@
 
-const version =84;
+const version =4;
 var cacheName =`staticCahe-${version}`;
 var dynamicName="dynamicCache";
 
@@ -85,7 +85,12 @@ messaging.onBackgroundMessage((payload) => {
     body: payload.notification?.body || '',
     icon: 'puplic/192.png',
     badge: 'puplic/192.png',
-    data: { url: payload.data?.click_action || '/' }
+    data: { url: payload.data?.click_action || '/' },
+    actions: [{
+      action:'open',
+      title: 'open the site',
+      icon :''
+    }]
   };
 
   self.registration.showNotification(title, options);
@@ -94,16 +99,31 @@ messaging.onBackgroundMessage((payload) => {
 // === NOTIFICATION CLICK ===
 self.addEventListener('notificationclick', (event) => {
   event.notification.close();
-  const url = event.notification.data?.url || '/';
-  event.waitUntil(
-    clients.matchAll({ type: 'window', includeUncontrolled: true })
-      .then(clientList => {
-        for (let client of clientList) {
-          if (client.url === url && 'focus' in client) return client.focus();
-        }
-        if (clients.openWindow) return clients.openWindow(url);
-      })
-  );
+  if (event.action==='open'){
+        const url = event.notification.data?.url || '/';
+        event.waitUntil(
+          clients.matchAll({ type: 'window', includeUncontrolled: true })
+            .then(clientList => {
+              for (let client of clientList) {
+                if (client.url === url && 'focus' in client) return client.focus();
+              }
+              if (clients.openWindow) return clients.openWindow(url);
+            })
+        );
+  }else{
+     const url = event.notification.data?.url || '/';
+        event.waitUntil(
+          clients.matchAll({ type: 'window', includeUncontrolled: true })
+            .then(clientList => {
+              for (let client of clientList) {
+                if (client.url === url && 'focus' in client) return client.focus();
+              }
+              if (clients.openWindow) return clients.openWindow(url);
+            })
+        );
+  }
+
+ 
 });
 
 //////////////////////////msg////////////////msg////////////////////////////////////////////
