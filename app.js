@@ -1083,7 +1083,7 @@ notef:function(){
       const messaging = firebase.messaging();
            // Replace with your Public VAPID key from Step 1
       const publicVapidKey = 'BFjb5Hz9DHFRIWslwn0FJ89P_y-zNE2jHU4sc_wK79g6YulvSkEAjPfJmRidZiqlgxgxzD9VisP9ygQKo5wIPd4';
-        if(!this.sw) return this.notef();
+        if(!this.sw) {return setTimeout(this.notef,1000);}
           messaging.getToken({
             vapidKey: publicVapidKey,
             serviceWorkerRegistration: this.sw  // Key fix: Pass the registration
@@ -1136,12 +1136,12 @@ notifINIT:function(){
   var c = document.getElementById('notifyBtn');
    if(c){
 
-        if (Notification.permission === 'granted' && 'Notification' in window && this.user && this.user[0]=='Admin' && this.sw) {
+        if (Notification.permission == 'granted' && 'Notification' in window && this.user && this.user[0]=='Admin' && this.sw) {
           this.notef();
           return;
         }else if(this.user && this.user[0]=='Admin' && this.sw){
           c.style.display='flex'; 
-          c.addEventListener('click', ()=>{c.style.display='none'; Notification.requestPermission().then(permission => {permission === 'granted'?this.notef():null;}) })
+          c.addEventListener('click', ()=>{c.style.display='none'; Notification.requestPermission().then(permission => {if(permission === 'granted')return this.notef()}) })
         }else{
           return;
         }
