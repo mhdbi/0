@@ -24,7 +24,7 @@
 
   "icons": [
               {
-                "src": "192.png",
+                "src": "test.png",
                 "sizes": "192x192",
                 "type": "image/png",
                 "purpose": "maskable"

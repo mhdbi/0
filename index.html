@@ -26,17 +26,24 @@
 <link rel="stylesheet" href="home.css" >
 <link rel="manifest"   href="/puplic/manifest.json" />
 
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" /> -->
- <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
 
-	<script src="https://unpkg.com/vue@3/dist/vue.global.js"> </script>
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script  src="https://unpkg.com/vue-router@4"></script>
+
+   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging-compat.js"></script>
+
 
 </head>
 <body >
 
+
+
+
+
+
 	<div id="app"  >
-    <dialog open  class="dialog" style="  padding: 0px;top:0px;bottom: 0px;background: linear-gradient(0deg, #11111100, #00000000);
+    <dialog open  class="dialog" style="  padding: 0px;top:0px;bottom: 0px;background-color:#232323;
     margin: 0px;  
     border: none;
     width: 100%;
@@ -60,36 +67,6 @@
 
 
 
-<!-- first log in ---- 
-
-
-<div style="z-index: 901;width: 100vw;height: 100vh;position: absolute;background: rgb(255 255 255 / 46%);flex-direction: column;
-              display: flex;justify-content: center;align-items: center;" v-if="askMe"> 
-
-      <div class="plase" :class="{ shake2 : askMe }">
-        <p style="display: flex;justify-content: center;align-items: center;width: 100%;">
-         <p style="font-size: 21px;padding: 0 10px;"> &#128536; </p> 
-         من فضلك  .. أخبرني ما اسمك 
-        </p>
-      </div>
-
-  <div style="width: 95vw;height: 50vh;position: relative;transition: 2s;display: flex; flex-direction: column;align-items: center;justify-content: start;    border-radius: 2rem;
-               background: linear-gradient(311deg, black, #222222);">
-      <div class="test3" style="font-size: 50px;color:transparent;height: 30%;">Teleshop</div>
-
-      <div class="itemFlex" style="background: linear-gradient(270deg, #000000cf, transparent 50%);border-radius: 5rem;margin: 20px 0px;height: 15%;">
-         <input class="input" type="text" rows="1" dir="rtl" placeholder="الاسم" v-model="iname" />
-      </div>
-    
-      <div  class="redButton" @click="firstLog()">
-           حفظ   
-      </div>
-   
-
- </div>
-</div>
-
- ------ -->
 
 
 
@@ -100,47 +77,23 @@
   </div>
 
 
-<script >
-
-</script>
-
 <script  src="app.js" ></script>
-<script src="push.js"></script>
-<script> 
 
-let serviceWorkerRegisteration = null;
-//let isPushSubscribed = false;
 
-// window.addEventListener("load", init() );
-
-//   function init(){
-//    if('serviceWorker' in navigator){ 
-//      navigator.serviceWorker.register('sw.js').then(registration=>{
-//      return serviceWorkerRegisteration = registration;
-//       //registration.installing || registration.waiting || registration.active ;
-//      }).catch(e=>{console.log(e)})
- 
-//       navigator.serviceWorker.addEventListener('controllerchange',async()=>{ 
-//       serviceWorkerRegisteration = navigator.serviceWorker.controller;
-//        })
-//    }
+<!-- (function(){
+  const metaa = document.querySelectorAll("meta[name='theme-color']");
+  if('launchQueue' in window){ launchQueue.setConsumer(launchParam =>{}) }
+ // if(metaa){metaa.setAttribute('content', '#232323')}
+  var m = document.createComment('meta');
+      m.name="theme-color";
+      m.content="#232323";
+      document.head.appendChild(m);
+  if('themeColor' in document.documentElement.style){document.documentElement.style.themeColor='#232323';}
   
-// }
+})() -->
 
-////  color ui 
-// (function(){
-//   const metaa = document.querySelectorAll("meta[name='theme-color']");
-//   if('launchQueue' in window){ launchQueue.setConsumer(launchParam =>{}) }
-//  // if(metaa){metaa.setAttribute('content', '#232323')}
-//   var m = document.createComment('meta');
-//       m.name="theme-color";
-//       m.content="#232323";
-//       document.head.appendChild(m);
-//   if('themeColor' in document.documentElement.style){document.documentElement.style.themeColor='#232323';}
-  
-// })()
-
-</script>
+<!-- css 
+conic-gradient(from 225deg at 25% 97%, #ffe888 45deg, #ffe888 -83deg, #0000 10deg), conic-gradient(from 90deg at 75% 97%, #ffe888 45deg, #ffe888 -83deg, #00000000 10deg), conic-gradient(from 90deg at 50% 99%, #ffe888 180deg, #00000000 2deg), conic-gradient(from 135deg at 50% 86%, #213031 90deg, #00000000 56deg), conic-gradient(from 270deg at 30% 18%, #ffe888 135deg, #00000000 56deg), conic-gradient(from -45deg at 70% 18%, #ffe888 135deg, #b6616100 56deg), conic-gradient(from 135deg at 15% 88%, #232323 90deg, #00000000 56deg), conic-gradient(from 135deg at 85% 88%, #232323 90deg, #00000000 56deg), radial-gradient(circle at 50% ,blue 9%, #00000000 12% ),radial-gradient(circle at 50% ,red 11%, #000000 12% ) -->
 
 
 

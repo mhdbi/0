@@ -1,11 +1,10 @@
 
-///////
-const version =2076;
+const version =736;
 var cacheName =`staticCahe-${version}`;
 var dynamicName="dynamicCache";
 
-let assets=['/','index.html','home.css','tecno.css','app.js',"404.html","puplic/icons/screensh1.jpg","puplic/icons/screensh2.jpg",
-           'puplic/icons/chocolate.jpg','puplic/icons/cigarette.jpg','puplic/icons/dairy-products.jpg','puplic/icons/drink.jpg',
+let assets=['/','index.html','home.css','tecno.css','app.js',"404.html",'views/Account.js','views/Home.js','views/Index.js','views/Inset.js','views/search.js','views/Socitey.js',
+           "puplic/icons/screensh1.jpg","puplic/icons/screensh2.jpg",'puplic/icons/chocolate.jpg','puplic/icons/cigarette.jpg','puplic/icons/dairy-products.jpg','puplic/icons/drink.jpg',
            'puplic/icons/fruits.jpg','puplic/icons/nuts.jpg','puplic/icons/purchase.png','puplic/icons/robot.png',
            'puplic/icons/1.jpg','puplic/icons/2.jpg','puplic/icons/3.jpg',
            'puplic/512m.png','puplic/512.png','puplic/192.png'];
@@ -54,37 +53,58 @@ self.addEventListener('activate' ,(ev)=>{
 ////////////////////////////////notific////////////////////////////////////////////////////
 ////////////////////////////msg/////msg///////////////////////////////////////////////////
 
-// self.addEventListener('sync',(e)=>{});
-// self.addEventListener('periodicsync', (e)=>{});
-self.addEventListener("push", (event) => {
-  console.log(event);
-  if (self.Notification && self.Notification.permission === "granted") {
-
-  
-
-  const data    =  event.data? event.data.json() : {};
-  var title   =  data.title   || "Something Has Happened";
-  var options={ 
-   body : data.message || "Here's something you might want to check out.",
-   icon    : null , //"images/new-notification.png"
-   tag   : 'this is tag',
-   data  : 'https://www.google.come'
-  }
- 
-  event.waitUntil(self.registration.showNotification(title , options ) );
-}
+self.addEventListener('sync',(e)=>{});
+self.addEventListener('periodicsync', (e)=>{});
 
 
+
+// Import Firebase SDK in the service worker;
+importScripts('https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js');
+importScripts('https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging-compat.js');
+
+// Initialize (use same config as app.js)
+ firebase.initializeApp({
+      apiKey: "AIzaSyCKoCdxnRt497Zq7rP5uP0KFvcA1DPibe0",
+      authDomain: "fcm-msg-teleshop.firebaseapp.com",
+      projectId: "fcm-msg-teleshop",
+      storageBucket: "fcm-msg-teleshop.firebasestorage.app",
+      messagingSenderId: "150406104185",
+      appId: "1:150406104185:web:8ee667482a917fd4e7c0a8",
+      measurementId: "G-GFMQGWJ0KF"
+    });
+
+
+const messaging = firebase.messaging();
+
+// === BACKGROUND MESSAGE ===
+messaging.onBackgroundMessage((payload) => {
+  console.log('[SW] Background Message:', payload);
+
+  const title = payload.notification?.title || 'Notification';
+  const options = {
+    body: payload.notification?.body || '',
+    icon: 'puplic/192.png',
+    badge: 'puplic/192.png',
+    data: { url: payload.data?.click_action || '/' }
+  };
+
+  self.registration.showNotification(title, options);
 });
 
-self.addEventListener('notificationclick', function (e){
-  e.notification.close();
-
-  e.waitUntil(
-    clients.openWindow("https://mhdbi.github.io/00")
-  )
-})
-
+// === NOTIFICATION CLICK ===
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  const url = event.notification.data?.url || '/';
+  event.waitUntil(
+    clients.matchAll({ type: 'window', includeUncontrolled: true })
+      .then(clientList => {
+        for (let client of clientList) {
+          if (client.url === url && 'focus' in client) return client.focus();
+        }
+        if (clients.openWindow) return clients.openWindow(url);
+      })
+  );
+});
 
 //////////////////////////msg////////////////msg////////////////////////////////////////////
 
@@ -121,12 +141,15 @@ self.addEventListener('fetch'  , (ev)=>{
  if(onLine ){
 
         if(referrer && icons){
-          return ev.respondWith(cacheF(ev));
+           return ev.respondWith(cacheF(ev));
         }else if(thumb){
-          return ev.respondWith(fetch(ev.request,{method: "GET",mode: "no-cors",redirect:"follow",credentials:"omit"}))
-          }else { 
+           return ev.respondWith(fetch(ev.request,{method: "GET",mode: "no-cors",redirect:"follow",credentials:"omit"}));
+        }else if(html){ 
+           return ev.respondWith(fetch(ev.request,{mode: "cors",redirect:"follow",credentials:"omit"}).then((x)=>{return x}, ()=>{return html404()} )   );
+           
+        }else{ 
            return ev.respondWith(fetch(ev.request,{mode: "cors",redirect:"follow",credentials:"omit"}));
-          }
+        }
       
       // }else{
       //     return ev.respondWith(cacheF(ev));

@@ -12,6 +12,7 @@
            computed: computed, 
              mounted() {       
                this.recognition();
+               this.notifINIT()
                
              },
             beforeDestroy() {
@@ -49,6 +50,8 @@
      <div >  Tele shop  </div>
    </div>
   <!- ----------------- ------------>
+
+
    </div>
  </header>
 
@@ -67,7 +70,7 @@
 
 
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" style='z-index: 1;height: 100%;max-width: 550px;filter: contrast(0.7) drop-shadow(hsl(302deg 100% 50% / 30%) 0px 17vh 0.5px) drop-shadow(rgba(135, 206, 235, 0.2) 0px -6vh 0px);'>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" style='z-index: 1;height: 85%;max-width: 550px;filter: contrast(0.7) drop-shadow(rgba(255, 0, 247, 0.2) 0px 30vh 0.5px);'>
   <!-- Define reusable shapes -->
   <defs>
     <!-- A symbol for a 6-pointed star -->
@@ -247,8 +250,35 @@
 
  <!-- for download ----  ------ -->
 
- 
+ <!-- for notification ----  ------ -->
+
+ <div style="z-index: 901;width: 100vw;height: 100vh;position: absolute;background: #0c0b00bd;flex-direction: column;
+              display: none;justify-content: center;align-items: center;"  id="notifyBtn" > 
+
+
+  <div style="width: 95vw;height: 50vh;position: relative;transition: 2s;display: flex; flex-direction: column;align-items: center;justify-content: start;    border-radius: 2rem;
+               background: linear-gradient(311deg, black, #222222);">
+            <div class="test3" style="font-size: 40px;color:transparent;height: 30%;">Teleshop</div>
+
+                 <div class="plase" :class="{ shake2 : user }">
+                    <p style="display: flex;justify-content: center;align-items: center;width: 100%;">
+                       من فضلك : يجب تفعيل الإشعارات لتلقي طلبات المستخدمين
+                    </p>
+                 </div>
     
+            <div  class="redButton" >
+                اضغط في أي مكان للتفعيل    
+            </div>
+   </div>
+
+</div>
+
+ <!-- for notifacation ----  ------ -->
+
+
+
+
+
     ` ,
     }
 

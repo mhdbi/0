@@ -26,8 +26,11 @@ export default{
         <span @click="accDB=false" :style="!accDB?'color:#69f8ed;':'' "> سجل الفواتير </span> | <span :style="accDB?'color:#69f8ed;':'' " @click="accDB=true"> حسابي </span>
       </li>
        
-      <li class="header__item"  v-if="route2=='Admin'" @click="editBtn=!editBtn" style='color: #fbfbfb;right: 20%;'>
-           تعديل
+      <li class="header__item"  v-if="route2=='Admin'&&!editBtn" @click="editBtn=!editBtn" style='color: #fbfbfb;right: 20%;'>
+            وضع التعديل
+      </li>
+      <li class="header__item"  v-if="route2=='Admin'&&editBtn" @click="editBtn=!editBtn" style='color: #fbfbfb;right: 20%;'>
+           وضع المستخدم
       </li>
   
      <li class="header__item"  style="right:5px;">
@@ -56,12 +59,12 @@ export default{
   
   
   
-   <!--------------------------------------for indexed db orders------------------------------------------->
-   <div v-if='!accDB' style='width: 100%; height: 100%;'>
+ <!--------------------------------------for indexed db orders------------------------------------------->
+  <div v-if='!accDB' style='width: 100%; height: 100%;'>
    
-   <div  style="margin: 120px 0px;" v-if="orderInfoSite==0">
+    <div  style="margin: 120px 0px;" v-if="orderInfoSite==0">
     <template v-for="item in dbData" :key="item" > 
-       <div style="background: linear-gradient(45deg,rgb(30, 30, 30),#8d5a5a);border-radius: 1rem;margin-top: 10px;">
+       <div style="background: linear-gradient(151deg, #929292, #131313);;border-radius: 1rem;margin-top: 10px;">
          <div >
          <div class="itemFlex" >
                   <div class="span2" style="color:white;"><div >{{item.id}}</div> المعرف </div>
@@ -71,8 +74,10 @@ export default{
                   
             </div>
   
-            <div class="itemFlex" style="color:#ffcc00;">
-                  <div class="span2" @click='order=JSON.parse(item.cartItem),orderInfoSite=1'> الطلب</div>
+            <div class="itemFlex" >
+              <div class="span2" @click='order=JSON.parse(item.cartItem),orderInfoSite=1' style='background: linear-gradient(0deg, black, #78735a);color: #ffe888;box-shadow: none;'>
+                   الطلب
+              </div>
             </div>
             
        </div>
@@ -85,7 +90,7 @@ export default{
      <div  style='background: #2f2e2e;height: 90%;margin-top: 20%;width: 100%;border-radius: 1rem;'
             v-if='orderInfoSite==1' >  
   
-            <div class="cartItem" id="cartItem" style='height:90%;margin-top:15%;'>
+            <div class="cartItem" id="cartItem" style='height:100%;margin-top:5%;display: flex;'>
               <div @click='orderInfoSite=0' class='back'>x</div>  
   
                <div class="itemFlex" style="color:#87ffed;border-bottom: 1px solid wheat;height:5%;">

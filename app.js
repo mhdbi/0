@@ -5,6 +5,7 @@ const data={
 
   url : "https://script.google.com/macros/s/AKfycby2lrAKSJi_gAE9od_M_y1GuArD43SljOmfYC8z8VmI9lkz2ryg0A863W5MabXaeRE9MA/exec",
   db :null ,
+  sw : null ,
   dbData: null ,
   recog:null,
   searchItems :[],                                 // for search result
@@ -135,26 +136,16 @@ const methodss={
           }
         },
 
-        // funUser:function(){
-        //     if(!this.iname || !this.iphone){
-        //        return Promise.resolve(this.askMe=false).then(()=>(this.askMe=true) );
-        //      }else{
-        //       localStorage.setItem('iname' , this.iname);
-        //       localStorage.setItem('iphone', this.iphone);
-        //       this.askMe=false;
-              
-        //      }
-        // },
 
-         firstLog:function(){
-          if(!this.iname){ 
-             return Promise.resolve(this.askMe=false).then(()=>(this.askMe=true) )
-          }else{
-                     localStorage.setItem('iname' , this.iname)
-                     this.askMe=false
+        //  firstLog:function(){
+        //   if(!this.iname){ 
+        //      return Promise.resolve(this.askMe=false).then(()=>(this.askMe=true) )
+        //   }else{
+        //              localStorage.setItem('iname' , this.iname)
+        //              this.askMe=false
 
-               };
-         },
+        //        };
+        //  },
      
         editLog:function(){
               localStorage.setItem('iname' ,  this.iname);
@@ -169,8 +160,7 @@ const methodss={
 
             // ///////////////////////
          created:  function (){
-          
-            var x = 1;
+              var x = 1;
             var y ="created";
             var url =this.url+`?x=${x}&y=${y}`;
             fetch(url).then(r=> { 
@@ -723,9 +713,9 @@ indexedDB:function(){
                      e.onsuccess = (e)=>{ 
                                  this.dbData=e.target.result;
                                  
-                                 this.dbData.forEach(e=>{
-                                 e.date.split('/')[1]==7?tx.objectStore('app').delete(e.id):true;
-                                })
+                                //  this.dbData.forEach(e=>{
+                                //  e.date.split('/')[1]==7?tx.objectStore('app').delete(e.id):true;
+                                // })
                                } 
                      e.onerror = (e)=>{ console.log(e) }
         }else {
@@ -932,7 +922,8 @@ if(this.cartItem.length==0)
       }).then(e=>{ 
          this.makeTX(data);
          this.telegram();
-         this.cartItem=[];this.orderPhone=null;this.geoL=null;
+         this.pushN();
+         this.cartItem=[];this.orderPhone=null;siteText=null;this.geoL=null;
       }).catch(e=>{
         this.FUNrun=true;
         this.FUNname=this.ocCart;
@@ -943,7 +934,10 @@ if(this.cartItem.length==0)
   }
  },
 
-
+pushN:function(){
+  var url = 'https://script.google.com/macros/s/AKfycby5hNb8lp3aC0tlswvFmnZ3B8wJHER24IWrGSaRJoPyy8OSv6QuI8uQxiLGXtWR_5WfTA/exec';
+  fetch(url + '?action=push' ,{ method:'post' ,body: JSON.stringify({ userN: 'Admin' })}).then(x=> x.json()).catch(e=>{console.log(e)});
+},
 
  telegram:function(){
       ////  telegram bot  ////
@@ -1054,7 +1048,114 @@ if(this.siteText=='text'){
 
 
 
+
+////////////////////////////////// sw && notification /////////////////////////////////
+
+
+
+SWinit:function(){
+   if('serviceWorker' in navigator){ 
+     navigator.serviceWorker.register('sw.js').then(registration=>{
+     return this.sw = registration;
+      //registration.installing || registration.waiting || registration.active ;
+     }).catch(e=>{console.log(e)})
+ 
+      navigator.serviceWorker.addEventListener('controllerchange',async()=>{ 
+      this.sw = navigator.serviceWorker.controller;
+       })
+   }
+  },
+
+notef:function(){
+      
+     const fbConfig = {
+              apiKey: "AIzaSyCKoCdxnRt497Zq7rP5uP0KFvcA1DPibe0",
+              authDomain: "fcm-msg-teleshop.firebaseapp.com",
+              projectId: "fcm-msg-teleshop",
+              storageBucket: "fcm-msg-teleshop.firebasestorage.app",
+              messagingSenderId: "150406104185",
+              appId: "1:150406104185:web:8ee667482a917fd4e7c0a8",
+              measurementId: "G-GFMQGWJ0KF"
+            };
+
+      firebase.initializeApp(fbConfig);
+      const messaging = firebase.messaging();
+           // Replace with your Public VAPID key from Step 1
+      const publicVapidKey = 'BFjb5Hz9DHFRIWslwn0FJ89P_y-zNE2jHU4sc_wK79g6YulvSkEAjPfJmRidZiqlgxgxzD9VisP9ygQKo5wIPd4';
+        if(!this.sw) return this.notef();
+          messaging.getToken({
+            vapidKey: publicVapidKey,
+            serviceWorkerRegistration: this.sw  // Key fix: Pass the registration
+          })
+          .then((currentToken) => {
+              sendTokenToServer(currentToken);
+            })
+          .catch((err) => {
+            console.error('Error getting token:', err);
+            this.FUNrun=true;
+            this.FUNname= this.notef;
+            });
+ 
+            
+
+      function sendTokenToServer(currentToken) {
+          const gasUrl = 'https://script.google.com/macros/s/AKfycby5hNb8lp3aC0tlswvFmnZ3B8wJHER24IWrGSaRJoPyy8OSv6QuI8uQxiLGXtWR_5WfTA/exec';  // Replace with your URL
+  
+          fetch(gasUrl + '?action=save-token', {
+            method: 'POST',
         
+            body: JSON.stringify({ token: currentToken , userN: 'Admin' })
+          })
+          .then(response => response.json())
+         // .then(data => { console.log('GAS says:', data.message);  })
+          .catch(err => {
+            console.log(err);
+          });
+        }
+
+      // Handle foreground messages (app open)
+       messaging.onMessage((payload) => {
+          console.log('Foreground message:', payload);
+          
+          if (Notification.permission === 'granted') {
+            new Notification(payload.notification?.title || 'FCM Message', {
+              body: payload.notification?.body,
+              icon: 'puplic/192.png'  // Optional: Add an icon file
+            });
+          }
+        });
+
+
+ 
+  
+},
+        
+
+notifINIT:function(){
+
+  var c = document.getElementById('notifyBtn');
+   if(c){
+
+        if (Notification.permission === 'granted' && 'Notification' in window && this.user[0]=='Admin' && this.sw) {
+          this.notef();
+          return;
+        }else if(this.user[0]=='Admin'&& this.sw){
+          c.style.display='flex'; 
+          c.addEventListener('click', ()=>{c.style.display='none'; Notification.requestPermission().then(permission => {permission === 'granted'?this.notef():null;}) })
+        }
+
+     }else{
+     return setTimeout(this.notifINIT , 1000)
+    };
+
+  
+}
+
+
+
+
+
+
 
  //end   of   methodes
  };
@@ -1274,7 +1375,7 @@ if(this.siteText=='text'){
 <div class="commenter survey" v-if="FUNrun" style="bottom: 155px;height: auto;" :class="{ shake: FUNrun }">
   <div class="callx2"  @click="FUNrun=false" >x</div>
   <div style="text-align:center;font-size: 14px;color: #ffffff;margin:20px;">
-    حدث خطأ أثناء جلب البيانات <br>
+    حدث خطأ ما <br>
     ..التغطية ضعيفة..
       
   </div> 
@@ -1351,18 +1452,19 @@ if(this.siteText=='text'){
  
       mounted(){
         this.$router.push({name:'home'});
+        window.addEventListener("load", this.SWinit());
         // window.addEventListener('hashchange', () => {
         //   var currentPath= window.location.hash;
         //  if(currentPath=="#/"){ 
 
         //    }else if(currentPath=="#/inset")
         //  });
-         
+
          this.funAdmin();
        //    this.funUser();
          this.created();
          this.indexedDB();
-         setTimeout(this.coloring,4000);
+         setTimeout(this.coloring,5000);
          
         // this.notificM();
         // this.siteOrders()

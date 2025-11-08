@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FCM Localhost App</title>
+
+</head>
+<body>
+  <h1>Firebase Notifications Test</h1>
+  <button id="notifyBtn">Request Notification Permission</button>
+  <div id="status"></div>
+
+  <!-- Firebase SDK Compat (v10+ for modern browsers; use compat for vanilla JS compatibility) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging-compat.js"></script>
+
+</body>
+</html>
+
+
+
+
+<script>
+  var sw;
+function updateStatus(message) {
+  document.getElementById('status').textContent = message;
+}
+window.addEventListener('load',SWinit());
+ function SWinit(){
+   if('serviceWorker' in navigator){ 
+     navigator.serviceWorker.register('fcm-sw.js').then(registration=>{
+     return sw = registration;
+      //registration.installing || registration.waiting || registration.active ;
+     }).catch(e=>{console.log(e)})
+ 
+      // navigator.serviceWorker.addEventListener('controllerchange',async()=>{ 
+      // sw = navigator.serviceWorker.controller;
+      //  })
+   }
+  };
+
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCKoCdxnRt497Zq7rP5uP0KFvcA1DPibe0",
+  authDomain: "fcm-msg-teleshop.firebaseapp.com",
+  projectId: "fcm-msg-teleshop",
+  storageBucket: "fcm-msg-teleshop.firebasestorage.app",
+  messagingSenderId: "150406104185",
+  appId: "1:150406104185:web:8ee667482a917fd4e7c0a8",
+  measurementId: "G-GFMQGWJ0KF"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const messaging = firebase.messaging();
+
+      // Request permission and get token
+      document.getElementById('notifyBtn').addEventListener('click', () => {
+        if (!('Notification' in window)) {
+          updateStatus('Notifications not supported in this browser.');
+          return;
+        }
+
+        if (Notification.permission === 'granted') {
+          GetToken();
+          return;
+        }
+
+        if (Notification.permission !== 'denied') {
+          Notification.requestPermission().then(permission => {
+            if (permission === 'granted') {
+              updateStatus('Permission granted! Registering SW and getting token...');
+              GetToken();
+            } else {
+              updateStatus('Permission denied.');
+            }
+          });
+        }
+      });
+
+      function GetToken(){
+           // Replace with your Public VAPID key from Step 1
+            const publicVapidKey = 'BFjb5Hz9DHFRIWslwn0FJ89P_y-zNE2jHU4sc_wK79g6YulvSkEAjPfJmRidZiqlgxgxzD9VisP9ygQKo5wIPd4';
+
+                      messaging.getToken({
+                        vapidKey: publicVapidKey,
+                        serviceWorkerRegistration: sw  // Key fix: Pass the registration
+                      })
+                      .then((currentToken) => {
+                          // Send to server if needed
+                          sendTokenToServer(currentToken);
+                        })
+                      .catch((err) => {
+                        console.error('Error getting token:', err);
+                        });
+ 
+            };
+
+      function sendTokenToServer(currentToken) {
+          const gasUrl = 'https://script.google.com/macros/s/AKfycbxKqep2cz_nY3fzAoh6knC47K2TpWhK5OqvwgwD25Igo3yddkRisjiW4DwfaSn9-dO56A/exec';  // Replace with your URL
+  
+          fetch(gasUrl + '?action=save-token', {
+            method: 'POST',
+        
+            body: JSON.stringify({ token: currentToken })
+          })
+          .then(response => response.json())
+         // .then(data => { console.log('GAS says:', data.message);  })
+          .catch(err => {
+            console.log(err);
+          });
+        }
+
+// Handle foreground messages (app open)
+       messaging.onMessage((payload) => {
+          console.log('Foreground message:', payload);
+          updateStatus(`Received: ${payload.notification?.body}`);
+          if (Notification.permission === 'granted') {
+            new Notification(payload.notification?.title || 'FCM Message', {
+              body: payload.notification?.body,
+              icon: 'puplic/192.png'  // Optional: Add an icon file
+            });
+          }
+        });
+
+
+
+</script>

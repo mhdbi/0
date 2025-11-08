@@ -11,6 +11,7 @@ export default{
 
      methods : {...methodss,
           xml:function(){ 
+            if(this.imgId==[] || this.files==[]||this.title==''||this.world==''||this.post==''||this.price=='') return document.getElementById('xx').style.display='flex';
               var status =document.getElementById('status'),
                   percentText=document.getElementById('percentText'),
                   progressBar =document.getElementById('progressBar'),
@@ -32,14 +33,12 @@ export default{
                          // JSON.parse(xhr.responseText);
                         }else{
                           status.textContent='Upload failed!';
-                          this.imgId=[] , this.files=[];
-                          this.FUNname = this.xhr , this.FUNrun =true ,  this.run=false;
+                          this.FUNname = this.xhr , this.FUNrun =true ;
                         }
                       });
                       xhr.addEventListener('error',()=>{
                           status.textContent='Upload error failed!';
-                          this.imgId=[] , this.files=[];
-                          this.FUNname = this.xhrApi , this.FUNrun =true ,  this.run=false;
+                          this.FUNname = this.xhrApi , this.FUNrun =true;
                       });
                       xhr.addEventListener('abort',()=>{
                         status.textContent='upload aborted.';
@@ -157,7 +156,7 @@ export default{
              > تسجيل دخول </div>
           </div>
          <div class="button">
-              <div class="login"   @click="$router.push({ name : 'home' })"
+              <div class="login"   @click="$router.back()"  style=' width:75%;background: linear-gradient(0deg, black, gray);'
              >  رجوع </div>
           </div>
 
@@ -344,6 +343,11 @@ export default{
 
           <div class="button" style="margin-bottom:75px;">
               <div class="login" @click="xml()">تأكيد العملية</div>
+          </div>
+
+          <div class="button">
+              <div class="login"   @click="$router.back()"  style=' width:75%;background: linear-gradient(0deg, black, gray);'
+             >  رجوع </div>
           </div>
           
           <div >

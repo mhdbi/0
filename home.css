@@ -689,16 +689,17 @@ width: 4vw;
 }
 
 .span2{
-  color: rgb(255 255 255);
-  justify-content: space-around;
-  align-items: center;
-  display: flex;
-  width: 75%;
-  font-size: 13px;
-  text-align: center;
-  background: linear-gradient(0deg, black, #272626);
-  border-radius: 2rem;
-  padding: 1px 1px;
+ color: rgb(255 255 255);
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    width: 90%;
+    font-size: 13px;
+    text-align: center;
+    background: gray;
+    box-shadow: inset 3px 2px 5px black, inset -3px -2px 5px #9b9999;
+    border-radius: 2rem;
+    padding: 5px 0px;
 }
 
 .fatora{
@@ -778,12 +779,7 @@ width: 4vw;
 }
 /* -------------------------------------------- */
 
- 
-/* .span2{
-  color: #f77a7a;
-  text-shadow: 0px 0px 5px red;
- 
-} */
+
 
 /* -------------------------------------------- */
 .errSolve{
