@@ -1136,12 +1136,14 @@ notifINIT:function(){
   var c = document.getElementById('notifyBtn');
    if(c){
 
-        if (Notification.permission === 'granted' && 'Notification' in window && this.user[0]=='Admin' && this.sw) {
+        if (Notification.permission === 'granted' && 'Notification' in window && this.user && this.user[0]=='Admin' && this.sw) {
           this.notef();
           return;
-        }else if(this.user[0]=='Admin'&& this.sw){
+        }else if(this.user && this.user[0]=='Admin' && this.sw){
           c.style.display='flex'; 
           c.addEventListener('click', ()=>{c.style.display='none'; Notification.requestPermission().then(permission => {permission === 'granted'?this.notef():null;}) })
+        }else{
+          return;
         }
 
      }else{
