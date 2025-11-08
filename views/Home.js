@@ -12,7 +12,7 @@
            computed: computed, 
              mounted() {       
                this.recognition();
-               this.notifINIT()
+             //  this.notifINIT();
                
              },
             beforeDestroy() {
