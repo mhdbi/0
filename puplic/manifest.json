@@ -30,13 +30,13 @@
                 "purpose": "maskable"
               },
               {
-                "src": "512.png",
+                "src": "test2.png",
                 "sizes": "512x512",
                 "type": "image/png",
                 "purpose": "any"
               },
               {
-                "src": "512m.png",
+                "src": "test2.png",
                 "sizes": "512x512",
                 "type": "image/png",
                 "purpose": "maskable"
