@@ -136,7 +136,7 @@ a {
     flex-grow: 1;
     max-width: 140px;
     height: 14vh;
-    box-shadow: rgb(42 42 42) 0px -5px 10px inset, rgb(236, 236, 236) 0px 5px 10px inset, rgb(0, 0, 0) 0px 27px 25px;
+  box-shadow: rgb(33 33 33) 0px -5px 10px inset, rgb(236, 236, 236) 0px 5px 10px inset, rgb(30 30 30) 0px 27px 25px;
 }
 
 :root{
@@ -144,17 +144,17 @@ a {
   --myColor1:#000000;
 }
 .vertical-nav > li a{
-  
-      content: '';
+
+    content: '';
     position: absolute;
     z-index: -1;
     border-radius: 50%;
-    width: 108%;
-    height: 108%;
+    width: 105%;
+    height: 105%;
     transition: 0.5s;
     transform: rotateZ(-50deg);
-    background: conic-gradient(from 0, #00000000 83deg, #31ceb7 46deg, #2cd6d6 200deg, #00000000 200deg, #00000000 278deg, #fffb50 259deg);
-   }
+ background: conic-gradient(from 0, #00000000 83deg, #ffffff 46deg, #ffffff 200deg, #00000000 200deg, #00000000 278deg, #000000 259deg);
+ }
 
 @keyframes lightCircle {
   0%{transform: rotateZ(20deg);}

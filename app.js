@@ -1176,7 +1176,7 @@ notifINIT:function(){
  
  
    backGround: function(){
-     return `background: conic-gradient(from ${this.counter+`deg`}, #6de5e5 40deg, #a862b1 80deg, #ffff4d 155deg, #ffff4d 222deg, #a862b1 293deg, #6de5e5 354deg);`  
+     return `background: conic-gradient(from ${this.counter+`deg`}, #6de5e5 40deg, #ffffffff 80deg, #4dffe1ff 155deg, #4dffffff 222deg, #ffffffff 293deg, #6de5e5 354deg);`  
   //<div :style="filter" >for learn</div>
    },
  
