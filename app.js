@@ -1229,7 +1229,7 @@ notifINIT:function(){
 
      
  <div :class="{ cartBtn2 : $route.name=='inset'||$route.name=='search' }" class="cartBtn"  v-if='$route.name=="home"||$route.name=="inset"||$route.name=="search"' @click="cart=1">
-    <img src="puplic/icons/purchase.png" @error='er($event)' style="filter: hue-rotate(201deg); width: 40%;"/> 
+    <img src="puplic/icons/purchase.png" @error='er($event)' style="filter: hue-rotate(150deg); width: 40%;"/> 
     <div :class="{ after2 : $route.name=='inset'||$route.name=='search' }" class="after" > </div>
  </div>
 

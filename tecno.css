@@ -571,7 +571,7 @@ main footer a{
 position: absolute;
     height: 100%;
     width: 100%;
-    background: conic-gradient(from 225deg at 25% 97.5%, #000000 45deg, #ffe888 -83deg, #0000 10deg), conic-gradient(from 90deg at 75% 97.5%, #000000 45deg, #ffe888 -83deg, #00000000 10deg), conic-gradient(from 90deg at 50% 99%, #ffffff 180deg, #00000000 2deg), conic-gradient(from 135deg at 50% 86%, #393939 90deg, #00000000 56deg), conic-gradient(from 270deg at 30% 17.8vh, #ffffff 135deg, #00000000 56deg), conic-gradient(from -45deg at 70% 17.8vh, #ffffff 135deg, #b6616100 56deg), conic-gradient(from 135deg at 45% 88%, skyblue 90deg, #00000000 56deg), conic-gradient(from 135deg at 55% 88%, skyblue 90deg, #00000000 56deg);
+    background: conic-gradient(from 225deg at 25% 97.5%, #000000 45deg, #0000 10deg), conic-gradient(from 90deg at 75% 97.5%, #000000 45deg, #00000000 10deg), conic-gradient(from 90deg at 50% 99%, #ffffff 180deg, #00000000 2deg), conic-gradient(from 135deg at 50% 86%, #393939 90deg, #00000000 56deg), conic-gradient(from 270deg at 30% 17vh, #ffffff 135deg, #00000000 56deg), conic-gradient(from -45deg at 70% 17vh, #ffffff 135deg, #b6616100 56deg), conic-gradient(from 135deg at 45% 88%, skyblue 90deg, #00000000 56deg), conic-gradient(from 135deg at 55% 88%, skyblue 90deg, #00000000 56deg);
  }
 
 
@@ -588,7 +588,7 @@ position: absolute;
 .header {
       border-top: 3px solid #000000;
     filter: drop-shadow(0px 2px 0px #000000);
-    background: conic-gradient(from 44deg at 67% 8%, #232323 46deg, #00000000 44deg), conic-gradient(from -44deg at 33% 7%, #fdfdfd 134deg, #232323 56deg);
+    background: conic-gradient(from 44deg at 67% 7%, #232323 46deg, #00000000 44deg), conic-gradient(from -44deg at 33% 6%, #fdfdfd 134deg, #232323 56deg);
     position: absolute;
     z-index: 99;
     width: 100%;
@@ -641,7 +641,7 @@ position: absolute;
 
 .nav-mune{
      z-index: 99;
-    background: conic-gradient(from 79deg, #494834 10deg, #323232 40deg, transparent 39deg, transparent 160deg, #323232 164deg, #494834 190deg);
+    background: conic-gradient(from 79deg, #787878 10deg, #323232 40deg, transparent 39deg, transparent 160deg, #323232 164deg, #787878 190deg);
     height: 55px;
     filter: drop-shadow(0px 5px 4px black);
     position: fixed;
