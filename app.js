@@ -6,6 +6,7 @@ const data={
   url : "https://script.google.com/macros/s/AKfycby2lrAKSJi_gAE9od_M_y1GuArD43SljOmfYC8z8VmI9lkz2ryg0A863W5MabXaeRE9MA/exec",
   db :null ,
   sw : null ,
+  token : localStorage.getItem('token') || null,
   dbData: null ,
   recog:null,
   searchItems :[],                                 // for search result
@@ -1090,7 +1091,9 @@ notef:function(){
             serviceWorkerRegistration: this.sw  // Key fix: Pass the registration
           })
           .then((currentToken) => {
-              sendTokenToServer(currentToken);
+             if(this.token&&this.token==currentToken) return;
+             localStorage.setItem('token',currentToken);
+             sendTokenToServer(currentToken);
             })
           .catch((err) => {
             console.error('Error getting token:', err);
@@ -1173,7 +1176,9 @@ notifINIT:function(){
      },
 
   
- 
+  star :function(){
+    return `filter: contrast(${(Math.sin(this.counter*0.03)+1)*0.5}) drop-shadow( rgb(135 206 235 / ${(Math.sin(this.counter*0.05)+1.1)*0.5}) 0px 30vh 0.5px);`;
+  },
  
    backGround: function(){
      return `background: conic-gradient(from ${this.counter+`deg`}, #6de5e5 40deg, #ffffffff 80deg, #4dffe1ff 155deg, #4dffffff 222deg, #ffffffff 293deg, #6de5e5 354deg);`  
@@ -1185,6 +1190,7 @@ notifINIT:function(){
               box-shadow: inset 0px -5px 10px ${this.colors[2]}, inset 0px 5px 10px ${this.colors[3]} 
                                   ,0px 13px 17px #000000  ; ` ;
   }
+
        
   
       
@@ -1456,7 +1462,7 @@ notifINIT:function(){
  
       mounted(){
         this.$router.push({name:'home'});
-        window.addEventListener("load", this.SWinit());
+        window.addEventListener("load", this.SWinit);
         // window.addEventListener('hashchange', () => {
         //   var currentPath= window.location.hash;
         //  if(currentPath=="#/"){ 
@@ -1468,7 +1474,7 @@ notifINIT:function(){
        //    this.funUser();
          this.created();
          this.indexedDB();
-        // setTimeout(this.coloring,5000);
+        // setTimeout(this.coloring,4000);
          
         // this.notificM();
         // this.siteOrders()

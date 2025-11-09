@@ -47,17 +47,17 @@ text.innerHTML = "welcom-to i-us social media new-webApp---2025".split("").map(
 }
 
 .test3 {
-      letter-spacing: 5vw;
+    letter-spacing: 5vw;
     direction: rtl;
-    text-shadow: 0px 11px 6px black;
+    text-shadow: 0px 15px 7px #5c9494, 0px -5px 10px #000000;
     font-size: 29px;
     font-weight: 900;
-background: linear-gradient(90deg, hsl(183, 100%, 50%) 10%, #ffffff 25%, hsl(180.52deg 100% 81.12%) 31%, hsl(171.14deg 90.47% 68.62%) 51%, hsl(0deg 0% 100%) 71%, hsl(179.45deg 100% 84.91%) 86%, hsl(0deg 0% 94.02%) 100%);  background-clip: text;
+    background: linear-gradient(90deg, hsl(183, 100%, 50%) 10%, #ffffff 25%, hsl(180.52deg 100% 81.12%) 31%, hsl(171.14deg 90.47% 68.62%) 51%, hsl(0deg 0% 100%) 71%, hsl(179.45deg 100% 84.91%) 86%, hsl(0deg 0% 94.02%) 100%);
+    background-clip: text;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #ff010100;
     position: relative;
-    display: flex
-;
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -66,12 +66,12 @@ background: linear-gradient(90deg, hsl(183, 100%, 50%) 10%, #ffffff 25%, hsl(180
 }
 
 .test5{          /* for download tips  */
-    margin-top: 1vh;
-    font-size: 20px;
-    font-weight: normal;
-    letter-spacing: 1.2vw;
+   letter-spacing: 5vw;
     direction: rtl;
-    background: linear-gradient(90deg, hsl(183, 100%, 50%) 10%, hsl(67, 100%, 50%) 25%, hsl(55, 100%, 48%) 31%, hsl(0deg 97.55% 61.35%) 51%, hsl(55.94deg 100% 54.53%) 71%, hsl(168.92deg 100% 74.18%) 86%, hsl(58.15deg 100% 50%) 100%);
+    text-shadow: 0px 15px 7px #5c9494, 0px -5px 10px #000000;
+    font-size: 29px;
+    font-weight: 900;
+    background: linear-gradient(90deg, hsl(183, 100%, 50%) 10%, #ffffff 25%, hsl(180.52deg 100% 81.12%) 31%, hsl(171.14deg 90.47% 68.62%) 51%, hsl(0deg 0% 100%) 71%, hsl(179.45deg 100% 84.91%) 86%, hsl(0deg 0% 94.02%) 100%);
     background-clip: text;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #ff010100;
@@ -79,7 +79,8 @@ background: linear-gradient(90deg, hsl(183, 100%, 50%) 10%, #ffffff 25%, hsl(180
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 25%;
+    width: 100%;
+    height: 100%;
     transition: 0.5s all;
 }
 
@@ -571,8 +572,9 @@ main footer a{
 position: absolute;
     height: 100%;
     width: 100%;
-    background: conic-gradient(from 225deg at 25% 97.5%, #000000 45deg, #0000 10deg), conic-gradient(from 90deg at 75% 97.5%, #000000 45deg, #00000000 10deg), conic-gradient(from 90deg at 50% 99%, #ffffff 180deg, #00000000 2deg), conic-gradient(from 135deg at 50% 86%, #393939 90deg, #00000000 56deg), conic-gradient(from 270deg at 30% 17vh, #ffffff 135deg, #00000000 56deg), conic-gradient(from -45deg at 70% 17vh, #ffffff 135deg, #b6616100 56deg), conic-gradient(from 135deg at 45% 88%, skyblue 90deg, #00000000 56deg), conic-gradient(from 135deg at 55% 88%, skyblue 90deg, #00000000 56deg);
- }
+    background: conic-gradient(from 225deg at 25% 97.5%, #ffffff 45deg, #0000 10deg), conic-gradient(from 90deg at 75% 97.5%, #ffffff 45deg, #00000000 10deg), conic-gradient(from 90deg at 50% 99%, #000000 180deg, #00000000 2deg), conic-gradient(from 135deg at 50% 86%, #393939 90deg, #00000000 56deg), conic-gradient(from 270deg at 30% 17.5vh, #ffffff 135deg, #00000000 56deg), conic-gradient(from -45deg at 70% 17.5vh, #ffffff 135deg, #b6616100 56deg), conic-gradient(from 135deg at 45% 88%, skyblue 90deg, #00000000 56deg), conic-gradient(from 135deg at 55% 88%, skyblue 90deg, #00000000 56deg);
+
+}
 
 
 .contaiiner {
@@ -586,9 +588,9 @@ position: absolute;
 
 
 .header {
-      border-top: 3px solid #000000;
+     border-top: 2px solid #000000;
     filter: drop-shadow(0px 2px 0px #000000);
-    background: conic-gradient(from 44deg at 67% 7%, #232323 46deg, #00000000 44deg), conic-gradient(from -44deg at 33% 6%, #fdfdfd 134deg, #232323 56deg);
+    background: conic-gradient(from 44deg at 67% 1.3vh, #232323 46deg, #00000000 44deg), conic-gradient(from -44deg at 33% 1.2vh, #fdfdfd 134deg, #232323 56deg);
     position: absolute;
     z-index: 99;
     width: 100%;
@@ -718,7 +720,7 @@ position: absolute;
   overflow-y: scroll;
   position:relative;
   z-index:999;
-  background: radial-gradient(circle at 77% 9%, #be9800 21%, #00000000 23%), radial-gradient(circle at 15% 86%, #4b707f 20%, #232323 22%);
+  background: radial-gradient(circle at 77% 9%, #ffffff 21%, #00000000 23%), radial-gradient(circle at 15% 86%, #4b707f 20%, #232323 22%);
 }
 
 
@@ -1545,7 +1547,7 @@ textarea::placeholder{
 /* for cart first open */
 .redButton{
      height: 10%;
-    background: linear-gradient(0deg, #080808, #2bba81);
+    background: linear-gradient(0deg, #080808, skyblue);
     width: 90%;
     margin-top: 5vh;
     color: #bababa;
@@ -1601,7 +1603,7 @@ textarea::placeholder{
     position: absolute;
     align-items: center;
     justify-content: space-evenly;
-    color: #000000;
+    color: #d5d5d5;
     font-size: 0.7rem;
     font-weight: bold;
     letter-spacing: 1px;

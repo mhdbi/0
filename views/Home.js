@@ -44,9 +44,6 @@
 
     <!- ----------------- ------------>
    <div class="test3" dir="rtl">
-   <img style ='position: absolute;top:5vh;left:0vw;max-width: 2rem;width: 7vw;z-index: 2;filter: grayscale(1) drop-shadow(2px 6px 4px black);' 
-     src='puplic/icons/stars.png' alt='no net' @error='er($event)' />
-
      <div >  Tele shop  </div>
    </div>
   <!- ----------------- ------------>
@@ -70,7 +67,7 @@
 
 
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" style='z-index: 1;height: 85%;max-width: 550px;filter: drop-shadow(rgba(255, 255, 255, 0.2) 0px 30vh 0.5px);'>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" :style='star' class="star">
   <!-- Define reusable shapes -->
   <defs>
     <!-- A symbol for a 6-pointed star -->
@@ -160,7 +157,7 @@
      </li>
     
      <div class="log-out" @click="$router.push({name : 'index'}),makeTX(0)" >
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="#000000" xmlns="http://www.w3.org/2000/svg">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M20 22V20C20 18.9391 19.5786 17.9217 18.8284 17.1716C18.0783 16.4214 17.0609 16 16 16H8C6.93913 16 5.92172 16.4214 5.17157 17.1716C4.42143 17.9217 4 18.9391 4 20V22" stroke="skyblue" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
@@ -192,10 +189,10 @@
     
      <div class="log-out" >
           <svg width="27" height="27" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="reco">
-           <path d="M12 14C13.6569 14 15 12.6569 15 11V5C15 3.34315 13.6569 2 12 2C10.3431 2 9 3.34315 9 5V11C9 12.6569 10.3431 14 12 14Z" fill="#000000"/>
+           <path d="M12 14C13.6569 14 15 12.6569 15 11V5C15 3.34315 13.6569 2 12 2C10.3431 2 9 3.34315 9 5V11C9 12.6569 10.3431 14 12 14Z" fill="#fefefeff"/>
            <path d="M17 11C17 13.7614 14.7614 16 12 16C9.23858 16 7 13.7614 7 11" stroke="skyblue" stroke-width="2"/>
-           <path d="M12 18V21" stroke="#000000" stroke-width="2"/>
-           <path d="M9 21H15" stroke="#000000" stroke-width="2"/>
+           <path d="M12 18V21" stroke="#ffffff" stroke-width="2"/>
+           <path d="M9 21H15" stroke="#ffffff" stroke-width="2"/>
          </svg>
          
            <div class='pauseR'>
