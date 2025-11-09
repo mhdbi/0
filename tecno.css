@@ -40,7 +40,7 @@ text.innerHTML = "welcom-to i-us social media new-webApp---2025".split("").map(
 /******************************new *************************/
 .test1{
   color: #f7ead9;
-  text-shadow: 0px 0px 5px #fde068;
+  text-shadow: 0px 0px 5px skyblue;
   border-radius: 1rem;
   font-size: 20px;
   font-weight: bold;
@@ -571,7 +571,7 @@ main footer a{
 position: absolute;
     height: 100%;
     width: 100%;
- background: conic-gradient(from 225deg at 25% 97.5%, #000000 45deg, #ffe888 -83deg, #0000 10deg), conic-gradient(from 90deg at 75% 97.5%, #000000 45deg, #ffe888 -83deg, #00000000 10deg), conic-gradient(from 90deg at 50% 99%, #ffffff 180deg, #00000000 2deg), conic-gradient(from 135deg at 50% 86%, #393939 90deg, #00000000 56deg), conic-gradient(from 270deg at 30% 17.2%, #ffffff 135deg, #00000000 56deg), conic-gradient(from -45deg at 70% 17.2%, #ffffff 135deg, #b6616100 56deg), conic-gradient(from 135deg at 45% 88%, skyblue 90deg, #00000000 56deg), conic-gradient(from 135deg at 55% 88%, skyblue 90deg, #00000000 56deg);
+    background: conic-gradient(from 225deg at 25% 97.5%, #000000 45deg, #ffe888 -83deg, #0000 10deg), conic-gradient(from 90deg at 75% 97.5%, #000000 45deg, #ffe888 -83deg, #00000000 10deg), conic-gradient(from 90deg at 50% 99%, #ffffff 180deg, #00000000 2deg), conic-gradient(from 135deg at 50% 86%, #393939 90deg, #00000000 56deg), conic-gradient(from 270deg at 30% 17.8vh, #ffffff 135deg, #00000000 56deg), conic-gradient(from -45deg at 70% 17.8vh, #ffffff 135deg, #b6616100 56deg), conic-gradient(from 135deg at 45% 88%, skyblue 90deg, #00000000 56deg), conic-gradient(from 135deg at 55% 88%, skyblue 90deg, #00000000 56deg);
  }
 
 
@@ -625,7 +625,7 @@ position: absolute;
 }
 
 .header__menu {
-  box-shadow: 0px 1px 0px #fde068;
+  box-shadow: 0px 1px 0px skyblue;
   background: #232323;
   justify-content: space-between;
   align-items: center;
@@ -849,7 +849,7 @@ letter-spacing: 2px;
 ox .user-box input:valid ~ label {
   top: -20px;
   right : 0;
-  color: #fde068;
+  color: skyblue;
   font-size: 4vw;
 }
 
@@ -951,7 +951,7 @@ justify-content: center;
     position: fixed;
     bottom: 0px;
     width: 100%;
-    color: #fde068;
+    color: skyblue;
     z-index: 999;
     display:flex;flex-direction:row;justify-content:space-around;flex-wrap:wrap;overflow:scroll;
 }
@@ -1068,7 +1068,7 @@ h1{
     }
 .container4 {
   font-weight: bold;
-    color: #fde068;
+    color: skyblue;
   display: flex;
   flex-direction:raw;
   position: relative;
@@ -1111,7 +1111,7 @@ h1{
 
 /* When the radio button is checked, add a blue background */
 .container4 input:checked ~ .checkmark {
-  background-color: #fde068;
+  background-color: skyblue;
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
@@ -1536,7 +1536,7 @@ textarea::placeholder{
   text-align: center;
   width: 50%;
   font-size: 15px;
-  color: #fde068;
+  color: skyblue;
   padding: 8px 0px;
   background: linear-gradient(0deg, black, #2e2e2e);
 }
@@ -1601,7 +1601,7 @@ textarea::placeholder{
     position: absolute;
     align-items: center;
     justify-content: space-evenly;
-    color: #fde068;
+    color: #000000;
     font-size: 0.7rem;
     font-weight: bold;
     letter-spacing: 1px;

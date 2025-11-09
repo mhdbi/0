@@ -147,7 +147,7 @@ export default{
  <div class="main" v-if="route1=='verify'">
   <div class="commenter" style="background: #00000066;top:200px;" >
       <div  class="form-container">
-         <div style="display: flex;justify-content: center;color: #fde068;    letter-spacing: 2px;">
+         <div style="display: flex;justify-content: center;color: skyblue;    letter-spacing: 2px;">
               مخصص للمتاجر العملاء
           </div>
 

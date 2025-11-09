@@ -44,7 +44,7 @@
 
     <!- ----------------- ------------>
    <div class="test3" dir="rtl">
-   <img style ='position: absolute;top:2vh;left:0vw;max-width: 2rem;width: 8vw;z-index: 2;filter: grayscale(1) drop-shadow(2px 6px 4px black);' 
+   <img style ='position: absolute;top:5vh;left:0vw;max-width: 2rem;width: 7vw;z-index: 2;filter: grayscale(1) drop-shadow(2px 6px 4px black);' 
      src='puplic/icons/stars.png' alt='no net' @error='er($event)' />
 
      <div >  Tele shop  </div>
@@ -83,47 +83,47 @@
   
   <!-- Stars -->
   <g fill="black">
-    <use href="#six-point-star" x="50" y="50" width="30" height="30" />
+    <use href="#six-point-star" x="50" y="50" width="10" height="10" />
     <use href="#six-point-star" x="150" y="100" width="20" height="20" />
     <use href="#six-point-star" x="250" y="70" width="25" height="25" />
-    <use href="#six-point-star" x="350" y="150" width="35" height="35" />
+    <use href="#six-point-star" x="350" y="150" width="25" height="25" />
     <use href="#six-point-star" x="450" y="10" width="20" height="20" />
     <use href="#six-point-star" x="550" y="80" width="25" height="25" />
-    <use href="#six-point-star" x="650" y="120" width="30" height="30" />
+    <use href="#six-point-star" x="650" y="120" width="15" height="15" />
     <use href="#six-point-star" x="750" y="60" width="20" height="20" />
     <use href="#six-point-star" x="850" y="100" width="25" height="25" />
     <use href="#six-point-star" x="900" y="30" width="20" height="20" />
     <use href="#six-point-star" x="100" y="200" width="25" height="25" />
     <use href="#six-point-star" x="200" y="250" width="30" height="30" />
     <use href="#six-point-star" x="300" y="220" width="20" height="20" />
-    <use href="#six-point-star" x="400" y="280" width="35" height="35" />
+    <use href="#six-point-star" x="400" y="280" width="20" height="20" />
     <use href="#six-point-star" x="500" y="200" width="40" height="40" />
-    <use href="#six-point-star" x="600" y="260" width="25" height="25" />
-    <use href="#six-point-star" x="700" y="300" width="30" height="30" />
+    <use href="#six-point-star" x="600" y="260" width="20" height="20" />
+    <use href="#six-point-star" x="700" y="300" width="25" height="25" />
     <use href="#six-point-star" x="800" y="240" width="20" height="20" />
     <use href="#six-point-star" x="900" y="280" width="25" height="25" />
-    <use href="#six-point-star" x="950" y="220" width="30" height="30" />
+    <use href="#six-point-star" x="950" y="220" width="15" height="15" />
 
     <use href="#six-point-star" x="50"  y="350" width="40" height="40" />
     <use href="#six-point-star" x="150" y="400" width="20" height="20" />
     <use href="#six-point-star" x="250" y="370" width="25" height="25" />
-    <use href="#six-point-star" x="350" y="450" width="35" height="35" />
+    <use href="#six-point-star" x="350" y="450" width="5" height="5" />
     <use href="#six-point-star" x="450" y="310" width="20" height="20" />
     <use href="#six-point-star" x="550" y="380" width="25" height="25" />
-    <use href="#six-point-star" x="650" y="420" width="40" height="40" />
+    <use href="#six-point-star" x="650" y="420" width="30" height="30" />
     <use href="#six-point-star" x="750" y="360" width="20" height="20" />
     <use href="#six-point-star" x="850" y="400" width="25" height="25" />
     <use href="#six-point-star" x="900" y="330" width="20" height="20" />
     <use href="#six-point-star" x="100" y="500" width="25" height="25" />
     <use href="#six-point-star" x="200" y="550" width="30" height="30" />
     <use href="#six-point-star" x="300" y="520" width="20" height="20" />
-    <use href="#six-point-star" x="400" y="580" width="35" height="35" />
+    <use href="#six-point-star" x="400" y="580" width="30" height="30" />
     <use href="#six-point-star" x="500" y="500" width="20" height="20" />
     <use href="#six-point-star" x="600" y="560" width="25" height="25" />
-    <use href="#six-point-star" x="700" y="600" width="30" height="30" />
+    <use href="#six-point-star" x="700" y="600" width="10" height="10" />
     <use href="#six-point-star" x="800" y="540" width="20" height="20" />
     <use href="#six-point-star" x="900" y="580" width="25" height="25" />
-    <use href="#six-point-star" x="950" y="520" width="30" height="30" />
+    <use href="#six-point-star" x="950" y="520" width="20" height="20" />
 
 
   </g>
@@ -351,7 +351,7 @@
 //      </li>
     
 //      <div class="log-out" @click="$router.push({name : 'index'}),makeTX(0)" >
-//       <svg width="24" height="24" viewBox="0 0 24 24" fill="#fde068" xmlns="http://www.w3.org/2000/svg">
+//       <svg width="24" height="24" viewBox="0 0 24 24" fill="skyblue" xmlns="http://www.w3.org/2000/svg">
 //         <path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 //         <path d="M20 22V20C20 18.9391 19.5786 17.9217 18.8284 17.1716C18.0783 16.4214 17.0609 16 16 16H8C6.93913 16 5.92172 16.4214 5.17157 17.1716C4.42143 17.9217 4 18.9391 4 20V22" stroke="skyblue" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 //       </svg>
@@ -388,7 +388,7 @@
 //      <div class="log-out" >
 //           <div @click="route(),indexItem='addItem'">
 //         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-//           <path d="M19.43 12.97C19.47 12.65 19.5 12.33 19.5 12C19.5 11.67 19.47 11.34 19.43 11.02L21.54 9.37C21.73 9.22 21.78 8.95 21.66 8.73L19.66 5.27C19.54 5.05 19.27 4.96 19.05 5.05L16.56 6.05C16.04 5.66 15.5 5.32 14.87 5.07L14.5 2.42C14.46 2.18 14.25 2 14 2H10C9.75 2 9.54 2.18 9.5 2.42L9.13 5.07C8.5 5.32 7.96 5.66 7.44 6.05L4.95 5.05C4.73 4.96 4.46 5.05 4.34 5.27L2.34 8.73C2.22 8.95 2.27 9.22 2.46 9.37L4.57 11.02C4.53 11.34 4.5 11.67 4.5 12C4.5 12.33 4.53 12.65 4.57 12.97L2.46 14.63C2.27 14.78 2.22 15.05 2.34 15.27L4.34 18.73C4.46 18.95 4.73 19.03 4.95 18.95L7.44 17.94C7.96 18.34 8.5 18.68 9.13 18.93L9.5 21.58C9.54 21.82 9.75 22 10 22H14C14.25 22 14.46 21.82 14.5 21.58L14.87 18.93C15.5 18.67 16.04 18.34 16.56 17.94L19.05 18.95C19.27 19.03 19.54 18.95 19.66 18.73L21.66 15.27C21.78 15.05 21.73 14.78 21.54 14.63L19.43 12.97Z" fill="#fde068"/>
+//           <path d="M19.43 12.97C19.47 12.65 19.5 12.33 19.5 12C19.5 11.67 19.47 11.34 19.43 11.02L21.54 9.37C21.73 9.22 21.78 8.95 21.66 8.73L19.66 5.27C19.54 5.05 19.27 4.96 19.05 5.05L16.56 6.05C16.04 5.66 15.5 5.32 14.87 5.07L14.5 2.42C14.46 2.18 14.25 2 14 2H10C9.75 2 9.54 2.18 9.5 2.42L9.13 5.07C8.5 5.32 7.96 5.66 7.44 6.05L4.95 5.05C4.73 4.96 4.46 5.05 4.34 5.27L2.34 8.73C2.22 8.95 2.27 9.22 2.46 9.37L4.57 11.02C4.53 11.34 4.5 11.67 4.5 12C4.5 12.33 4.53 12.65 4.57 12.97L2.46 14.63C2.27 14.78 2.22 15.05 2.34 15.27L4.34 18.73C4.46 18.95 4.73 19.03 4.95 18.95L7.44 17.94C7.96 18.34 8.5 18.68 9.13 18.93L9.5 21.58C9.54 21.82 9.75 22 10 22H14C14.25 22 14.46 21.82 14.5 21.58L14.87 18.93C15.5 18.67 16.04 18.34 16.56 17.94L19.05 18.95C19.27 19.03 19.54 18.95 19.66 18.73L21.66 15.27C21.78 15.05 21.73 14.78 21.54 14.63L19.43 12.97Z" fill="skyblue"/>
 //           <path d="M12 15.5C13.933 15.5 15.5 13.933 15.5 12C15.5 10.067 13.933 8.5 12 8.5C10.067 8.5 8.5 10.067 8.5 12C8.5 13.933 10.067 15.5 12 15.5Z" fill="#06a185"/>
 //         </svg>
 //       </div>
