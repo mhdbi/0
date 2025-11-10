@@ -217,17 +217,17 @@
           <div style="top:-5vh;width: 85vw;height: 85vh;position: relative;transition: 2s;display: flex; flex-direction: column;align-items: center;justify-content: start;    border-radius: 2rem; background: linear-gradient(75deg, black, rgb(81, 106, 105));box-shadow: #000000c2 -3.5vw 2.5vh 18px">
                
            <div class="plase" >
-              <div style="display: flex;justify-content: center;align-items: center;width: 100%;">
-              Teleshop   لتحميل تطبيق  
+              <div style="display: flex;justify-content: center;align-items: center;width: 100%;color: #fd8181;font-weight: bold;">
+              VPN  لتحميل التطبيق  نحتاج
               </div>
             </div>
               <div class="itemFlex" style='flex-direction: column;align-items: center;'> 
-                <div class="test5" > أولاً :</div>
+                <div class="test5" > ثانياً :</div>
                 <img style='max-width: 100%;height: 16vh;border-radius: 0.5rem;width: 300px;'  src='puplic/icons/1.jpg' @error='er($event)' />
               </div>
 
               <div class="itemFlex" style='flex-direction: column;align-items: center;'> 
-                <div class="test5" >  ثانياُ :</div>
+                <div class="test5" > ثالثاً :</div>
                 <img style='width: 95%;border-radius: 0.5rem;'    src='puplic/icons/2.jpg' @error='er($event)' />
               </div>
                   
