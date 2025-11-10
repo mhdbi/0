@@ -1513,9 +1513,9 @@ notifINIT:function(){
 
          this.funAdmin();
        //    this.funUser();
-    //     this.created();
+         this.created();
          this.indexedDB();
-     //    setTimeout(this.coloring,4000);
+         setTimeout(this.coloring,4000);
          
         // this.notificM();
         // this.siteOrders()
