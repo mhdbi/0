@@ -49,7 +49,7 @@ text.innerHTML = "welcom-to i-us social media new-webApp---2025".split("").map(
 .test3 {
     letter-spacing: 5vw;
     direction: rtl;
-    text-shadow: 0px 15px 7px #5c9494, 0px -5px 10px #000000;
+    text-shadow: 0px 14px 7px #5c9494, 0px 15px 10px #000000, 0px -2px 8px #fff;
     font-size: 29px;
     font-weight: 900;
     background: linear-gradient(90deg, hsl(183, 100%, 50%) 10%, #ffffff 25%, hsl(180.52deg 100% 81.12%) 31%, hsl(171.14deg 90.47% 68.62%) 51%, hsl(0deg 0% 100%) 71%, hsl(179.45deg 100% 84.91%) 86%, hsl(0deg 0% 94.02%) 100%);
@@ -1546,7 +1546,8 @@ textarea::placeholder{
 
 /* for cart first open */
 .redButton{
-     height: 10%;
+     height: 7%;
+     min-height: 7vh;
     background: linear-gradient(0deg, #080808, skyblue);
     width: 90%;
     margin-top: 5vh;
@@ -1563,7 +1564,7 @@ textarea::placeholder{
 
 .plase{
  font-size: 14px;
-    margin: 6vh 0px;
+    margin: 3vh 0px;
     color: #ededed;
     text-shadow: 0px 7px 4px #000000;
     display: flex;

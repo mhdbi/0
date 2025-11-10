@@ -139,19 +139,19 @@
  
    <ul class="vertical-nav" style="left:0px;" >
   
-     <li  @click="$router.push({ name : 'inset', params :{ inset : 'خضار وفواكه' } })" :style="backGround">
+     <li  @click="$router.push({ name : 'inset', params :{ inset : 'خضار وفواكه' } })" >
        <a style='animation: 6s lightCircle ease-in 0s;'>  </a>
           <img src="puplic/icons/fruits.jpg"  class='imgHome' />
      </li>
  
-     <li  @click="$router.push({name : 'inset',params:{inset:'مواد غذائية'}})" :style="backGround">
+     <li  @click="$router.push({name : 'inset',params:{inset:'مواد غذائية'}})" >
        <a style='animation: 15s lightCircle ease-in 0s;'> </a>
          <img src="puplic/icons/dairy-products.jpg"  class='imgHome' />
      </li>
      
  
      
-     <li @click="$router.push({name : 'inset',params:{inset:'حلويات'}})" :style="backGround">
+     <li @click="$router.push({name : 'inset',params:{inset:'حلويات'}})" >
        <a style='animation: 6s lightCircle ease-in 0s;'> </a>
        <img src="puplic/icons/chocolate.jpg"  class='imgHome' />
      </li>
@@ -171,17 +171,17 @@
  
  
    <ul style="right:0px;" class="vertical-nav">
-     <li @click="$router.push({name : 'inset',params:{inset:'نقرشات'}})" :style="backGround">
+     <li @click="$router.push({name : 'inset',params:{inset:'نقرشات'}})" >
       <a style='animation: 20s lightCircle ease-in 0s forwards;'> </a>
        <img src="puplic/icons/nuts.jpg"  class='imgHome' />
      </li>
 
-     <li @click="$router.push({name : 'inset',params:{inset:'مشروبات'}})" :style="backGround">
+     <li @click="$router.push({name : 'inset',params:{inset:'مشروبات'}})" >
        <a style='animation: 5s lightCircle ease-in 0s;'>  </a>
        <img src="puplic/icons/drink.jpg"  class='imgHome' />  
      </li>
      
-    <li @click="$router.push({name : 'inset',params:{inset:'تبغيات'}})"  :style="backGround">
+    <li @click="$router.push({name : 'inset',params:{inset:'تبغيات'}})"  >
        <a style='animation: 11s lightCircle ease-in 0s;'>  </a>
         <img src="puplic/icons/cigarette.jpg"   class='imgHome'/>      
     </li>
@@ -210,13 +210,12 @@
 
 
     <!-- for download ----  ------ -->
+<transition-group name="slide-fade">
 
-        <div style="z-index: 901;width: 100vw;height: 100vh;position: absolute;background: rgb(255 255 255 / 70%);flex-direction: column;
-                display: flex;justify-content: center;align-items: center;" v-if="downLTips"> 
+      <div class="instruction" v-if="downLTips"  :class="{ 'slide-fade-enter-from' : downLTips}"> 
 
           <div style="top:-5vh;width: 85vw;height: 85vh;position: relative;transition: 2s;display: flex; flex-direction: column;align-items: center;justify-content: start;    border-radius: 2rem; background: linear-gradient(75deg, black, rgb(81, 106, 105));box-shadow: #000000c2 -3.5vw 2.5vh 18px">
-            
-            
+               
            <div class="plase" >
               <div style="display: flex;justify-content: center;align-items: center;width: 100%;">
               Teleshop   لتحميل تطبيق  
@@ -234,11 +233,11 @@
                   
                     <div  class="redButton" @click="downLTips=!downLTips">
                           حسناً   
-                    </div>
-          
+                    </div> 
+              </div>            
+       </div>
 
-         </div>
-        </div>
+</transition-group>
 
  <!-- for download ----  ------ -->
 

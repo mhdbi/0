@@ -77,6 +77,7 @@ const data={
     delItemDone:false,   //for done deleted item
     sendCartDone:false,  //for done sended cart
     editBtn :false,
+    fixL: false ,
 
     FUNname: []  ,
     FUNrun:false   ,
@@ -924,7 +925,7 @@ if(this.cartItem.length==0)
          this.makeTX(data);
          this.telegram();
          this.pushN();
-         this.cartItem=[];this.orderPhone=null;siteText=null;this.geoL=null;
+         this.cartItem=[];this.orderPhone=null;siteText=null;this.geoL=null;this.runSolve=false;  this.runErr=false;
       }).catch(e=>{
         this.run=false;
         this.FUNrun=true;
@@ -1037,8 +1038,17 @@ if(this.siteText=='text'){
         const longitude = x.coords.longitude;
         this.geoL={latitude:latitude,longitude:longitude};
         this.runSolve=true;
+        this.runErr=false;
        },
-      ()=>{this.runErr=true;}
+      ()=>{
+        this.runSolve=false;
+        this.runErr=true;
+      },
+      {
+        enableHighAccuracy:true,
+        timeout :9000 ,
+        maximumAge :0
+      }
       )
      
       }else{
@@ -1300,8 +1310,9 @@ notifINIT:function(){
                <textarea type="text" cols="3" rows="3" dir="rtl" v-model="geoL"   placeholder=" قم بتحديد موقعك بالتفصيل"></textarea>
               </div>
              
-              <div v-if="runErr"   class="errSolve" :class="{ shake2 : runErr }">حدث خطأ ما, يرجى تعيين الموقع كتابةً </div>
+              <div v-if="runErr"   class="errSolve" :class="{ shake2 : runErr }"><div class='fixL' @click='fixL=!fixL'> إصلاح</div> <div>!حدث خطأ ما</div></div>
               <div v-if="runSolve" class="errSolve" :class="{ shake2 : runSolve }">تم تحديد الموقع بنجاح</div>
+
               
             </div> 
         
@@ -1316,19 +1327,7 @@ notifINIT:function(){
               <input id='u' type="text"  dir="rtl" placeholder="ما رقمك" v-model="iphone"  @input="editLog()"  style='width: 60%; background: none; border: none;font-weight: bolder;box-shadow: none;outline: none;display: flex;' />
                 <span style='font-weight: bold; color: #e2e294;text-shadow: 0px 0px 1px yellow;'> : رقمك</span>
              </div>
-       
-
-
-
-
-       <div v-if="run" style="position:relative;z-index:9998;">
-         <div class="containerW" >
-          <div style="color: wheat;"> ..انتظر</div>
-           <div class="it item1"></div>
-           <div class="it item2"></div>
-           <div class="it item3"></div>
-          </div>
-       </div>
+      
        
       
    
@@ -1356,7 +1355,7 @@ notifINIT:function(){
 
       <div class="buttonBottom" >
         
-        <button  class="backword" @click="run=false,runErr=false,runSolve=false,cart!=0?cart-=1:true">رجوع</button>
+        <button  class="backword" @click="run=false,runErr=false,runSolve=false,geoL=null,cart!=0?cart-=1:true">رجوع</button>
         <button  class="next"   v-if="cart!=2&&cart!=3"  @click="cart+=1">متابعة</button>
         <button  class="next"   v-else-if="cart==2&&cart!=3"   @click="cart=3,ocCart()">إرسال الطلب</button>
         <button  class="next"   v-else-if="cart==3"   >قيد الإرسال</button>
@@ -1369,14 +1368,44 @@ notifINIT:function(){
 
     </div>
 </div>
-
-
 </transition-group>
 
-<!--------------------------------->
 
 
+<!-----------------run---------------->
 
+      <div v-if="run" style="position:relative;z-index:9998;">
+         <div class="containerW" >
+          <div style="color: wheat;"> ..انتظر</div>
+           <div class="it item1"></div>
+           <div class="it item2"></div>
+           <div class="it item3"></div>
+          </div>
+       </div>
+<!--------------------------------------->
+
+<!-----------------for fix location instruction---------------->
+<transition-group name="slide-fade">
+       <div class="instruction" v-if="fixL"  :class="{ 'slide-fade-enter-from' : downLTips}" > 
+
+          <div style="top:-5vh;width: 85vw;height: 85vh;position: relative;transition: 2s;display: flex; flex-direction: column;align-items: center;justify-content: start;    border-radius: 2rem; background: linear-gradient(75deg, black, rgb(81, 106, 105));box-shadow: #000000c2 -3.5vw 2.5vh 18px">      
+            
+              <div class="itemFlex" style='flex-direction: column;align-items: center;'> 
+                <div class="plase" >   أولاً : اضغط هنا للتفعيل يدوياً</div>
+                <img style='max-width: 100%;height: 16vh;border-radius: 0.5rem;width: 300px;'  src='puplic/icons/fixL1.jpg' @error='er($event)' />
+              </div>
+
+              <div class="itemFlex" style='flex-direction: column;align-items: center;'> 
+                <div class="plase" >  ثانياُ :اضغط على الصلاحيات ثم قم بتفعيل الموقع</div>
+                <img style='width: 85%;border-radius: 0.5rem;'    src='puplic/icons/fixL2.jpg' @error='er($event)' />
+              </div>
+                  
+                    <div  class="redButton" @click="fixL=!fixL,geoL=null;">
+                          حسناً   
+                    </div> 
+              </div>            
+       </div>
+</transition-group>
 
 <!--------------------------------------------------------------------------------------------------->
 

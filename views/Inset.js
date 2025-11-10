@@ -56,7 +56,7 @@ export default{
        </li>   
  
  
-       <li class="test3" id='test4'  style='letter-spacing: 1.3vw;font-size: 22px;-webkit-text-stroke-width: 1.5px;color: #8b8b8b;' >
+       <li class="test3" id='test4'  style='letter-spacing: 1.3vw;font-size: 21px;-webkit-text-stroke-width: 1.5px;' >
          {{$route.params.inset}}
        </li>   
  
