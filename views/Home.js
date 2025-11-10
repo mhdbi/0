@@ -140,19 +140,19 @@
    <ul class="vertical-nav" style="left:0px;" >
   
      <li  @click="$router.push({ name : 'inset', params :{ inset : 'خضار وفواكه' } })" >
-       <a style='animation: 6s lightCircle ease-in 0s;'>  </a>
+       <a style='animation: 7s lightCircle ease-in 0s;'>  </a>
           <img src="puplic/icons/fruits.jpg"  class='imgHome' />
      </li>
  
      <li  @click="$router.push({name : 'inset',params:{inset:'مواد غذائية'}})" >
-       <a style='animation: 15s lightCircle ease-in 0s;'> </a>
+       <a style='animation: 12s lightCircle ease-in 0s;'> </a>
          <img src="puplic/icons/dairy-products.jpg"  class='imgHome' />
      </li>
      
  
      
      <li @click="$router.push({name : 'inset',params:{inset:'حلويات'}})" >
-       <a style='animation: 6s lightCircle ease-in 0s;'> </a>
+       <a style='animation: 25s lightCircle ease-in 0s;'> </a>
        <img src="puplic/icons/chocolate.jpg"  class='imgHome' />
      </li>
     
@@ -177,12 +177,12 @@
      </li>
 
      <li @click="$router.push({name : 'inset',params:{inset:'مشروبات'}})" >
-       <a style='animation: 5s lightCircle ease-in 0s;'>  </a>
+       <a style='animation: 10s lightCircle ease-in 0s;'>  </a>
        <img src="puplic/icons/drink.jpg"  class='imgHome' />  
      </li>
      
     <li @click="$router.push({name : 'inset',params:{inset:'تبغيات'}})"  >
-       <a style='animation: 11s lightCircle ease-in 0s;'>  </a>
+       <a style='animation: 15s lightCircle ease-in 0s;'>  </a>
         <img src="puplic/icons/cigarette.jpg"   class='imgHome'/>      
     </li>
  

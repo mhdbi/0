@@ -652,7 +652,6 @@ moveOrder:function(orderId){  // for edit order to be index
 
 
 siteOrders:function(){
-    this.run=true;
 
   var x = JSON.stringify({type:this.indexOrderType});
   var y ="siteOrders";
@@ -664,7 +663,7 @@ siteOrders:function(){
      return r.json();
      }
 }).then(e=>{ 
-    this.run=false;
+   // this.run=false;
     var userOrders=[];
     e.forEach(i=>{
     if(i.place==this.user[3]||this.user[3]=='syria'){
@@ -673,9 +672,7 @@ siteOrders:function(){
     }
    })
    this.userOrders=userOrders;//use splice if obj
-   setTimeout(this.siteOrders ,5000)
 }).catch(e=>{
-    this.run=false;
     this.FUNname = this.siteOrders ;
     this.FUNrun =true;
      
@@ -1022,17 +1019,28 @@ pushN:function(){
 
 chosePlace:function(){
  
-  var geoL= document.getElementsByClassName('geoL')[0];
+  var geoLT= document.getElementsByClassName('TEXT')[0],
+      geoLG= document.getElementsByClassName('GPS')[0];
 
 if(this.siteText=='text'){ 
-  this.geoL=null;                 ///////  for text
-    geoL.style.display='flex';
-
-
+    geoLG.style.display='none';
+    this.geoL=null;                 ///////  for text
+    geoLT.style.display='flex';
+    
 }else if(this.siteText=='gps'){          ///// for GPS 
-  geoL.style.display='none';
+  geoLT.style.display='none';
+  this.geoL=null;
+  geoLG.style.display='flex'; 
+   }else{
+     geoLT.style.display='none';
     this.geoL=null;
-      if(navigator.geolocation){ 
+    geoLG.style.display='none'; 
+   }
+
+  },
+     
+ GPSplace: function(){    
+     if(navigator.geolocation){ 
         navigator.geolocation.getCurrentPosition((x)=>{
         const latitude  = x.coords.latitude;
         const longitude = x.coords.longitude;
@@ -1052,10 +1060,11 @@ if(this.siteText=='text'){
       )
      
       }else{
+          this.runSolve=false;
           this.runErr=true;
       }
 
-  }
+
 },
 
 
@@ -1187,7 +1196,7 @@ notifINIT:function(){
 
   
   star :function(){
-    return `filter: contrast(${(Math.sin(this.counter*0.03)+1)*0.5}) drop-shadow( rgb(135 206 235 / ${(Math.sin(this.counter*0.05)+1.1)*0.5}) 0px 30vh 0.5px);`;
+    return `filter: contrast(${(Math.sin(this.counter*0.04)+1)*0.5}) drop-shadow( rgb(135 206 235 / ${(Math.sin(this.counter*0.06)+1.05)*0.5}) 0px 30vh 0.5px);`;
   },
  
    backGround: function(){
@@ -1298,16 +1307,18 @@ notifINIT:function(){
             
 
           <div class="itemFlex" style="border-radius: 5rem;margin: 10px 0px;height: 15%;">
-           <label for="text"   style="width: 13vh;"  @click="siteText='text',chosePlace('text'),run=false,runErr=false"   :class="{ 'shake2 hoverPlace' : siteText=='text'}">كتابة نصية</label> <input type="radio"       id="text">
-           <label for="GPS"    style="width: 13vh;"  @click="siteText='gps',chosePlace('gps'),run=false,runErr=false"    :class="{ 'shake2 hoverPlace' : siteText=='gps' }">   GPS     </label> <input type="radio"       id="GPS">      
+           <label for="text"   style="width: 13vh;"  @click="siteText='text',chosePlace(),run=false,runErr=false"   :class="{ 'shake2 hoverPlace' : siteText=='text'}">كتابة نصية</label> <input type="radio"       id="text">
+           <label for="GPS"    style="width: 13vh;"  @click="siteText='gps',chosePlace(),run=false,runErr=false"    :class="{ 'shake2 hoverPlace' : siteText=='gps' }">   GPS     </label> <input type="radio"       id="GPS">      
           </div>
 
 
 
-
-
-              <div class="itemFlex geoL" style='display: none;'>
+              <div class="itemFlex geoL TEXT" style='display: none;'>
                <textarea type="text" cols="3" rows="3" dir="rtl" v-model="geoL"   placeholder=" قم بتحديد موقعك بالتفصيل"></textarea>
+              </div>
+              <div class="itemFlex geoL fixL GPS" style='display: none;'@click="GPSplace()">
+                  قم بتشغيل موقع الجهاز , ثم اضغط هنا 
+                  <img style='width: 5vw;max-width: 18px;margin-left: 2vw;'    src='puplic/icons/site.png' @error='er($event)' />
               </div>
              
               <div v-if="runErr"   class="errSolve" :class="{ shake2 : runErr }"><div class='fixL' @click='fixL=!fixL'> إصلاح</div> <div>!حدث خطأ ما</div></div>
@@ -1389,18 +1400,19 @@ notifINIT:function(){
        <div class="instruction" v-if="fixL"  :class="{ 'slide-fade-enter-from' : downLTips}" > 
 
           <div style="top:-5vh;width: 85vw;height: 85vh;position: relative;transition: 2s;display: flex; flex-direction: column;align-items: center;justify-content: start;    border-radius: 2rem; background: linear-gradient(75deg, black, rgb(81, 106, 105));box-shadow: #000000c2 -3.5vw 2.5vh 18px">      
-            
+              <div class="plase" > تأكد من تشغيل زر الموقع للجهاز</div>
+               
               <div class="itemFlex" style='flex-direction: column;align-items: center;'> 
-                <div class="plase" >   أولاً : اضغط هنا للتفعيل يدوياً</div>
+                <div class="plase" >     اتبع السهم  </div>
                 <img style='max-width: 100%;height: 16vh;border-radius: 0.5rem;width: 300px;'  src='puplic/icons/fixL1.jpg' @error='er($event)' />
               </div>
 
               <div class="itemFlex" style='flex-direction: column;align-items: center;'> 
-                <div class="plase" >  ثانياُ :اضغط على الصلاحيات ثم قم بتفعيل الموقع</div>
+                <div class="plase" >  اضغط على استعادة الصلاحيات </div>
                 <img style='width: 85%;border-radius: 0.5rem;max-width: 290px;'    src='puplic/icons/fixL2.jpg' @error='er($event)' />
               </div>
                   
-                    <div  class="redButton" @click="fixL=!fixL,geoL=null;">
+                    <div  class="redButton" @click="fixL=!fixL,geoL=null,siteText=null,chosePlace()">
                           حسناً   
                     </div> 
               </div>            
@@ -1501,9 +1513,9 @@ notifINIT:function(){
 
          this.funAdmin();
        //    this.funUser();
-         this.created();
+    //     this.created();
          this.indexedDB();
-         setTimeout(this.coloring,4000);
+     //    setTimeout(this.coloring,4000);
          
         // this.notificM();
         // this.siteOrders()

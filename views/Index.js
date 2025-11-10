@@ -75,7 +75,7 @@ export default{
             </div>
   
             <div class="itemFlex" >
-              <div class="span2" @click='order=JSON.parse(item.cartItem),orderInfoSite=1' style='background: linear-gradient(0deg, black, #78735a);color: #ffe888;box-shadow: none;'>
+              <div class="span2" @click='order=JSON.parse(item.cartItem),orderInfoSite=1' style='background: linear-gradient(0deg, black, #5a7778ff);color: #88ffffff;box-shadow: none;'>
                    الطلب
               </div>
             </div>
@@ -113,7 +113,7 @@ export default{
    <!----------------------------------------for iname ipass-------------------------------------->
   
     <div v-if='accDB' style="z-index:999;margin-top:20vh;width: 95vw;height: 70vh;position: relative;transition: 2s;display: flex; flex-direction: column;align-items: center;justify-content: start;    border-radius: 2rem;
-                 background: linear-gradient(-11deg, rgb(112 81 0), rgb(108 108 108));">
+                linear-gradient(-11deg, rgb(0 23 27 / 65%), rgb(157 157 157 / 57%));">
         <div class="test3" style="letter-spacing: 5px;font-size: 25px;color:transparent;height: 20%;dir:rtl;font-weight: 200;" >  أهلاً بك &nbsp; {{iname}} </div>
   
         <div class="itemFlex" style="border-radius: 5rem;margin: 10px 0px;height: 15%;">
