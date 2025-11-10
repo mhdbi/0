@@ -1290,7 +1290,7 @@ notifINIT:function(){
 
        
           <div :class="{ display : cart==2 }"  class="cartItem"  > 
-            <div class="itemFlex test1" style="background: repeating-linear-gradient(145deg, rgb(53 69 43), transparent 65%);border-radius: 2rem;height: 10%;" >: تحديد الموقع </div>
+            <div class="itemFlex test1" style="background: repeating-linear-gradient(145deg, #2b4544, transparent 65%);border-radius: 2rem;height: 10%;" >: تحديد الموقع </div>
 
          
       <div class="itemFlex" style="flex-direction: column;gap: 25px;justify-content: start;height: 55%;">
@@ -1318,12 +1318,12 @@ notifINIT:function(){
         
 
 
-            <div class="itemFlex" style="justify-content: space-evenly;background: repeating-linear-gradient(21deg, #435742, #4c6546 28px); margin: 10px 0px;height: 13%;box-shadow: inset 2px 1px 5px #0d0d0d, inset 0px -2px 8px #000000;">
+            <div class="itemFlex" style="justify-content: space-evenly;background: repeating-linear-gradient(21deg,  #425357ff, #466365ff 28px); margin: 10px 0px;height: 13%;box-shadow: inset 2px 1px 5px #0d0d0d, inset 0px -2px 8px #000000;">
               <input id='i' type="text" dir="rtl" placeholder="ما اسمك" v-model="iname"  @input="editLog()"   style='width: 60%; background: none; border: none;font-weight: bolder;box-shadow: none;outline: none;display: flex;' />
                 <span style='font-weight: bold; color: #e2e294;text-shadow: 0px 0px 1px yellow;'> : اسمك</span>
              </div>
 
-             <div class="itemFlex" style="justify-content: space-evenly;background: repeating-linear-gradient(21deg, #435742, #4c6546 28px); height: 13%;box-shadow: inset 2px 1px 5px #0d0d0d, inset 0px -2px 8px #000000;">
+             <div class="itemFlex" style="justify-content: space-evenly;background: repeating-linear-gradient(21deg, #425357ff, #466365ff 28px); height: 13%;box-shadow: inset 2px 1px 5px #0d0d0d, inset 0px -2px 8px #000000;">
               <input id='u' type="text"  dir="rtl" placeholder="ما رقمك" v-model="iphone"  @input="editLog()"  style='width: 60%; background: none; border: none;font-weight: bolder;box-shadow: none;outline: none;display: flex;' />
                 <span style='font-weight: bold; color: #e2e294;text-shadow: 0px 0px 1px yellow;'> : رقمك</span>
              </div>
@@ -1397,7 +1397,7 @@ notifINIT:function(){
 
               <div class="itemFlex" style='flex-direction: column;align-items: center;'> 
                 <div class="plase" >  ثانياُ :اضغط على الصلاحيات ثم قم بتفعيل الموقع</div>
-                <img style='width: 85%;border-radius: 0.5rem;'    src='puplic/icons/fixL2.jpg' @error='er($event)' />
+                <img style='width: 85%;border-radius: 0.5rem;max-width: 290px;'    src='puplic/icons/fixL2.jpg' @error='er($event)' />
               </div>
                   
                     <div  class="redButton" @click="fixL=!fixL,geoL=null;">
