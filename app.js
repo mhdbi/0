@@ -1116,8 +1116,8 @@ notef:function(){
             })
           .catch((err) => {
             console.error('Error getting token:', err);
-            this.FUNrun=true;
-            this.FUNname= this.notef;
+            // this.FUNrun=true;
+            // this.FUNname= this.notef;
             });
  
             
