@@ -104,13 +104,13 @@ export default{
 
 <!---------------------------------------------->
 
- <div  style='' v-if='orderInfoSite==2' >
-       <div class="cartItem" id="cartItem" style='height:90%;margin-top:20%;'>
+ <div   v-if='orderInfoSite==2' >
+       <div class="cartItem" id="cartItem" style='height:90%;margin-top:20%;display:flex;background: #00000054;'>
          <div @click='orderInfoSite=0' class='back'>x</div>  
 
-             <div class=''></div>
-             <div class=''></div>
-             <div class="">{{orderPh}}</div>
+             <div ></div>
+             <div ></div>
+             <div >{{orderPh}}</div>
          
        </div>
 

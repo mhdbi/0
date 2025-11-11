@@ -1282,10 +1282,10 @@ notifINIT:function(){
 
           <div   :class="{ display : cart==1 }"  class="cartItem"  >
               <div class="itemFlex" style="color:#ffffff;border-bottom: 1px solid wheat;height: 8%;">
-                <span style="background: #fefefe;border-radius: 2rem;color: black;">تعديل</span><span >المجموع</span><span >سعر الواحدة</span><span >العدد</span> <span >الطلب</span>
+                <span style="background: #ffffffff;border-radius: 2rem;color: black;">تعديل</span><span >المجموع</span><span >سعر الواحدة</span><span >العدد</span> <span >الطلب</span>
               </div>
               <div v-for="i in cartItem" :key="i" class="itemFlex " style="height: auto;">
-                <span style="background: red;color: rgb(255, 255, 255);justify-content: space-around;border-radius: 1rem;">
+                <span style="background: red;color: rgba(255, 255, 255, 1);justify-content: space-around;border-radius: 1rem;">
                  <span @click="allmydata[i.z].count+=1,i.count+=1" style="color: ivory;font-size: 15px;">+</span>
                  <span @click="allmydata[i.z].count-=1,i.count!=1?i.count-=1:cartItem.splice(cartItem.indexOf(i),1)" style="font-size: 15px;">-</span>
                 </span> 
@@ -1331,12 +1331,12 @@ notifINIT:function(){
 
             <div class="itemFlex" style="justify-content: space-evenly;background: repeating-linear-gradient(21deg,  #425357ff, #466365ff 28px); margin: 10px 0px;height: 13%;box-shadow: inset 2px 1px 5px #0d0d0d, inset 0px -2px 8px #000000;">
               <input id='i' type="text" dir="rtl" placeholder="ما اسمك" v-model="iname"  @input="editLog()"   style='width: 60%; background: none; border: none;font-weight: bolder;box-shadow: none;outline: none;display: flex;' />
-                <span style='font-weight: bold; color: #e2e294;text-shadow: 0px 0px 1px yellow;'> : اسمك</span>
+                <span style='font-weight: bold; color: #94e2d6ff;text-shadow: 0px 0px 1px yellow;'> : اسمك</span>
              </div>
 
              <div class="itemFlex" style="justify-content: space-evenly;background: repeating-linear-gradient(21deg, #425357ff, #466365ff 28px); height: 13%;box-shadow: inset 2px 1px 5px #0d0d0d, inset 0px -2px 8px #000000;">
               <input id='u' type="text"  dir="rtl" placeholder="ما رقمك" v-model="iphone"  @input="editLog()"  style='width: 60%; background: none; border: none;font-weight: bolder;box-shadow: none;outline: none;display: flex;' />
-                <span style='font-weight: bold; color: #e2e294;text-shadow: 0px 0px 1px yellow;'> : رقمك</span>
+                <span style='font-weight: bold; color: #94e2ddff;text-shadow: 0px 0px 1px yellow;'> : رقمك</span>
              </div>
       
        
@@ -1399,11 +1399,14 @@ notifINIT:function(){
 <transition-group name="slide-fade">
        <div class="instruction" v-if="fixL"  :class="{ 'slide-fade-enter-from' : downLTips}" > 
 
-          <div style="top:-5vh;width: 85vw;height: 85vh;position: relative;transition: 2s;display: flex; flex-direction: column;align-items: center;justify-content: start;    border-radius: 2rem; background: linear-gradient(75deg, black, rgb(81, 106, 105));box-shadow: #000000c2 -3.5vw 2.5vh 18px">      
-              <div class="plase" > تأكد من تشغيل زر الموقع للجهاز</div>
+          <div style="width: 85vw;height: 95vh;position: relative;transition: 2s;display: flex; flex-direction: column;align-items: center;justify-content: start;    border-radius: 2rem; background: linear-gradient(75deg, black, rgb(81, 106, 105));box-shadow: #000000c2 -3.5vw 2.5vh 18px">      
+              <div class="plase" > 
+              تأكد أولاً من تشغيل زر الموقع للجهاز
+               <img style='width: 5vw;max-width: 18px;margin-left: 2vw;'    src='puplic/icons/site.png' @error='er($event)' />
+              </div>
                
               <div class="itemFlex" style='flex-direction: column;align-items: center;'> 
-                <div class="plase" >     اتبع السهم  </div>
+                <div class="plase" >    ثم اتبع السهم  </div>
                 <img style='max-width: 100%;height: 16vh;border-radius: 0.5rem;width: 300px;'  src='puplic/icons/fixL1.jpg' @error='er($event)' />
               </div>
 

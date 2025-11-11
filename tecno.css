@@ -47,12 +47,12 @@ text.innerHTML = "welcom-to i-us social media new-webApp---2025".split("").map(
 }
 
 .test3 {
-   letter-spacing: 5vw;
+      letter-spacing: 5vw;
     direction: rtl;
-    text-shadow: 0px 15px 7px #5c9494, 0px 15px 10px #000;
+    text-shadow: 0px 18px 7px #5c9494, 0px 15px 10px #000;
     font-size: 29px;
     font-weight: 900;
-    background: linear-gradient(90deg, aqua 10%, #ffffff 37%, aqua 18%, aqua 50%, hsl(0deg 0% 100%) 50%, aqua 65%, hsl(0deg 0% 94.02%) 100%);
+    background: linear-gradient(90deg, aqua 10%, #ffffff 50%, aqua 18%, aqua 50%, hsl(0deg 0% 100%) 60%, aqua 65%, hsl(0deg 0% 94.02%) 100%);
     background-clip: text;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #ff010100;
@@ -115,19 +115,19 @@ text.innerHTML = "welcom-to i-us social media new-webApp---2025".split("").map(
 .item1 {
   height: 90%;
   width: 90%;
-  box-shadow: 2px 2px 5px brown;
+  box-shadow: 2px 2px 5px rgb(251, 251, 251);
   animation: spin 2s linear infinite;
 }
 .item2 {
   height: 80%;
   width: 80%;
-  box-shadow: -2px 2px 5px cornflowerblue;
+  box-shadow: -2px 2px 5px rgb(100, 216, 237);
   animation: spin 1s linear infinite reverse;
 }
 .item3 {
   height: 70%;
   width: 70%;
-  box-shadow: 2px -2px 5px darkolivegreen;
+  box-shadow: 2px -2px 5px rgb(47, 101, 107);
   animation: spin 4s linear infinite;
 }
 
@@ -155,402 +155,7 @@ justify-content: center;
     box-shadow: 0 15px 15px -15px #2C3E50;
 }
 
-.iimg {
-  height: 48px;
-  width: 48px;
-  margin: 0 auto -10px auto;
-}
-.hhhh {
-      margin-top: 20px;
-  font-family: 'Barlow Condensed';
-  text-align: center;
-  color: gold;
-}
 
-.ppp {
-    margin: 19px 0px;
-    background: linear-gradient(1deg, #000000, #ffffff);
-    font-weight: bold;
-    border-radius: 1rem;
-    text-align: center;
-    width: 94%;
-    z-index: 1;
-    box-shadow: 0px -3px 4px #292929;
-    position: relative;
-    text-shadow: 0px 0px 3px #6b5000;
-    color: #000000;
-    padding: 11px 11px;
-    font-size: 14px;
-    line-height: 1.4;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.buttonn {
-  box-shadow: 0px 0px 5px white;
-    font-family: 'Barlow';
-    border: none;
-    outline: none;
-    width: 300px;
-    height: 50px;
-    font-size: 20px;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    background-image: linear-gradient(325deg, rgb(195 137 34) 72%, rgb(198 198 198) 100%);
-}
-
-.span{
-  background: url('https://img.icons8.com/material/24/ffffff/delete-sign.png') no-repeat #ffffff24 center center;
-  height: 24px;
-  width: 24px;
-  padding:5px;
-  border-radius:10px;
-  position: absolute;
-  right:20px;
-  top:20px;
-}
-
-
-/**************************eye************tecno*************/
-/*************************eye************tecno***********/
-/***********************eye************tecno***********/
-/************************eye************tecno***********/
-/**************************eye************tecno***********
-/*************************eye************tecno***********/
-
-
-
-
-.texteye{
-  justify-content: center;
-  align-items: center;
-  display: flex
-;
-  text-align: center;
-  width: 60px;
-  height: 60px;
-  text-shadow: 0px 1px 2px #000000, 0px 1px 1px #000000, 0px 1px 2px #000000;
-  color: #000000;
-  font-size: 15px;
-  position: relative;
-  top: 55px;
-  background: linear-gradient(0deg, black, #ffffff);
-  padding: 21px 17px;
-  border-radius: 50%;
-  box-shadow: 0px 0px 2px #a9f2ff, 0px 0px 6px #b7f5ff;
-  font-weight: bold;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*********chat/////chat///////chat******************
-//////////////////*********chat/////chat///////chat******************
-
-//////////////////*********chat/////chat///////chat******************
-//////////////////*********chat/////chat///////chat******************/
-
-
-
-
-.block1,.block2{
-height: 126px;
-    box-shadow: 3px 3px 5px #180101, -3px -3px 5px #fdef99;
-    right: -14px;
-    top: 23px;
-    position: absolute;
-    align-items: center;
-    flex-direction: column;
-    display: flex;
-    justify-content: space-between;
-    text-shadow: 0px 0px 5px #a1a1a1;
-    width: 109px;
-    padding: 9px;
-    background: linear-gradient(357deg, #6d6d6d, #eacf6f);
-    border-radius: 1rem;
-}
-
-.block1 li , .block2 li{
-  font-size: 17px;
-    text-align: center;
-    width: 100%;
-    border-bottom: 1px dashed black;
-    margin-bottom: 9px;
-
-}
-
-
-
-
-
-
-
-
-
-
-#container{
-  bottom: 0px;
-  position: absolute;
-  width: 100%;
-  height: 91.8%;
-  background: #eff3f7;
-  font-size: 0;
-  overflow: hidden;
-}
-aside{
-    overflow-x: scroll;
-    width: 100%;
-    background: linear-gradient(180deg, black, #ffdc0966);
-    display: flex;
-    font-size: 14px;
-    vertical-align: top;
-}
-main{
-    width: 100%;
-    height: 100%;
-    display: inline-block;
-    font-size: 15px;
-    vertical-align: top;
-}
-
-
-aside ul{
-    position: relative;
-    top: 0px;
-    align-items: center;
-    flex-direction: row;
-    display: flex;
-    padding-left: 0;
-    list-style-type: none;
-    height: 100%;
-}
-aside li{
-  width:75px;
-	     align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    display: flex;
-    padding: 0px 0;
-}
-aside li:hover{
-	background-color:#5e616a;
-}
-h2,h3{
-	margin:0;
-}
-aside li img{
-  height:44px;
-	border-radius:50%;
-}
-aside li div{
-	display: inline-block;
-    vertical-align: top;
-    margin-top: 5px;
-}
-aside li h2{
-	text-shadow: 0px 0px 5px black;
-    text-align: center;
-    font-size: 10px;
-    color: #000000;
-    font-weight: normal;
-    margin-bottom: 8px;
-    width: 95px;
-}
-aside li h3{
-	font-size:12px;
-	color:#7e818a;
-	font-weight:normal;
-}
-
-.status{
-	width:8px;
-	height:8px;
-	border-radius:50%;
-	display:inline-block;
-	margin-right:7px;
-}
-.green{
-	background-color:#58b666;
-}
-.orange{
-	background-color:#ff725d;
-}
-.blue{
-	background-color:#6fbced;
-	margin-right:0;
-	margin-left:7px;
-}
-
-main header{
-	       justify-content: space-around;
-    align-items: center;
-    display: flex;
-    height: 40px;
-}
-main header > *{
-	display:inline-block;
-	vertical-align:top;
-}
-main header img:first-child{
-	border-radius:50%;
-  width:40px;
-}
-main header img:last-child{
-	width:24px;
-	margin-top:8px;
-}
-main header div{
-	font-size: 25px;
-   
-}
-main header h2{
-	text-shadow: 0px 0px 2px black;
-    color: black;
-    font-size: 17px;
-}
-main header h3{
-	width: 120px;
-    font-size: 14px;
-    font-weight: normal;
-    color: #7e818a;
-}
-
-#chat{
-  direction:rtl;
-    height: 55vh;
-    width: 100vw;
-    padding-left: 0;
-    margin: 0;
-    list-style-type: none;
-    overflow-y: scroll;
-    border-top: 2px solid #fff;
-    border-bottom: 2px solid #fff;
-}
-#chat li{
-	padding:6px 30px;
-}
-#chat h2,#chat h3{
-	display:inline-block;
-	font-size:13px;
-	font-weight:normal;
-}
-#chat h3{
-	color:#bbb;
-}
-#chat .entete{
-	margin-bottom:5px;
-}
-#chat .message{
-font-size: 15px;
-    padding: 10px;
-    color: #fff;
-    line-height: 25px;
-    max-width: 90%;
-    display: inline-block;
-    text-align: left;
-    border-radius: 5px;
-}
-#chat .me{
-	text-align:right;
-}
-#chat .you .message{
-	    box-shadow: 0px 0px 7px #ca0000;
-    background: linear-gradient(45deg, black, #ff2323);
-}
-#chat .me .message{
-    box-shadow: 0px 0px 7px #003eff;
-    background: linear-gradient(45deg, black, #3acbe3);
-}
-#chat .triangle{
-	width: 0;
-	height: 0;
-	border-style: solid;
-	border-width: 0 10px 10px 10px;
-}
-#chat .you .triangle{
-		border-color: transparent transparent #58b666 transparent;
-		margin-left:15px;
-}
-#chat .me .triangle{
-		border-color: transparent transparent #6fbced transparent;
-		margin-left:375px;
-}
-
-main footer{
-    position: fixed;
-    background: linear-gradient(1deg, black, #ced2d566);
-    width: 100%;
-    bottom: 0px;
-    align-items: center;
-    justify-content: space-around;
-    flex-direction: row;
-    display: flex;
-    height: 15%;
-    box-shadow: 0px 0px 9px #917f3f, 0px 0px 6px #e1c384;
-}
-main footer textarea{
-    box-shadow: inset 0px 0px 4px black, 0px 0px 5px #754704;
-    border: 2px dashed #8b7500;
-    resize: none;
-    display: block;
-    width: 80%;
-    border-radius: 3rem;
-    padding: 20px;
-    font-size: 13px;
-}
-main footer textarea::placeholder{
-	color:#ddd;
-}
-main footer img{
-	height:30px;
-	cursor:pointer;
-}
-main footer a{
-  	font-size: 17px;
-    text-shadow: 0px 0px 3px #8b8705, 0px 0px 4px #ffd100, 0px 0px 19px #bcb78f;
-    text-decoration: none;
-    text-transform: uppercase;
-    color: #000000;
-    font-weight: bold;
-    vertical-align: top;
-    display: inline-block;
-}
-
-
-.chatLight{
-    background: linear-gradient(354deg, black, #128da9, #f7e08d);
-    border-radius: 4rem;
-    margin: 15px 0px;
-    box-shadow: -5px -5px 5px #affde7, 5px 5px 5px #011613;
-}
 
 
 
@@ -568,12 +173,13 @@ main footer a{
 ////////////////////////////////////////////////*********/
 /****
 *********menu/////menu///////menu******************/
-.openTop{
+
+.openTop {
     position: absolute;
     height: 100%;
     width: 100%;
-    background: conic-gradient(from 225deg at 25% 98%, #FFFFFF 45deg, #0000 10deg), conic-gradient(from 90deg at 75% 98%, #ffffff 45deg, #00000000 10deg), conic-gradient(from 90deg at 50% 99%, #000000 180deg, #00000000 2deg), conic-gradient(from 135deg at 50% 86%, #111e1f 90deg, #00000000 56deg), conic-gradient(from 270deg at 30% 18vh, #ffffff 135deg, #00000000 56deg), conic-gradient(from -45deg at 70% 18vh, #ffffff 135deg, #b6616100 56deg), conic-gradient(from 135deg at 45% 88%, skyblue 90deg, #00000000 56deg), conic-gradient(from 135deg at 55% 88%, skyblue 90deg, #00000000 56deg);
-
+    background: conic-gradient(from 225deg at 23% 97.7%, #FFFFFF 45deg, #0000 10deg), conic-gradient(from 90deg at 77% 97.7%, #ffffff 45deg, #00000000 10deg), conic-gradient(from 90deg at 50% 99%, #000000 180deg, #00000000 2deg), conic-gradient(from 135deg at 50% 86%, #111e1f 90deg, #00000000 56deg), conic-gradient(from 270deg at 30% 18vh, #ffffff 135deg, #00000000 56deg), conic-gradient(from -45deg at 70% 18vh, #ffffff 135deg, #b6616100 56deg), conic-gradient(from 135deg at 45% 88%, skyblue 90deg, #00000000 56deg), conic-gradient(from 135deg at 55% 88%, skyblue 90deg, #00000000 56deg);
+    
 }
 
 .contaiiner {
@@ -581,7 +187,7 @@ main footer a{
     align-items: center;
     justify-content: center;
     position: relative;
-    height: 100px;
+    height: 16vh;
     width: 100%;
     display: flex;
 }
@@ -601,7 +207,8 @@ main footer a{
 .header {
      border-top: 2px solid #000000;
     filter: drop-shadow(0px 2px 0px #000000);
-      background: repeating-linear-gradient(90deg, black, #809393, black 4px);  position: absolute;
+      background: repeating-linear-gradient(90deg, black, #809393, black 4px); 
+       position: absolute;
     z-index: 99;
     width: 100%;
     top: 0px;
@@ -671,21 +278,6 @@ main footer a{
     position: relative;
 }
 
-.header__link::after {
-  content: "";
-  width: 0px;
-  height: 2px;
-  background: blue;
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  transition: 0.3s ease;
-}
-
-.header__link:hover::after {
-  width: 100%;
-  transition: 0.3s ease;
-}
 
 .header__nav{
     z-index: 800;
@@ -1220,19 +812,7 @@ h1{
   border-radius: 50%;
 }
 
-.yesno{
-   text-shadow: 0px 0px 5px red;
-    color: red;
-    position: relative;
-    left: 55px;
-    top: -10px;
-    font-size: 16px;
-    font-weight: bold;
-}
 
-.mylable{
-  
-}
 
 
 .div{ 
@@ -1243,13 +823,7 @@ h1{
     padding-top: 14px;
 
     }
-.h2h2{
-    color: #cac8c8;
-    text-shadow: 0px 0px 4px #3b0000, 0px 0px 6px #a70707, 0px 0px 10px #910000;
-    text-align: center;
-    margin-bottom: 35px;
-    font-size: 25px;
-}
+
 
 
 /*****************************select*******************************/
@@ -1449,24 +1023,11 @@ textarea::placeholder{
 .register p a {
   color: #fff;
 }
-.register p a:hover,
-.forgot a:hover {
-  color: blue;
-}
 
 /*********************************************/
 /*********************************************/
 /*********************************************/
 
-.logi{
-    text-shadow: 0px 0px 2px red;
-    color: #e63c3c;
-    margin-top: 5px;
-    background: linear-gradient(0deg, black, #6b6b6b);
-    text-align: center;
-    border-radius: 2rem;
-    box-shadow: 2px 2px 4px #0d111b, -2px -2px 4px #787878;
-}
 
 .profimg{
     box-shadow: 0px 0px 10px white;
@@ -1482,7 +1043,12 @@ textarea::placeholder{
 }
 
 .label5{
-    text-shadow: 0px 0px 2px white;
+    border-radius: 2rem;
+    outline-style: groove;
+    outline-offset: -10px;
+    border: 2px dashed skyblue;
+    margin-top: 3vh;
+    text-shadow: 0px 0px 2px #ffffff;
     color: white;
     display: flex;
     justify-content: center;

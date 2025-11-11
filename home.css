@@ -285,53 +285,6 @@ box-shadow: 0px 0px 10px black;
 
 
 
-.topBar{
-  border-radius: 2rem;
-    padding: 22px;
-    z-index: 99;
-    box-shadow: 0px 0px 12px #484848;
-    background: #2b2b2b;
-    direction: rtl;
-    top: 60px;
-    width: 100%;
-    position: fixed;
-    max-height: 60px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-    overflow:hidden;
-}
-
-.bar{
-    background: linear-gradient(355deg, #333333, #ebebeb);
-    border-radius: 5rem;
-    margin: 8px 10px;
-    color: #ffffff;
-    text-align: center;
-    font-size: 9px;
-    text-shadow: 0px 0px 4px #d0d0d0;
-    padding: 9px 12px;
-    box-shadow: 0px -1px 3px #858585, 1px 3px 5px #141414, -2px -2px 8px #767676;
-}
-
-.bar2{
-    text-align: center;
-    text-shadow: 0px 0px 5px #ffffff;
-    border: none;
-    box-shadow: 2px 2px 12px #848484, -1px -1px 3px #f7d2d2;
-    color: #000000;
-    right: 0px;
-    position: relative;
-    background: linear-gradient(316deg, #868686, #f7f7f7);
-}
-
-
-
-
-
-
-
 
 
 
@@ -580,13 +533,13 @@ border-radius: 1rem; position: absolute; width: 100%; height: 100%; display: fle
 .priceAll {
   width: 100%;
   height: 6vh;
-  color: wheat;
+  color: rgb(179, 241, 245);
   background: repeating-linear-gradient(45deg, #50554f, #606060 28px);
   box-shadow: inset 1px 3px 5px black;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  text-shadow: 0px 0px 5px lawngreen, 0px 0px 10px red;
+  text-shadow: 0px 0px 5px rgba(102, 247, 255, 0.862);
 }
 
 .buttonBottom {
@@ -996,16 +949,7 @@ width: 4vw;
   width: 27%;
   background: #191919;
  }
-.before2{
-  letter-spacing: 1px;
-    color: rgb(11 255 0);
-    text-shadow: 0px 0px 2px #0ef00e;
-    font-weight: 900;
-    padding-left: 8px;
-    font-size: 14px;
-    display: flex;
-    place-items: center;
-}
+
 
 .page2 {
  position: static;
@@ -1330,74 +1274,8 @@ img{
 
 
 
-/**
 
 
-
-@media only screen and (max-height :700px){
-.inset{min-width:100vw;min-height:100vh;width:auto;}
-.lable{ position: fixed;height: 10vh;  }  .lable a,h3 , h1 ,h4 , h5 , p, .u1, .u2 ,.u3,.u4, .button { font-size:1.1rem;  }
-.panels{     top:0vh;
-        padding: 6vh 0;
-        margin: 18vh 0;
-        width: 100%;
-        flex-direction: row;}
-.panel{ width: 545px;
-        margin: 21px 11px;
-        left: -136px;
-        display: flex;
-        text-align: center;
-        transition: all .2s;
-        perspective: 5000px;}
-.page1{ left: -35.5vw; margin-left: -18vw; transform: rotateY(180deg); position: relative;}  
-.front {  transform: rotateY(180deg); }
-[class^="page"] {    width: 35vw; height: 49vh;}
-.panel:hover .page1{ left: 0vw; transform: rotateY(0deg); top:0vh; } 
-.panel:hover {margin-top:3.5vh; padding:0 11vw; }
-  
-}
-
-
-
-*/
-
-
-/* Hide scrollbar for Chrome, Safari and Opera */
-#app::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-#app {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-.heead1{
-    display: block;
-    border-radius: 61%;
-    display: block;
-    transform: translateX(532%);
-    transition: 2s, width 2s, height 2s;
-    width: 15%;
-    height: 61px;
-    top: 0px;
-    background: linear-gradient(165deg, #ffc4c4, #c84444, #6c0707, #210101e0);
-    box-shadow: 0px 0px 8px #ff0000, 0px 0px 11px #000000;
-
-}
 
 
 
@@ -1544,19 +1422,6 @@ padding: 0px 11px 15px 0px;
 }
 
 
-.title{
-  padding: 3px 6px 0px 0px;
-    border-radius: 3rem;
-    text-shadow: 0px 0px 5px #ff0000, 0px 0px 4px blue, 0px 0px 8px blue, 0px 0px 10px red;
-    padding-left: 6px;
-    max-width: 55vw;
-    left: 3px;
-    color: white;
-    bottom: 4px;
-    position: absolute;
-    font-size:17px;
-    text-align: center;
-}
 
 
 .fas fa-angle-right , .fas fa-angle-left{ 
@@ -1608,189 +1473,3 @@ padding: 0px 11px 15px 0px;
 /*********************************************/
 
 
-
-
-
-
-
-
-/* <script>
-
-// <!-- 
-// const Light = { 
-//           data() {
-//    return data;
-			       
-//         },
-//       methods : methodss,    
-       
-//       template: ` 
-// <div   class="inset">
-  
-
-//  <nav class="header__nav"  id="fade3"  >
-
-//     <ul class="header__menu"   >
-     
-//   <li class="header__item"  style="left: 20%;">
-//     <div class="heead "  style="display:block;" >
-//      <h1 class="header__logo__name"   >
-//       <router-link to="/" >
-//         <i class="fa fa-home" style="text-shadow: skyblue 0px 0px 2px;color: rgb(207 182 92); text-align: center;font-size: 14px;margin: 2px;"><br/>الرئيسية</i>
-//       </router-link>
-//       </h1>
-//     </div>
-//    </li>
-
-       
-//     </ul> 
-//   </nav>
-
-
-
-
-// <div class="row" style="margin-top: 110px;">
-//   <template v-for="item in infoLights" :key="item" > 
-//     <div class="col-md-12 col-lg-6">
-//       <div class="member-card">
-//         <div class="member-pic"></div>
-//         <div class="member-card-details">
-//           <a ><div class="member-name">{{item.hisN}} </br>ناشر الفكرة</div></a>
-//           <div class="member-position" @click="chatLight='',hisId=item.hisId,callMchat=true,hisN=item.hisN,getMsgLight2(),msg='' "> النقاش مع الفريق</div>
-//           <div class="member-position" @click="hisId=item.hisId,getMembersL(),callM=true"> أعضاء الفريق</div>
-//         </div>
-//         <div class="btn-fired" @click="hisId=item.hisId,getoneData(),callHisPost=true">تفاصيل الفكرة</div>
-//       </div>
-//     </div>
-//   </template>
-//  </div>
-
-
-//  <div class="commenter memberL" v-if="callM" dir="rtl" >
-//     <div  class="form-container">
-//        <div class="callx2"  @click="callM=false">x</div>
-//            <div class="row" style="margin-top: 110px;">
-//              <template v-for="item in membersL" :key="item" > 
-//                <div class="col-md-12 col-lg-6">
-//                 <div class="member-card" style="border-radius: 3rem;">
-//                     <div class="member-card-details">
-//                       <a style="margin-bottom:5px;" @click="hisId=item.myId,getoneData(),callHisPost=true,callM=false">
-//                       <div class="member-name" style="font-size:16px;">{{item.iname}} </div>
-//                       </a>
-//                     </div>
-//                  </div>
-//                </div>
-//             </template>
-//           </div>
-//       </div>
-//   </div>
-
-  
-
-
-// <div id="container" v-if="callMchat==true" style="position:fixed;height:91%;">
-//     <div class="callx"  @click="callMchat=false" style="right: -5px;top: -3px;" >x</div>
-
-// 	<main>
-// 	<header>
-			
-//       <i class="fas fa-user-alt" style="text-shadow: 0px 0px 5px gray;font-size: 23px;color: black;font-weight: 900;"></i>
-// 			<div>
-// 				<h2 style="text-shadow: 0px 0px 2px black;color: #7a0000;font-size: 13px;margin-right: 100px;margin-top: 7px;"> .. {{ hisN }} محادثة مع فريق  </h2>
-// 			</div>
-
-
-// 		</header>
-
-// 		<ul id="chat" style="direction: ltr;height: 78%;">
-//       <template v-for="c in chatLight" >
-// 			 <li class="chatLight" >
-// 				<div class="message">
-//          <i class='fas fa-user-alt' @click="hisId=c.myId,getoneData(),callHisPost=true"
-//            style='font-size:4.3vw;color: white;text-shadow: white 0px 0px 1px, white 0px 0px 14px, white 0px 0px 68px, white 0px 0px 132px, white 0px 0px 200px;'>{{ c.iname }}</i>
-
-//          <div> {{c.msg}} </div>
-// 				</div>
-// 			 </li>
-//       </template>
- 
-// 		</ul>
-// 		<footer>
-// 			<textarea placeholder="أكتب رسالتك هنا" v-model="msg" dir="rtl"></textarea>
-			
-// 			<a @click="addMsgLight(),msg=''">إرسال</a>
-// 		</footer>
-// 	</main>
-// </div>
-
-
-
-
-// <!---------top end enset----------bottom end his post---------------------->
-
-
-
-//    <div class="containerW" v-if="infoLights==[]&& !warning">
-//       <div class="it item1"></div>
-//       <div class="it item2"></div>
-//       <div class="it item3"></div>
-//     </div>
-
-
-
-//   </div>
-//          `
-//            } -->
-
-
-
-
-
-
-
-
-
-
-  <div    :class="{ display : cart==2 }" class="cartItem"   > 
-     <div class="itemFlex " style="    background: repeating-linear-gradient(145deg, #3e3e3e, transparent 65%);border-radius: 2rem;height: 10%;"  >
-      : موقعك الآن 
-     </div>
-        <div class="itemFlex" style="flex-wrap: wrap;">
-         <label for="mroj"  :class="{ 'shake2 hoverPlace' : inputP=='المروج'}">المروج</label>  <input type="radio" value="المروج"         v-model="inputP"    id="mroj">
-         <label for="msakn" :class="{ 'shake2 hoverPlace' : inputP=='المساكن'}">المساكن</label> <input type="radio" value="المساكن"        v-model="inputP"    id="msakn">
-         <label for="ksor1" :class="{ 'shake2 hoverPlace' : inputP=='القصور الشمالي'}">القصور الشمالي</label> <input type="radio" value="القصور الشمالي" v-model="inputP"   id="ksor1">
-         <label for="ksor2" :class="{ 'shake2 hoverPlace' : inputP=='القصور الجنوبي'}">القصور الجنوبي</label> <input type="radio" value="القصور الجنوبي" v-model="inputP"   id="ksor2">
-         <label for="sok"   :class="{ 'shake2 hoverPlace' : inputP=='السوق'}" >السوق</label>   <input type="radio" value="السوق"           v-model="inputP"   id="sok">
-        </div>
-  </div>
-  
-  
-///////////////////////////////
-
-
- <Transition name="slide-fade">
-    <div class="fade before" v-if="item.count!=0" name="fade" @click='xyPosition($event)'>
-
-                <div class="before2"
-                   @click="cartItem.push({title:item.title,count:item.count,price:item.price}),item.count=0">
-                  <img src="icons/purchase.png" style=" filter: brightness(1.2);width: 21%;margin-right: 11px;max-width: 55px;" />إضافة 
-                </div>
-    </div>           <!------for before----------------->
- </Transition>
-
-
-
-
- /////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-</script>
- */

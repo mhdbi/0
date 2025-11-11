@@ -318,13 +318,13 @@ export default{
 
 
 
-<div class="logi" @click.once='compressor()'>
-  <label  class="label5"  > 
+
+  <label  class="label5"  @click.once='compressor()'> 
       <div v-if="files.length==0"> اختر صورة  </div>
       <div v-if="files.length>=1"> اختر صورة ثانية </div>
       <input   name="file"  id="files" style="width:0px;" type="file"  multiple accept='image/*'  />
   </label>
-</div>
+
 
 <div class="theImgs" >
     <div id="wrapper" class='wrapper'></div>

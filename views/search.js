@@ -30,7 +30,7 @@ export default{
  
  
     <li class="header__item"  style="display:flex;width:40%;">
-      <h1 style='color: #f1edb5;display:flex;font-size: 0.9rem;align-items: center;justify-content: center;' @click="$router.back()" >
+      <h1 style='color: #b5f1eeff;display:flex;font-size: 0.9rem;align-items: center;justify-content: center;' @click="$router.back()" >
              خروج
         </h1>
      </li>
@@ -43,7 +43,7 @@ export default{
     <li class="header__item"  style="display:flex;width:40%;">
 
        
-        <h1 class=" reco" style='color: #f1edb5;display:flex;font-size: 0.9rem;align-items: center;justify-content: center;' >
+        <h1 class=" reco" style='color: #b5e6f1ff;display:flex;font-size: 0.9rem;align-items: center;justify-content: center;' >
              متابعة البحث
         </h1>
     
