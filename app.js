@@ -1506,7 +1506,7 @@ notifINIT:function(){
  
       mounted(){
         this.$router.push({name:'home'});
-        window.addEventListener("load", this.SWinit);
+        window.addEventListener("load", ()=>{return this.SWinit()});
         // window.addEventListener('hashchange', () => {
         //   var currentPath= window.location.hash;
         //  if(currentPath=="#/"){ 
