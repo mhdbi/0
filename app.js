@@ -1074,19 +1074,29 @@ if(this.siteText=='text'){
 
 ////////////////////////////////// sw && notification /////////////////////////////////
 
-
+checkSW:async function(){
+  const re = await navigator.serviceWorker.getRegistration();
+  if(re){ 
+      var data= await fetch('/check-cache');
+      var test = await data.json();
+        if(test.status !='yes') {console.log(1);await re.unregister(); window.location.reload();
+           }
+   }else{
+    this.SWinit()
+   }
+},
 
 SWinit:function(){
    if('serviceWorker' in navigator){ 
      navigator.serviceWorker.register('sw.js').then(registration=>{
-     return this.sw = registration;
-      //registration.installing || registration.waiting || registration.active ;
-     }).catch(e=>{console.log(e)})
+       this.sw = registration; 
+     
+       }).catch(e=>{console.log(e)});
  
-      navigator.serviceWorker.addEventListener('controllerchange',async()=>{ 
-      this.sw = navigator.serviceWorker.controller;
-       })
+      navigator.serviceWorker.addEventListener('controllerchange',async()=>{ this.sw = navigator.serviceWorker.controller; })
    }
+ 
+
   },
 
 notef:function(){
@@ -1508,7 +1518,7 @@ notifINIT:function(){
  
       mounted(){
         this.$router.push({name:'home'});
-        window.addEventListener("load", this.SWinit());
+       // window.addEventListener("load", this.SWinit());
         // window.addEventListener('hashchange', () => {
         //   var currentPath= window.location.hash;
         //  if(currentPath=="#/"){ 
@@ -1521,7 +1531,7 @@ notifINIT:function(){
          this.created();
          this.indexedDB();
          setTimeout(this.coloring,4000);
-         
+         this.checkSW()
         // this.notificM();
         // this.siteOrders()
    

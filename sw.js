@@ -1,5 +1,5 @@
 
-const version =8;
+const version =5;
 var cacheName =`staticCahe-${version}`;
 var dynamicName="dynamicCache";
 
@@ -11,9 +11,17 @@ let assets=['/','index.html','home.css','tecno.css','app.js',"404.html",'views/A
   
 
 self.addEventListener("install" , (ev)=>{ 
+        ev.waitUntil(
+          addAssets()
+           );
+     
+         self.skipWaiting();
+       
+});
 
-       ev.waitUntil(
-        assets.map(as=>{ 
+ function addAssets(){
+
+    assets.map(as=>{ 
               caches.match(as).then((cacheRes)=>{if(cacheRes)return cacheRes;
                let url = new URL(as , self.location).href;
                   return fetch(url).then(netRes=>{
@@ -32,21 +40,21 @@ self.addEventListener("install" , (ev)=>{
                                     cache.put(url , modifiedCacheRes);
                               })//for cache
                           })
-                        })
+                        },
+                       ()=>{
+                      addAssets()  ;
+                       }
+                      )
                   })
-             );
-       self.skipWaiting();
-});
+ }
 
  
 
 self.addEventListener('activate' ,(ev)=>{
   clients.claim().then(c=>{      });
-
-  caches.keys().then((key) => {
+ caches.keys().then((key) => {
     key.filter(key=>{ if(key!=cacheName ){ return true }}).map(key=>caches.delete(key));
       });
-
 });
 
 
@@ -137,14 +145,34 @@ self.addEventListener('notificationclick', (event) => {
 
 
 
+
+
+
+
+
 ///////////////////////////////fetch/////////////////////////////////////////////////////////
 
+
+function checkAssets( ev ){
+    ev.respondWith(
+      caches.open(cacheName).then(async (c)=>{
+      
+      var miss = 'yes';
+          for( const a of assets  ){
+              const ca = await c.match(a);
+              if(!ca){ miss = ''}           
+          };
+         console.log(miss)
+        return  new Response(JSON.stringify({status:miss}) ,{ headers : {'Content-Type' : 'application/json'}  } );
+      })
+    )
+  }
 
 
 self.addEventListener('fetch'  , (ev)=>{
  var onLine = self.navigator.onLine; 
  var url  = new URL(ev.request.url);
- 
+
  var img  = url.hostname.includes('picsum.photos')||url.pathname.includes('.png')||url.pathname.includes('.jpj')||url.pathname.includes('.svg');
  var Json = url.hostname.includes('random-data-api.com');
  var css  = url.pathname.includes('.css')||url.hostname.includes('googleapis.com');
@@ -159,8 +187,9 @@ self.addEventListener('fetch'  , (ev)=>{
  var referrer =ev.request.referrer.includes(myURL);
 
  if(onLine ){
-
-        if(referrer && icons){
+         if (url.pathname.includes('/check-cache')){
+                 checkAssets( ev ); return;         
+          }else if(referrer && icons){
            return ev.respondWith(cacheF(ev));
         }else if(thumb){
            return ev.respondWith(fetch(ev.request,{method: "GET",mode: "no-cors",redirect:"follow",credentials:"omit"}));
