@@ -1,9 +1,9 @@
 
-const version =2;
+const version =5;
 var cacheName =`staticCahe-${version}`;
 var dynamicName="dynamicCache";
 
-let assets=['/','./','./index.html','./home.css','./tecno.css','./app.js',"./404.html",'./views/Account.js','./views/Home.js','./views/Index.js','./views/Inset.js','./views/search.js','./views/Socitey.js',
+let assets=['/','index.html','home.css','tecno.css','app.js',"404.html",'views/Account.js','views/Home.js','views/Index.js','views/Inset.js','views/search.js','views/Socitey.js',
            "puplic/icons/screensh1.jpg","puplic/icons/screensh2.jpg",'puplic/icons/chocolate.jpg','puplic/icons/cigarette.jpg','puplic/icons/dairy-products.jpg','puplic/icons/drink.jpg',
            'puplic/icons/fruits.jpg','puplic/icons/nuts.jpg','puplic/icons/purchase.png','puplic/icons/robot.png',
            'puplic/icons/1.jpg','puplic/icons/2.jpg','puplic/96.png','puplic/icons/fixL1.jpg','puplic/icons/fixL2.jpg',
@@ -15,8 +15,8 @@ self.addEventListener("install" , (ev)=>{
        ev.waitUntil(
         assets.map(as=>{ 
               caches.match(as).then((cacheRes)=>{if(cacheRes)return cacheRes;
-
-                  return fetch(as).then(netRes=>{
+               let url = new URL(as , self.location).href;
+                  return fetch(url).then(netRes=>{
                       if(!netRes || netRes.status !==200 || netRes.type!=='basic'){ return netRes }
 
                             const resTOcache  = netRes, newMaxAge ='public , max-age=31536000,s-maxage=31536000'; 
@@ -223,7 +223,7 @@ if(isNet){
 }
 
 function html404(){
-  return caches.match('./404.html');
+  return caches.match('404.html');
 
 }
 
